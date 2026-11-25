@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title data-text="board_post.page_title">Board post</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/board-post/board-post.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/board-post/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub" data-text="board_post.bar">Request board</p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <span class="picker city">
+              <label
+                class="visually-hidden"
+                for="city-picker"
+                data-text="city.label"
+                >City</label
+              >
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#location" />
+              </svg>
+              <select id="city-picker"></select>
+            </span>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page board-page">
+      <div class="load-problem" id="load-problem" hidden>
+        <p class="error" id="load-error" role="alert"></p>
+        <a
+          class="btn-plain"
+          href="/board-posts/new"
+          data-text="board_post.write_new"
+          >Write a new request</a
+        >
+      </div>
+
+      <div class="buyer-cols" id="view" hidden>
+        <div class="buyer-main">
+          <article
+            class="card board-post"
+            data-edge="brass"
+            aria-labelledby="post-title"
+          >
+            <p class="board-tags">
+              <span class="stamp" id="post-status"></span>
+              <span
+                class="badge"
+                id="post-demo"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <h1 id="post-title"></h1>
+            <p class="card-lead" id="post-description"></p>
+            <ul class="board-items" id="post-items"></ul>
+            <dl class="board-facts">
+              <div>
+                <dt data-text="board_post.need_by">Need by</dt>
+                <dd class="num" id="post-need-by"></dd>
+              </div>
+              <div>
+                <dt data-text="board_post.places">Delivery places</dt>
+                <dd id="post-places"></dd>
+              </div>
+              <div id="post-budget-row">
+                <dt data-text="board_post.budget_short">Budget</dt>
+                <dd class="num" id="post-budget"></dd>
+              </div>
+              <div>
+                <dt data-text="board_post.city">City</dt>
+                <dd id="post-city"></dd>
+              </div>
+            </dl>
+            <p class="hint" id="post-closed" hidden></p>
+            <p class="done" id="post-notice" role="status" hidden>
+              <span id="post-notice-words"></span>
+              <button class="link-btn" type="button" id="undo" hidden>
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#undo" />
+                </svg>
+                <span data-text="common.action.undo">Undo</span>
+              </button>
+            </p>
+            <p class="error" id="post-error" role="alert" hidden></p>
+            <p class="board-actions">
+              <button
+                class="btn-plain"
+                type="button"
+                id="edit"
+                data-text="board_post.edit"
+              >
+                Change the post
+              </button>
+              <button
+                class="btn-plain"
+                type="button"
+                id="close"
+                data-text="board_post.close"
+              >
+                Close the post
+              </button>
+              <button
+                class="btn-plain"
+                type="button"
+                id="reopen"
+                data-text="board_post.reopen"
+                hidden
+              >
+                Open the post again
+              </button>
+            </p>
+            <p
+              class="hint"
+              id="post-example"
+              data-text="board_post.example_note"
+              hidden
+            >
+              This is an example request, the same for every visitor. You can
+              see the answers and contact a store, but not change or close it.
+            </p>
+            <p
+              class="hint"
+              id="post-keep-link"
+              data-text="board_post.keep_link"
+            >
+              Keep the link of this page: only it shows the stores that answer.
+            </p>
+          </article>
+        </div>
+        <aside class="buyer-side">
+          <section
+            class="card board-interests"
+            aria-labelledby="interests-title"
+          >
+            <h2 id="interests-title" data-text="board_post.interests">
+              Stores that can do it
+            </h2>
+            <p class="hint" id="interests-none"></p>
+            <ul class="interest-list" id="interests"></ul>
+          </section>
+        </aside>
+      </div>
+
+      <form class="buyer-cols board-form" id="form" novalidate hidden>
+        <div class="buyer-main">
+          <section class="card form-card" aria-labelledby="form-title">
+            <h1 id="form-title"></h1>
+            <p class="card-lead" id="form-lead" data-text="board_post.new_lead">
+              Stores with a bulk section in your city see your post and answer.
+              Nothing is ordered or paid here.
+            </p>
+            <div class="field">
+              <label for="company" data-text="board_post.company"
+                >Company name (optional)</label
+              >
+              <p
+                class="field-hint"
+                id="company-hint"
+                data-text="board_post.company_hint"
+              >
+                Leave it empty to show only the description.
+              </p>
+              <input
+                id="company"
+                maxlength="80"
+                autocomplete="organization"
+                aria-describedby="company-hint"
+              />
+            </div>
+            <div class="field">
+              <label for="description" data-text="board_post.description"
+                >Description</label
+              >
+              <p
+                class="field-hint"
+                id="description-hint"
+                data-text="board_post.description_hint"
+              >
+                For example: A tech company in Whitefield.
+              </p>
+              <input
+                id="description"
+                maxlength="120"
+                required
+                aria-describedby="description-hint"
+              />
+            </div>
+          </section>
+
+          <section class="card form-card" aria-labelledby="items-title">
+            <h2 id="items-title" data-text="board_post.items">Items</h2>
+            <div class="board-rows" id="item-rows"></div>
+            <button class="btn-plain" type="button" id="add-item">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#plus" />
+              </svg>
+              <span data-text="board_post.add_item">Add an item</span>
+            </button>
+          </section>
+
+          <section class="card form-card" aria-labelledby="when-title">
+            <h2 id="when-title" data-text="board_post.when">When and where</h2>
+            <div class="board-when">
+              <div class="field">
+                <label for="need-by" data-text="board_post.need_by"
+                  >Need by</label
+                >
+                <input id="need-by" class="num" type="date" required />
+              </div>
+              <div class="field">
+                <label for="budget" data-text="board_post.budget"
+                  >Budget for each unit (₹, optional)</label
+                >
+                <input
+                  id="budget"
+                  class="num"
+                  type="number"
+                  min="0"
+                  step="any"
+                  inputmode="decimal"
+                />
+              </div>
+              <div class="field">
+                <label for="city" data-text="board_post.city">City</label>
+                <input
+                  id="city"
+                  value="Bengaluru"
+                  maxlength="60"
+                  autocomplete="address-level2"
+                  required
+                />
+              </div>
+            </div>
+            <fieldset class="board-places">
+              <legend data-text="board_post.places">Delivery places</legend>
+              <div class="board-rows" id="place-rows"></div>
+              <button class="btn-plain" type="button" id="add-place">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#plus" />
+                </svg>
+                <span data-text="board_post.add_place">Add a place</span>
+              </button>
+            </fieldset>
+          </section>
+        </div>
+
+        <aside class="buyer-side">
+          <section
+            class="card form-card verify"
+            data-edge="brass"
+            id="verify"
+            aria-labelledby="verify-title"
+          >
+            <h2 id="verify-title" data-text="board_post.verify">
+              Last step: confirm your work email and WhatsApp number
+            </h2>
+            <div class="field">
+              <label for="email" data-text="board_post.email">Work email</label>
+              <p
+                class="field-hint"
+                id="email-hint"
+                data-text="board_post.email_hint"
+              >
+                We send a code here. A work email shows sellers that a company
+                asks.
+              </p>
+              <input
+                id="email"
+                type="email"
+                autocomplete="email"
+                maxlength="254"
+                required
+                aria-describedby="email-hint"
+              />
+            </div>
+            <div class="field">
+              <label for="phone" data-text="board_post.phone"
+                >Your WhatsApp number</label
+              >
+              <p
+                class="field-hint"
+                id="phone-hint"
+                data-text="board_post.phone_hint"
+              >
+                The sellers that you contact see this number.
+              </p>
+              <input
+                id="phone"
+                class="num"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel"
+                maxlength="20"
+                required
+                aria-describedby="phone-hint"
+              />
+            </div>
+            <div class="codes" id="codes" hidden>
+              <p class="field-hint">
+                <span class="badge" data-text="common.badge.prototype"
+                  >Prototype</span
+                >
+                <span data-text="board_post.code_note"
+                  >This is a prototype, so the codes show here. In the full app,
+                  they come by email and on WhatsApp.</span
+                >
+              </p>
+              <div class="field">
+                <label for="email-code" data-text="board_post.email_code"
+                  >Email code</label
+                >
+                <p class="code-line" id="email-code-shown">
+                  <span data-text="board_post.code_shown">Your code</span>
+                  <span class="num code-value" id="email-code-value"></span>
+                </p>
+                <input
+                  id="email-code"
+                  aria-describedby="email-code-shown"
+                  class="num"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  maxlength="7"
+                />
+              </div>
+              <div class="field">
+                <label for="phone-code" data-text="board_post.phone_code"
+                  >WhatsApp code</label
+                >
+                <p class="code-line" id="phone-code-shown">
+                  <span data-text="board_post.code_shown">Your code</span>
+                  <span class="num code-value" id="phone-code-value"></span>
+                </p>
+                <input
+                  id="phone-code"
+                  aria-describedby="phone-code-shown"
+                  class="num"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  maxlength="7"
+                />
+              </div>
+            </div>
+            <p class="error" id="form-error" role="alert" hidden></p>
+            <p class="submit-line">
+              <button class="btn-primary" type="submit" id="submit"></button>
+              <button
+                class="btn-plain"
+                type="button"
+                id="cancel"
+                data-text="board_post.cancel"
+                hidden
+              >
+                Cancel
+              </button>
+            </p>
+            <p class="wait" id="submit-wait">
+              <span role="status"></span><span class="num"></span>
+            </p>
+          </section>
+        </aside>
+      </form>
+    </main>
+
+    <template id="item-row-template">
+      <div class="board-row item-row">
+        <div class="field">
+          <label data-text="board_post.item_name">Item</label>
+          <input class="item-name" maxlength="80" />
+        </div>
+        <div class="field">
+          <label data-text="board_post.item_quantity">Quantity</label>
+          <input
+            class="num item-quantity"
+            type="number"
+            min="1"
+            step="1"
+            inputmode="numeric"
+          />
+        </div>
+        <div class="field">
+          <label data-text="board_post.item_unit">Unit</label>
+          <select class="item-unit">
+            <option value="pieces" data-text="board_post.unit.pieces">
+              Pieces
+            </option>
+            <option value="boxes" data-text="board_post.unit.boxes">
+              Boxes
+            </option>
+            <option value="kg" data-text="board_post.unit.kg">kg</option>
+          </select>
+        </div>
+        <button
+          class="btn-plain row-remove"
+          type="button"
+          data-text-label="board_post.remove_item"
+          aria-label="Remove this item"
+        >
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#close" />
+          </svg>
+        </button>
+      </div>
+    </template>
+
+    <template id="place-row-template">
+      <div class="board-row place-row">
+        <div class="field">
+          <label data-text="board_post.place">Place</label>
+          <input class="place-name" maxlength="120" />
+        </div>
+        <button
+          class="btn-plain row-remove"
+          type="button"
+          data-text-label="board_post.remove_place"
+          aria-label="Remove this place"
+        >
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#close" />
+          </svg>
+        </button>
+      </div>
+    </template>
+
+    <template id="interest-template">
+      <li class="interest">
+        <p class="interest-head">
+          <a class="interest-store"></a>
+          <span class="badge interest-demo" data-text="common.badge.demo" hidden
+            >Demo</span
+          >
+        </p>
+        <p class="interest-area"></p>
+        <p class="interest-note"></p>
+        <p class="interest-translated" hidden>
+          <span class="badge" data-text="common.badge.translated"
+            >Translated</span
+          >
+        </p>
+        <details class="interest-original" hidden>
+          <summary class="link-btn" data-text="board_post.original">
+            Original
+          </summary>
+          <p class="interest-original-text"></p>
+        </details>
+        <button
+          class="btn-plain interest-contact"
+          type="button"
+          data-text="quotes.contact"
+        >
+          Contact seller
+        </button>
+      </li>
+    </template>
+  </body>
+</html>

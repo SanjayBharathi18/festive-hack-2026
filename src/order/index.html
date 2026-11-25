@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="order.title">Your order</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/order/order.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/order/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub" id="store-name"></p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <div class="picker city city-lock" id="city-lock" hidden>
+              <button
+                type="button"
+                aria-disabled="true"
+                aria-describedby="city-lock-note"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#location" />
+                </svg>
+                <span class="visually-hidden" data-text="city.label">City</span>
+                <span id="city-lock-name"></span>
+              </button>
+              <p
+                class="city-note"
+                id="city-lock-note"
+                popover="manual"
+                role="tooltip"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#block" />
+                </svg>
+                <span id="city-lock-words"></span>
+              </p>
+            </div>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page order-page">
+      <div class="load-problem" id="load-problem" hidden>
+        <p class="error" id="load-error" role="alert"></p>
+        <button
+          class="btn-plain"
+          type="button"
+          id="load-retry"
+          data-text="common.action.try_again"
+        >
+          Try again
+        </button>
+      </div>
+
+      <div class="order" id="order" hidden>
+        <p class="back">
+          <a class="link-btn" id="store-back" href="/"></a>
+        </p>
+
+        <div class="buyer-cols">
+          <div class="buyer-main">
+            <article
+              class="slip order-slip"
+              id="slip"
+              aria-labelledby="order-title"
+            >
+              <header class="slip-head">
+                <h1 class="slip-title" id="order-title">
+                  <span data-text="order.order">Order</span>
+                  <span class="order-no num" id="order-number"></span>
+                </h1>
+                <p class="slip-who" id="order-who"></p>
+                <span class="stamp" id="status-stamp"></span>
+              </header>
+              <p class="status-line" id="status-line" role="status"></p>
+              <table class="slip-lines">
+                <tbody id="order-lines"></tbody>
+              </table>
+              <footer class="slip-foot">
+                <p class="slip-sum">
+                  <span data-text="order.total">Total</span>
+                  <span class="num slip-amount" id="order-total"></span>
+                  <span
+                    class="stamp"
+                    data-kind="done"
+                    data-hand
+                    id="paid-stamp"
+                    data-text="order.stamp.paid"
+                    hidden
+                    >Paid</span
+                  >
+                  <span
+                    class="stamp"
+                    data-kind="done"
+                    id="refunded-stamp"
+                    data-text="order.refunded"
+                    hidden
+                    >Refunded</span
+                  >
+                </p>
+              </footer>
+              <dl class="answers order-facts" id="facts">
+                <div id="fact-pickup" hidden>
+                  <dt data-text="order.pickup_from">Pickup from</dt>
+                  <dd>
+                    <span id="pickup-address"></span>
+                    <a
+                      class="link-btn"
+                      id="map-link"
+                      href="/"
+                      target="_blank"
+                      rel="noopener"
+                      hidden
+                    >
+                      <svg class="icon" aria-hidden="true">
+                        <use href="/icons.svg#location" />
+                      </svg>
+                      <span data-text="order.map">Open the map</span>
+                    </a>
+                  </dd>
+                </div>
+                <div id="fact-delivery" hidden>
+                  <dt data-text="order.delivery_to">Delivery to</dt>
+                  <dd id="delivery-address"></dd>
+                </div>
+                <div id="fact-gift" hidden>
+                  <dt data-text="order.gift">Gift for</dt>
+                  <dd id="gift-text"></dd>
+                </div>
+                <div id="fact-note" hidden>
+                  <dt data-text="order.note">Your note</dt>
+                  <dd id="note-text"></dd>
+                </div>
+              </dl>
+            </article>
+          </div>
+
+          <aside class="buyer-side order-side">
+            <section
+              class="card pay-card"
+              id="pay-card"
+              data-edge="brass"
+              aria-labelledby="pay-title"
+              hidden
+            >
+              <div class="card-head">
+                <h2 id="pay-title" data-text="order.pay.title">Pay online</h2>
+                <span class="badge" data-text="common.badge.prototype"
+                  >Prototype</span
+                >
+              </div>
+              <p class="hint" id="pay-line"></p>
+              <p class="error" id="pay-error" role="alert" hidden></p>
+              <div class="pay-action">
+                <button
+                  class="btn-primary"
+                  type="button"
+                  id="pay-online"
+                  data-text="order.pay.action"
+                >
+                  Pay online
+                </button>
+                <p class="wait" id="pay-wait">
+                  <span role="status"></span><span class="num"></span>
+                </p>
+              </div>
+            </section>
+
+            <div class="card contact">
+              <p class="hint" data-text="order.message_hint">
+                To change or cancel your order, message the store.
+              </p>
+              <a class="btn-primary" id="message-store" href="/">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#message" />
+                </svg>
+                <span data-text="order.message_store">Message the store</span>
+              </a>
+            </div>
+
+            <section class="card messages" aria-labelledby="messages-title">
+              <div class="card-head">
+                <h2 id="messages-title" data-text="order.messages">
+                  Messages on WhatsApp
+                </h2>
+                <span class="badge" data-text="common.badge.prototype"
+                  >Prototype</span
+                >
+              </div>
+              <p class="hint" data-text="order.messages_note">
+                This prototype does not send WhatsApp messages. It shows them
+                here.
+              </p>
+              <ol class="message-log" id="messages"></ol>
+              <p
+                class="hint"
+                id="messages-none"
+                data-text="order.messages_none"
+                hidden
+              >
+                No messages yet.
+              </p>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <template id="line-template">
+      <tr>
+        <td class="line-name">
+          <span class="food-mark" role="img"></span>
+          <span class="line-item"></span>
+          <span class="line-latin" lang="en" hidden></span>
+          <span class="line-egg" hidden></span>
+          <span class="num line-amount"></span>
+        </td>
+        <td class="num line-price"></td>
+      </tr>
+    </template>
+
+    <template id="message-template">
+      <li class="message">
+        <p class="message-time num"></p>
+        <p class="message-body"></p>
+      </li>
+    </template>
+  </body>
+</html>

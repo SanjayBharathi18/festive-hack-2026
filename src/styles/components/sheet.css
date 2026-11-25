@@ -1,0 +1,45 @@
+/* A sheet: a card over the page, which dims behind it, in a native <dialog>.
+   Escape closes it. Its body is a grid; its head holds the title and the
+   close button; its actions sit in a row at the end. */
+.sheet {
+  --sheet-size: 40rem;
+
+  inline-size: min(var(--sheet-size), calc(100vw - var(--space) * 6));
+  max-block-size: calc(100dvh - var(--space) * 6);
+  margin: auto;
+  padding: 0;
+  border: var(--card-line) solid var(--brass);
+  border-radius: var(--radius-card);
+  background: var(--paper);
+  box-shadow: var(--card-edge);
+  color: var(--ink);
+
+  &::backdrop {
+    background: var(--ink-dim);
+  }
+}
+
+.sheet-body {
+  display: grid;
+  align-content: start;
+  gap: calc(var(--space) * 3);
+  padding: calc(var(--space) * 3);
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+
+  h2 {
+    margin: 0;
+    font-size: var(--step-1);
+  }
+}
+
+.sheet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 2);
+}

@@ -1,0 +1,77 @@
+/* Her bulk and catering sections under her menu: a card each. */
+.store-extras {
+  display: grid;
+  gap: calc(var(--space) * 3);
+
+  &:empty {
+    display: none;
+  }
+
+  :is(h2, p, ul) {
+    margin: 0;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: var(--space);
+  }
+
+  .hint {
+    color: var(--ink-2);
+  }
+}
+
+.extras-bulk,
+.extras-catering {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+/* The tag of a store that takes catering or bulk requests and no food
+   orders: neutral ink, not kumkum. */
+.store-open[data-open="other"] {
+  border-color: var(--brass);
+  color: var(--ink-2);
+}
+
+.extras-booked {
+  color: var(--kumkum);
+  font-weight: 600;
+}
+
+.extras-packages {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: calc(var(--space) * 2);
+  padding: 0;
+  list-style: none;
+}
+
+/* The packages sit in the card as columns under a brass line, not as
+   cards in a card. */
+.extras-package {
+  display: grid;
+  align-content: start;
+  gap: var(--space);
+  padding-block-start: calc(var(--space) * 2);
+  border-block-start: var(--hair) solid var(--brass);
+
+  a {
+    justify-self: start;
+  }
+}
+
+.extras-package-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space);
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+.extras-package-limits,
+.extras-package-meta {
+  color: var(--ink-2);
+}

@@ -1,0 +1,17 @@
+# No release label: the kube-prometheus-stack from the NudgeBee script selects
+# every ServiceMonitor (docs/nudgebee.md, "Agent install").
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app
+  namespace: app
+  labels:
+    app.kubernetes.io/name: app
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s

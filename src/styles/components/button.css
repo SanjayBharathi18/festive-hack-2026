@@ -1,0 +1,184 @@
+.btn-primary {
+  --icon-ground: var(--haldi);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
+  min-height: var(--tap);
+  padding: 0 calc(var(--space) * 3);
+  border: var(--rule) solid var(--ink);
+  border-radius: var(--radius-round);
+  background: var(--haldi);
+  box-shadow: 0 var(--edge) 0 var(--ink);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:active,
+  &[data-state="pressed"] {
+    box-shadow: none;
+    transform: translateY(var(--edge));
+  }
+
+  &:focus-visible,
+  &[data-state="focus"] {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: calc(var(--edge) + var(--ring));
+  }
+
+  /* A link that cannot go yet wears the same look as a disabled button. */
+  &:is(:disabled, a[aria-disabled="true"]) {
+    --icon-ground: var(--paper);
+
+    border-color: var(--ink-3);
+    background: var(--paper);
+    box-shadow: 0 var(--edge) 0 var(--ink-3);
+    color: var(--ink-3);
+    cursor: not-allowed;
+  }
+}
+
+.btn-plain,
+.file-pick,
+:where(.voice-button:not(.btn-primary)) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: 0 calc(var(--space) * 2);
+  border: var(--hair) solid var(--ink);
+  border-radius: var(--radius-round);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:active,
+  &[data-state="pressed"] {
+    background: var(--ink-tint);
+  }
+
+  &:focus-visible,
+  &[data-state="focus"],
+  &:has(:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  &:disabled,
+  &:has(:disabled) {
+    border-color: var(--ink-3);
+    background: var(--paper);
+    color: var(--ink-3);
+    cursor: not-allowed;
+  }
+}
+
+.link-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space) / 2);
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: 0 var(--space);
+  border: 0;
+  border-radius: var(--radius-round);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:active,
+  &[data-state="pressed"] {
+    background: var(--ink-tint);
+  }
+
+  &:focus-visible,
+  &[data-state="focus"] {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: calc(var(--space) / 4);
+  }
+
+  &:disabled {
+    background: none;
+    color: var(--ink-3);
+    cursor: not-allowed;
+  }
+}
+
+/* The page sets aria-busy after a wait of 300 ms. The mark shows at once, and the button keeps its size. */
+:is(
+  .btn-primary,
+  .btn-plain,
+  .link-btn,
+  .file-pick,
+  .voice-button
+)[aria-busy="true"],
+.voice-button:is([data-phase="opening"], [data-phase="stopping"]) {
+  cursor: progress;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto calc(var(--tap) / 2) 0;
+    block-size: var(--rule);
+    background: var(--brass);
+  }
+}
+
+/* On a link button, the busy line takes the place of the underline, under the word. */
+.link-btn[aria-busy="true"] {
+  text-decoration-color: transparent;
+
+  &::after {
+    inset: auto var(--space) calc(50% - 0.75em);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(
+      .btn-primary,
+      .btn-plain,
+      .link-btn,
+      .file-pick,
+      .voice-button
+    )[aria-busy="true"]::after,
+  .voice-button:is([data-phase="opening"], [data-phase="stopping"])::after {
+    background: linear-gradient(var(--brass) 0 0) no-repeat;
+    background-size: 30% 100%;
+    animation: busy-sweep calc(var(--dur-long) * 2) linear infinite backwards;
+  }
+
+  /* The recorder sets these phases at once. The sweep enters after 300 ms, so a quick open shows nothing. */
+  .voice-button:is([data-phase="opening"], [data-phase="stopping"]):not(
+      [aria-busy="true"]
+    )::after {
+    animation-delay: var(--dur-settle);
+  }
+}
+
+/* A 30% segment starts just outside the left end and stops just outside the right end. */
+@keyframes busy-sweep {
+  from {
+    background-position: -43% 0;
+  }
+
+  to {
+    background-position: 143% 0;
+  }
+}

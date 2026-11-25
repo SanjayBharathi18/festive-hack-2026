@@ -1,0 +1,17 @@
+# The settings that are not secret. The secrets are in the Secret app-secrets,
+# which the deploy job makes from the Actions secrets (.github/workflows/ci.yml).
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: app
+data:
+  # live after SARVAM_API_KEY is in the Actions secrets. live without the key
+  # stops the server at start.
+  SARVAM_MODE: recorded
+  # Placeholder: replace 0-0-0-0 with the static IP, with dashes
+  # (34-12-56-78.sslip.io). It must match the host in ingress.yaml.
+  PUBLIC_URL: https://0-0-0-0.sslip.io
+  DATA_DIR: /data
+  PORT: "8080"
+  HOST: 0.0.0.0

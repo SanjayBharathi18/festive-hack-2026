@@ -1,0 +1,58 @@
+# Flag-change events (docs/system.md, "NudgeBee workflows", item 1).
+#
+# Setup, once:
+# 1. nbctl workflow validate nudgebee/flag-change-events.yaml, then
+#    nbctl workflow apply nudgebee/flag-change-events.yaml. Use the NudgeBee
+#    account of the k3s cluster, so that the events sit next to its alerts.
+# 2. Make an Automation Webhook (Admin, Integrations, Webhooks), and pick it in
+#    the Webhook trigger of this workflow in the editor. The editor then shows
+#    the URL (.../api/webhooks/workflow?token=...). The token is the secret.
+# 3. Put the URL in the Flagsmith Production environment: set
+#    NUDGEBEE_FLAG_WEBHOOK_URL and run npm run flagsmith-setup again (README.md,
+#    "Plug in the services"), or add it by hand (Environment Settings,
+#    Webhooks).
+# 4. The NudgeBee docs do not name the trigger parameter that links the
+#    webhook. Run nbctl workflow get <id>, and copy the trigger params that the
+#    editor saved into this file, so that the next apply keeps the link.
+#
+# The fields of the Flagsmith payload come from docs/flagsmith.md ("Webhook").
+# Not verified: feature.id, feature_segment.segment.id and data.timestamp in a
+# real payload. finding_id is made from them, and an empty part makes later
+# changes overwrite the event of an earlier one.
+name: Flag change events
+description: Writes a NudgeBee event for each Flagsmith flag change in Production, so that NuBi sees the change next to the alerts of the app.
+status: ACTIVE
+definition:
+  version: v1
+  timeout: 2m
+  triggers:
+    - type: webhook
+      params:
+        filter: '{{ webhook_payload.event_type == "FLAG_UPDATED" }}'
+  tasks:
+    - id: store_event
+      type: events.store
+      timeout: 1m
+      params:
+        trigger_ai_analysis: false
+        event:
+          title: "Flag changed: {{ (Inputs.webhook_json.data.new_state or Inputs.webhook_json.data.previous_state).feature.name }}"
+          description: |-
+            {%- set data = Inputs.webhook_json.data -%}
+            {%- set before = data.previous_state -%}
+            {%- set after = data.new_state -%}
+            {%- set state = after or before -%}
+            The flag {{ state.feature.name }} changed in Flagsmith Production{% if data.changed_by %}, by {{ data.changed_by }}{% endif %}.
+            Segment: {% if state.feature_segment %}{{ state.feature_segment.segment.name }}{% else %}none (the environment default){% endif %}
+            Before: {% if before %}enabled {{ before.enabled }}, value {{ before.feature_state_value }}{% else %}no state{% endif %}
+            After: {% if after %}enabled {{ after.enabled }}, value {{ after.feature_state_value }}{% else %}removed{% endif %}
+          aggregation_key: FlagChanged
+          finding_type: FlagChanged
+          finding_id: '{%- set data = Inputs.webhook_json.data -%}{%- set state = data.new_state or data.previous_state -%}flagsmith-{{ state.feature.id }}-{{ state.feature_segment.segment.id if state.feature_segment else "default" }}-{{ data.timestamp }}'
+          status: FIRING
+          priority: INFO
+          source: flagsmith
+          subject_namespace: app
+          subject_name: app
+          labels:
+            feature: "{{ (Inputs.webhook_json.data.new_state or Inputs.webhook_json.data.previous_state).feature.name }}"

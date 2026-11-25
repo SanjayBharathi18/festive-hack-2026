@@ -1,0 +1,71 @@
+/* Tabs: a segmented control. One round track with a light border; the
+   segment that shows where she is, or what is chosen, is ink. Each segment
+   is a link with aria-current, a button with aria-pressed, or a label around
+   a radio. A segment is 44 px tall and fills the track from edge to edge;
+   a transparent border insets its pill, so the pill sits inside the track. */
+.tabs {
+  display: inline-flex;
+  gap: calc(var(--space) / 4);
+  margin: 0;
+  padding: 0 calc(var(--space) / 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-round);
+  background: var(--paper);
+  list-style: none;
+
+  > :is(a, button, label) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space);
+    min-block-size: var(--tap);
+    padding: 0 calc(var(--space) * 2);
+    border: 0;
+    border-block: calc(var(--space) / 2) solid transparent;
+    border-radius: var(--radius-round);
+    background: none;
+    background-clip: padding-box;
+    color: var(--ink-2);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color var(--dur-quick) linear;
+
+    &:hover {
+      color: var(--ink);
+    }
+
+    &:active,
+    &[data-state="pressed"] {
+      background-color: var(--ink-tint);
+    }
+
+    &:is(
+      [aria-current]:not([aria-current="false"]),
+      [aria-pressed="true"],
+      :has(:checked)
+    ) {
+      background-color: var(--ink);
+      color: var(--paper);
+    }
+
+    &:focus-visible,
+    &[data-state="focus"],
+    &:has(:focus-visible) {
+      outline: var(--ring) solid var(--ink);
+      outline-offset: calc(var(--space) / 2);
+    }
+
+    input {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+}

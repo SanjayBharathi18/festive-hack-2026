@@ -1,0 +1,184 @@
+.checkout {
+  display: grid;
+  gap: calc(var(--space) * 3);
+}
+
+.checkout-top {
+  display: grid;
+  justify-items: start;
+  gap: var(--space);
+}
+
+.checkout-form {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.form-card {
+  display: grid;
+  gap: calc(var(--space) * 3);
+}
+
+.ways,
+.delivery,
+.gift-fields {
+  display: grid;
+  gap: calc(var(--space) * 3);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ways legend {
+  margin-block-end: calc(var(--space) * 2);
+  padding: 0;
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.way-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--space) * 2);
+}
+
+/* A way to get the order is a box in the card. The chosen way has an ink
+   border. */
+.way {
+  align-items: start;
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-input);
+  transition: border-color var(--dur-quick) linear;
+
+  &:hover {
+    border-color: var(--brass);
+  }
+
+  &:has(:checked) {
+    border-color: var(--ink);
+  }
+
+  &:has(:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  .way-word {
+    font-weight: 600;
+  }
+}
+
+.gift-choice {
+  align-items: start;
+}
+
+.gift-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: calc(var(--space) * 2);
+
+  .gift-message {
+    grid-column: 1 / -1;
+  }
+}
+
+.field-short input {
+  max-inline-size: 24rem;
+}
+
+.field-code input {
+  max-inline-size: 12rem;
+  font-size: var(--step-1);
+  letter-spacing: 0.08em;
+}
+
+.verify {
+  gap: calc(var(--space) * 2.5);
+}
+
+.consent {
+  color: var(--ink-2);
+
+  a {
+    color: var(--ink);
+  }
+}
+
+/* The code is a prototype part, so it sits in its own box under the
+   consent line, with its badge. */
+.code-step {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+  padding: calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-input);
+
+  .link-btn {
+    justify-self: start;
+    margin-inline-start: calc(var(--space) * -1);
+  }
+}
+
+/* The code is a readout: large, in Plex Mono, read at a glance. */
+.code-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space) calc(var(--space) * 1.5);
+}
+
+.code-value {
+  font-size: var(--step-3);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.submit-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space) calc(var(--space) * 2);
+}
+
+.day-problem,
+.empty {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 1.5);
+}
+
+.summary {
+  .line-name {
+    inline-size: 100%;
+  }
+
+  /* The slip is narrow, so the amount takes its own line under the name. */
+  .line-amount {
+    display: block;
+    margin-inline-start: 0;
+    padding-inline-start: calc(var(--space) * 3);
+    white-space: nowrap;
+  }
+
+  .slip-lines .line-price {
+    padding-inline-start: calc(var(--space) * 2);
+  }
+
+  .answers {
+    margin-block-start: var(--space);
+
+    /* Inside the slip, the row shares the light line of the slip. */
+    > div {
+      grid-template-columns: auto 1fr auto;
+      border-top-color: var(--brass-tint);
+    }
+  }
+}
+
+/* The total morphs from the cart card of the store into this slip. */
+#summary-total {
+  view-transition-name: cart-total;
+}

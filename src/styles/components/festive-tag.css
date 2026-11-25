@@ -1,0 +1,38 @@
+/* The Special tag of a festival dish: the word in sentence case, in a
+   marigold-to-kumkum gradient, inside a 1.5 px frame of the same gradient.
+   It is warm and has no capitals and no solid box, so it never reads as a
+   status stamp. Both ends read at AA on paper: marigold 5.1:1, kumkum 6:1.
+   Where a browser cannot clip a gradient to text, the word is kumkum. */
+.festive-tag {
+  --festive: linear-gradient(90deg, var(--marigold), var(--kumkum));
+
+  position: relative;
+  display: inline-block;
+  padding: calc(var(--space) / 4) var(--space);
+  border-radius: var(--radius);
+  color: var(--kumkum);
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: var(--card-line);
+    border-radius: inherit;
+    background: var(--festive);
+    mask:
+      linear-gradient(#000 0 0) content-box exclude,
+      linear-gradient(#000 0 0);
+    pointer-events: none;
+  }
+}
+
+@supports (background-clip: text) {
+  .festive-tag {
+    background: var(--festive);
+    background-clip: text;
+    color: transparent;
+  }
+}

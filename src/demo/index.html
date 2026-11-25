@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Try Plattr</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/demo/demo.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark">Plattr</span
+              ><span class="badge">Demo</span>
+            </p>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main class="demo-page">
+      <div class="demo-head">
+        <h1>Try Plattr</h1>
+        <p class="demo-lead">
+          Plattr is an order desk for home cooks and caterers. Buyers order by
+          voice or by text, in their own language.
+        </p>
+        <p>
+          Each button opens a new tab. Open the demo desk first and keep it open
+          to see each new order arrive.
+        </p>
+      </div>
+
+      <section class="demo-group" aria-labelledby="start-title">
+        <h2 id="start-title">Start here</h2>
+        <ul class="demo-cards">
+          <li class="card demo-card">
+            <h3>Run the seller's desk</h3>
+            <p>
+              Stamp this week's orders and read a sample voice note in Kannada
+              or Hindi.
+            </p>
+            <a class="btn-primary" href="/demo/desk" target="_blank"
+              >Open the demo desk<span class="visually-hidden">
+                (opens in a new tab)</span
+              ></a
+            >
+          </li>
+          <li class="card demo-card">
+            <h3>Order as a buyer</h3>
+            <p>
+              Search in any language, then order from Shobha's Kitchen to see it
+              on the desk.
+            </p>
+            <a class="btn-primary" href="/" target="_blank"
+              >Open the marketplace<span class="visually-hidden">
+                (opens in a new tab)</span
+              ></a
+            >
+          </li>
+          <li class="card demo-card">
+            <h3>Flagsmith, Sarvam and NudgeBee at work</h3>
+            <p>
+              See every flag and Sarvam call, then approve the fix for a
+              simulated NudgeBee incident.
+            </p>
+            <a class="btn-primary" href="/demo/ops" target="_blank"
+              >Open the developer console<span class="visually-hidden">
+                (opens in a new tab)</span
+              ></a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section class="demo-group" aria-labelledby="more-title">
+        <h2 id="more-title">More to try</h2>
+        <ul class="demo-cards">
+          <li class="card demo-card">
+            <h3>Plan a catering menu</h3>
+            <p>
+              Choose dishes for a wedding or a party within the plate rules,
+              then contact the caterer.
+            </p>
+            <a class="btn-primary" href="/s/daawat-caterers" target="_blank"
+              >Open Daawat Caterers<span class="visually-hidden">
+                (opens in a new tab)</span
+              ></a
+            >
+          </li>
+          <li class="card demo-card">
+            <h3>Order for an office</h3>
+            <p>
+              Ask home cooks for sweets or gift boxes for your office, and get
+              their answers on one link.
+            </p>
+            <a class="btn-primary" href="/board-posts/new" target="_blank"
+              >Post a company order<span class="visually-hidden">
+                (opens in a new tab)</span
+              ></a
+            >
+          </li>
+          <li class="card demo-card">
+            <h3>Open a store</h3>
+            <p>
+              Make your own store in a few steps, in your language, and share
+              its link with buyers.
+            </p>
+            <a class="btn-primary" href="/sell" target="_blank"
+              >Make a store<span class="visually-hidden">
+                (opens in a new tab)</span
+              ></a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

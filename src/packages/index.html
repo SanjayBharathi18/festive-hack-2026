@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title data-text="catering.editor.page_title">Catering packages</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/packages/packages.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/packages/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub" id="store-name"></p>
+          </div>
+        </a>
+        <nav
+          class="tabs app-nav"
+          id="desk-nav"
+          aria-label="Desk pages"
+          data-text-label="catering.editor.nav"
+        >
+          <a href="/desk" data-text="desk.demo_nav.desk">Seller desk</a>
+          <a
+            href="/desk/packages"
+            aria-current="page"
+            data-text="catering.editor.nav_packages"
+            >Catering packages</a
+          >
+        </nav>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page packages-page">
+      <div class="load-problem" id="load-problem" hidden>
+        <p class="error" id="load-error" role="alert"></p>
+        <a class="btn-primary" href="/desk" data-text="catering.editor.desk"
+          >Open the desk</a
+        >
+      </div>
+
+      <div class="buyer-cols" id="editor-page" hidden>
+        <div class="buyer-main">
+          <section class="card packages-head" aria-labelledby="packages-title">
+            <h1 id="packages-title" data-text="catering.editor.title">
+              Your catering packages
+            </h1>
+            <p class="card-lead" data-text="catering.editor.lead">
+              Hosts pick dishes within your rules and send you a quote request.
+              No dish costs extra.
+            </p>
+            <label class="choice">
+              <input type="checkbox" id="catering-on" />
+              <span data-text="catering.editor.switch"
+                >Show catering on my store</span
+              >
+            </label>
+            <p class="hint" id="switch-status" role="status"></p>
+          </section>
+          <p class="done" id="notice" role="status" hidden>
+            <span id="notice-words"></span>
+            <button class="link-btn" type="button" id="undo" hidden>
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#undo" />
+              </svg>
+              <span data-text="common.action.undo">Undo</span>
+            </button>
+          </p>
+          <p class="error" id="list-error" role="alert" hidden></p>
+          <p class="hint" id="empty" data-text="catering.editor.empty" hidden>
+            No packages yet. Add your first package.
+          </p>
+          <ul class="package-list" id="packages"></ul>
+          <p>
+            <button class="btn-plain" type="button" id="add">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#plus" />
+              </svg>
+              <span data-text="catering.editor.add">Add a package</span>
+            </button>
+          </p>
+        </div>
+
+        <aside class="buyer-side packages-side">
+          <form
+            class="card editor"
+            id="editor"
+            data-edge="brass"
+            novalidate
+            hidden
+            aria-labelledby="editor-title"
+          >
+            <h2 id="editor-title"></h2>
+            <div class="field">
+              <label for="name" data-text="catering.editor.name"
+                >Package name</label
+              >
+              <input id="name" maxlength="80" required />
+            </div>
+            <fieldset class="editor-kind">
+              <legend data-text="catering.editor.kind">Kind</legend>
+              <label class="choice"
+                ><input type="radio" name="kind" value="plate" checked /><span
+                  data-text="catering.editor.kind_plate"
+                  >Plate: a price for each plate</span
+                ></label
+              >
+              <label class="choice"
+                ><input type="radio" name="kind" value="buffet" /><span
+                  data-text="catering.editor.kind_buffet"
+                  >Buffet: a price for each guest</span
+                ></label
+              >
+            </fieldset>
+            <div class="editor-pair">
+              <div class="field">
+                <label for="price" data-text="catering.editor.price"
+                  >Price (₹)</label
+                >
+                <input
+                  id="price"
+                  class="num"
+                  type="number"
+                  min="0"
+                  step="1"
+                  inputmode="numeric"
+                />
+              </div>
+              <div class="field">
+                <label for="min-count" data-text="catering.editor.min_count"
+                  >Fewest plates or guests</label
+                >
+                <input
+                  id="min-count"
+                  class="num"
+                  type="number"
+                  min="1"
+                  step="1"
+                  inputmode="numeric"
+                  required
+                />
+              </div>
+            </div>
+            <label class="choice">
+              <input type="checkbox" id="on-request" />
+              <span data-text="catering.editor.on_request"
+                >Price on request</span
+              >
+            </label>
+            <label class="choice">
+              <input type="checkbox" id="free-choice" />
+              <span data-text="catering.editor.free_choice"
+                >Free choice: no limits on the dishes</span
+              >
+            </label>
+            <div class="field" id="max-total-field">
+              <label for="max-total" data-text="catering.editor.max_total"
+                >Most dishes in all (optional)</label
+              >
+              <input
+                id="max-total"
+                class="num"
+                type="number"
+                min="1"
+                step="1"
+                inputmode="numeric"
+              />
+            </div>
+            <fieldset class="editor-styles">
+              <legend data-text="catering.editor.styles">Service styles</legend>
+              <label class="choice"
+                ><input type="checkbox" name="style" value="delivery" /><span
+                  data-text="catering.style.delivery"
+                  >Delivery only</span
+                ></label
+              >
+              <label class="choice"
+                ><input type="checkbox" name="style" value="staff" /><span
+                  data-text="catering.style.staff"
+                  >With serving staff</span
+                ></label
+              >
+              <div class="field style-extra" data-style="staff">
+                <label for="staff-extra" data-text="catering.editor.extra_staff"
+                  >Extra for serving staff (₹ a plate or guest)</label
+                >
+                <input
+                  id="staff-extra"
+                  class="num"
+                  type="number"
+                  min="0"
+                  max="10000"
+                  step="1"
+                  inputmode="numeric"
+                  placeholder="0"
+                />
+              </div>
+              <label class="choice"
+                ><input
+                  type="checkbox"
+                  name="style"
+                  value="live_counters"
+                /><span data-text="catering.style.live_counters"
+                  >With live counters</span
+                ></label
+              >
+              <div class="field style-extra" data-style="live_counters">
+                <label
+                  for="counters-extra"
+                  data-text="catering.editor.extra_live_counters"
+                  >Extra for live counters (₹ a plate or guest)</label
+                >
+                <input
+                  id="counters-extra"
+                  class="num"
+                  type="number"
+                  min="0"
+                  max="10000"
+                  step="1"
+                  inputmode="numeric"
+                  placeholder="0"
+                />
+              </div>
+            </fieldset>
+            <h3 data-text="catering.editor.categories">
+              Categories and dishes
+            </h3>
+            <div class="editor-categories" id="categories"></div>
+            <button class="btn-plain" type="button" id="add-category">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#plus" />
+              </svg>
+              <span data-text="catering.editor.add_category"
+                >Add a category</span
+              >
+            </button>
+            <p class="error" id="editor-error" role="alert" hidden></p>
+            <p class="editor-submit">
+              <button
+                class="btn-primary"
+                type="submit"
+                id="save"
+                data-text="catering.editor.save"
+              >
+                Save package
+              </button>
+              <button
+                class="btn-plain"
+                type="button"
+                id="cancel"
+                data-text="common.action.cancel"
+              >
+                Cancel
+              </button>
+            </p>
+            <p class="wait" id="save-wait">
+              <span role="status"></span><span class="num"></span>
+            </p>
+          </form>
+        </aside>
+      </div>
+    </main>
+
+    <template id="package-template">
+      <li class="card package-item">
+        <p class="package-top">
+          <span class="package-name"></span>
+          <span class="num package-price"></span>
+        </p>
+        <p class="package-limits"></p>
+        <p class="package-meta"></p>
+        <p class="package-actions">
+          <button
+            class="btn-plain package-edit"
+            type="button"
+            data-text="catering.editor.edit"
+          >
+            Change
+          </button>
+          <button
+            class="btn-plain package-remove"
+            type="button"
+            data-text="catering.editor.remove"
+          >
+            Remove
+          </button>
+        </p>
+      </li>
+    </template>
+
+    <template id="category-template">
+      <fieldset class="editor-category">
+        <legend
+          class="visually-hidden"
+          data-text="catering.editor.category_name"
+        >
+          Category
+        </legend>
+        <div class="category-fields">
+          <div class="field">
+            <label data-text="catering.editor.category_name">Category</label>
+            <input class="category-name" maxlength="80" />
+          </div>
+          <div class="field limit-field">
+            <label data-text="catering.editor.category_min">Fewest</label>
+            <input
+              class="num category-min"
+              type="number"
+              min="0"
+              step="1"
+              inputmode="numeric"
+            />
+          </div>
+          <div class="field limit-field">
+            <label data-text="catering.editor.category_max">Most</label>
+            <input
+              class="num category-max"
+              type="number"
+              min="1"
+              step="1"
+              inputmode="numeric"
+            />
+          </div>
+          <button
+            class="btn-plain category-remove"
+            type="button"
+            data-text-label="catering.editor.remove_category"
+            aria-label="Remove this category"
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons.svg#close" />
+            </svg>
+          </button>
+        </div>
+        <div class="category-dishes"></div>
+        <button class="link-btn dish-add" type="button">
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#plus" />
+          </svg>
+          <span data-text="catering.editor.add_dish">Add a dish</span>
+        </button>
+      </fieldset>
+    </template>
+
+    <template id="dish-template">
+      <div class="dish-row">
+        <div class="field">
+          <label data-text="catering.editor.dish_name">Dish</label>
+          <input class="dish-name" maxlength="80" />
+        </div>
+        <div class="field">
+          <label data-text="catering.editor.dish_mark">Mark</label>
+          <select class="dish-mark">
+            <option value="veg" data-text="catering.mark.veg">Veg</option>
+            <option value="non_veg" data-text="catering.mark.non_veg">
+              Non-veg
+            </option>
+            <option value="egg" data-text="catering.mark.egg">Egg</option>
+          </select>
+        </div>
+        <label class="choice">
+          <input type="checkbox" class="dish-jain" />
+          <span data-text="catering.dish.jain">Jain</span>
+        </label>
+        <button
+          class="btn-plain dish-remove"
+          type="button"
+          data-text-label="catering.editor.remove_dish"
+          aria-label="Remove this dish"
+        >
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#close" />
+          </svg>
+        </button>
+      </div>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+/* A cook card: one home cook in a
+   list of cooks, on a .card. Line 1: the kind of shop (area · categories)
+   and her stars. Line 2: the store name, large. Then up to three dishes,
+   each a price-card line (mark, name, pack, price) with hairlines between
+   them, and a foot with the link to her other dishes and her next day with
+   space. The name link covers the whole card. The head also works alone,
+   for example on a bulk or catering card. */
+.cook-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: calc(var(--space) * 2);
+  transition: border-color var(--dur-quick) linear;
+
+  p {
+    margin: 0;
+  }
+
+  &:hover {
+    border-color: var(--brass);
+  }
+
+  &:has(.cook-card-link:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  /* A cook who takes no orders now shows grey; the words say why. */
+  &[data-closed="true"] {
+    color: var(--ink-2);
+
+    .food-mark {
+      opacity: 0.6;
+    }
+  }
+}
+
+.cook-card-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "kind rating"
+    "name name";
+  align-items: baseline;
+  gap: var(--space) calc(var(--space) * 2);
+}
+
+/* The kind of shop and the stars share the marigold of the festive tag. */
+.cook-card-kind,
+.cook-card-rating {
+  color: var(--marigold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cook-card-kind {
+  grid-area: kind;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Capitals and spacing suit Latin only: spacing breaks Indian scripts. */
+  &:lang(en) {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+.cook-card-name {
+  grid-area: name;
+  margin: 0;
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.cook-card-link {
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+/* "★ 4.8", or "New" while she has no rating. */
+.cook-card-rating {
+  grid-area: rating;
+  justify-self: end;
+}
+
+/* The lines share their columns, so the packs and the prices align. */
+.cook-card-dishes {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cook-card-dish {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  align-items: baseline;
+  column-gap: calc(var(--space) * 1.5);
+  padding-block: calc(var(--space) * 1.5);
+
+  & + & {
+    border-block-start: var(--hair) solid var(--brass-tint);
+  }
+
+  .food-mark {
+    align-self: center;
+  }
+
+  &[data-sold-out="true"] {
+    color: var(--ink-2);
+
+    .cook-card-price {
+      color: var(--kumkum);
+      font-family: var(--font-words);
+      font-size-adjust: var(--font-words-adjust);
+    }
+  }
+}
+
+.cook-card-dish-name {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space);
+  font-weight: 500;
+}
+
+.cook-card-dish-second,
+.cook-card-dish-egg,
+.cook-card-pack {
+  color: var(--ink-2);
+  font-weight: 400;
+}
+
+.cook-card-pack,
+.cook-card-price {
+  white-space: nowrap;
+}
+
+.cook-card-price {
+  justify-self: end;
+  font-weight: 600;
+}
+
+.cook-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space) calc(var(--space) * 2);
+  padding-block-start: var(--space);
+  border-block-start: var(--hair) solid var(--brass-tint);
+}
+
+/* Above the card's own link, so that it takes its own clicks. */
+.cook-card-more {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Her next day with space: a dot and the words. Leaf while she has space,
+   kumkum when she has none, ink-3 when she takes no orders. */
+.cook-card-day {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space);
+  margin-inline-start: auto;
+  min-block-size: var(--tap);
+  color: var(--leaf);
+  font-weight: 600;
+  white-space: nowrap;
+
+  &::before {
+    content: "";
+    inline-size: var(--space);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  &[data-state="full"] {
+    color: var(--kumkum);
+  }
+
+  &[data-state="closed"] {
+    color: var(--ink-3);
+  }
+}

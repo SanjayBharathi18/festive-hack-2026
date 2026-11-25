@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Type · round 2 · words with mono numbers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wdth,wght@75..125,100..800&amp;family=Anek+Kannada:wdth,wght@75..125,100..800&amp;family=Anek+Latin:wdth,wght@75..125,100..800&amp;family=Anek+Tamil:wdth,wght@75..125,100..800&amp;family=Anek+Telugu:wdth,wght@75..125,100..800&amp;family=Hind+Guntur:wght@400;500;600;700&amp;family=Hind+Madurai:wght@400;500;600;700&amp;family=Hind+Mysuru:wght@400;500;600;700&amp;family=Hind:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Sans+Devanagari:wght@400;500;600&amp;family=Noto+Sans+Kannada:wght@400..700&amp;family=Noto+Sans+Tamil:wght@400..700&amp;family=Noto+Sans+Telugu:wght@400..700&amp;family=Tiro+Devanagari+Hindi&amp;family=Tiro+Devanagari+Marathi&amp;family=Tiro+Kannada&amp;family=Tiro+Tamil&amp;family=Tiro+Telugu&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Chivo+Mono:wght@400..700&amp;family=Fragment+Mono&amp;family=Source+Code+Pro:wght@400..700&amp;family=Overpass+Mono:wght@400..700&amp;family=Inconsolata:wdth,wght@75..100,400..700&amp;display=swap"
+    />
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="context.css" />
+    <style>
+      [data-words] {
+        --font-anek: "Anek Latin", "Anek Kannada", "Anek Devanagari", "Anek Tamil", "Anek Telugu", sans-serif;
+        --names-weight: 600;
+        --words-stretch: 100%;
+        font-family: var(--font-words);
+        font-stretch: var(--words-stretch);
+        font-synthesis: none;
+      }
+
+      [data-words="anek"] {
+        --font-words: var(--font-anek);
+        --font-names: var(--font-anek);
+      }
+
+      [data-words="anek-narrow"] {
+        --font-words: var(--font-anek);
+        --font-names: var(--font-anek);
+        --words-stretch: 88%;
+      }
+
+      [data-words="anek-wide"] {
+        --font-words: var(--font-anek);
+        --font-names: var(--font-anek);
+        --words-stretch: 112%;
+      }
+
+      [data-words="hind"] {
+        --font-words: "Hind", "Hind Mysuru", "Hind Madurai", "Hind Guntur", sans-serif;
+        --font-names: var(--font-words);
+      }
+
+      [data-words="plex"] {
+        --font-words: "IBM Plex Sans", "IBM Plex Sans Devanagari", "Noto Sans Kannada", "Noto Sans Tamil", "Noto Sans Telugu", sans-serif;
+        --font-names: var(--font-words);
+      }
+
+      [data-words="tiro"] {
+        --font-words: var(--font-anek);
+        --font-names: "Tiro Kannada", "Tiro Devanagari Hindi", "Tiro Tamil", "Tiro Telugu", serif;
+        --names-weight: 400;
+
+        :lang(mr) {
+          --font-names: "Tiro Devanagari Marathi", "Tiro Kannada", serif;
+        }
+      }
+
+      [data-num="plex"] {
+        --font-num: "IBM Plex Mono";
+      }
+
+      [data-num="chivo"] {
+        --font-num: "Chivo Mono";
+      }
+
+      [data-num="fragment"] {
+        --font-num: "Fragment Mono";
+      }
+
+      [data-num="source"] {
+        --font-num: "Source Code Pro";
+      }
+
+      [data-num="overpass"] {
+        --font-num: "Overpass Mono";
+      }
+
+      [data-num="inconsolata"] {
+        --font-num: "Inconsolata";
+      }
+
+      .t-names {
+        font-family: var(--font-names);
+        font-weight: var(--names-weight);
+      }
+
+      .t-num {
+        font-family: var(--font-num), var(--font-words);
+        font-stretch: 100%;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .picker-2 fieldset + fieldset {
+        margin-top: var(--space);
+      }
+
+      .picker-label {
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        min-width: 5.5em;
+        color: var(--ink-2);
+        font-size: var(--step--1);
+      }
+
+      .mini-prices {
+        width: 100%;
+        margin-top: var(--space);
+        border-collapse: collapse;
+        font-size: var(--step-1);
+
+        td {
+          padding: 4px 0;
+          border-top: var(--hair) solid var(--brass);
+          text-align: right;
+        }
+
+        td:first-child {
+          font-size: var(--step-0);
+          text-align: left;
+        }
+      }
+
+      .v-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0 var(--space);
+      }
+
+      .facts-pair {
+        display: grid;
+        gap: calc(var(--space) * 3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <nav class="swatch-nav" aria-label="Swatch pages">
+        <a href="type.html">Type 1</a>
+        <a href="type-2.html" aria-current="page">Type 2</a>
+        <a href="icons.html">Icons 1</a>
+        <a href="icons-2.html">Icons 2</a>
+        <a href="soundboard.html">Soundboard</a>
+        <a href="sound-kits.html">First sound kits</a>
+      </nav>
+
+      <header class="page-header">
+        <h1>Type — round 2: words with mono numbers</h1>
+        <p>
+          One idea: numbers read like a scale readout, in mono. The words must sit well next to them, in all six languages, at arm's length in a sunny
+          kitchen.
+        </p>
+        <p>
+          What changed from round 1: you kept mono for numbers and liked Anek. In both pickers, option a is that pick: IBM Plex Mono with Anek. Each
+          other option changes one thing, either the numbers or the words. Every mono here has the ₹ sign, checked in its font file.
+        </p>
+        <p>
+          How to choose: on your phone, change one picker at a time. Pick the numbers first in section 02, then the words in section 01, then check the
+          pair in sections 03 and 05.
+        </p>
+        <p><b>Selected:</b> a · Anek, at normal width, for words, with a · IBM Plex Mono for numbers.</p>
+      </header>
+
+      <form class="picker picker-2" id="type-picker">
+        <fieldset>
+          <legend class="visually-hidden">Numbers</legend>
+          <span class="picker-label" aria-hidden="true">Numbers</span>
+          <label><input type="radio" name="num" value="plex" checked />a · Plex Mono</label>
+          <label><input type="radio" name="num" value="chivo" />b · Chivo Mono</label>
+          <label><input type="radio" name="num" value="fragment" />c · Fragment Mono</label>
+          <label><input type="radio" name="num" value="source" />d · Source Code Pro</label>
+          <label><input type="radio" name="num" value="overpass" />e · Overpass Mono</label>
+          <label><input type="radio" name="num" value="inconsolata" />f · Inconsolata</label>
+        </fieldset>
+        <fieldset>
+          <legend class="visually-hidden">Words</legend>
+          <span class="picker-label" aria-hidden="true">Words</span>
+          <label><input type="radio" name="words" value="anek" checked />a · Anek</label>
+          <label><input type="radio" name="words" value="anek-narrow" />b · Anek narrow</label>
+          <label><input type="radio" name="words" value="anek-wide" />c · Anek wide</label>
+          <label><input type="radio" name="words" value="hind" />d · Hind</label>
+          <label><input type="radio" name="words" value="plex" />e · Plex Sans</label>
+          <label><input type="radio" name="words" value="tiro" />f · Tiro names</label>
+        </fieldset>
+      </form>
+
+      <main>
+        <section class="section" aria-labelledby="s01">
+          <h2 class="section-label" id="s01"><span>01</span>Words<small>Every word option, with the numbers you picked.</small></h2>
+          <div class="versions" data-follow-num data-num="plex">
+            <article class="version" data-words="anek">
+              <h3>a · Anek</h3>
+              <p class="caption">Your round 1 pick. Ek Type, India. One design for ten scripts, normal width.</p>
+              <p class="v-name t-names"><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+              <p class="v-name t-names" lang="hi">मैसूर पाक · काजू कतली</p>
+              <p lang="kn">ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+              <p class="v-row"><span class="t-num">1 kg ₹880</span><span>Next day with space: Sunday</span></p>
+            </article>
+            <article class="version" data-words="anek-narrow">
+              <h3>b · Anek narrow</h3>
+              <p class="caption">The same Anek at 88% width. More of a label or a sign, and more words on each line.</p>
+              <p class="v-name t-names"><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+              <p class="v-name t-names" lang="hi">मैसूर पाक · काजू कतली</p>
+              <p lang="kn">ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+              <p class="v-row"><span class="t-num">1 kg ₹880</span><span>Next day with space: Sunday</span></p>
+            </article>
+            <article class="version" data-words="anek-wide">
+              <h3>c · Anek wide</h3>
+              <p class="caption">The same Anek at 112% width. Rounder and friendlier, and fewer words on each line.</p>
+              <p class="v-name t-names"><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+              <p class="v-name t-names" lang="hi">मैसूर पाक · काजू कतली</p>
+              <p lang="kn">ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+              <p class="v-row"><span class="t-num">1 kg ₹880</span><span>Next day with space: Sunday</span></p>
+            </article>
+            <article class="version" data-words="hind">
+              <h3>d · Hind</h3>
+              <p class="caption">Indian Type Foundry. Neutral and open, with a slightly rounder Kannada.</p>
+              <p class="v-name t-names"><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+              <p class="v-name t-names" lang="hi">मैसूर पाक · काजू कतली</p>
+              <p lang="kn">ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+              <p class="v-row"><span class="t-num">1 kg ₹880</span><span>Next day with space: Sunday</span></p>
+            </article>
+            <article class="version" data-words="plex">
+              <h3>e · IBM Plex Sans</h3>
+              <p class="caption">
+                The sans from the same family as Plex Mono, with Plex Devanagari. Plex has no Kannada, Tamil or Telugu, so those come from Noto Sans.
+              </p>
+              <p class="v-name t-names"><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+              <p class="v-name t-names" lang="hi">मैसूर पाक · काजू कतली</p>
+              <p lang="kn">ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+              <p class="v-row"><span class="t-num">1 kg ₹880</span><span>Next day with space: Sunday</span></p>
+            </article>
+            <article class="version" data-words="tiro">
+              <h3>f · Tiro names + Anek</h3>
+              <p class="caption">Tiro Typeworks serifs for item and store names only, in one weight. Anek for all other text.</p>
+              <p class="v-name t-names"><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+              <p class="v-name t-names" lang="hi">मैसूर पाक · काजू कतली</p>
+              <p lang="kn">ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+              <p class="v-row"><span class="t-num">1 kg ₹880</span><span>Next day with space: Sunday</span></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s02">
+          <h2 class="section-label" id="s02"><span>02</span>Numbers<small>Every mono, with the words you picked.</small></h2>
+          <div class="versions" data-follow-words data-words="anek">
+            <article class="version" data-num="plex">
+              <h3>a · IBM Plex Mono</h3>
+              <p class="caption">Your round 1 pick. IBM. Square and mechanical, with small slabs.</p>
+              <table class="mini-prices">
+                <tbody>
+                  <tr><td class="t-names">Mysore pak</td><td class="t-num">₹230</td><td class="t-num">₹450</td><td class="t-num">₹880</td></tr>
+                  <tr><td class="t-names">Kaju katli</td><td class="t-num">₹330</td><td class="t-num">₹650</td><td class="t-num">₹1,280</td></tr>
+                </tbody>
+              </table>
+              <p class="v-readout t-num">23 / 25 kg</p>
+              <p class="v-row"><span>ಆರ್ಡರ್</span><span class="t-num order-no">104</span><span class="t-num">0:42</span><span class="t-num">₹1,25,000</span></p>
+            </article>
+            <article class="version" data-num="chivo">
+              <h3>b · Chivo Mono</h3>
+              <p class="caption">Omnibus-Type. A sturdy grotesque, closest to Plex in mood, with softer curves.</p>
+              <table class="mini-prices">
+                <tbody>
+                  <tr><td class="t-names">Mysore pak</td><td class="t-num">₹230</td><td class="t-num">₹450</td><td class="t-num">₹880</td></tr>
+                  <tr><td class="t-names">Kaju katli</td><td class="t-num">₹330</td><td class="t-num">₹650</td><td class="t-num">₹1,280</td></tr>
+                </tbody>
+              </table>
+              <p class="v-readout t-num">23 / 25 kg</p>
+              <p class="v-row"><span>ಆರ್ಡರ್</span><span class="t-num order-no">104</span><span class="t-num">0:42</span><span class="t-num">₹1,25,000</span></p>
+            </article>
+            <article class="version" data-num="fragment">
+              <h3>c · Fragment Mono</h3>
+              <p class="caption">Wei Huang. Crisp and neutral, the most elegant here. One weight only, so totals cannot go bold.</p>
+              <table class="mini-prices">
+                <tbody>
+                  <tr><td class="t-names">Mysore pak</td><td class="t-num">₹230</td><td class="t-num">₹450</td><td class="t-num">₹880</td></tr>
+                  <tr><td class="t-names">Kaju katli</td><td class="t-num">₹330</td><td class="t-num">₹650</td><td class="t-num">₹1,280</td></tr>
+                </tbody>
+              </table>
+              <p class="v-readout t-num">23 / 25 kg</p>
+              <p class="v-row"><span>ಆರ್ಡರ್</span><span class="t-num order-no">104</span><span class="t-num">0:42</span><span class="t-num">₹1,25,000</span></p>
+            </article>
+            <article class="version" data-num="source">
+              <h3>d · Source Code Pro</h3>
+              <p class="caption">Adobe. Clean and calm, with open shapes that hold up at small sizes.</p>
+              <table class="mini-prices">
+                <tbody>
+                  <tr><td class="t-names">Mysore pak</td><td class="t-num">₹230</td><td class="t-num">₹450</td><td class="t-num">₹880</td></tr>
+                  <tr><td class="t-names">Kaju katli</td><td class="t-num">₹330</td><td class="t-num">₹650</td><td class="t-num">₹1,280</td></tr>
+                </tbody>
+              </table>
+              <p class="v-readout t-num">23 / 25 kg</p>
+              <p class="v-row"><span>ಆರ್ಡರ್</span><span class="t-num order-no">104</span><span class="t-num">0:42</span><span class="t-num">₹1,25,000</span></p>
+            </article>
+            <article class="version" data-num="overpass">
+              <h3>e · Overpass Mono</h3>
+              <p class="caption">Delve Fonts. Drawn from highway-sign lettering, which is made to read from a distance.</p>
+              <table class="mini-prices">
+                <tbody>
+                  <tr><td class="t-names">Mysore pak</td><td class="t-num">₹230</td><td class="t-num">₹450</td><td class="t-num">₹880</td></tr>
+                  <tr><td class="t-names">Kaju katli</td><td class="t-num">₹330</td><td class="t-num">₹650</td><td class="t-num">₹1,280</td></tr>
+                </tbody>
+              </table>
+              <p class="v-readout t-num">23 / 25 kg</p>
+              <p class="v-row"><span>ಆರ್ಡರ್</span><span class="t-num order-no">104</span><span class="t-num">0:42</span><span class="t-num">₹1,25,000</span></p>
+            </article>
+            <article class="version" data-num="inconsolata">
+              <h3>f · Inconsolata</h3>
+              <p class="caption">Raph Levien. The narrowest mono here, so a price row is less likely to wrap on a phone.</p>
+              <table class="mini-prices">
+                <tbody>
+                  <tr><td class="t-names">Mysore pak</td><td class="t-num">₹230</td><td class="t-num">₹450</td><td class="t-num">₹880</td></tr>
+                  <tr><td class="t-names">Kaju katli</td><td class="t-num">₹330</td><td class="t-num">₹650</td><td class="t-num">₹1,280</td></tr>
+                </tbody>
+              </table>
+              <p class="v-readout t-num">23 / 25 kg</p>
+              <p class="v-row"><span>ಆರ್ಡರ್</span><span class="t-num order-no">104</span><span class="t-num">0:42</span><span class="t-num">₹1,25,000</span></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s03">
+          <h2 class="section-label" id="s03">
+            <span>03</span>In context<small>Your pair. The buyer's store page in English, and Shobha's desk in Kannada.</small>
+          </h2>
+          <div class="context">
+            <div class="phone" data-follow-words data-follow-num data-words="anek" data-num="plex">
+              <p class="phone-label">Store page · the buyer reads English</p>
+              <h3 class="store-name t-names">Shobha's Kitchen</h3>
+              <p class="meta">Basavanagudi · Pickup and delivery<br />Next day with space: <b>Sunday</b></p>
+              <h4 class="cat">Sweets</h4>
+              <ul class="items">
+                <li class="item">
+                  <p class="item-name t-names">
+                    <svg class="veg-mark" viewBox="0 0 16 16" role="img" aria-label="Veg">
+                      <rect x="1" y="1" width="14" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="1.5" />
+                      <circle cx="8" cy="8" r="3.5" fill="currentColor" />
+                    </svg>
+                    <span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span>
+                  </p>
+                  <p class="item-meta">Dairy</p>
+                  <div class="packs" role="group" aria-label="Mysore pak packs">
+                    <button class="pack" type="button" aria-pressed="false"><span class="t-num">250 g</span><span class="t-num">₹230</span></button>
+                    <button class="pack" type="button" aria-pressed="false"><span class="t-num">500 g</span><span class="t-num">₹450</span></button>
+                    <button class="pack" type="button" aria-pressed="true"><span class="t-num">1 kg</span><span class="t-num">₹880</span></button>
+                  </div>
+                  <div class="stepper">
+                    <button class="btn-plain" type="button" aria-label="One less Mysore pak, 1 kg">
+                      <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /></svg>
+                    </button>
+                    <output class="t-num">1</output>
+                    <button class="btn-plain" type="button" aria-label="One more Mysore pak, 1 kg">
+                      <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                    </button>
+                  </div>
+                </li>
+                <li class="item">
+                  <p class="item-name t-names">
+                    <svg class="veg-mark" viewBox="0 0 16 16" role="img" aria-label="Veg">
+                      <rect x="1" y="1" width="14" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="1.5" />
+                      <circle cx="8" cy="8" r="3.5" fill="currentColor" />
+                    </svg>
+                    <span lang="kn">ಕಾಜು ಕಟ್ಲಿ</span> <span>Kaju katli</span>
+                  </p>
+                  <p class="item-meta">Nuts</p>
+                  <div class="packs" role="group" aria-label="Kaju katli packs">
+                    <button class="pack" type="button" aria-pressed="false"><span class="t-num">250 g</span><span class="t-num">₹330</span></button>
+                    <button class="pack" type="button" aria-pressed="true"><span class="t-num">500 g</span><span class="t-num">₹650</span></button>
+                    <button class="pack" type="button" aria-pressed="false"><span class="t-num">1 kg</span><span class="t-num">₹1,280</span></button>
+                  </div>
+                </li>
+              </ul>
+              <div class="cart-bar">
+                <p class="cart-sum"><span><span class="t-num">2</span> items</span><span class="cart-total t-num">₹1,530</span></p>
+                <button class="btn-primary" type="button">Order</button>
+              </div>
+            </div>
+
+            <div class="phone" data-follow-words data-follow-num data-words="anek" data-num="plex" lang="kn">
+              <p class="phone-label" lang="en">Desk · Shobha reads Kannada</p>
+              <section class="gauge" aria-label="ಶನಿವಾರ">
+                <p class="gauge-head"><span class="t-names">ಶನಿವಾರ</span><span class="readout t-num">23 / 25 kg</span></p>
+                <meter class="visually-hidden" min="0" max="25" value="23">23 / 25 kg</meter>
+                <ol class="segments" aria-hidden="true">
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="open"></li><li data-state="open"></li>
+                </ol>
+                <p class="gauge-foot"><span class="t-num">2 kg</span> ಉಳಿದಿದೆ</p>
+              </section>
+
+              <article class="slip">
+                <header class="slip-head">
+                  <span>ಆರ್ಡರ್ <span class="order-no t-num">104</span></span><span>ಶನಿವಾರ</span>
+                </header>
+                <p class="slip-who">ಪ್ರಿಯಾ · ಡೆಲಿವರಿ · ಜಯನಗರ</p>
+                <table class="slip-lines">
+                  <tbody>
+                    <tr>
+                      <td class="t-names">ಮೈಸೂರು ಪಾಕ್</td>
+                      <td class="t-num">1 kg</td>
+                      <td class="t-num">₹880</td>
+                    </tr>
+                    <tr>
+                      <td class="t-names">ಕಾಜು ಕಟ್ಲಿ</td>
+                      <td class="t-num">500 g</td>
+                      <td class="t-num">₹650</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="slip-total"><span>ಒಟ್ಟು</span><span class="t-num">₹1,530</span></p>
+                <p class="slip-stamps" lang="en">
+                  <span class="stamp" style="--tilt: -3deg">Making</span>
+                  <span class="stamp" data-kind="done">Paid</span>
+                </p>
+              </article>
+
+              <section class="check" aria-label="ಆರ್ಡರ್ ಪರಿಶೀಲನೆ">
+                <p class="heard-label">ಕೇಳಿದ್ದು</p>
+                <p class="heard">“<mark>2 kilo</mark> <mark>ಮೈಸೂರು ಪಾಕ್</mark>, <mark>less sugar</mark>”</p>
+                <dl class="fields">
+                  <div>
+                    <dt>ಐಟಂ</dt>
+                    <dd><span class="draft t-names">ಮೈಸೂರು ಪಾಕ್</span></dd>
+                    <dd><button class="link-btn" type="button">ಬದಲಿಸಿ</button></dd>
+                  </div>
+                  <div>
+                    <dt>ಪ್ರಮಾಣ</dt>
+                    <dd><span class="draft t-num">2 × 1 kg</span></dd>
+                    <dd><button class="link-btn" type="button">ಬದಲಿಸಿ</button></dd>
+                  </div>
+                  <div>
+                    <dt>ಸೂಚನೆ</dt>
+                    <dd><span class="draft">less sugar</span></dd>
+                    <dd><button class="link-btn" type="button">ಬದಲಿಸಿ</button></dd>
+                  </div>
+                </dl>
+                <button class="btn-primary wide" type="button">ಆರ್ಡರ್ ಉಳಿಸಿ</button>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s04">
+          <h2 class="section-label" id="s04"><span>04</span>Price card<small>Your pair, in the layout buyers see most.</small></h2>
+          <div data-follow-words data-follow-num data-words="anek" data-num="plex">
+            <table class="prices">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col" class="t-num">250 g</th>
+                  <th scope="col" class="t-num">500 g</th>
+                  <th scope="col" class="t-num">1 kg</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="t-names">Mysore pak</td>
+                  <td class="t-num">₹230</td>
+                  <td class="t-num">₹450</td>
+                  <td class="t-num">₹880</td>
+                </tr>
+                <tr>
+                  <td class="t-names">Kaju katli</td>
+                  <td class="t-num">₹330</td>
+                  <td class="t-num">₹650</td>
+                  <td class="t-num">₹1,280</td>
+                </tr>
+                <tr>
+                  <td class="t-names">Besan laddu</td>
+                  <td class="t-num">₹170</td>
+                  <td class="t-num">₹330</td>
+                  <td class="t-num">₹650</td>
+                </tr>
+                <tr>
+                  <td class="t-names">Kobbari mithai</td>
+                  <td class="t-num">₹160</td>
+                  <td class="t-num">₹310</td>
+                  <td class="t-num">₹600</td>
+                </tr>
+                <tr>
+                  <td class="t-names">Nippattu</td>
+                  <td class="t-num">₹110</td>
+                  <td class="t-num">₹210</td>
+                  <td class="t-num">₹400</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="big t-num">₹1,25,000</p>
+            <p class="caption">The last 30 days, in Indian grouping and whole rupees.</p>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s05">
+          <h2 class="section-label" id="s05"><span>05</span>Six languages<small>Your words, with item names and one app line in each language.</small></h2>
+          <div class="langs" data-follow-words data-follow-num data-words="anek" data-num="plex">
+            <div class="lang-row" lang="en">
+              <p class="lang-label">English</p>
+              <p class="lang-names t-names">Mysore pak · Kaju katli · Rose cookies</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+            </div>
+            <div class="lang-row" lang="hi">
+              <p class="lang-label" lang="en">Hindi</p>
+              <p class="lang-names t-names">मैसूर पाक · काजू कतली · मोतीचूर लड्डू</p>
+              <p>वॉइस नोट हमें फ़ॉरवर्ड कीजिए। हम उसे पढ़कर आपको ऑर्डर दिखाएँगे।</p>
+            </div>
+            <div class="lang-row" lang="kn">
+              <p class="lang-label" lang="en">Kannada</p>
+              <p class="lang-names t-names">ಮೈಸೂರು ಪಾಕ್ · ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ · ನಿಪ್ಪಟ್ಟು</p>
+              <p>ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+            </div>
+            <div class="lang-row" lang="ta">
+              <p class="lang-label" lang="en">Tamil</p>
+              <p class="lang-names t-names">முறுக்கு · தட்டை · அதிரசம்</p>
+              <p>வாய்ஸ் நோட்டை எங்களுக்கு ஃபார்வர்ட் செய்யுங்கள். நாங்கள் அதைப் படித்து உங்களுக்கு ஆர்டரைக் காட்டுவோம்.</p>
+            </div>
+            <div class="lang-row" lang="te">
+              <p class="lang-label" lang="en">Telugu</p>
+              <p class="lang-names t-names">కజ్జికాయలు · చెక్కలు · సున్నుండలు</p>
+              <p>వాయిస్ నోట్‌ను మాకు ఫార్వర్డ్ చేయండి. మేము దాన్ని చదివి మీకు ఆర్డర్ చూపిస్తాము.</p>
+            </div>
+            <div class="lang-row" lang="mr">
+              <p class="lang-label" lang="en">Marathi</p>
+              <p class="lang-names t-names">चकली · करंजी · शंकरपाळी</p>
+              <p>व्हॉइस नोट आम्हाला फॉरवर्ड करा. आम्ही ती वाचून तुम्हाला ऑर्डर दाखवू.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s06">
+          <h2 class="section-label" id="s06"><span>06</span>Facts<small>From the font files.</small></h2>
+          <div class="facts-pair">
+            <div class="facts-wrap">
+              <table class="facts">
+                <thead>
+                  <tr>
+                    <th scope="col">Numbers</th>
+                    <th scope="col">₹ in the file</th>
+                    <th scope="col">Weights</th>
+                    <th scope="col">Made by</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>a · IBM Plex Mono</td><td>Yes</td><td>100–700</td><td>IBM</td></tr>
+                  <tr><td>b · Chivo Mono</td><td>Yes</td><td>100–900</td><td>Omnibus-Type</td></tr>
+                  <tr><td>c · Fragment Mono</td><td>Yes</td><td>One weight</td><td>Wei Huang</td></tr>
+                  <tr><td>d · Source Code Pro</td><td>Yes</td><td>200–900</td><td>Adobe</td></tr>
+                  <tr><td>e · Overpass Mono</td><td>Yes</td><td>300–700</td><td>Delve Fonts</td></tr>
+                  <tr><td>f · Inconsolata</td><td>Yes</td><td>200–900, widths 50–200</td><td>Raph Levien</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="facts-wrap">
+              <table class="facts">
+                <thead>
+                  <tr>
+                    <th scope="col">Words</th>
+                    <th scope="col">Families</th>
+                    <th scope="col">Weights</th>
+                    <th scope="col">Made by</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>a · Anek</td><td>Anek, one family for all six languages</td><td>100–800, widths 75–125</td><td>Ek Type</td></tr>
+                  <tr><td>b · Anek narrow</td><td>Anek at 88% width</td><td>The same</td><td>Ek Type</td></tr>
+                  <tr><td>c · Anek wide</td><td>Anek at 112% width</td><td>The same</td><td>Ek Type</td></tr>
+                  <tr><td>d · Hind</td><td>Hind, Hind Mysuru, Hind Madurai, Hind Guntur</td><td>300–700</td><td>Indian Type Foundry</td></tr>
+                  <tr><td>e · IBM Plex Sans</td><td>Plex Sans and Plex Sans Devanagari; Noto Sans for Kannada, Tamil, Telugu</td><td>100–700</td><td>IBM; Google</td></tr>
+                  <tr><td>f · Tiro names</td><td>Tiro for names, Anek for other text</td><td>Tiro: one weight</td><td>Tiro Typeworks; Ek Type</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="caption">
+            Not offered, because their font files have no ₹ sign: JetBrains Mono, DM Mono, Martian Mono, Red Hat Mono, Atkinson Hyperlegible Mono,
+            Courier Prime, Victor Mono, Spline Sans Mono, Azeret Mono and Xanh Mono. All fonts here are under the SIL Open Font License.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script type="module">
+      const form = document.querySelector("#type-picker");
+
+      const readHash = () => {
+        for (const [name, value] of new URLSearchParams(location.hash.slice(1))) {
+          const radio = form.querySelector(`input[name="${CSS.escape(name)}"][value="${CSS.escape(value)}"]`);
+          if (radio) radio.checked = true;
+        }
+      };
+
+      const sync = () => {
+        const data = new FormData(form);
+        const words = data.get("words");
+        const num = data.get("num");
+        for (const element of document.querySelectorAll("[data-follow-words]")) element.dataset.words = words;
+        for (const element of document.querySelectorAll("[data-follow-num]")) element.dataset.num = num;
+        history.replaceState(null, "", `#num=${num}&words=${words}`);
+      };
+
+      form.addEventListener("change", sync);
+      addEventListener("hashchange", () => {
+        readHash();
+        sync();
+      });
+      document.addEventListener("touchstart", () => {}, { passive: true });
+      readHash();
+      sync();
+    </script>
+  </body>
+</html>

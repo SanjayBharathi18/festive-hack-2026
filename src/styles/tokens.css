@@ -1,0 +1,63 @@
+:root {
+  --paper: #faf6ee; /* the ground */
+  --ink: #1f1a16; /* text, icons, the filled part of a measure · 16:1 on paper */
+  --ink-2: #5c5248; /* labels, units, meta text · 7:1 */
+  --ink-3: #8a8076; /* disabled controls, closed days · 3.6:1 */
+  --ink-tint: rgb(
+    31 26 22 / 0.08
+  ); /* the words that the model heard; a pressed plain control */
+  --ink-dim: rgb(31 26 22 / 0.3); /* the page behind an open dialog */
+  --brass: #9c7430; /* structure: hairlines, edges, gauge ticks, the busy line, in place of shadows · 3.9:1 */
+  --brass-tint: #eadcc2; /* the one fill of the icons; the light border and the flat edge of a card */
+  --haldi: #e2a230; /* the one primary action on each screen · ink on haldi 7.8:1 */
+  --kumkum: #b3262d; /* still needs her: NEW, MAKING, SOLD OUT, Full, errors; the red end of the festive Special tag · 6:1 */
+  --marigold: #b04a00; /* the festive Special tag (the warm end of its gradient, to kumkum), and the shop line and stars of a cook card · 5.1:1 */
+  --leaf: #27703a; /* finished or open: READY, PICKED UP, DELIVERED, PAID, open capacity, confirmations; the FSSAI veg mark · 5.6:1 */
+  --fssai-brown: #7a3e14; /* the FSSAI non-veg mark only */
+
+  --icon-fill: var(--brass-tint); /* the fill of an icon body */
+  --icon-ground: var(--paper); /* the holes of an icon: the colour behind it */
+  --icon-size: 24px; /* the drawing size: a 1.75 px line at 24 px */
+
+  --space: 8px; /* the one spacing unit: every gap is a multiple */
+  --tap: 44px; /* rows, controls and tap targets on a laptop */
+  --page: 120rem; /* the widest page: it fills a laptop screen and stops growing on a wide monitor */
+  --page-margin: clamp(
+    calc(var(--space) * 4),
+    5vw - var(--space) * 4,
+    calc(var(--space) * 5)
+  ); /* the side margin of the page and of the app bar: 32 px at 1280 px wide, 40 px at 1440 px */
+  --side: 24rem; /* the side column of a laptop page: the cart, the summary, a form */
+  --side-top: calc(
+    var(--space) * 17
+  ); /* the top of a side column that stays in view under the app bar, whose controls are two rows tall */
+  --radius: 4px; /* status badges and the Special tag: a round 4 px corner; stamps stay square */
+  --squircle: 1.84; /* a squircle corner (base.css) of radius r × 1.84 cuts as deep as Apple's corner of radius r */
+  --radius-card: 48px; /* dialogs and other large surfaces: apple.com's 28 px card corner, as a squircle */
+  --radius-card-small: 32px; /* cards, slips, panels and the cart bar: apple.com's 18 px card corner, as a squircle */
+  --radius-input: 24px; /* inputs and the boxes inside a card: a 44 px input caps it at 22 px, which reads as Apple's 12 px field */
+  --radius-tile: calc(
+    22.37% * var(--squircle)
+  ); /* icon-sized squares (the brand tile): Apple's icon corner, 22.37% of the width */
+  --radius-round: 999px; /* buttons, chips, tabs and selects: fully round pills with round ends */
+  --hair: 1px; /* brass structure lines, plain control borders */
+  --card-line: 1.5px; /* the light border of a card, a chip and the tabs */
+  --rule: 2px; /* the 2 px line: a stamp box, the primary button, the cart bar, the line above the total of the check screen, a draft segment */
+  --ring: 3px; /* the keyboard focus ring */
+  --edge: 4px; /* the raised ink edge under the primary button */
+  --card-edge: 0 var(--rule) 0 var(--brass-tint); /* the flat edge under a card: no blur */
+  --notch: 14px; /* the two ticket notches on the sides of an order slip */
+
+  --step-0: 1rem; /* body text, the smallest size */
+  --step-1: 1.25rem; /* item names, quantities, totals */
+  --step-2: 1.5625rem; /* order numbers, section heads */
+  --step-3: 1.953rem; /* readouts, page titles */
+  --step-4: 2.441rem; /* the one big number on a screen */
+
+  --dur-instant: 0ms; /* anything under the finger */
+  --dur-quick: 120ms; /* hover, dimming, a stamp landing: linear */
+  --dur-page: 200ms; /* a page move: the cross-fade and the shared-element morph, under 250 ms */
+  --dur-settle: 300ms; /* a value from the server settles */
+  --dur-long: 600ms; /* the one long motion: where a thing went */
+  --out-expo: cubic-bezier(0.16, 1, 0.3, 1); /* the easing of the long motion */
+}

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="catering.plan.page_title">Plan your catering menu</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/catering/catering.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/catering/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub" id="store-name"></p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <div class="picker city city-lock" id="city-lock" hidden>
+              <button
+                type="button"
+                aria-disabled="true"
+                aria-describedby="city-lock-note"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#location" />
+                </svg>
+                <span class="visually-hidden" data-text="city.label">City</span>
+                <span id="city-lock-name"></span>
+              </button>
+              <p
+                class="city-note"
+                id="city-lock-note"
+                popover="manual"
+                role="tooltip"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#block" />
+                </svg>
+                <span id="city-lock-words"></span>
+              </p>
+            </div>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page plan-page">
+      <div class="load-problem" id="load-problem" hidden>
+        <p class="error" id="load-error" role="alert"></p>
+        <a
+          class="btn-plain"
+          id="back-link"
+          href="/"
+          data-text="catering.plan.back"
+          >See the caterers</a
+        >
+      </div>
+
+      <article
+        class="card plan"
+        id="plan"
+        data-edge="brass"
+        aria-labelledby="plan-title"
+        hidden
+      >
+        <header class="plan-head">
+          <div class="plan-words">
+            <p class="plan-eyebrow">
+              <span data-text="catering.plan.eyebrow"
+                >Quote request · No extra-cost dishes</span
+              >
+            </p>
+            <h1 id="plan-title" data-text="catering.plan.title">
+              Plan your menu
+            </h1>
+            <p class="card-lead" data-text="catering.plan.lead">
+              Choose a package, then pick your dishes. Her price covers each
+              choice within the rules.
+            </p>
+          </div>
+          <div class="field plan-guests">
+            <label for="guests" data-text="catering.plan.guests">Guests</label>
+            <input
+              id="guests"
+              class="num"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              max="100000"
+              required
+            />
+          </div>
+        </header>
+
+        <fieldset class="plan-packages">
+          <legend class="visually-hidden" data-text="catering.plan.packages">
+            Package
+          </legend>
+          <div class="package-cards" id="packages"></div>
+        </fieldset>
+
+        <div class="plan-refused" id="refused" role="alert" hidden>
+          <p class="error" id="refused-words"></p>
+          <p
+            class="hint"
+            id="refused-hint"
+            data-text="catering.plan.refused_hint"
+          >
+            These packages allow your choice and keep your dishes:
+          </p>
+          <div class="chips" id="refused-offers"></div>
+        </div>
+
+        <div class="plan-categories" id="categories"></div>
+
+        <section class="plan-event" aria-labelledby="event-title">
+          <h2 id="event-title" data-text="catering.plan.event">Your event</h2>
+          <div class="event-fields">
+            <div class="field">
+              <label for="event-date" data-text="catering.plan.date"
+                >Event date</label
+              >
+              <input id="event-date" class="num" type="date" required />
+            </div>
+            <div class="field event-place">
+              <label for="event-place" data-text="catering.plan.place"
+                >Area or venue</label
+              >
+              <input
+                id="event-place"
+                maxlength="120"
+                autocomplete="address-level3"
+                required
+              />
+            </div>
+            <fieldset class="event-choice">
+              <legend data-text="catering.plan.style">Service</legend>
+              <div class="chips" id="styles"></div>
+            </fieldset>
+          </div>
+        </section>
+
+        <footer class="plan-foot">
+          <div>
+            <p class="plan-sum num" id="estimate"></p>
+            <p class="plan-status" id="plan-status" role="status"></p>
+          </div>
+          <div class="plan-actions">
+            <p class="plan-sent" id="plan-sent" hidden>
+              <span class="done" role="status">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#check" />
+                </svg>
+                <span id="plan-sent-words"></span>
+              </span>
+              <a
+                class="btn-primary"
+                id="plan-whatsapp"
+                target="_blank"
+                rel="noopener"
+                data-text="quotes.dialog.whatsapp"
+                >Send on WhatsApp</a
+              >
+            </p>
+            <button
+              class="btn-primary"
+              id="contact"
+              type="button"
+              aria-describedby="plan-status"
+              data-text="quotes.contact"
+            >
+              Contact seller
+            </button>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <template id="package-template">
+      <label class="package-card">
+        <input type="radio" name="package" />
+        <span class="package-top">
+          <span class="package-name"></span>
+          <span class="num package-price"></span>
+        </span>
+        <span class="package-limits"></span>
+        <span class="package-min"></span>
+      </label>
+    </template>
+
+    <template id="category-template">
+      <section class="plan-category">
+        <header class="category-head">
+          <h2 class="category-name"></h2>
+          <span class="num category-count"></span>
+        </header>
+        <p class="category-need" hidden></p>
+        <div class="chips category-dishes"></div>
+      </section>
+    </template>
+
+    <template id="dish-template">
+      <button class="chip dish" type="button" aria-pressed="false">
+        <span class="food-mark" role="img"></span>
+        <span class="dish-name"></span>
+        <span class="dish-tag" hidden></span>
+      </button>
+    </template>
+
+    <template id="choice-template">
+      <label class="chip">
+        <input type="radio" />
+        <span class="choice-word"></span>
+      </label>
+    </template>
+
+    <template id="offer-template">
+      <button class="btn-plain offer" type="button"></button>
+    </template>
+  </body>
+</html>

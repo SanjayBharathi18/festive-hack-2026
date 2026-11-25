@@ -1,0 +1,323 @@
+/* The homepage: the three ways to buy as three
+   cards across the page, the search field under them at the same width,
+   then the cooks as cook cards in a grid. */
+/* A control that scrolls into view, for example by Tab, stays below the
+   sticky app bar. */
+:root {
+  scroll-padding-block-start: var(--side-top);
+}
+
+.home-page {
+  display: grid;
+  gap: calc(var(--space) * 3);
+}
+
+/* The three ways to buy: a radio group of three equal cards. The chosen
+   card is ink, like a chosen tab, so its icon has paper lines and no fill
+   (src/styles/components/icon.css). */
+.home-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(var(--space) * 2);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.home-tab {
+  --icon-size: calc(var(--space) * 4);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+  padding: calc(var(--space) * 2.5) calc(var(--space) * 3);
+  cursor: pointer;
+  transition: border-color var(--dur-quick) linear;
+
+  &:hover {
+    border-color: var(--brass);
+  }
+
+  &:active {
+    background: var(--ink-tint);
+  }
+
+  &:has(:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  &:has(:checked) {
+    --icon-fill: none;
+    --icon-ground: var(--ink);
+
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+
+    .home-tab-line {
+      color: var(--paper);
+    }
+  }
+}
+
+.home-tab-words {
+  display: grid;
+  line-height: 1.3;
+}
+
+.home-tab-name {
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.home-tab-line {
+  color: var(--ink-2);
+}
+
+.tab-panel {
+  display: grid;
+  gap: calc(var(--space) * 3);
+  min-inline-size: 0;
+}
+
+.search {
+  display: grid;
+  gap: var(--space);
+
+  p {
+    margin: 0;
+  }
+}
+
+/* The field: the search icon at its start, its tools at its end (clear,
+   the mic and Filters). It draws the focus ring of its input, so the ring
+   goes round the whole field. */
+.search-box {
+  anchor-name: --search-box;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) / 2);
+  min-block-size: calc(var(--tap) + var(--space) * 1.5);
+  padding-inline: calc(var(--space) * 2) calc(var(--space) / 2);
+  border: var(--hair) solid var(--ink);
+  border-radius: var(--radius-input);
+  background: var(--paper);
+
+  > .icon {
+    color: var(--ink-2);
+  }
+
+  input {
+    flex: 1;
+    align-self: stretch;
+    min-inline-size: 0;
+    padding: 0 var(--space);
+    border: 0;
+    background: none;
+    font-size: var(--step-1);
+    outline: none;
+
+    &::placeholder {
+      color: var(--ink-2);
+      opacity: 1;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  &:has(input:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--hair);
+  }
+
+  &:has(input:placeholder-shown) .search-clear {
+    display: none;
+  }
+}
+
+/* A plain round control inside the field, with no border of its own. */
+.search-tool {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
+  min-inline-size: var(--tap);
+  min-block-size: var(--tap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-round);
+  background: none;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: color var(--dur-quick) linear;
+
+  &:hover {
+    color: var(--ink);
+  }
+
+  &:active {
+    background: var(--ink-tint);
+  }
+
+  &:focus-visible {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: 0;
+  }
+}
+
+.filters-button {
+  padding: 0 calc(var(--space) * 1.5);
+  color: var(--ink);
+  font-weight: 600;
+
+  .search:has(.filters:popover-open) & {
+    background: var(--ink-tint);
+  }
+}
+
+/* How many filters are on, in plain ink: not an unread count. */
+.filters-count {
+  font-weight: 400;
+}
+
+/* While the microphone is open, right under the field: what to do, then
+   the level and the time. */
+.search-voice {
+  max-inline-size: 40rem;
+  padding-inline: calc(var(--space) * 2);
+
+  .hint {
+    grid-column: 1 / -1;
+  }
+}
+
+.heard-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+  padding: var(--space) calc(var(--space) * 1.5);
+  border-radius: var(--radius-input);
+  background: var(--ink-tint);
+}
+
+/* The filters open in a card under the field, at its width. Without anchor
+   positioning, the card shows in the middle of the screen. */
+.filters {
+  position-anchor: --search-box;
+  inset: auto;
+  inset-block-start: anchor(bottom);
+  inset-inline: anchor(left) anchor(right);
+  inline-size: auto;
+  max-block-size: calc(100dvh - var(--space) * 4);
+  margin: var(--space) 0 0;
+  overflow: auto;
+  border-color: var(--brass);
+  color: var(--ink);
+
+  &:popover-open {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: calc(var(--space) * 3) calc(var(--space) * 5);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+@supports not (anchor-name: --search-box) {
+  .filters {
+    inset: 0;
+    inline-size: min(60rem, 100vw - var(--page-margin) * 2);
+    margin: auto;
+  }
+}
+
+.filters-head {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+  margin-block: calc(var(--space) * -1);
+
+  h2 {
+    font-size: var(--step-1);
+  }
+}
+
+.filter {
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  &.field {
+    align-content: start;
+    gap: var(--space);
+  }
+
+  input[type="date"] {
+    inline-size: 12rem;
+  }
+}
+
+.filter-name {
+  display: block;
+  margin-block-end: var(--space);
+  padding: 0;
+  font-weight: 600;
+}
+
+.filter-values {
+  display: grid;
+  justify-items: start;
+  gap: var(--space);
+}
+
+.results {
+  display: grid;
+  gap: calc(var(--space) * 2);
+
+  p {
+    margin: 0;
+  }
+}
+
+.results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space) calc(var(--space) * 2);
+}
+
+.results-count {
+  color: var(--ink-2);
+}
+
+#results-latin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+}
+
+/* Three cook cards across at 1280 px and at 1440 px, so that the kind of
+   shop fits on its line. */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  gap: calc(var(--space) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

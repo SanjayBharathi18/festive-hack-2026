@@ -1,0 +1,589 @@
+/* Seller setup on a laptop: the list of steps on the left, one step card
+   on the right. The preview reuses the look of the store page. */
+.sell-page {
+  --steps: 18rem;
+
+  max-inline-size: var(--page);
+  margin-inline: auto;
+  padding: calc(var(--space) * 4) var(--page-margin) calc(var(--space) * 8);
+
+  :is(h1, h2, h3, h4, h5, p) {
+    margin: 0;
+  }
+}
+
+.sell-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space) calc(var(--space) * 3);
+  margin-block-end: calc(var(--space) * 3);
+
+  > div {
+    display: grid;
+    gap: var(--space);
+  }
+}
+
+.sell-lead,
+.save-status {
+  color: var(--ink-2);
+}
+
+.sell-cols {
+  display: grid;
+  grid-template-columns: var(--steps) minmax(0, 1fr);
+  align-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+.sell-main {
+  display: grid;
+  min-inline-size: 0;
+}
+
+/* The steps: her store so far. The current step is ink, a done step has a
+   leaf check, a step she cannot open yet is ink-3. */
+.steps {
+  position: sticky;
+  inset-block-start: var(--side-top);
+  display: grid;
+  gap: calc(var(--space) * 2);
+  padding: calc(var(--space) * 2);
+
+  h2 {
+    padding-inline: var(--space);
+  }
+}
+
+.step-list {
+  display: grid;
+  gap: calc(var(--space) / 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: var(--icon-size) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space);
+  inline-size: 100%;
+  min-block-size: var(--tap);
+  padding: var(--space);
+  border: 0;
+  border-radius: var(--radius-input);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: var(--ink-tint);
+  }
+
+  &:focus-visible {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: calc(var(--space) / 4);
+  }
+
+  &[aria-current="step"] {
+    --icon-ground: var(--ink);
+
+    background: var(--ink);
+    color: var(--paper);
+
+    .step-value {
+      color: var(--paper);
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &[data-state="locked"] {
+    color: var(--ink-3);
+  }
+
+  .step-mark {
+    visibility: hidden;
+    color: var(--leaf);
+  }
+
+  &[data-state="done"] .step-mark {
+    visibility: visible;
+  }
+}
+
+.step-words {
+  display: grid;
+  min-inline-size: 0;
+}
+
+.step-name {
+  font-weight: 600;
+}
+
+.step-value {
+  overflow: hidden;
+  color: var(--ink-2);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.step-card {
+  display: grid;
+  align-content: start;
+  gap: calc(var(--space) * 3);
+}
+
+.step-form {
+  display: grid;
+  gap: calc(var(--space) * 3);
+}
+
+.step-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: end;
+  gap: calc(var(--space) * 2);
+  padding-block-start: calc(var(--space) * 2);
+  border-block-start: var(--hair) solid var(--brass-tint);
+
+  [data-back] {
+    margin-inline-end: auto;
+  }
+}
+
+.field-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  font-weight: 600;
+
+  .field-hint {
+    font-weight: 400;
+  }
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--space) * 2);
+}
+
+.language-chips .chip {
+  min-inline-size: calc(var(--space) * 16);
+}
+
+/* Her items: one row each, over a hairline. */
+.item-rows {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: calc(var(--space) * 1.5);
+  padding-block: calc(var(--space) * 1.5);
+  border-block-start: var(--hair) solid var(--brass-tint);
+
+  .food-mark {
+    margin-block-start: calc((1lh - var(--mark-size)) / 2);
+  }
+}
+
+.item-row-words {
+  display: grid;
+  gap: calc(var(--space) / 2);
+}
+
+.item-row-name {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space);
+  font-size: var(--step-1);
+  font-weight: 600;
+
+  .item-latin {
+    color: var(--ink-2);
+  }
+}
+
+.item-row-meta,
+.item-row-box,
+.item-row-allergens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 calc(var(--space) * 2);
+  color: var(--ink-2);
+}
+
+.item-row-actions {
+  display: flex;
+  gap: var(--space);
+}
+
+/* Say an item: her voice or her words fill a check list, between
+   hairlines, above her items. */
+.say-item {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  padding-block: calc(var(--space) * 2);
+  border-block: var(--hair) solid var(--brass-tint);
+}
+
+.say-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space) calc(var(--space) * 2);
+
+  > div {
+    display: grid;
+    gap: calc(var(--space) / 2);
+  }
+}
+
+.say-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  align-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+.say-type {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 1.5);
+
+  .field {
+    inline-size: 100%;
+  }
+
+  textarea {
+    min-block-size: calc(var(--tap) * 2);
+  }
+}
+
+.say-result,
+.say-check {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+}
+
+.say-check .answers > div {
+  grid-template-columns: 10em minmax(0, 1fr) auto;
+}
+
+.answer-value .food-mark {
+  vertical-align: middle;
+}
+
+.answer-missing {
+  color: var(--ink-2);
+}
+
+.say-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+#say-by-hand {
+  justify-self: start;
+}
+
+.undo-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+  color: var(--ink-2);
+}
+
+/* The link: the address of the app, then her part of it. */
+.link-field {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) / 2);
+
+  input {
+    flex: 1;
+  }
+}
+
+.link-origin {
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.link-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+  min-block-size: var(--tap);
+  color: var(--ink-2);
+
+  &[data-state="free"] {
+    color: var(--leaf);
+    font-weight: 600;
+  }
+
+  &:is([data-state="taken"], [data-state="invalid"]) {
+    color: var(--kumkum);
+    font-weight: 600;
+  }
+
+  .link-btn {
+    color: var(--ink);
+    font-weight: 400;
+  }
+}
+
+/* Her cover photo, at the one ratio of the store page; without a photo, a
+   plain tile with her name in type, never a stock picture. */
+.cover-box {
+  display: grid;
+  max-inline-size: calc(var(--space) * 70);
+}
+
+.cover-pick,
+.type-tile {
+  grid-area: 1 / 1;
+  inline-size: 100%;
+  aspect-ratio: 4 / 1;
+  border-radius: var(--radius-input);
+}
+
+.cover-pick {
+  object-fit: cover;
+}
+
+.type-tile {
+  display: grid;
+  place-items: center;
+  padding: calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  color: var(--ink);
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+
+  &:empty::before {
+    content: "·";
+    color: var(--ink-3);
+  }
+}
+
+.cover-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.ways-choices .choice .icon {
+  flex: none;
+}
+
+.pin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space) calc(var(--space) * 2);
+
+  [data-saved="true"] {
+    color: var(--leaf);
+    font-weight: 600;
+  }
+}
+
+/* The preview: the step card, then the buyer page under a bar with its
+   address, drawn by the store page's own styles. The page is not boxed, so
+   its cards are not cards in a card. */
+.preview-step {
+  gap: calc(var(--space) * 3);
+}
+
+.preview-frame {
+  display: grid;
+  gap: calc(var(--space) * 3);
+}
+
+.preview-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space);
+  padding-block-end: var(--space);
+  border-block-end: var(--hair) solid var(--brass-tint);
+  color: var(--ink-2);
+}
+
+.pv-title {
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.pv-tile {
+  inline-size: 100%;
+}
+
+/* Publish: the number, then the code that this prototype shows. */
+.sign-in-step {
+  display: grid;
+  gap: calc(var(--space) * 3);
+}
+
+.agreements {
+  gap: 0;
+}
+
+/* Share: the link and its actions, and the QR code beside them. */
+.share-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: calc(var(--space) * 4);
+}
+
+.share-link {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.share-url {
+  font-size: var(--step-1);
+  overflow-wrap: anywhere;
+}
+
+.share-actions,
+.share-next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.share-qr {
+  display: grid;
+  justify-items: center;
+  gap: var(--space);
+  margin: 0;
+  color: var(--ink-2);
+  text-align: center;
+
+  img {
+    inline-size: calc(var(--space) * 25);
+    block-size: auto;
+    aspect-ratio: 1;
+    border: var(--card-line) solid var(--brass-tint);
+    border-radius: var(--radius-input);
+  }
+
+  figcaption {
+    max-inline-size: calc(var(--space) * 25);
+  }
+}
+
+/* The item form: the sheet of the components, a little wider. */
+.item-sheet {
+  --sheet-size: 46rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.icon-only {
+  padding: 0;
+}
+
+/* What she typed before she closed the form, back with a way to clear it. */
+.item-draft {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+  color: var(--ink-2);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+/* On ink, a chosen mark keeps its paper ground, so the regulated colours
+   stay readable. */
+.mark-chip .food-mark {
+  background: var(--paper);
+}
+
+.price-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.money-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space);
+}
+
+.pack-rows {
+  display: grid;
+  gap: var(--space);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pack-row {
+  display: grid;
+  grid-template-columns: 8rem 8rem auto 8rem var(--tap);
+  align-items: center;
+  justify-content: start;
+  gap: var(--space);
+}
+
+.money-field input,
+.pack-row :is(input, select) {
+  inline-size: 100%;
+  min-block-size: var(--tap);
+  padding: 0 calc(var(--space) * 1.5);
+  border: var(--hair) solid var(--ink);
+  border-radius: var(--radius-input);
+  background: var(--paper);
+
+  &:is(:user-invalid, [aria-invalid="true"]) {
+    border-color: var(--kumkum);
+  }
+}
+
+.money-field input {
+  inline-size: calc(var(--space) * 16);
+}
+
+.add-pack {
+  justify-self: start;
+}

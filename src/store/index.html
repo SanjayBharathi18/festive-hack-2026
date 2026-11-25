@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order food from a home cook</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/store/store.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/store/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub" id="store-name"></p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <div class="picker city city-lock" id="city-lock" hidden>
+              <button
+                type="button"
+                aria-disabled="true"
+                aria-describedby="city-lock-note"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#location" />
+                </svg>
+                <span class="visually-hidden" data-text="city.label">City</span>
+                <span id="city-lock-name"></span>
+              </button>
+              <p
+                class="city-note"
+                id="city-lock-note"
+                popover="manual"
+                role="tooltip"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#block" />
+                </svg>
+                <span id="city-lock-words"></span>
+              </p>
+            </div>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page store-page">
+      <div class="load-problem" id="load-problem" hidden>
+        <p class="error" id="load-error" role="alert"></p>
+        <button
+          class="btn-plain"
+          type="button"
+          id="load-retry"
+          data-text="common.action.try_again"
+        >
+          Try again
+        </button>
+      </div>
+
+      <div class="store" id="store" hidden>
+        <section class="card store-head" aria-labelledby="store-title">
+          <img class="cover-photo" id="cover-photo" alt="" hidden />
+          <div class="store-head-name">
+            <h1 id="store-title"></h1>
+            <span class="store-open" id="store-open" data-text="store.open"
+              >Taking orders</span
+            >
+            <span
+              class="store-open"
+              id="store-closed"
+              data-open="false"
+              data-text="store.closed"
+              hidden
+              >Not taking orders</span
+            >
+          </div>
+          <div class="store-head-foot">
+            <ul class="store-facts">
+              <li id="fact-rating">
+                <span class="num" id="fact-stars" aria-hidden="true"></span
+                ><span class="visually-hidden" id="fact-rating-words"></span>
+              </li>
+              <li id="fact-area"></li>
+              <li id="fact-ways">
+                <span class="ways-icons" aria-hidden="true">
+                  <svg class="icon" id="icon-pickup">
+                    <use href="/icons.svg#pickup" />
+                  </svg>
+                  <svg class="icon" id="icon-delivery">
+                    <use href="/icons.svg#delivery" />
+                  </svg>
+                </span>
+                <span id="fact-ways-text"></span>
+              </li>
+              <li id="fact-next-day" hidden></li>
+              <li id="fact-last-day" hidden>
+                <span data-text="store.fact.last_day">Last day for orders</span
+                >:
+                <span id="fact-last-day-text"></span>
+              </li>
+              <li id="fact-fssai" hidden>
+                <span data-text="store.fact.fssai">FSSAI</span>
+                <span class="num" id="fact-fssai-number"></span>
+                <span class="fact-note"
+                  >(<span data-text="store.fact.fssai_given"
+                    >given by seller</span
+                  >)</span
+                >
+              </li>
+            </ul>
+            <p class="share-line">
+              <span id="share-status" role="status"></span>
+              <button class="btn-plain" type="button" id="share">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#share" />
+                </svg>
+                <span data-text="store.share.action">Share</span>
+              </button>
+            </p>
+          </div>
+        </section>
+
+        <p class="notice" id="cart-notice" role="status" hidden></p>
+
+        <div class="buyer-cols store-body">
+          <div class="buyer-main store-menu">
+            <div
+              class="chips categories"
+              id="categories"
+              role="group"
+              aria-label="Menu sections"
+              data-text-label="store.category.label"
+            >
+              <button
+                class="chip"
+                type="button"
+                aria-pressed="true"
+                data-category=""
+                data-text="store.category.all"
+              >
+                All
+              </button>
+            </div>
+            <div class="menu" id="menu"></div>
+            <section class="store-extras" id="store-extras"></section>
+          </div>
+
+          <aside class="buyer-side store-side">
+            <section
+              class="card cart-card"
+              id="cart"
+              data-edge="brass"
+              aria-labelledby="cart-title"
+            >
+              <div class="card-head">
+                <h2 id="cart-title">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#cart" />
+                  </svg>
+                  <span data-text="store.cart.label">Your cart</span>
+                </h2>
+                <p class="card-lead" id="cart-count-line" hidden>
+                  <span class="num" id="cart-count"></span>
+                  <span id="cart-items-word"></span>
+                </p>
+              </div>
+              <p
+                class="cart-empty"
+                id="cart-empty"
+                data-text="store.cart.empty"
+              >
+                Your cart is empty. Choose a pack, then press Add.
+              </p>
+              <table class="cart-lines" id="cart-table" hidden>
+                <tbody id="cart-lines"></tbody>
+              </table>
+              <p class="cart-sum" id="cart-sum" hidden>
+                <span data-text="store.cart.total">Total</span>
+                <span class="num" id="cart-total"></span>
+              </p>
+
+              <p class="error" id="not-taking" role="status" hidden>
+                <span data-text="store.not_taking"
+                  >This store is not taking orders now.</span
+                >
+              </p>
+
+              <section class="days" id="day" aria-labelledby="day-title">
+                <h3 id="day-title" data-text="store.day.title">Day</h3>
+                <p class="day-status" id="day-status" role="status"></p>
+                <fieldset class="day-list" id="day-list" hidden>
+                  <legend class="visually-hidden" data-text="store.day.legend">
+                    The day you want your order
+                  </legend>
+                  <div class="chips" id="days-near"></div>
+                  <details class="days-more" id="days-more" hidden>
+                    <summary class="link-btn" data-text="store.day.more">
+                      More days
+                    </summary>
+                    <div class="chips" id="days-later"></div>
+                  </details>
+                </fieldset>
+              </section>
+
+              <a
+                class="btn-primary order-link"
+                id="order-link"
+                aria-describedby="day-status"
+                data-text="store.cart.order"
+                >Order</a
+              >
+            </section>
+
+            <section
+              class="card voice-card"
+              id="voice"
+              aria-labelledby="voice-title"
+              hidden
+            >
+              <div class="card-head">
+                <div>
+                  <h2 id="voice-title" data-text="store.voice.title">
+                    Say your order
+                  </h2>
+                  <p class="card-lead" data-text="store.voice.hint">
+                    Say what you want and how much. We fill the cart, and you
+                    check it.
+                  </p>
+                </div>
+                <span
+                  class="badge"
+                  id="voice-recorded"
+                  data-text="common.badge.recorded"
+                  hidden
+                  >Recorded</span
+                >
+              </div>
+              <div class="voice">
+                <button
+                  class="btn-plain voice-button"
+                  type="button"
+                  id="voice-button"
+                  data-phase="idle"
+                >
+                  <span class="voice-record">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#mic" />
+                    </svg>
+                    <span data-text="store.voice.record"
+                      >Record your order</span
+                    >
+                  </span>
+                  <span class="voice-stop">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#stop" />
+                    </svg>
+                    <span data-text="common.action.stop">Stop</span>
+                  </span>
+                </button>
+                <span
+                  class="voice-level"
+                  id="voice-level"
+                  aria-hidden="true"
+                  hidden
+                ></span>
+                <span
+                  class="voice-timer"
+                  id="voice-timer"
+                  role="timer"
+                  aria-label="Recording time"
+                  data-text-label="store.voice.timer"
+                  hidden
+                  >0:00 / 5:00</span
+                >
+                <label class="link-btn file-pick" id="voice-file-label">
+                  <span data-text="store.voice.file"
+                    >Or choose a voice note</span
+                  >
+                  <input type="file" accept="audio/*" id="voice-file" />
+                </label>
+              </div>
+              <p class="wait" id="voice-wait">
+                <span role="status"></span><span class="num"></span>
+              </p>
+              <p class="error" id="voice-error" role="alert" hidden></p>
+              <p class="hint" id="voice-note" role="status" hidden></p>
+
+              <div class="heard-result" id="voice-result" hidden>
+                <p class="heard-label" data-text="store.voice.heard">
+                  What we heard
+                </p>
+                <p class="heard" id="voice-heard"></p>
+                <ul class="heard-items" id="voice-items"></ul>
+                <p class="heard-unmatched" id="voice-unmatched" hidden></p>
+                <p class="heard-day" id="voice-day" hidden></p>
+                <p class="done" id="voice-done" role="status" hidden>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#check" />
+                  </svg>
+                  <span id="voice-done-words"></span>
+                </p>
+                <p class="heard-manual" id="voice-manual" hidden></p>
+                <button class="link-btn" type="button" id="voice-undo" hidden>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#undo" />
+                  </svg>
+                  <span data-text="store.voice.undo">Undo: take these out</span>
+                </button>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <template id="category-template">
+      <button class="chip" type="button" aria-pressed="false">
+        <svg class="icon" aria-hidden="true"><use href="" /></svg>
+        <span class="category-word"></span>
+      </button>
+    </template>
+
+    <template id="section-template">
+      <section class="menu-section">
+        <h2 class="menu-head">
+          <svg class="icon" aria-hidden="true"><use href="" /></svg>
+          <span class="menu-head-word"></span>
+        </h2>
+        <div class="menu-items"></div>
+      </section>
+    </template>
+
+    <template id="item-template">
+      <article class="card item">
+        <div class="item-head">
+          <h3 class="item-name">
+            <span class="food-mark" role="img"></span>
+            <span class="item-words">
+              <span class="item-native"></span>
+              <span class="item-latin" lang="en"></span>
+            </span>
+          </h3>
+          <span
+            class="festive-tag item-special"
+            data-text="store.item.special"
+            hidden
+            >Special</span
+          >
+          <span
+            class="stamp item-sold-out"
+            data-text="store.item.sold_out"
+            hidden
+            >Sold out</span
+          >
+        </div>
+        <p class="item-meta"></p>
+        <p class="item-box" hidden></p>
+        <fieldset class="chips packs">
+          <legend class="visually-hidden"></legend>
+        </fieldset>
+        <div class="item-foot">
+          <span class="num item-price"></span>
+          <span class="stepper item-step" role="group" data-count="0">
+            <button class="btn-plain step-less" type="button">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#minus" />
+              </svg>
+            </button>
+            <output class="num step-count">0</output>
+            <button class="btn-plain step-more" type="button">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#plus" />
+              </svg>
+              <span class="step-add" data-text="store.item.add">Add</span>
+            </button>
+          </span>
+        </div>
+      </article>
+    </template>
+
+    <template id="pack-template">
+      <label class="chip chip-pack pack">
+        <input type="radio" />
+        <span class="num pack-size"></span><span class="pack-dot"> · </span
+        ><span class="num pack-price"></span
+        ><span class="num pack-count" aria-hidden="true"></span>
+      </label>
+    </template>
+
+    <template id="line-template">
+      <tr>
+        <td class="line-name">
+          <span class="line-item"></span>
+          <span class="line-latin" lang="en"></span>
+        </td>
+        <td class="num line-amount"></td>
+        <td class="num line-price"></td>
+      </tr>
+    </template>
+
+    <template id="day-template">
+      <label class="chip day-chip">
+        <input type="radio" name="day" />
+        <span class="day-name"></span>
+        <span class="day-note"></span>
+      </label>
+    </template>
+
+    <template id="heard-item-template">
+      <li class="heard-item">
+        <span class="heard-item-name"
+          ><span class="line-item"></span>
+          <span class="line-latin" lang="en"></span
+        ></span>
+        <span class="heard-item-packs num"></span>
+        <span class="heard-item-note"></span>
+      </li>
+    </template>
+  </body>
+</html>

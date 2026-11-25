@@ -1,0 +1,40 @@
+.stamp {
+  display: inline-block;
+  padding: calc(var(--space) / 4) var(--space);
+  border: var(--rule) solid currentColor;
+  color: var(--kumkum);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &[data-kind="done"] {
+    color: var(--leaf);
+  }
+
+  &[data-kind="mark"] {
+    color: var(--ink);
+  }
+
+  &[data-hand] {
+    rotate: var(--tilt, -3deg);
+  }
+
+  &[data-landing] {
+    animation: stamp-land var(--dur-quick) linear;
+  }
+
+  /* Indian scripts get no tracking: it breaks the headline of Devanagari. They keep the taller line of their script. */
+  &:is(:lang(hi), :lang(mr), :lang(kn), :lang(ta), :lang(te)) {
+    letter-spacing: normal;
+    line-height: inherit;
+  }
+}
+
+@keyframes stamp-land {
+  from {
+    opacity: 0;
+    scale: 1.25;
+  }
+}

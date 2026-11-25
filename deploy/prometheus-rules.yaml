@@ -1,0 +1,83 @@
+# The alerts of docs/system.md, "Alerts". No release label: the
+# kube-prometheus-stack from the NudgeBee script selects every PrometheusRule.
+# Only a critical alert starts a NudgeBee investigation, so only
+# ReadingInvalidRateHigh is critical. Health checks and scrapes are left out of
+# Http5xxHigh, so that they do not hide the errors of real requests.
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: app-alerts
+  namespace: app
+  labels:
+    app.kubernetes.io/name: app
+spec:
+  groups:
+    - name: app
+      rules:
+        - alert: ReadingInvalidRateHigh
+          expr: |
+            (
+                sum by (namespace, language) (increase(reading_results_total{namespace="app", outcome="invalid"}[2m]))
+              /
+                sum by (namespace, language) (increase(reading_results_total{namespace="app"}[2m]))
+            ) > 0.3
+            and
+            sum by (namespace, language) (increase(reading_results_total{namespace="app"}[2m])) >= 5
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ $labels.language }} readings are invalid"
+            description: "{{ $value | humanizePercentage }} of the {{ $labels.language }} readings in the last 2 minutes were invalid (cut-off or empty answers). The other languages are not in this alert. The fix is a segment override of ops_reading to safe for this language (docs/system.md, Incident runbook)."
+        - alert: SarvamErrorRateHigh
+          expr: |
+            sum by (namespace, api) (increase(sarvam_requests_total{namespace="app", outcome=~"error|rate_limited|timeout"}[2m]))
+            /
+            sum by (namespace, api) (increase(sarvam_requests_total{namespace="app"}[2m]))
+            > 0.2
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Sarvam {{ $labels.api }} calls fail"
+            description: "{{ $value | humanizePercentage }} of the Sarvam {{ $labels.api }} calls in the last 2 minutes were errors, rate limits or timeouts."
+        # A counter series starts at 1, so increase() misses the first
+        # no_credit answer. The second part catches a series that is new in the
+        # last 10 minutes.
+        - alert: SarvamNoCredit
+          expr: |
+            sum by (namespace, api) (increase(sarvam_requests_total{namespace="app", outcome="no_credit"}[10m])) > 0
+            or
+            sum by (namespace, api) (
+                sarvam_requests_total{namespace="app", outcome="no_credit"}
+              unless
+                sarvam_requests_total{namespace="app", outcome="no_credit"} offset 10m
+            )
+          labels:
+            severity: warning
+          annotations:
+            summary: "Sarvam has no credit"
+            description: "Sarvam answered {{ $labels.api }} calls with no credit (402, or 429 with seat_budget_exhausted_error) in the last 10 minutes. The server does not retry them."
+        - alert: SarvamLatencyHigh
+          expr: |
+            histogram_quantile(0.95,
+              sum by (namespace, api, le) (rate(sarvam_request_duration_seconds_bucket{namespace="app"}[5m]))
+            ) > 8
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Sarvam {{ $labels.api }} calls are slow"
+            description: "The p95 latency of Sarvam {{ $labels.api }} calls is {{ $value | humanizeDuration }}, more than 8 s, for 5 minutes."
+        - alert: Http5xxHigh
+          expr: |
+            sum by (namespace) (rate(http_requests_total{namespace="app", status=~"5..", route!~"/healthz|/readyz|/metrics"}[5m]))
+            /
+            sum by (namespace) (rate(http_requests_total{namespace="app", route!~"/healthz|/readyz|/metrics"}[5m]))
+            > 0.05
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "The server answers with 5xx errors"
+            description: "{{ $value | humanizePercentage }} of the answers in the last 5 minutes were 5xx errors."

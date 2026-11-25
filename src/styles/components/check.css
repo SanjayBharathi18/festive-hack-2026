@@ -1,0 +1,40 @@
+.heard-label {
+  color: var(--ink-2);
+}
+
+.heard {
+  font-size: var(--step-1);
+
+  mark {
+    padding: 0 calc(var(--space) / 4);
+    border-radius: 2px;
+    background: var(--ink-tint);
+    color: inherit;
+  }
+}
+
+.answers {
+  margin: 0;
+
+  > div {
+    display: grid;
+    grid-template-columns: 6.5em 1fr auto;
+    align-items: center;
+    gap: var(--space);
+    min-height: var(--tap);
+    border-top: var(--hair) solid var(--brass);
+  }
+
+  dt {
+    color: var(--ink-2);
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.draft {
+  text-decoration: underline dashed var(--ink) 1.5px;
+  text-underline-offset: calc(var(--space) * 0.75);
+}

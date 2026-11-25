@@ -1,0 +1,78 @@
+<div class="bulk-parts">
+  <template class="bulk-store-template">
+    <article class="card bulk-store">
+      <header class="cook-card-head">
+        <p class="cook-card-kind bulk-store-kind"></p>
+        <h3 class="cook-card-name">
+          <a class="bulk-store-name"></a>
+          <span
+            class="badge bulk-store-demo"
+            data-text="common.badge.demo"
+            hidden
+            >Demo</span
+          >
+        </h3>
+        <p class="cook-card-rating bulk-store-rating"></p>
+      </header>
+      <table class="bulk-items">
+        <thead class="visually-hidden">
+          <tr>
+            <th scope="col" data-text="bulk.item.item">Item</th>
+            <th scope="col" data-text="bulk.item.terms">Minimum and price</th>
+            <th scope="col" data-text="bulk.item.quantity_head">Quantity</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </article>
+  </template>
+
+  <template class="bulk-item-template">
+    <tr class="bulk-item">
+      <th scope="row" class="bulk-item-name">
+        <span class="food-mark" role="img"></span>
+        <span class="bulk-item-words"></span>
+        <span class="bulk-item-second" hidden></span>
+      </th>
+      <td class="bulk-item-terms">
+        <span class="bulk-item-min"></span>
+        <span class="bulk-item-price"></span>
+      </td>
+      <td class="bulk-item-qty">
+        <input class="num" type="number" inputmode="numeric" min="1" step="1" />
+        <span class="bulk-item-unit"></span>
+      </td>
+    </tr>
+  </template>
+
+  <template class="bulk-cart-template">
+    <div class="bulk-cart-body" tabindex="-1">
+      <p class="hint bulk-cart-empty" data-text="bulk.cart.empty">
+        Your bulk cart is empty. Enter a quantity for an item.
+      </p>
+      <p class="hint bulk-cart-many" data-text="bulk.cart.many" hidden>
+        Each store gets its own request. Contact each store that you choose.
+      </p>
+      <div class="bulk-cart-stores"></div>
+    </div>
+  </template>
+
+  <template class="bulk-cart-store-template">
+    <section class="bulk-cart-store">
+      <h3 class="bulk-cart-store-name"></h3>
+      <ul class="bulk-cart-lines"></ul>
+      <p class="bulk-cart-sum">
+        <span data-text="bulk.cart.total">Estimate</span>
+        <span class="num bulk-cart-total"></span>
+      </p>
+      <p class="bulk-cart-problem" role="status"></p>
+      <button
+        class="btn-primary bulk-contact"
+        type="button"
+        data-text="quotes.contact"
+      >
+        Contact seller
+      </button>
+    </section>
+  </template>
+</div>

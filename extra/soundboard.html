@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Soundboard · one family</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fff;
+        --ink: #111;
+        --ink-2: rgb(17 17 17 / 0.72);
+        --ink-3: rgb(17 17 17 / 0.52);
+        --ink-4: rgb(17 17 17 / 0.22);
+        --ink-5: rgb(17 17 17 / 0.08);
+        --hair: 1px;
+        --gap: 8px;
+        --tap: 44px;
+        --fast: 120ms;
+        --long: 600ms;
+        --out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px / 1.5 system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          "Noto Sans",
+          sans-serif;
+        font-variant-numeric: tabular-nums;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px 24px 96px;
+      }
+      main {
+        max-width: 1240px;
+        margin-inline: auto;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      ol,
+      ul {
+        margin: 0;
+        font: inherit;
+      }
+      h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+        font-size: 0.875rem;
+
+        a {
+          color: var(--ink-3);
+        }
+        a[aria-current] {
+          color: var(--ink);
+        }
+      }
+      header {
+        display: grid;
+        gap: var(--gap);
+        padding-bottom: 20px;
+        border-bottom: var(--hair) solid var(--ink-4);
+
+        p {
+          max-width: 80ch;
+          color: var(--ink-2);
+        }
+      }
+      section {
+        display: grid;
+        grid-template-columns: 14ch 1fr;
+        gap: 24px;
+        padding-block: 24px;
+        border-bottom: var(--hair) solid var(--ink-5);
+
+        > h2 {
+          font-size: 0.8125rem;
+          color: var(--ink-3);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+
+          b {
+            display: block;
+            font-weight: inherit;
+            color: var(--ink);
+          }
+        }
+        > * {
+          min-width: 0;
+        }
+      }
+      button,
+      select {
+        font: inherit;
+        color: inherit;
+      }
+      button {
+        min-height: var(--tap);
+        padding: 8px 14px;
+        border: var(--hair) solid var(--ink);
+        border-radius: 2px;
+        background: var(--bg);
+        text-align: start;
+        cursor: pointer;
+        touch-action: manipulation;
+
+        &:hover {
+          background: var(--ink-5);
+        }
+        &:active,
+        &[aria-pressed="true"] {
+          background: var(--ink);
+          color: var(--bg);
+        }
+        &:disabled {
+          border-color: var(--ink-4);
+          color: var(--ink-3);
+          background: var(--bg);
+          cursor: default;
+        }
+      }
+      :focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 2px;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 28px;
+
+        label {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          min-height: var(--tap);
+        }
+      }
+      fieldset {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 16px;
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        legend {
+          float: left;
+          margin-right: 4px;
+          padding: 0;
+        }
+      }
+      .day {
+        display: grid;
+        gap: 12px;
+
+        > div {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--gap);
+        }
+      }
+      .now {
+        min-height: 1.5em;
+        font-weight: 600;
+      }
+      .steps {
+        padding-left: 1.5em;
+        font-size: 0.875rem;
+        color: var(--ink-3);
+      }
+      .pads {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .pad {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 16px;
+        border: var(--hair) solid var(--ink-4);
+
+        h3 {
+          font-weight: 700;
+        }
+      }
+      .actions,
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap);
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--gap);
+      }
+      .stepper {
+        display: inline-flex;
+        align-items: center;
+
+        button {
+          width: var(--tap);
+          padding: 0;
+          text-align: center;
+          font-size: 1.25rem;
+        }
+        output {
+          min-width: 3ch;
+          text-align: center;
+          font-size: 1.25rem;
+          font-weight: 700;
+        }
+      }
+      .status {
+        min-height: 1.5em;
+        font-size: 0.875rem;
+        color: var(--ink-2);
+      }
+      .slip {
+        display: flex;
+        gap: 12px;
+        align-items: baseline;
+        padding: 12px;
+        border: var(--hair) dashed var(--ink-3);
+
+        b {
+          font-size: 1.25rem;
+        }
+        span {
+          font-weight: 700;
+          letter-spacing: 0.06em;
+        }
+      }
+      .record[aria-pressed="true"] {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .fields {
+        display: grid;
+        gap: 4px;
+        padding: 0;
+        list-style: none;
+
+        li {
+          padding: 6px 10px;
+          border: var(--hair) solid var(--ink-4);
+          visibility: hidden;
+        }
+        li[data-state="filled"],
+        li[data-state="unsure"],
+        li[data-state="confirmed"] {
+          visibility: visible;
+        }
+        li[data-state="filled"] {
+          border-style: dashed;
+        }
+        li[data-state="unsure"] {
+          border-style: dashed;
+          border-color: var(--ink);
+        }
+        li[data-state="unsure"]::after {
+          content: " · check this";
+          color: var(--ink-3);
+        }
+      }
+      .board {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 56px;
+        padding: 0 8px;
+        border: var(--hair) solid var(--ink-5);
+
+        .slot {
+          padding: 6px 10px;
+          border: var(--hair) solid var(--ink-4);
+          color: var(--ink-3);
+        }
+        .moving {
+          padding: 6px 10px;
+          border: var(--hair) solid var(--ink);
+          background: var(--bg);
+          font-weight: 700;
+        }
+      }
+      .roles {
+        display: grid;
+      }
+      .role {
+        display: grid;
+        grid-template-columns: 26ch 1fr;
+        gap: var(--gap);
+        padding-block: 12px;
+        border-top: var(--hair) solid var(--ink-5);
+
+        .head b {
+          display: block;
+        }
+        .head p {
+          font-size: 0.875rem;
+          color: var(--ink-2);
+        }
+        .head small {
+          font-size: 0.75rem;
+          color: var(--ink-3);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+      }
+      .variants {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: var(--gap);
+      }
+      .variant {
+        display: grid;
+        grid-template-columns: var(--tap) 1fr;
+        border: var(--hair) solid var(--ink-4);
+        transition: background-color var(--fast) linear;
+
+        label {
+          display: grid;
+          place-items: center;
+          border-right: var(--hair) solid var(--ink-4);
+          cursor: pointer;
+        }
+        input {
+          width: 20px;
+          height: 20px;
+          margin: 0;
+          accent-color: var(--ink);
+        }
+        button {
+          display: grid;
+          align-content: start;
+          gap: 2px;
+          border: none;
+          border-radius: 0;
+          background: none;
+        }
+        button:hover {
+          background: var(--ink-5);
+        }
+        small {
+          font-size: 0.8125rem;
+          line-height: 1.35;
+          color: var(--ink-3);
+        }
+        .tag {
+          font-size: 0.75rem;
+          color: var(--ink-3);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+        &:has(:checked) {
+          outline: 2px solid var(--ink);
+          outline-offset: -1px;
+        }
+        &.is-playing {
+          background: var(--ink);
+
+          button,
+          small,
+          .tag {
+            color: var(--bg);
+          }
+        }
+      }
+      .checks {
+        display: grid;
+        gap: 12px;
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 0.8125rem;
+        }
+        th,
+        td {
+          padding: 4px 8px;
+          border-bottom: var(--hair) solid var(--ink-5);
+          text-align: start;
+          vertical-align: top;
+        }
+        td.num {
+          text-align: end;
+        }
+        tr[data-ok="false"] td {
+          font-weight: 700;
+        }
+        .scroll {
+          max-height: 420px;
+          overflow: auto;
+          border: var(--hair) solid var(--ink-5);
+        }
+      }
+      .selection {
+        display: grid;
+        gap: 12px;
+
+        > div {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--gap);
+        }
+        pre {
+          margin: 0;
+          padding: 12px;
+          overflow-x: auto;
+          border: var(--hair) solid var(--ink-4);
+          font-size: 0.8125rem;
+        }
+      }
+      @media (width < 900px) {
+        body {
+          padding: 16px 16px 64px;
+        }
+        section,
+        .role {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .variant {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="Sound pages">
+        <a href="sound-kits.html">First kits</a>
+        <a href="soundboard.html" aria-current="page">Soundboard</a>
+      </nav>
+      <header>
+        <h1>Soundboard — one family</h1>
+        <p>
+          Every sound of the app, built from <code>docs/sound.md</code>. The tabla is your hand. Counter objects (the bill-book slip, the ink pad, the
+          rubber stamp) mark a commitment. Steel (katori, tumbler, chai glass, tiffin latch, bicycle bell) is the app answering. Your "slip, stamp, katori"
+          is the sound logo, and other sounds quote it. All pitches are Bhupali on E, all sounds play in one small room, and each sound has the loudness of
+          its tier: the more often it plays, the quieter it is. Everything is synthesised here. There are no audio files.
+        </p>
+        <p>
+          Positive sounds share one ending: a katori on Pa, then a katori on Sa that rings. Negative sounds share one gesture: the bayan falls and stops.
+          So "it worked" is high, steel and ringing, and "it did not" is low, skin and muted.
+        </p>
+        <p>
+          How to listen: on a laptop, turn on <b>Phone speaker</b>. Play <b>A day at the counter</b> first, then the positive and the negative sounds.
+          Then use the controls under <b>02 try it</b>, the way you would use the app. The takes marked "in the build" are the team's picks. To try
+          another take, select it under <b>03 roles</b>. Takes marked "new" are from the last round.
+        </p>
+      </header>
+
+      <section>
+        <h2><b>00</b>controls</h2>
+        <div class="controls">
+          <label>Volume <input type="range" id="volume" min="0" max="1" step="0.01" /> <output id="volume-out"></output></label>
+          <label><input type="checkbox" id="speaker" /> Phone speaker (no bass under 350 Hz, mono)</label>
+          <fieldset id="raag">
+            <legend>Raag</legend>
+            <label><input type="radio" name="raag" value="bhupali" /> Bhupali</label>
+            <label><input type="radio" name="raag" value="durga" /> Durga</label>
+          </fieldset>
+          <label
+            >Sa
+            <select id="sa">
+              <option value="D">D (294 Hz)</option>
+              <option value="E">E (330 Hz)</option>
+              <option value="F">F (349 Hz)</option>
+            </select></label
+          >
+          <button type="button" id="stop">Stop</button>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>01</b>a day</h2>
+        <div class="day">
+          <div>
+            <button type="button" id="day-build">&#x25B6;&#xFE0E; A day at the counter (the build)</button>
+            <button type="button" id="day-picks">&#x25B6;&#xFE0E; A day at the counter (my picks)</button>
+          </div>
+          <div>
+            <button type="button" id="outcome-positive">&#x25B6;&#xFE0E; The positive sounds</button>
+            <button type="button" id="outcome-negative">&#x25B6;&#xFE0E; The negative sounds</button>
+          </div>
+          <p class="now" id="now" aria-live="polite">—</p>
+          <ol class="steps" id="steps"></ol>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>02</b>try it</h2>
+        <div class="pads">
+          <article class="pad">
+            <h3>Buyer · store page</h3>
+            <div class="item">
+              <span>Kaju katli</span>
+              <div class="stepper">
+                <button type="button" id="minus" aria-label="Remove one pack">−</button>
+                <output id="quantity" aria-label="Packs">0</output>
+                <button type="button" id="plus" aria-label="Add one pack">+</button>
+              </div>
+            </div>
+            <div class="chips" role="group" aria-label="Pack size">
+              <button type="button" data-pack="0" aria-pressed="false">250 g</button>
+              <button type="button" data-pack="2" aria-pressed="false">500 g</button>
+              <button type="button" data-pack="3" aria-pressed="false">1 kg</button>
+            </div>
+            <div class="chips" role="group" aria-label="Day">
+              <button type="button" data-day="Friday" aria-pressed="false">Fri</button>
+              <button type="button" data-day="Saturday" data-full aria-pressed="false">Sat · full</button>
+              <button type="button" data-day="Sunday" aria-pressed="false">Sun</button>
+            </div>
+            <div class="actions">
+              <button type="button" id="place">Place order</button>
+              <button type="button" id="pay-fail">Payment fails</button>
+            </div>
+            <p class="status" id="buyer-status" aria-live="polite">Hold + to add packs quickly.</p>
+          </article>
+
+          <article class="pad">
+            <h3>Seller · desk</h3>
+            <div class="slip"><b>#27</b><span id="slip-status">NEW</span><span id="slip-paid"></span></div>
+            <div class="actions">
+              <button type="button" id="stamp-next">Stamp MAKING</button>
+              <button type="button" id="stamp-paid">Stamp PAID</button>
+              <button type="button" id="undo">Undo</button>
+              <button type="button" id="cancel">Cancel order</button>
+            </div>
+            <div class="actions">
+              <button type="button" id="new-order">New order arrives</button>
+              <button type="button" id="burst">3 orders at once</button>
+              <button type="button" id="new-quote">Quote request</button>
+            </div>
+            <div class="actions">
+              <button type="button" id="sold-out" aria-pressed="false">Sold out</button>
+              <button type="button" id="close-date" aria-pressed="false">Saturday closed</button>
+              <button type="button" id="pause" aria-pressed="false">Store paused</button>
+            </div>
+            <p class="status" id="desk-status" aria-live="polite"></p>
+          </article>
+
+          <article class="pad">
+            <h3>Seller · voice order</h3>
+            <div class="actions">
+              <button type="button" class="record" id="record" aria-pressed="false">Record</button>
+              <output id="timer"></output>
+            </div>
+            <ul class="fields" id="fields">
+              <li>Item: Mysore pak</li>
+              <li>Quantity: 2 kg</li>
+              <li>Day: Saturday</li>
+              <li>Buyer: Priya</li>
+            </ul>
+            <div class="actions">
+              <button type="button" id="confirm">Confirm fields</button>
+              <button type="button" id="save-order">Save order</button>
+              <button type="button" id="read-fail">Reading fails</button>
+            </div>
+            <div class="board" id="board"><span class="moving" id="moving">#28</span><span class="slot" id="slot">Sat</span></div>
+            <p class="status" id="voice-status" aria-live="polite"></p>
+          </article>
+
+          <article class="pad">
+            <h3>Catering, setup, posts</h3>
+            <div class="chips" role="group" aria-label="Sweets on the Silver plate (2 at most)">
+              <button type="button" data-dish aria-pressed="false">Mysore pak</button>
+              <button type="button" data-dish aria-pressed="false">Kaju katli</button>
+              <button type="button" data-dish aria-pressed="false">Besan laddu</button>
+            </div>
+            <div class="actions">
+              <button type="button" id="publish">Publish the store</button>
+              <button type="button" id="copy-link">Copy link</button>
+              <button type="button" id="contact">Contact seller</button>
+              <button type="button" id="close-post">Close a post</button>
+              <button type="button" id="sound-on">Turn sound on</button>
+            </div>
+            <p class="status" id="more-status" aria-live="polite">The Silver plate allows 2 sweets.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>03</b>roles</h2>
+        <div class="roles" id="roles"></div>
+      </section>
+
+      <section>
+        <h2><b>04</b>checks</h2>
+        <div class="checks">
+          <div class="actions"><button type="button" id="run-checks">Run the checks</button></div>
+          <p id="checks-summary" aria-live="polite">The unit tests from docs/sound.md ("Tests"): tuning, loudness tier, peak, phone band.</p>
+          <div class="scroll" id="checks-table"></div>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>05</b>picks</h2>
+        <div class="selection">
+          <p>
+            Your picks start as the build. <output id="count">0</output> of <span id="total">0</span> roles differ from it. To send a change, use
+            <b>Copy picks</b> and paste the list.
+          </p>
+          <div>
+            <button type="button" id="copy">Copy picks</button>
+            <button type="button" id="clear">Reset to the build</button>
+          </div>
+          <pre id="json"></pre>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { NEW_VARIANTS, ROLES, ROLE_BY_ID, SENDS, describe, prepare, roomImpulse, runChecks } from "./sound-synth.js"
+
+      const $ = (selector) => document.querySelector(selector)
+      const STORE = "soundboard-2"
+      const BURST_SECONDS = 10
+      const SERVER_REPLY_MS = 120
+      const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches
+
+      const DAY = [
+        [0, "step", { quantity: 1 }, "A buyer adds packs (+). The pitch follows the quantity."],
+        [0.14, "step", { quantity: 2 }],
+        [0.28, "step", { quantity: 3 }],
+        [0.7, "tick", { value: 2 }, "She picks 500 g."],
+        [1.2, "placed", {}, "She places the order."],
+        [2.5, "arrival", { kind: "order" }, "The order reaches the seller's desk."],
+        [4.2, "stamp", { status: "making" }, "The seller stamps MAKING, then READY."],
+        [4.8, "stamp", { status: "ready" }],
+        [5.6, "record", { start: true }, "A WhatsApp voice order: she records it. Silence while the mic is open."],
+        [6.6, "record", { start: false }],
+        [7.6, "working", {}, "The app reads the voice note."],
+        [8.8, "cascade", { fields: 4, unsure: 2 }, "The fields fill. One field needs a check."],
+        [9.6, "settle", {}, "She confirms the fields."],
+        [10.3, "saved", {}, "Order saved."],
+        [11.9, "avail", { action: "close" }, "Kaju katli is sold out."],
+        [12.6, "limit", {}, "Saturday is full."],
+        [13.4, "error", {}, "A payment fails."],
+      ]
+      const OUTCOME_DEMO = {
+        positive: [
+          ["settle", {}],
+          ["commit", { publish: false }],
+          ["commit", { publish: true }],
+          ["placed", {}],
+          ["saved", {}],
+        ],
+        negative: [
+          ["limit", {}],
+          ["error", {}],
+          ["cancel", {}],
+          ["fallback", {}],
+          ["unsure", { fields: 4, unsure: 2 }],
+        ],
+      }
+      const OUTCOME_GAP = 1.2
+      const STAMPS = ["NEW", "MAKING", "READY", "DELIVERED"]
+      const STATUS_PARAM = { MAKING: "making", READY: "ready", DELIVERED: "done" }
+
+      const settings = { volume: 0.8, speaker: false, raag: "bhupali", sa: "E" }
+      const buildPicks = () => Object.fromEntries(ROLES.map((role) => [role.id, role.pick]))
+      let picks = buildPicks()
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORE) ?? "null")
+        if (saved) {
+          Object.assign(settings, saved.settings ?? {})
+          for (const [roleId, variantId] of Object.entries(saved.picks ?? {})) if (ROLE_BY_ID[roleId]?.variants[variantId]) picks[roleId] = variantId
+        }
+      } catch {}
+      if (!["bhupali", "durga"].includes(settings.raag)) settings.raag = "bhupali"
+      if (!["D", "E", "F"].includes(settings.sa)) settings.sa = "E"
+      const save = () => localStorage.setItem(STORE, JSON.stringify({ settings, picks }))
+
+      let ctx, bus, master, dry, phone, sends
+      let destinationLinks = 0
+      const buffers = new Map()
+      const voices = []
+      const seedTurn = new Map()
+      let timers = []
+
+      function audio() {
+        if (!ctx) {
+          ctx = new AudioContext({ latencyHint: "interactive" })
+          bus = new GainNode(ctx)
+          const highpass = new BiquadFilterNode(ctx, { type: "highpass", frequency: 180, Q: Math.SQRT1_2 })
+          const lowpass = new BiquadFilterNode(ctx, { type: "lowpass", frequency: 12000, Q: Math.SQRT1_2 })
+          master = new GainNode(ctx, { gain: settings.volume })
+          const limiter = new DynamicsCompressorNode(ctx, { threshold: -6, knee: 0, ratio: 20, attack: 0.001, release: 0.1 })
+          const trim = new GainNode(ctx, { gain: 1 / makeupGain(-6, 20) })
+          dry = new GainNode(ctx, { gain: settings.speaker ? 0 : 1 })
+          phone = new GainNode(ctx, { gain: settings.speaker ? 1 : 0 })
+          const mono = new GainNode(ctx, { channelCount: 1, channelCountMode: "explicit", channelInterpretation: "speakers" })
+          const cut = new BiquadFilterNode(ctx, { type: "highpass", frequency: 350, Q: 0.8 })
+          const cut2 = new BiquadFilterNode(ctx, { type: "highpass", frequency: 350, Q: 0.6 })
+          const presence = new BiquadFilterNode(ctx, { type: "peaking", frequency: 2500, Q: 1, gain: 4 })
+          const top = new BiquadFilterNode(ctx, { type: "lowpass", frequency: 9000, Q: 0.7 })
+          const output = new GainNode(ctx)
+          bus.connect(highpass).connect(lowpass).connect(master).connect(limiter).connect(trim)
+          trim.connect(dry).connect(output)
+          trim.connect(mono).connect(cut).connect(cut2).connect(presence).connect(top).connect(phone).connect(output)
+          output.connect(ctx.destination)
+          destinationLinks++
+          const [left, right] = roomImpulse(ctx.sampleRate)
+          const impulse = ctx.createBuffer(2, left.length, ctx.sampleRate)
+          impulse.copyToChannel(left, 0)
+          impulse.copyToChannel(right, 1)
+          const room = new ConvolverNode(ctx, { buffer: impulse })
+          const roomReturn = new BiquadFilterNode(ctx, { type: "highpass", frequency: 300, Q: Math.SQRT1_2 })
+          room.connect(roomReturn).connect(bus)
+          sends = Object.fromEntries(
+            Object.entries(SENDS).map(([name, gain]) => {
+              const send = new GainNode(ctx, { gain })
+              send.connect(room)
+              return [name, send]
+            }),
+          )
+        }
+        if (ctx.state !== "running") ctx.resume()
+        return ctx
+      }
+
+      const tuningSpec = () => ({ raag: settings.raag, sa: settings.sa })
+      const variantFor = (roleId, mode) => (mode === "build" ? ROLE_BY_ID[roleId].pick : (picks[roleId] ?? ROLE_BY_ID[roleId].pick))
+
+      function nextSeed(roleId) {
+        const seed = seedTurn.get(roleId) ?? 0
+        seedTurn.set(roleId, (seed + 1) % 3)
+        return seed
+      }
+
+      function bufferFor(roleId, variantId, params) {
+        const seed = nextSeed(roleId)
+        const key = JSON.stringify([settings.raag, settings.sa, roleId, variantId, params, seed])
+        let buffer = buffers.get(key)
+        if (!buffer) {
+          const { data } = prepare(roleId, variantId, params, tuningSpec(), ctx.sampleRate, seed)
+          buffer = ctx.createBuffer(1, data.length, ctx.sampleRate)
+          buffer.copyToChannel(data, 0)
+          buffers.set(key, buffer)
+        }
+        return buffer
+      }
+
+      function voice(buffer, roleId, when) {
+        try {
+          const source = new AudioBufferSourceNode(ctx, { buffer })
+          const level = new GainNode(ctx, { gain: 10 ** ((Math.random() * 2 - 1) / 20) })
+          source.connect(level)
+          level.connect(bus)
+          level.connect(sends[ROLE_BY_ID[roleId].send])
+          source.start(when)
+          const entry = { source, roleId }
+          voices.push(entry)
+          source.onended = () => {
+            const index = voices.indexOf(entry)
+            if (index >= 0) voices.splice(index, 1)
+            level.disconnect()
+          }
+          if (voices.length > 24) {
+            const oldest = voices.find((other) => other.roleId === roleId && other !== entry) ?? voices[0]
+            oldest.source.stop()
+          }
+        } catch (error) {
+          console.error(error)
+        }
+      }
+
+      function play(roleId, params = {}, variantId = variantFor(roleId, "picks"), delay = 0) {
+        try {
+          audio()
+          voice(bufferFor(roleId, variantId, params), roleId, ctx.currentTime + 0.005 + delay)
+          flash(roleId, variantId, delay)
+        } catch (error) {
+          console.error(error)
+        }
+      }
+
+      function schedule(plays, lead = 0.12) {
+        audio()
+        const ready = plays.map(([time, roleId, params, variantId]) => [time, roleId, variantId, bufferFor(roleId, variantId, params)])
+        const base = ctx.currentTime + lead
+        for (const [time, roleId, variantId, buffer] of ready) {
+          voice(buffer, roleId, base + time)
+          flash(roleId, variantId, lead + time)
+        }
+        return lead
+      }
+
+      function playDemo(roleId, variantId) {
+        stopAll()
+        schedule(ROLE_BY_ID[roleId].demo.map(([time, params]) => [time, roleId, params, variantId]), 0.03)
+      }
+
+      function playDay(mode) {
+        stopAll()
+        const lead = schedule(DAY.map(([time, roleId, params]) => [time, roleId, params, variantFor(roleId, mode)]))
+        for (const [time, , , say] of DAY) if (say) later(() => ($("#now").textContent = say), (lead + time) * 1000)
+        later(() => ($("#now").textContent = "—"), (lead + 14.6) * 1000)
+      }
+
+      function playOutcome(kind) {
+        stopAll()
+        const list = OUTCOME_DEMO[kind]
+        const lead = schedule(list.map(([roleId, params], i) => [i * OUTCOME_GAP, roleId, params, variantFor(roleId, "picks")]))
+        list.forEach(([roleId, params], i) => {
+          const form = params.publish === undefined ? "" : ` (${describe(roleId, params)})`
+          later(() => ($("#now").textContent = `${kind === "positive" ? "Positive" : "Negative"}: ${ROLE_BY_ID[roleId].name}${form}`), (lead + i * OUTCOME_GAP) * 1000)
+        })
+        later(() => ($("#now").textContent = "—"), (lead + list.length * OUTCOME_GAP) * 1000)
+      }
+
+      function stopAll() {
+        for (const timer of timers) clearTimeout(timer)
+        timers = []
+        for (const { source } of [...voices]) {
+          try {
+            source.stop()
+          } catch {}
+        }
+        $("#now").textContent = "—"
+      }
+
+      function later(run, ms) {
+        timers.push(setTimeout(run, ms))
+      }
+
+      function flash(roleId, variantId, delay = 0) {
+        setTimeout(() => {
+          const cell = document.querySelector(`.role[data-role="${roleId}"] .variant[data-variant="${variantId}"]`)
+          if (!cell) return
+          cell.classList.add("is-playing")
+          setTimeout(() => cell.classList.remove("is-playing"), 220)
+        }, delay * 1000)
+      }
+
+      function makeupGain(thresholdDb, ratio) {
+        const fullRangeDb = thresholdDb + (0 - thresholdDb) / ratio
+        return (1 / 10 ** (fullRangeDb / 20)) ** 0.6
+      }
+
+      const buyer = { quantity: 0, holdTimer: undefined, repeated: false, nextOrder: 29 }
+      const status = (selector, text) => ($(selector).textContent = text)
+
+      function setQuantity(next) {
+        buyer.quantity = Math.max(0, Math.min(20, next))
+        $("#quantity").textContent = buyer.quantity
+        play("step", { quantity: buyer.quantity })
+      }
+
+      for (const [selector, change] of [
+        ["#plus", 1],
+        ["#minus", -1],
+      ]) {
+        const button = $(selector)
+        button.addEventListener("click", () => {
+          if (buyer.repeated) return (buyer.repeated = false)
+          setQuantity(buyer.quantity + change)
+        })
+        button.addEventListener("pointerdown", () => {
+          clearInterval(buyer.holdTimer)
+          buyer.holdTimer = setTimeout(() => {
+            buyer.repeated = true
+            buyer.holdTimer = setInterval(() => setQuantity(buyer.quantity + change), 120)
+          }, 450)
+        })
+        for (const type of ["pointerup", "pointerleave", "pointercancel"]) button.addEventListener(type, () => clearInterval(buyer.holdTimer))
+      }
+
+      for (const chip of document.querySelectorAll("[data-pack]")) {
+        chip.addEventListener("click", () => {
+          for (const other of document.querySelectorAll("[data-pack]")) other.setAttribute("aria-pressed", String(other === chip))
+          play("tick", { value: Number(chip.dataset.pack) })
+          status("#buyer-status", `${chip.textContent} selected.`)
+        })
+      }
+
+      for (const chip of document.querySelectorAll("[data-day]")) {
+        chip.addEventListener("click", () => {
+          if (chip.hasAttribute("data-full")) {
+            play("limit")
+            return status("#buyer-status", "Saturday is full. The next free day is Sunday.")
+          }
+          for (const other of document.querySelectorAll("[data-day]")) other.setAttribute("aria-pressed", String(other === chip))
+          play("tick")
+          status("#buyer-status", `${chip.dataset.day} selected.`)
+        })
+      }
+
+      $("#place").addEventListener("click", () => {
+        status("#buyer-status", "Placing the order…")
+        later(() => {
+          play("placed")
+          status("#buyer-status", `Order #${buyer.nextOrder++} placed.`)
+        }, SERVER_REPLY_MS)
+      })
+      $("#pay-fail").addEventListener("click", () => {
+        play("error")
+        status("#buyer-status", "Payment failed (prototype). Try again, or pay later from the order page.")
+      })
+
+      const desk = { stamp: 0, paid: false, history: [], lastBell: -Infinity, nextOrder: 41, heldBell: false }
+
+      function paintSlip() {
+        $("#slip-status").textContent = desk.stamp < 0 ? "CANCELLED" : STAMPS[desk.stamp]
+        $("#slip-paid").textContent = desk.paid ? "PAID" : ""
+        const next = desk.stamp >= 0 ? STAMPS[desk.stamp + 1] : undefined
+        $("#stamp-next").textContent = next ? `Stamp ${next}` : "Done"
+        $("#stamp-next").disabled = !next || desk.stamp < 0
+        $("#stamp-paid").disabled = desk.paid || desk.stamp < 0
+        $("#cancel").disabled = desk.stamp < 0
+        $("#undo").disabled = desk.history.length === 0
+      }
+
+      $("#stamp-next").addEventListener("click", () => {
+        desk.history.push({ stamp: desk.stamp, paid: desk.paid })
+        desk.stamp++
+        play("stamp", { status: STATUS_PARAM[STAMPS[desk.stamp]] })
+        paintSlip()
+      })
+      $("#stamp-paid").addEventListener("click", () => {
+        desk.history.push({ stamp: desk.stamp, paid: desk.paid })
+        desk.paid = true
+        play("stamp", { status: "paid" })
+        paintSlip()
+      })
+      $("#undo").addEventListener("click", () => {
+        Object.assign(desk, desk.history.pop())
+        play("undo")
+        paintSlip()
+      })
+      $("#cancel").addEventListener("click", () => {
+        desk.history.push({ stamp: desk.stamp, paid: desk.paid })
+        desk.stamp = -1
+        play("cancel")
+        status("#desk-status", "Order #27 cancelled. The buyer gets your reason on WhatsApp.")
+        paintSlip()
+      })
+
+      function arrive(count, kind = "order") {
+        const now = performance.now() / 1000
+        const label = count > 1 ? `${count} new orders` : kind === "quote" ? "A new quote request" : `New order #${desk.nextOrder}`
+        desk.nextOrder += kind === "order" ? count : 0
+        if (voiceOrder.recording) {
+          desk.heldBell = true
+          return status("#desk-status", `${label} on the board. The bell waits until the mic closes.`)
+        }
+        if (now - desk.lastBell < BURST_SECONDS) return status("#desk-status", `${label} on the board. No bell: the same burst.`)
+        desk.lastBell = now
+        play("arrival", { kind })
+        status("#desk-status", `${label} on the board.`)
+      }
+
+      $("#new-order").addEventListener("click", () => arrive(1))
+      $("#burst").addEventListener("click", () => arrive(3))
+      $("#new-quote").addEventListener("click", () => arrive(1, "quote"))
+
+      for (const [selector, closeAction, openAction, closed, open] of [
+        ["#sold-out", "close", "open", "Kaju katli is sold out.", "Kaju katli is available again."],
+        ["#close-date", "close", "open", "Saturday is closed.", "Saturday is open again."],
+        ["#pause", "pause", "resume", "The store is paused. Buyers cannot order.", "The store takes orders again."],
+      ]) {
+        const button = $(selector)
+        button.addEventListener("click", () => {
+          const closing = button.getAttribute("aria-pressed") !== "true"
+          button.setAttribute("aria-pressed", String(closing))
+          play("avail", { action: closing ? closeAction : openAction })
+          status("#desk-status", closing ? closed : open)
+        })
+      }
+
+      const voiceOrder = { recording: false, started: 0, tick: undefined }
+      const fieldItems = () => [...document.querySelectorAll("#fields li")]
+
+      $("#record").addEventListener("click", () => {
+        const button = $("#record")
+        if (!voiceOrder.recording) {
+          play("record", { start: true })
+          for (const item of fieldItems()) delete item.dataset.state
+          button.setAttribute("aria-pressed", "true")
+          button.textContent = "Stop"
+          status("#voice-status", "Starting…")
+          later(() => {
+            voiceOrder.recording = true
+            voiceOrder.started = performance.now()
+            status("#voice-status", "Listening. The app is silent while the mic is open.")
+            voiceOrder.tick = setInterval(() => ($("#timer").textContent = `0:${String(Math.floor((performance.now() - voiceOrder.started) / 1000)).padStart(2, "0")}`), 250)
+          }, 150)
+          return
+        }
+        voiceOrder.recording = false
+        clearInterval(voiceOrder.tick)
+        $("#timer").textContent = ""
+        button.setAttribute("aria-pressed", "false")
+        button.textContent = "Record"
+        play("record", { start: false })
+        status("#voice-status", "Reading the voice note…")
+        if (desk.heldBell) {
+          desk.heldBell = false
+          later(() => arrive(1), 350)
+        }
+        later(() => {
+          play("working")
+          status("#voice-status", "Reading the voice note · 1 s")
+        }, 1000)
+        later(() => {
+          play("cascade", { fields: 4, unsure: 2 })
+          fieldItems().forEach((item, k) => later(() => (item.dataset.state = k === 2 ? "unsure" : "filled"), k * 45))
+          status("#voice-status", "Check the fields. The dashed ones came from your voice.")
+        }, 2200)
+      })
+
+      $("#confirm").addEventListener("click", () => {
+        for (const item of fieldItems()) item.dataset.state = "confirmed"
+        play("settle")
+        status("#voice-status", "Fields confirmed.")
+      })
+
+      $("#save-order").addEventListener("click", () => {
+        const moving = $("#moving")
+        const slot = $("#slot").getBoundingClientRect()
+        const from = moving.getBoundingClientRect()
+        moving.animate([{ transform: "translateX(0)" }, { transform: `translateX(${slot.left - from.left - 8}px)` }], {
+          duration: reduceMotion ? 0 : 600,
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          fill: "forwards",
+        })
+        status("#voice-status", "Saving…")
+        later(() => {
+          play("saved")
+          status("#voice-status", "Order #28 saved for Saturday.")
+        }, SERVER_REPLY_MS)
+      })
+
+      $("#read-fail").addEventListener("click", () => {
+        play("fallback")
+        status("#voice-status", "Voice failed. Your words are safe: type the rest.")
+      })
+
+      const plate = { limit: 2 }
+      for (const chip of document.querySelectorAll("[data-dish]")) {
+        chip.addEventListener("click", () => {
+          const picked = document.querySelectorAll('[data-dish][aria-pressed="true"]').length
+          const adding = chip.getAttribute("aria-pressed") !== "true"
+          if (adding && picked >= plate.limit) {
+            play("limit")
+            return status("#more-status", "This plate allows 2 sweets. The Gold plate allows 3.")
+          }
+          chip.setAttribute("aria-pressed", String(adding))
+          play("pick", { in: adding })
+          status("#more-status", `${chip.textContent} ${adding ? "added to" : "removed from"} the plate.`)
+        })
+      }
+
+      const moreActions = [
+        ["#publish", "commit", { publish: true }, "Your store is live."],
+        ["#copy-link", "tick", {}, "Link copied."],
+        ["#contact", "commit", { publish: false }, "Opening WhatsApp…"],
+        ["#close-post", "cancel", {}, "Your board post is closed."],
+        ["#sound-on", "tick", {}, "Sound is on."],
+      ]
+      for (const [selector, roleId, params, text] of moreActions)
+        $(selector).addEventListener("click", () => {
+          play(roleId, params)
+          status("#more-status", text)
+        })
+
+      const rolesElement = $("#roles")
+      for (const role of ROLES) {
+        const row = document.createElement("div")
+        row.className = "role"
+        row.dataset.role = role.id
+        const head = document.createElement("div")
+        head.className = "head"
+        head.innerHTML = `<b></b><p></p><small></small>`
+        head.querySelector("b").textContent = role.name
+        head.querySelector("p").textContent = role.says
+        head.querySelector("small").textContent = [role.family, role.outcome, `tier ${role.tier}`].filter(Boolean).join(" · ")
+        const list = document.createElement("div")
+        list.className = "variants"
+        row.append(head, list)
+        for (const [variantId, variant] of Object.entries(role.variants)) {
+          const cell = document.createElement("div")
+          cell.className = "variant"
+          cell.dataset.variant = variantId
+          cell.innerHTML = `<label><input type="radio" /></label><button type="button"><span class="tag"></span><span></span><small></small></button>`
+          const input = cell.querySelector("input")
+          input.name = `pick-${role.id}`
+          input.value = variantId
+          input.setAttribute("aria-label", `Pick ${variantId} for ${role.name}`)
+          const [tag, name, recipe] = cell.querySelectorAll("button > *")
+          tag.textContent = [variantId, variantId === role.pick && "in the build", NEW_VARIANTS[role.id]?.includes(variantId) && "new"].filter(Boolean).join(" · ")
+          name.textContent = `▶︎ ${variant.name}`
+          recipe.textContent = variant.recipe
+          cell.querySelector("button").addEventListener("click", () => playDemo(role.id, variantId))
+          input.addEventListener("change", () => {
+            picks[role.id] = variantId
+            paintPicks()
+            playDemo(role.id, variantId)
+          })
+          list.append(cell)
+        }
+        rolesElement.append(row)
+      }
+
+      $("#steps").innerHTML = ""
+      for (const [time, , , say] of DAY) {
+        if (!say) continue
+        const item = document.createElement("li")
+        item.textContent = `${time.toFixed(1)} s · ${say}`
+        $("#steps").append(item)
+      }
+
+      function paintPicks() {
+        for (const role of ROLES) for (const input of document.querySelectorAll(`input[name="pick-${role.id}"]`)) input.checked = picks[role.id] === input.value
+        $("#count").textContent = ROLES.filter((role) => picks[role.id] !== role.pick).length
+        $("#total").textContent = ROLES.length
+        $("#json").textContent = JSON.stringify({ raag: settings.raag, sa: settings.sa, picks }, null, 2)
+        save()
+      }
+
+      $("#day-build").addEventListener("click", () => playDay("build"))
+      $("#outcome-positive").addEventListener("click", () => playOutcome("positive"))
+      $("#outcome-negative").addEventListener("click", () => playOutcome("negative"))
+      $("#day-picks").addEventListener("click", () => playDay("picks"))
+      $("#stop").addEventListener("click", stopAll)
+
+      $("#run-checks").addEventListener("click", () => {
+        $("#checks-summary").textContent = "Running…"
+        setTimeout(() => {
+          const sampleRate = ctx?.sampleRate ?? 48000
+          const results = runChecks(tuningSpec(), sampleRate)
+          const failed = results.filter((result) => !result.ok)
+          const links = ctx ? `The master chain is the only link to the speakers: ${destinationLinks === 1 ? "yes" : `no (${destinationLinks} links)`}.` : "Play a sound first to check the speaker link."
+          $("#checks-summary").textContent = `${results.length} sounds at ${sampleRate} Hz: ${results.length - failed.length} pass, ${failed.length} fail. ${links}`
+          const table = document.createElement("table")
+          table.innerHTML = "<thead><tr><th>Role</th><th>Variant</th><th>Case</th><th>Loudness (dB)</th><th>Peak (dBFS)</th><th>Above 300 Hz</th><th>Issues</th></tr></thead><tbody></tbody>"
+          for (const result of results) {
+            const row = document.createElement("tr")
+            row.dataset.ok = String(result.ok)
+            const cells = [
+              ROLE_BY_ID[result.role].name,
+              result.pick ? `${result.variant} (build)` : result.variant,
+              describe(result.role, result.params),
+              result.loudness.toFixed(1),
+              result.peakDb.toFixed(1),
+              `${(result.above300 * 100).toFixed(1)}%`,
+              result.issues.join("; ") || "—",
+            ]
+            cells.forEach((text, index) => {
+              const cell = document.createElement("td")
+              cell.textContent = text
+              if (index === 3 || index === 4 || index === 5) cell.className = "num"
+              row.append(cell)
+            })
+            table.tBodies[0].append(row)
+          }
+          $("#checks-table").replaceChildren(table)
+        }, 30)
+      })
+
+      const volume = $("#volume")
+      const showVolume = () => ($("#volume-out").textContent = Number(settings.volume).toFixed(2))
+      volume.value = settings.volume
+      showVolume()
+      volume.addEventListener("input", () => {
+        settings.volume = Number(volume.value)
+        showVolume()
+        if (master) master.gain.setTargetAtTime(settings.volume, ctx.currentTime, 0.02)
+        save()
+      })
+
+      const speaker = $("#speaker")
+      speaker.checked = settings.speaker
+      speaker.addEventListener("change", () => {
+        settings.speaker = speaker.checked
+        if (ctx) {
+          dry.gain.setTargetAtTime(settings.speaker ? 0 : 1, ctx.currentTime, 0.01)
+          phone.gain.setTargetAtTime(settings.speaker ? 1 : 0, ctx.currentTime, 0.01)
+        }
+        save()
+      })
+
+      for (const input of document.querySelectorAll('input[name="raag"]')) {
+        input.checked = input.value === settings.raag
+        input.addEventListener("change", () => {
+          settings.raag = input.value
+          paintPicks()
+        })
+      }
+      const saSelect = $("#sa")
+      saSelect.value = settings.sa
+      saSelect.addEventListener("change", () => {
+        settings.sa = saSelect.value
+        paintPicks()
+      })
+
+      $("#copy").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText($("#json").textContent)
+          $("#copy").textContent = "Copied"
+        } catch {
+          getSelection().selectAllChildren($("#json"))
+          $("#copy").textContent = "Selected: press Ctrl+C"
+        }
+        setTimeout(() => ($("#copy").textContent = "Copy picks"), 1600)
+      })
+      $("#clear").addEventListener("click", () => {
+        picks = buildPicks()
+        paintPicks()
+      })
+
+      paintSlip()
+      paintPicks()
+    </script>
+  </body>
+</html>

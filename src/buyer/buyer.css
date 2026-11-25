@@ -1,0 +1,59 @@
+/* The layout of the buyer pages: store, checkout, order and privacy. A
+   laptop page under the app bar, as wide as the app bar. The work is on the
+   left; a side column on the right stays in view. */
+body {
+  margin: 0;
+}
+
+.buyer-page {
+  max-inline-size: var(--page);
+  margin-inline: auto;
+  padding: calc(var(--space) * 4) var(--page-margin) calc(var(--space) * 8);
+
+  :is(h1, h2, h3, p) {
+    margin: 0;
+  }
+}
+
+.buyer-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--side);
+  align-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+.buyer-main,
+.buyer-side {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  min-inline-size: 0;
+}
+
+.buyer-side {
+  position: sticky;
+  inset-block-start: var(--side-top);
+}
+
+/* A link can wear a button: buttons look like buttons, so no underline. */
+a:is(.btn-primary, .btn-plain) {
+  text-decoration: none;
+}
+
+/* A primary link that waits, for example Order before a day fits. The
+   :disabled face of the shared button cannot reach a link, so the page gives
+   it the same face. */
+
+.back {
+  margin-inline-start: calc(var(--space) * -1);
+}
+
+.hint,
+.notice {
+  color: var(--ink-2);
+}
+
+.load-problem {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 2);
+}

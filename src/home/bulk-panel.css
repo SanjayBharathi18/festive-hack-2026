@@ -1,0 +1,49 @@
+/* The Bulk and corporate tab: the stores in the main column; the bulk cart
+   and the request board in a side column that stays in view. */
+.bulk-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24rem;
+  align-items: start;
+  gap: calc(var(--space) * 3);
+}
+
+.bulk-main,
+.bulk-side,
+.bulk-stores,
+.bulk-intro,
+.bulk-cart,
+.bulk-board {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  min-inline-size: 0;
+}
+
+.bulk-side {
+  position: sticky;
+  inset-block-start: var(--side-top);
+}
+
+.bulk-panel {
+  :is(h2, p) {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: var(--step-1);
+  }
+
+  .hint {
+    color: var(--ink-2);
+  }
+}
+
+.bulk-search input {
+  max-inline-size: 28rem;
+}
+
+.bulk-board-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+}

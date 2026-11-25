@@ -1,0 +1,197 @@
+/* The order slip: a card with two ticket notches
+   on its sides, on the dashed tear line under its head. Item rows, a note
+   box, then the total over a hairline. */
+.slip {
+  --slip-pad: calc(var(--space) * 2.5);
+
+  position: relative;
+  padding: var(--slip-pad);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-card-small);
+  background: var(--paper);
+  box-shadow: var(--card-edge);
+
+  p {
+    margin: 0;
+  }
+
+  .slip-head {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space);
+    padding-block-end: calc(var(--space) * 1.5);
+    border-block-end: var(--hair) dashed var(--brass-tint);
+
+    /* Each notch is centred on the border of the slip, on the tear line. */
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-end: calc(var(--notch) / -2);
+      inline-size: var(--notch);
+      block-size: var(--notch);
+      border: var(--card-line) solid var(--brass-tint);
+      border-radius: 50%;
+      background: var(--paper);
+    }
+
+    &::before {
+      inset-inline-start: calc(
+        -1 * var(--slip-pad) - var(--card-line) / 2 - var(--notch) / 2
+      );
+    }
+
+    &::after {
+      inset-inline-end: calc(
+        -1 * var(--slip-pad) - var(--card-line) / 2 - var(--notch) / 2
+      );
+    }
+  }
+
+  .slip-who {
+    margin-top: var(--space);
+    color: var(--ink-2);
+  }
+
+  /* On the desk the head is one line, like the reference: the number, the
+     buyer, then the stamp at the end. */
+  .slip-title {
+    margin: 0;
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: inherit;
+
+    .order-no {
+      font-size: inherit;
+
+      &::before {
+        content: "#" / "";
+      }
+    }
+  }
+
+  .slip-head > .slip-who {
+    flex: 1 1 12rem;
+    margin: 0;
+  }
+
+  .slip-head > .stamp {
+    align-self: center;
+    margin-inline-start: auto;
+  }
+
+  .slip-way .icon {
+    margin-inline-end: calc(var(--space) / 2);
+    vertical-align: -0.375em;
+  }
+
+  .slip-lines {
+    width: 100%;
+    margin-top: calc(var(--space) * 1.5);
+    border-collapse: collapse;
+
+    td {
+      padding: calc(var(--space) / 2) 0;
+      vertical-align: baseline;
+    }
+
+    td + td {
+      padding-left: var(--space);
+      text-align: right;
+    }
+  }
+
+  .line-name .food-mark {
+    margin-inline-end: var(--space);
+    vertical-align: -0.125em;
+  }
+
+  .line-item {
+    font-weight: 500;
+  }
+
+  .line-latin,
+  .line-amount,
+  .line-egg {
+    margin-inline-start: calc(var(--space) / 2);
+    color: var(--ink-2);
+  }
+
+  .line-price {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .slip-note {
+    margin-block-start: calc(var(--space) * 1.5);
+    padding: var(--space) calc(var(--space) * 1.5);
+    border: var(--card-line) solid var(--brass-tint);
+    border-radius: var(--radius-input);
+  }
+
+  .slip-total {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space);
+    margin-block-start: calc(var(--space) * 1.5);
+    padding-top: calc(var(--space) * 1.5);
+    border-top: var(--hair) solid var(--brass-tint);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  /* The foot of a slip on the desk: the total with PAID on the left, her
+     next stamp on the right, and her other actions on a quiet line under it. */
+  .slip-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space) calc(var(--space) * 2);
+    margin-block-start: calc(var(--space) * 1.5);
+    padding-block-start: calc(var(--space) * 1.5);
+    border-block-start: var(--hair) solid var(--brass-tint);
+  }
+
+  .slip-sum,
+  .slip-do {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space) calc(var(--space) * 1.5);
+  }
+
+  .slip-do {
+    margin-inline-start: auto;
+  }
+
+  .slip-amount {
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  .slip-more {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 var(--space);
+    margin-block-start: var(--space);
+    margin-inline-start: calc(var(--space) * -1);
+  }
+
+  .slip-stamps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--space) * 1.5);
+    margin-top: calc(var(--space) * 2);
+  }
+}
+
+.order-no {
+  font-size: var(--step-2);
+  font-weight: 600;
+}

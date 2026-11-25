@@ -1,0 +1,14 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+
+.env
+.env.*
+!.env.example
+usage.log
+
+data/
+.node/
+
+.claude/settings.local.json

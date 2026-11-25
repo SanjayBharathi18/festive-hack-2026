@@ -1,0 +1,106 @@
+.order {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.order-slip {
+  --slip-pad: calc(var(--space) * 3);
+
+  .slip-title {
+    font-size: var(--step-2);
+  }
+
+  .line-name {
+    inline-size: 100%;
+  }
+
+  .line-amount {
+    white-space: nowrap;
+  }
+
+  .slip-lines .line-price {
+    padding-inline-start: calc(var(--space) * 2);
+  }
+
+  /* Inside the slip, the rows of facts share the light line of the slip. */
+  .answers > div {
+    border-top-color: var(--brass-tint);
+  }
+}
+
+/* The total morphs from the slip of the check screen into this slip. */
+#order-total {
+  view-transition-name: cart-total;
+}
+
+.status-line {
+  margin-block-start: calc(var(--space) * 2);
+  font-size: var(--step-1);
+}
+
+.order-facts {
+  margin-block-start: calc(var(--space) * 2);
+
+  > div {
+    grid-template-columns: 7.5em 1fr;
+    align-items: baseline;
+    padding-block: var(--space);
+  }
+
+  dd {
+    display: grid;
+    justify-items: start;
+    overflow-wrap: anywhere;
+  }
+
+  .link-btn {
+    margin-inline-start: calc(var(--space) * -1);
+  }
+}
+
+.pay-card,
+.pay-action {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 2);
+}
+
+.contact {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 2);
+}
+
+.messages {
+  display: grid;
+  gap: var(--space);
+}
+
+.message-log {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* A log, not a chat: each message on its own line, newest first. */
+.message {
+  display: grid;
+  gap: calc(var(--space) / 2);
+  padding-block: calc(var(--space) * 1.5);
+  border-block-start: var(--hair) solid var(--brass-tint);
+
+  .message-time {
+    color: var(--ink-2);
+  }
+
+  .message-body {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* The message log grows with each message, so the side column scrolls with
+   the page. */
+.order-side {
+  position: static;
+}

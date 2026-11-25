@@ -1,0 +1,86 @@
+# Rollback for lang_kn (docs/system.md, "NudgeBee workflows", item 2; the
+# incident runbook is in docs/system.md, "Incident runbook"). It changes one
+# ops_ flag only: ops_reading, for the segment lang_kn, to "safe".
+#
+# Setup, once, in Configs on the workflow listing page. The command
+# npm run flagsmith-setup prints the three Config values (README.md, "Plug in
+# the services"):
+# - Config flagsmith_environment_key: the key of the Production environment.
+# - Config flagsmith_ops_reading_feature_id: the numeric ID of ops_reading.
+# - Config flagsmith_lang_kn_segment_id: the numeric ID of the segment lang_kn.
+# - Secret flagsmith_authorization: "Api-Key <organisation API key>". With
+#   auth_type api_key, NudgeBee sends this value with no prefix.
+# Then nbctl workflow validate and nbctl workflow apply, with the account of
+# the k3s cluster. Check the label names of the filter in the input of one real
+# run first. Do not use Dry Run: it sends the real PATCH.
+name: Rollback Kannada reading
+description: After the investigation of ReadingInvalidRateHigh for kn-IN, and after a person approves, sets ops_reading to safe for the Flagsmith segment lang_kn. Other languages do not change.
+status: ACTIVE
+definition:
+  version: v1
+  timeout: 45m
+  retry_policy:
+    maximum_attempts: 1
+  triggers:
+    - type: event
+      params:
+        "on": investigation.completed
+        filter: '{{ event.labels.alertname == "ReadingInvalidRateHigh" and event.labels.language == "kn-IN" }}'
+  tasks:
+    - id: approval
+      type: core.approval
+      timeout: 30m
+      params:
+        approval_type: in_app
+        message: |-
+          Kannada (kn-IN) order readings fail: {{ Inputs.event.title | default("ReadingInvalidRateHigh", true) }}. The investigation is on the event of this alert.
+          Approve to switch only Kannada to the safe reading path: in Flagsmith Production, the flag ops_reading gets the value "safe" for the segment lang_kn. Hindi and English do not change.
+          Reject to change nothing.
+    - id: rollback
+      type: integrations.http
+      depends_on:
+        - approval
+      if: "{{ Tasks['approval'].output.status == 'approve' }}"
+      timeout: 20s
+      failure_policy:
+        action: continue
+        retry:
+          maximum_attempts: 1
+      params:
+        method: PATCH
+        url: "https://api.flagsmith.com/api/__future__/environments/{{ Configs.flagsmith_environment_key }}/features/{{ Configs.flagsmith_ops_reading_feature_id }}/"
+        auth_type: api_key
+        api_header_name: Authorization
+        api_key: "{{ Secrets.flagsmith_authorization }}"
+        timeout: 10s
+        headers:
+          Content-Type: application/json
+        body: '{"segment_overrides": [{"segment": {"id": {{ Configs.flagsmith_lang_kn_segment_id | int }} }, "value": {"type": "string", "value": "safe"}}]}'
+    - id: evidence
+      type: events.add_evidence
+      depends_on:
+        - rollback
+      timeout: 1m
+      params:
+        event_id: "{{ Inputs.event.id }}"
+        evidences:
+          - type: markdown
+            title: Rollback of ops_reading for lang_kn
+            filename: rollback-lang-kn.md
+            additional_info:
+              actual_action_name: text_enricher
+              title: Rollback of ops_reading for lang_kn
+            data: |-
+              {%- set approval = Tasks['approval'].output -%}
+              {%- set patch = Tasks['rollback'].output -%}
+              {%- if approval.status != 'approve' -%}
+              **No change.** The approver answered "{{ approval.status }}". ops_reading for lang_kn stays as it was.
+              {%- elif patch and (patch.status_code | int) == 200 -%}
+              **Done.** Flagsmith answered 200: ops_reading is "safe" for the segment lang_kn. Approved by {{ approval.approver | default("the approver", true) }}.
+
+              Kannada readings now use the safe path: native reading, reasoning off, 1,024 maximum tokens. Hindi and English did not change.
+
+              Next, by hand: remove the bad cfg_sarvam override for lang_kn, then set ops_reading for lang_kn back to "ai".
+              {%- else -%}
+              **The change failed.** {% if patch and patch.status_code %}Flagsmith answered {{ patch.status_code }}, not 200.{% else %}Flagsmith refused the PATCH or did not answer within 10 s.{% endif %} Set ops_reading to "safe" for the segment lang_kn by hand in Flagsmith Production.
+              {%- endif %}

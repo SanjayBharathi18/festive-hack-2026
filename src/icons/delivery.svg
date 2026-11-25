@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="7" y="4.75" width="5.75" height="5.25" rx="0.75" style="fill: var(--icon-fill, #eadcc2)" />
+  <path d="M3 15.5C3 12 5.25 10 8.5 10H13l.5 5.5z" style="fill: var(--icon-fill, #eadcc2)" />
+  <path d="M13.5 15.5h3.5M17 15.5l-1.25-8h2.75" />
+  <circle cx="6.5" cy="17.9" r="2.6" style="fill: var(--icon-ground, #faf6ee)" />
+  <circle cx="17.5" cy="17.9" r="2.6" style="fill: var(--icon-ground, #faf6ee)" />
+  <circle cx="6.5" cy="17.9" r="0.85" fill="currentColor" stroke="none" />
+  <circle cx="17.5" cy="17.9" r="0.85" fill="currentColor" stroke="none" />
+</svg>

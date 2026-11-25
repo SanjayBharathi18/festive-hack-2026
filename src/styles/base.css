@@ -1,0 +1,175 @@
+/* Every rounded corner is a squircle, Apple's continuous corner: the
+   radius tokens are sized for it. A browser without
+   corner-shape draws the plain round corner of the same radius. */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  corner-shape: squircle;
+}
+
+/* Pills and circles keep round ends, as on apple.com: a squircle end reads
+   as a box. The page pills are listed here, so that the rule stays in one
+   place. */
+:where(
+  .chip,
+  .btn-primary,
+  .btn-plain,
+  .link-btn,
+  .file-pick,
+  .voice-button,
+  .tabs,
+  .tabs > *,
+  .picker select,
+  .city-lock > button,
+  .badge,
+  .festive-tag,
+  .store-open,
+  .item-step,
+  .fly,
+  .toggle,
+  .search-clear
+) {
+  corner-shape: round;
+}
+
+.festive-tag::before,
+.food-mark::before,
+.slip-head::before,
+.slip-head::after {
+  corner-shape: round;
+}
+
+:root {
+  --font-words:
+    "Anek Latin", "Anek Devanagari", "Anek Kannada", "Anek Tamil",
+    "Anek Telugu", system-ui, sans-serif;
+  /* Plex Mono has no Indian scripts, so the words inside a number ("₹350 प्रति प्लेट") fall back to Anek, not to a system face. */
+  --font-num:
+    "IBM Plex Mono", "Anek Devanagari", "Anek Kannada", "Anek Tamil",
+    "Anek Telugu", ui-monospace, monospace;
+  /* The x-height of each font. A fallback font takes that size, so the text does not jump when the font arrives. */
+  --font-words-adjust: ex-height 0.489;
+  --font-num-adjust: ex-height 0.516;
+
+  color-scheme: light;
+  accent-color: var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--step-0) / 1.45 var(--font-words);
+  font-size-adjust: var(--font-words-adjust);
+  font-synthesis: none;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The script of the language comes first, so its joiners, danda and ₹ come from the same font. */
+:lang(hi),
+:lang(mr) {
+  font-family: "Anek Devanagari", var(--font-words);
+  line-height: 1.55;
+}
+
+:lang(ta) {
+  font-family: "Anek Tamil", var(--font-words);
+  line-height: 1.55;
+}
+
+:lang(kn) {
+  font-family: "Anek Kannada", var(--font-words);
+  line-height: 1.65;
+}
+
+:lang(te) {
+  font-family: "Anek Telugu", var(--font-words);
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: var(--step-3);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: var(--step-2);
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: var(--step-1);
+}
+
+h4 {
+  font-size: var(--step-0);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+:focus-visible {
+  outline: var(--ring) solid var(--ink);
+  outline-offset: var(--ring);
+}
+
+[hidden]:not([hidden="until-found"]) {
+  display: none !important;
+}
+
+.num {
+  font-family: var(--font-num);
+  font-size-adjust: var(--font-num-adjust);
+  font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: var(--dur-page);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,13 @@
+# Settings for the Traefik that k3s installs. With the default Cluster policy,
+# k3s ServiceLB hides the client IP, and the per-IP rate limits of the server
+# would put every client in one bucket. Local keeps the client IP.
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    service:
+      spec:
+        externalTrafficPolicy: Local

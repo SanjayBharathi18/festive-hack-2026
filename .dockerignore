@@ -1,0 +1,11 @@
+# Allowlist: only these paths reach the build, so .env and data/ never do.
+*
+!package.json
+!package-lock.json
+!tsconfig.json
+!vite.config.ts
+!src
+!server
+!shared
+!fixtures
+**/*.test.ts

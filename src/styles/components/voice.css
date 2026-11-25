@@ -1,0 +1,94 @@
+@property --level {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.voice {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-auto-flow: row dense;
+  align-items: center;
+  gap: calc(var(--space) * 1.5);
+
+  .voice-button,
+  .file-pick {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .voice-level {
+    grid-column: 1;
+  }
+
+  .voice-timer {
+    grid-column: 2;
+  }
+}
+
+/* With both faces in the markup, the button shows the face of its phase and keeps the width of the wider face. */
+.voice-button:has(.voice-record) {
+  display: inline-grid;
+  place-items: center;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.voice-record,
+.voice-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space);
+}
+
+.voice-button:is([data-phase="recording"], [data-phase="stopping"])
+  .voice-record,
+.voice-button:not([data-phase="recording"], [data-phase="stopping"])
+  .voice-stop {
+  visibility: hidden;
+}
+
+/* A measure, like the capacity gauge: 20 cells in brass hairlines, ink up to --level. The mask cuts the gaps between the cells. */
+.voice-level {
+  --level-cell: calc(100% / 20);
+  --level-gap: calc(var(--space) / 4);
+
+  display: block;
+  block-size: calc(var(--space) * 2.75);
+  background:
+    linear-gradient(var(--ink) 0 0) left /
+      calc(clamp(0, var(--level), 1) * 100%) 100% no-repeat,
+    repeating-linear-gradient(
+        to right,
+        transparent 0 var(--hair),
+        var(--paper) 0 calc(var(--level-cell) - var(--level-gap) - var(--hair)),
+        transparent 0 var(--level-cell)
+      )
+      center / 100% calc(100% - 2 * var(--hair)) no-repeat,
+    var(--brass);
+  mask: repeating-linear-gradient(
+    to right,
+    var(--ink) 0 calc(var(--level-cell) - var(--level-gap)),
+    transparent 0 var(--level-cell)
+  );
+  transition: --level var(--dur-quick) linear;
+}
+
+.voice-timer {
+  font-family: var(--font-num);
+  font-size: var(--step-1);
+  font-size-adjust: var(--font-num-adjust);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.file-pick input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

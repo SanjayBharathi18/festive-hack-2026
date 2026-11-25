@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="8" y="2.5" width="8" height="7.5" rx="1" style="fill: var(--icon-fill, #eadcc2)" />
+  <rect x="2.75" y="12.5" width="8" height="8" rx="1" style="fill: var(--icon-fill, #eadcc2)" />
+  <rect x="13.25" y="12.5" width="8" height="8" rx="1" style="fill: var(--icon-fill, #eadcc2)" />
+  <path d="M8 5h8M2.75 15h8M13.25 15h8" />
+</svg>

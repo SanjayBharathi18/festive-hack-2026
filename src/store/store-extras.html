@@ -1,0 +1,58 @@
+<div class="store-extras-parts">
+  <section class="card extras-bulk" aria-labelledby="extras-bulk-title" hidden>
+    <div class="card-head">
+      <div>
+        <h2 id="extras-bulk-title">
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#bulk" />
+          </svg>
+          <span data-text="bulk.store.title">Corporate Bulk Orders</span>
+        </h2>
+        <p class="card-lead extras-bulk-line"></p>
+      </div>
+    </div>
+    <p class="hint" data-text="bulk.store.lead">
+      Enter a quantity for each item, then contact the seller. Nothing is
+      ordered or paid here.
+    </p>
+    <div class="extras-bulk-items"></div>
+    <div class="extras-bulk-cart"></div>
+  </section>
+
+  <section
+    class="card extras-catering"
+    aria-labelledby="extras-catering-title"
+    hidden
+  >
+    <div class="card-head">
+      <div>
+        <h2 id="extras-catering-title">
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#catering" />
+          </svg>
+          <span data-text="catering.store.title">Catering</span>
+        </h2>
+        <p class="card-lead" data-text="catering.store.lead">
+          Plate and buffet packages for weddings, parties and festivals. Pick
+          your dishes, then ask for a quote.
+        </p>
+      </div>
+    </div>
+    <p class="extras-booked" hidden></p>
+    <ul class="extras-packages"></ul>
+  </section>
+
+  <template class="extras-package-template">
+    <li class="extras-package">
+      <p class="extras-package-top">
+        <span class="extras-package-name"></span>
+        <span class="num extras-package-price"></span>
+      </p>
+      <p class="extras-package-limits"></p>
+      <p class="extras-package-meta"></p>
+      <a class="extras-package-plan" data-text="catering.panel.plan"
+        >Plan your menu</a
+      >
+    </li>
+  </template>
+</div>

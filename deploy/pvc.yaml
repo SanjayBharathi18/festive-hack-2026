@@ -1,0 +1,15 @@
+# SQLite and photos. The k3s default StorageClass (local-path) does not enforce
+# the size, and it deletes the data when the claim is deleted.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: app-data
+  namespace: app
+  labels:
+    app.kubernetes.io/name: app
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

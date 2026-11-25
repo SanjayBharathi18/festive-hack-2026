@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M8.25 7.5V6c0-1.5 1.7-2.75 3.75-2.75S15.75 4.5 15.75 6v1.5" />
+  <rect x="7.5" y="9.5" width="9" height="11.5" rx="1.5" style="fill: var(--icon-fill, #eadcc2)" />
+  <rect x="6.25" y="7.5" width="11.5" height="2" rx="1" style="fill: var(--icon-fill, #eadcc2)" />
+  <rect x="6.25" y="12.75" width="11.5" height="1.75" rx="0.875" style="fill: var(--icon-fill, #eadcc2)" />
+  <rect x="6.25" y="16.75" width="11.5" height="1.75" rx="0.875" style="fill: var(--icon-fill, #eadcc2)" />
+</svg>

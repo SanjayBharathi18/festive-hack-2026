@@ -1,0 +1,229 @@
+# Checks, image, smoke test, push and deploy (docs/system.md, "Deployment").
+# Pull requests stop after the smoke test. Pushes to main deploy, once the
+# repository variable DEPLOY_HOST exists. To restart the app with new Actions
+# secrets, run this workflow again on main (Actions, CI, Run workflow).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+# With an explicit bash, GitHub runs each step with -eo pipefail, so a failure
+# inside a pipe fails the step.
+defaults:
+  run:
+    shell: bash
+
+# The actions are pinned to commits, because the deploy job holds the SSH key.
+jobs:
+  checks:
+    name: Format, types and tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Prettier
+        run: npm run format:check
+      - name: TypeScript
+        run: npm run check
+      - name: Tests
+        run: npm test
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - name: Browser tests
+        run: npm run test:e2e
+      - name: Keep the Playwright report
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  image:
+    name: Image and smoke test
+    needs: checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.name.outputs.image }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Name the image
+        id: name
+        run: echo "image=ghcr.io/${GITHUB_REPOSITORY,,}:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+      - name: Build the image
+        env:
+          IMAGE: ${{ steps.name.outputs.image }}
+        run: |
+          docker build \
+            --label "org.opencontainers.image.source=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" \
+            --label "org.opencontainers.image.revision=$GITHUB_SHA" \
+            --tag "$IMAGE" .
+      - name: Start the image in recorded mode
+        env:
+          IMAGE: ${{ steps.name.outputs.image }}
+        run: |
+          docker run --detach --name smoke --publish 8080:8080 \
+            --env SARVAM_MODE=recorded \
+            --env SESSION_SECRET="$(openssl rand -base64 32)" \
+            "$IMAGE"
+          for _ in $(seq 30); do
+            curl --silent --fail --output /dev/null http://localhost:8080/readyz && exit 0
+            sleep 1
+          done
+          echo "::error::The server did not answer /readyz within 30 seconds."
+          exit 1
+      - name: Smoke test
+        run: |
+          curl --fail --silent --show-error --output /dev/null http://localhost:8080/
+          curl --fail --silent --show-error http://localhost:8080/healthz
+      - name: Show the server log
+        if: failure()
+        run: docker logs smoke || true
+      - name: Stop the image
+        if: always()
+        run: docker rm --force smoke || true
+      - name: Push the image
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          IMAGE: ${{ steps.name.outputs.image }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "$GITHUB_TOKEN" | docker login ghcr.io --username "$GITHUB_ACTOR" --password-stdin
+          docker push "$IMAGE"
+
+  deploy:
+    name: Deploy
+    needs: image
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.DEPLOY_HOST != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      IMAGE: ${{ needs.image.outputs.image }}
+    # On the VM, the deploy user runs "sudo k3s kubectl". Google Cloud gives a user
+    # with an SSH key in the instance metadata sudo with no password.
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check the deploy settings
+        env:
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+          DEPLOY_KNOWN_HOSTS: ${{ vars.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+        run: |
+          missing=""
+          for name in DEPLOY_USER DEPLOY_KNOWN_HOSTS DEPLOY_SSH_KEY SESSION_SECRET; do
+            [ -n "${!name}" ] || missing="$missing $name"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Add these Actions variables or secrets first:$missing (README.md, 'Deploy')."
+            exit 1
+          fi
+          if grep -rnF "0-0-0-0.sslip.io" deploy/; then
+            echo "::error::deploy/ still has the placeholder host 0-0-0-0.sslip.io. Put the sslip.io name of the static IP in deploy/ingress.yaml and deploy/configmap.yaml."
+            exit 1
+          fi
+      - name: Set up SSH
+        env:
+          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+          DEPLOY_KNOWN_HOSTS: ${{ vars.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host vm
+            HostName $DEPLOY_HOST
+            User $DEPLOY_USER
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+            StrictHostKeyChecking yes
+            ConnectTimeout 15
+          EOF
+      # One apply then makes one rollout. kubectl set image after the apply would
+      # roll the Recreate Deployment twice, first to the placeholder.
+      - name: Put the image tag in the manifests
+        run: |
+          mkdir rendered
+          cp deploy/*.yaml rendered/
+          sed -i "s|image: ghcr.io/OWNER/REPO:GIT_SHA|image: $IMAGE|" rendered/deployment.yaml
+          grep -qF "image: $IMAGE" rendered/deployment.yaml
+      # Server-side apply, so that no copy of the values goes into the
+      # last-applied-configuration annotation. Empty Actions secrets are left out.
+      - name: Make or update the Secret app-secrets
+        env:
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
+          FLAGSMITH_ENVIRONMENT_KEY: ${{ secrets.FLAGSMITH_ENVIRONMENT_KEY }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          DEMO_DESK_TOKEN: ${{ secrets.DEMO_DESK_TOKEN }}
+        run: |
+          ssh vm 'sudo k3s kubectl apply -f -' < rendered/00-namespace.yaml
+          for name in SESSION_SECRET SARVAM_API_KEY FLAGSMITH_ENVIRONMENT_KEY \
+            VAPID_PUBLIC_KEY VAPID_PRIVATE_KEY VAPID_SUBJECT DEMO_DESK_TOKEN; do
+            [ -z "${!name}" ] || printf '%s=%s\n' "$name" "${!name}"
+          done |
+            kubectl create secret generic app-secrets --namespace app \
+              --from-env-file=/dev/stdin --dry-run=client --output yaml |
+            ssh vm 'sudo k3s kubectl apply --server-side --field-manager=deploy -f -'
+      # When the Deployment is unchanged (the same commit again), the restart
+      # makes the pod read the current Secret and ConfigMap.
+      - name: Apply deploy/
+        run: |
+          for file in rendered/*.yaml; do printf -- '---\n'; cat "$file"; done |
+            ssh vm 'sudo k3s kubectl apply -f -' | tee apply.log
+          if grep -q '^deployment.apps/app unchanged' apply.log; then
+            ssh vm 'sudo k3s kubectl rollout restart deployment/app --namespace app'
+          fi
+      - name: Wait for the rollout
+        run: |
+          if ! ssh vm 'sudo k3s kubectl rollout status deployment/app --namespace app --timeout=5m'; then
+            ssh vm 'sudo k3s kubectl get pods,events --namespace app; sudo k3s kubectl logs deployment/app --namespace app --tail=100' || true
+            echo "::error::The new pod did not become ready. The pods, the events and the server log are above. If the image pull failed, make the GHCR package public (README.md, 'Deploy')."
+            exit 1
+          fi
+      - name: Check the live address
+        run: |
+          host=$(ssh vm 'sudo k3s kubectl get ingress app --namespace app --output "jsonpath={.spec.rules[0].host}"')
+          tls=()
+          if grep -q 'cluster-issuer: letsencrypt-staging' rendered/ingress.yaml; then
+            echo "::warning::The Ingress uses the Let's Encrypt staging issuer, so browsers do not trust the certificate. Switch deploy/ingress.yaml to letsencrypt-prod when the setup works."
+            tls=(--insecure)
+          fi
+          curl "${tls[@]}" --fail --silent --show-error --output /dev/null \
+            --retry 20 --retry-delay 6 --retry-all-errors "https://$host/healthz"
+          code=$(curl "${tls[@]}" --silent --output /dev/null --write-out '%{http_code}' "https://$host/metrics")
+          case "$code" in
+            403) ;;
+            404) echo "::warning::https://$host/metrics answered 404: the server refused it, but the Traefik Middleware deny-all in deploy/ingress.yaml did not." ;;
+            *)
+              echo "::error::https://$host/metrics answered $code. /metrics must not be public: check the Middleware deny-all in deploy/ingress.yaml."
+              exit 1
+              ;;
+          esac

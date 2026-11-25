@@ -1,0 +1,1845 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Components · the production styles</title>
+    <link rel="stylesheet" href="../src/styles/main.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: calc(var(--space) * 2) calc(var(--space) * 2) calc(var(--space) * 12);
+      }
+
+      .page {
+        max-width: calc(390px - var(--space) * 4);
+        margin: 0 auto;
+      }
+
+      .swatch-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space);
+        margin-bottom: calc(var(--space) * 3);
+
+        a {
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+          padding: 0 calc(var(--space) * 1.5);
+          border: var(--hair) solid var(--brass);
+          border-radius: var(--radius);
+          text-decoration: none;
+        }
+
+        a[aria-current="page"] {
+          border-color: var(--ink);
+          background: var(--ink);
+          color: var(--paper);
+        }
+      }
+
+      .page-header {
+        h1 {
+          margin: 0 0 var(--space);
+        }
+
+        p {
+          margin: 0 0 calc(var(--space) * 1.5);
+        }
+      }
+
+      .section {
+        padding: calc(var(--space) * 4) 0;
+        border-top: var(--hair) solid var(--brass);
+      }
+
+      .section-label {
+        margin: 0 0 var(--space);
+
+        span {
+          margin-inline-end: var(--space);
+          color: var(--ink-2);
+        }
+      }
+
+      .lead,
+      .caption {
+        margin: 0;
+        color: var(--ink-2);
+      }
+
+      .lead {
+        margin-bottom: calc(var(--space) * 3);
+      }
+
+      .group {
+        margin: calc(var(--space) * 4) 0 calc(var(--space) * 2);
+      }
+
+      .cells {
+        display: grid;
+        gap: calc(var(--space) * 3);
+      }
+
+      .cell {
+        display: grid;
+        justify-items: start;
+        gap: var(--space);
+      }
+
+      .wide {
+        justify-items: stretch;
+      }
+
+      fieldset.cell {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: calc(var(--space) * 1.5);
+      }
+
+      .stack {
+        display: grid;
+        gap: calc(var(--space) * 2);
+      }
+
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      code {
+        font-family: inherit;
+        white-space: nowrap;
+      }
+
+      pre code {
+        white-space: inherit;
+      }
+
+      :is(.cell, .row) > p {
+        margin: 0;
+      }
+
+      .swatches {
+        display: grid;
+        gap: calc(var(--space) * 2);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: grid;
+          grid-template-columns: calc(var(--space) * 5) 1fr;
+          gap: calc(var(--space) * 1.5);
+          align-items: start;
+        }
+
+        b {
+          margin-inline-end: var(--space);
+        }
+      }
+
+      .colour-chip {
+        inline-size: calc(var(--space) * 5);
+        block-size: calc(var(--space) * 5);
+        border: var(--hair) solid var(--brass);
+        border-radius: var(--radius);
+      }
+
+      .scale {
+        display: grid;
+        gap: calc(var(--space) * 2.5);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .s4 {
+        font-size: var(--step-4);
+        font-weight: 600;
+        line-height: 1.1;
+      }
+
+      .s3 {
+        font-size: var(--step-3);
+        font-weight: 600;
+        line-height: 1.15;
+      }
+
+      .s2 {
+        font-size: var(--step-2);
+        font-weight: 600;
+      }
+
+      .s1 {
+        font-size: var(--step-1);
+        font-weight: 600;
+      }
+
+      .langs {
+        display: grid;
+        gap: calc(var(--space) * 2);
+
+        div {
+          padding-top: calc(var(--space) * 1.5);
+          border-top: var(--hair) solid var(--brass);
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .prices {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--step-1);
+
+        th,
+        td {
+          padding: calc(var(--space) / 2) 0 calc(var(--space) / 2) var(--space);
+          border-top: var(--hair) solid var(--brass);
+          text-align: right;
+        }
+
+        th {
+          color: var(--ink-2);
+          font-size: var(--step-0);
+          font-weight: 400;
+        }
+
+        :is(th, td):first-child {
+          padding-left: 0;
+          font-size: var(--step-0);
+          text-align: left;
+        }
+      }
+
+      .weights span + span {
+        margin-inline-start: calc(var(--space) * 1.5);
+      }
+
+      .w400 {
+        font-weight: 400;
+      }
+
+      .w600 {
+        font-weight: 600;
+      }
+
+      .w650 {
+        font-weight: 650;
+      }
+
+      .w700 {
+        font-weight: 700;
+      }
+
+      .item-name {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 var(--space);
+        margin: 0;
+        font-size: var(--step-1);
+        font-weight: 600;
+      }
+
+      .item-meta {
+        margin: 0;
+        color: var(--ink-2);
+      }
+
+      .icon-set {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space) calc(var(--space) * 2);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: var(--space);
+          min-height: 44px;
+        }
+      }
+
+      .icon-set-44 {
+        --icon-size: 44px;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        li {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      .laptop {
+        inline-size: min(var(--page), calc(100vw - var(--space) * 4));
+        margin-inline-start: 50%;
+        translate: -50% 0;
+      }
+
+      .laptop-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+        align-items: start;
+        gap: calc(var(--space) * 3);
+      }
+
+      /* Block 15: the two Special tag options that the app does not use. Option A is the real component (festive-tag.css). */
+      .festive-ribbon,
+      .festive-rule {
+        display: inline-block;
+        padding: calc(var(--space) / 4) var(--space);
+        font-weight: 700;
+        line-height: 1.25;
+        white-space: nowrap;
+      }
+
+      .festive-ribbon {
+        border-radius: var(--radius);
+        background: linear-gradient(90deg, var(--marigold), var(--kumkum));
+        color: var(--paper);
+      }
+
+      .festive-rule {
+        border: 3px double var(--marigold);
+        color: var(--kumkum);
+      }
+
+      .dish-sample {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: var(--space);
+        inline-size: 100%;
+        padding-block: var(--space);
+        border-block-start: var(--hair) solid var(--brass-tint);
+
+        .num {
+          margin-inline-start: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <nav class="swatch-nav" aria-label="Swatch pages">
+        <a href="type.html">Type 1</a>
+        <a href="type-2.html">Type 2</a>
+        <a href="icons.html">Icons 1</a>
+        <a href="icons-2.html">Icons 2</a>
+        <a href="soundboard.html">Soundboard</a>
+        <a href="sound-kits.html">First sound kits</a>
+        <a href="components.html" aria-current="page">Components</a>
+      </nav>
+
+      <header class="page-header">
+        <h1>Components</h1>
+        <p>
+          One idea: this page is the app's own look, not a swatch. It loads only the production files: <code>src/styles/main.css</code>, the fonts in
+          <code>src/fonts</code> and the icon sprite <code>src/public/icons.svg</code>. If a component looks wrong here, it looks wrong in the app.
+        </p>
+        <p>
+          What changed from your selection: nothing in the look. New, because no swatch had them: the non-veg mark, the status badges, the form fields,
+          the busy mark, the pressed link button, and the disabled plain and link buttons. The plain and link buttons are now 56 px tall, like every tap target. Then, from the layout reference: the app is a laptop website, so controls are 44 px tall, buttons and chips are fully round, inputs have 8 px corners, and cards and order slips have 16 px corners (section 16 later made these corners squircles). Section 13 shows the new laptop pieces.
+        </p>
+        <p>How to check: open it on your phone, at arm's length. Each block names a component. Each caption gives the state and its exact spec.</p>
+      </header>
+
+      <main>
+        <section class="section" aria-labelledby="s01">
+          <h2 class="section-label" id="s01"><span class="num">01</span>Type</h2>
+          <p class="lead">
+            Anek for words, at normal width, weights 400 to 700, in all six languages. IBM Plex Mono for numbers, 400 and 600, with tabular figures.
+            Body text is 16 px. One scale, ratio 1.25.
+          </p>
+          <ol class="scale">
+            <li>
+              <p class="caption">step 4 · 39 px · the one big number</p>
+              <p class="s4 num">₹1,25,000</p>
+            </li>
+            <li>
+              <p class="caption">step 3 · 31 px · readouts and page titles</p>
+              <p class="s3 num">23 / 25 kg</p>
+              <p class="s3">Shobha's Kitchen</p>
+            </li>
+            <li>
+              <p class="caption">step 2 · 25 px · order numbers and section heads</p>
+              <p class="s2">Order <span class="num">104</span></p>
+              <p class="s2"><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+            </li>
+            <li>
+              <p class="caption">step 1 · 20 px · item names, quantities and totals</p>
+              <p class="s1" lang="hi">मैसूर पाक · काजू कतली</p>
+              <p class="s1 num">2 × 1 kg · ₹1,530</p>
+            </li>
+            <li>
+              <p class="caption">step 0 · 16 px · body text, the smallest size</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+            </li>
+          </ol>
+
+          <h3 class="group">Six languages</h3>
+          <div class="langs">
+            <div lang="en">
+              <p class="caption">English · line height 1.45</p>
+              <p class="s1">Mysore pak · Kaju katli · Rose cookies</p>
+              <p>Forward the voice note to us. We read it and show you the order.</p>
+            </div>
+            <div lang="hi">
+              <p class="caption" lang="en">Hindi · Devanagari · line height 1.55</p>
+              <p class="s1">मैसूर पाक · काजू कतली · मोतीचूर लड्डू</p>
+              <p>वॉइस नोट हमें फ़ॉरवर्ड कीजिए। हम उसे पढ़कर आपको ऑर्डर दिखाएँगे।</p>
+            </div>
+            <div lang="kn">
+              <p class="caption" lang="en">Kannada · line height 1.65</p>
+              <p class="s1">ಮೈಸೂರು ಪಾಕ್ · ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ · ನಿಪ್ಪಟ್ಟು</p>
+              <p>ವಾಯ್ಸ್ ನೋಟ್ ಅನ್ನು ನಮಗೆ ಫಾರ್ವರ್ಡ್ ಮಾಡಿ. ನಾವು ಅದನ್ನು ಓದಿ ನಿಮಗೆ ಆರ್ಡರ್ ತೋರಿಸುತ್ತೇವೆ.</p>
+            </div>
+            <div lang="ta">
+              <p class="caption" lang="en">Tamil · line height 1.55</p>
+              <p class="s1">முறுக்கு · தட்டை · அதிரசம்</p>
+              <p>வாய்ஸ் நோட்டை எங்களுக்கு ஃபார்வர்ட் செய்யுங்கள். நாங்கள் அதைப் படித்து உங்களுக்கு ஆர்டரைக் காட்டுவோம்.</p>
+            </div>
+            <div lang="te">
+              <p class="caption" lang="en">Telugu · line height 1.65</p>
+              <p class="s1">కజ్జికాయలు · చెక్కలు · సున్నుండలు</p>
+              <p>వాయిస్ నోట్‌ను మాకు ఫార్వర్డ్ చేయండి. మేము దాన్ని చదివి మీకు ఆర్డర్ చూపిస్తాము.</p>
+            </div>
+            <div lang="mr">
+              <p class="caption" lang="en">Marathi · Devanagari · line height 1.55</p>
+              <p class="s1">चकली · करंजी · शंकरपाळी</p>
+              <p>व्हॉइस नोट आम्हाला फॉरवर्ड करा. आम्ही ती वाचून तुम्हाला ऑर्डर दाखवू.</p>
+            </div>
+          </div>
+
+          <h3 class="group">Numbers</h3>
+          <div class="cells">
+            <div class="cell wide">
+              <table class="prices">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col" class="num">250 g</th>
+                    <th scope="col" class="num">500 g</th>
+                    <th scope="col" class="num">1 kg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mysore pak</td>
+                    <td class="num">₹230</td>
+                    <td class="num">₹450</td>
+                    <td class="num">₹880</td>
+                  </tr>
+                  <tr>
+                    <td>Kaju katli</td>
+                    <td class="num">₹330</td>
+                    <td class="num">₹650</td>
+                    <td class="num">₹1,280</td>
+                  </tr>
+                  <tr>
+                    <td>Nippattu</td>
+                    <td class="num">₹110</td>
+                    <td class="num">₹210</td>
+                    <td class="num">₹400</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="caption">Prices: Plex Mono 400, tabular, so the columns line up. Latin digits and Indian grouping in every language.</p>
+            </div>
+            <div class="cell">
+              <p class="weights s1 num"><span class="w400">₹1,111</span><span class="w600">₹8,888</span></p>
+              <p class="caption">Plex Mono 400 and 600. Every digit and ₹ is 0.6 em wide, so ₹1,111 and ₹8,888 have the same width.</p>
+            </div>
+            <div class="cell">
+              <p class="weights s1"><span class="w400">ಶನಿವಾರ</span><span class="w600">ಶನಿವಾರ</span><span class="w650">ಶನಿವಾರ</span><span class="w700">ಶನಿವಾರ</span></p>
+              <p class="weights s1" lang="hi"><span class="w400">शनिवार</span><span class="w600">शनिवार</span><span class="w650">शनिवार</span><span class="w700">शनिवार</span></p>
+              <p class="caption">Anek 400 body, 600 labels and names, 650 the primary button, 700 stamps. Never lighter than 400.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s02">
+          <h2 class="section-label" id="s02"><span class="num">02</span>Colours</h2>
+          <p class="lead">Each colour has one job. Paper and ink carry most of the screen.</p>
+          <ul class="swatches">
+            <li>
+              <span class="colour-chip" style="background: var(--paper)"></span>
+              <span><b>paper</b><span class="num">#faf6ee</span><br />The ground</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--ink)"></span>
+              <span><b>ink</b><span class="num">#1f1a16</span><br />Text, icons, the filled part of a measure</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--ink-2)"></span>
+              <span><b>ink-2</b><span class="num">#5c5248</span><br />Labels, units and meta text</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--ink-3)"></span>
+              <span><b>ink-3</b><span class="num">#8a8076</span><br />Disabled controls, closed days</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--ink-tint)"></span>
+              <span><b>ink-tint</b><span class="num">ink 8%</span><br />The words that the model heard; a pressed plain control</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--brass)"></span>
+              <span><b>brass</b><span class="num">#9c7430</span><br />Hairlines, edges, gauge ticks and the busy line, in place of shadows</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--brass-tint)"></span>
+              <span><b>brass-tint</b><span class="num">#eadcc2</span><br />The one fill of the icons</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--haldi)"></span>
+              <span><b>haldi</b><span class="num">#e2a230</span><br />The one primary action on each screen</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--kumkum)"></span>
+              <span><b>kumkum</b><span class="num">#b3262d</span><br />Still needs her: NEW, MAKING, SOLD OUT, Full, errors</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--leaf)"></span>
+              <span><b>leaf</b><span class="num">#27703a</span><br />Finished or open: READY, PICKED UP, DELIVERED, PAID, open capacity, confirmations; the veg mark</span>
+            </li>
+            <li>
+              <span class="colour-chip" style="background: var(--fssai-brown)"></span>
+              <span><b>fssai-brown</b><span class="num">#7a3e14</span><br />The FSSAI non-veg mark only</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="s03">
+          <h2 class="section-label" id="s03"><span class="num">03</span>Buttons</h2>
+          <p class="lead">Buttons carry words. Every button is 44 px tall or more, and fully round. The finger sees the pressed state at once, in 0 ms.</p>
+          <h3 class="group">Primary: one on each screen</h3>
+          <div class="cells">
+            <div class="cell">
+              <button class="btn-primary" type="button">Save order</button>
+              <p class="caption">default: haldi face, 2 px ink border, 4 px ink edge under it, fully round, Anek 650</p>
+            </div>
+            <div class="cell">
+              <button class="btn-primary" type="button" data-state="pressed">Save order</button>
+              <p class="caption">pressed: moves down 4 px and the edge goes, 0 ms</p>
+            </div>
+            <div class="cell">
+              <button class="btn-primary" type="button" data-state="focus">Save order</button>
+              <p class="caption">keyboard focus: a 3 px ink ring, 3 px outside the edge</p>
+            </div>
+            <div class="cell">
+              <button class="btn-primary" type="button" disabled>Save order</button>
+              <p class="caption">disabled: paper face; border, edge and word in ink-3</p>
+            </div>
+            <div class="cell">
+              <button class="btn-primary" type="button">
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>Record an order
+              </button>
+              <p class="caption">with an icon: the icon helps the word; its holes take the haldi face</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <button class="btn-primary" type="button" lang="hi">ऑर्डर सेव करें</button>
+                <button class="btn-primary" type="button" lang="kn">ಆರ್ಡರ್ ಉಳಿಸಿ</button>
+              </div>
+              <p class="caption">Hindi and Kannada: the same button, in the line height of the script</p>
+            </div>
+          </div>
+
+          <h3 class="group">Plain</h3>
+          <div class="cells">
+            <div class="cell">
+              <button class="btn-plain" type="button">
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#message" /></svg>Message the store
+              </button>
+              <p class="caption">default: paper face, 1 px ink border, fully round</p>
+            </div>
+            <div class="cell">
+              <button class="btn-plain" type="button" data-state="pressed">
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#message" /></svg>Message the store
+              </button>
+              <p class="caption">pressed: ink tint, 0 ms</p>
+            </div>
+            <div class="cell">
+              <button class="btn-plain" type="button" data-state="focus">
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#message" /></svg>Message the store
+              </button>
+              <p class="caption">keyboard focus: a 3 px ink ring, 3 px outside</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <button class="btn-plain" type="button" aria-pressed="true">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#sweets" /></svg>Sweets
+                </button>
+                <button class="btn-plain" type="button" aria-pressed="false">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#savouries" /></svg>Savouries
+                </button>
+              </div>
+              <p class="caption">on and off (aria-pressed): on is an ink face with a paper word; the icon keeps its fill and its holes take the ink</p>
+            </div>
+            <div class="cell">
+              <button class="btn-plain" type="button" disabled>
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#share" /></svg>Share
+              </button>
+              <p class="caption">disabled: border, word and line in ink-3</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <button class="btn-plain" type="button" aria-label="Close">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#close" /></svg>
+                </button>
+                <button class="btn-plain" type="button" aria-label="Record">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>
+                </button>
+              </div>
+              <p class="caption">icon only: for mic, plus, minus and close, with an accessible name; a 44 px circle</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <button class="btn-plain" type="button" lang="hi">दुकान को मैसेज करें</button>
+                <button class="btn-plain" type="button" lang="kn">ಅಂಗಡಿಗೆ ಮೆಸೇಜ್ ಮಾಡಿ</button>
+              </div>
+              <p class="caption">Hindi and Kannada</p>
+            </div>
+          </div>
+
+          <h3 class="group">Link</h3>
+          <div class="cells">
+            <div class="cell">
+              <div class="row">
+                <button class="link-btn" type="button">Change</button>
+                <button class="link-btn" type="button" lang="hi">बदलें</button>
+                <button class="link-btn" type="button" lang="kn">ಬದಲಿಸಿ</button>
+              </div>
+              <p class="caption">default: an underlined ink word in a 44 px tap area</p>
+            </div>
+            <div class="cell">
+              <button class="link-btn" type="button" data-state="pressed">Change</button>
+              <p class="caption">pressed: ink tint, 0 ms</p>
+            </div>
+            <div class="cell">
+              <button class="link-btn" type="button" data-state="focus">Change</button>
+              <p class="caption">keyboard focus: a 3 px ink ring, 2 px outside</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <button class="link-btn" type="button">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#undo" /></svg>Undo
+                </button>
+                <button class="link-btn" type="button" disabled>Change</button>
+              </div>
+              <p class="caption">with an icon, and disabled (ink-3)</p>
+            </div>
+          </div>
+
+          <div id="busy">
+            <h3 class="group">Busy: a wait of more than 300 ms</h3>
+            <div class="cells">
+              <div class="cell">
+                <button class="btn-primary" type="button" aria-busy="true">Save order</button>
+                <p class="caption">
+                  busy (<code>aria-busy="true"</code>): a 2 px brass line, 30% long, sweeps along the inside of the bottom edge in 1.2 s, linear. The word
+                  stays and the button keeps its size. The page sets it after 300 ms; with reduced motion the line stays still, full width.
+                </p>
+              </div>
+              <div class="cell">
+                <button class="btn-plain" type="button" aria-busy="true">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#share" /></svg>Share
+                </button>
+                <p class="caption">plain, busy</p>
+              </div>
+              <div class="cell">
+                <button class="link-btn" type="button" aria-busy="true">Change</button>
+                <p class="caption">link, busy: the line takes the place of the underline, under the word</p>
+              </div>
+              <div class="cell">
+                <div class="row">
+                  <button class="btn-primary" type="button" aria-busy="true">
+                    <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>Record an order
+                  </button>
+                  <p class="wait" role="status">Reading the voice note · <span class="num">4 s</span></p>
+                </div>
+                <p class="caption">after 1 s: the real progress in words next to the control, in ink-2, with the seconds in Plex Mono</p>
+              </div>
+              <div class="cell">
+                <p class="wait" lang="hi">वॉइस नोट पढ़ रहे हैं · <span class="num">4 s</span></p>
+                <p class="wait" lang="kn">ವಾಯ್ಸ್ ನೋಟ್ ಓದುತ್ತಿದ್ದೇವೆ · <span class="num">4 s</span></p>
+                <p class="caption">the progress words in Hindi and Kannada</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s04">
+          <h2 class="section-label" id="s04"><span class="num">04</span>Stepper</h2>
+          <p class="lead">− and + are plain buttons, 44 px circles. The count is Plex Mono 600 at 20 px, tabular, so the buttons do not move.</p>
+          <div class="cells">
+            <div class="cell">
+              <div class="stepper" role="group" aria-label="Mysore pak, 1 kg">
+                <button class="btn-plain" type="button" aria-label="One less Mysore pak, 1 kg">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#minus" /></svg>
+                </button>
+                <output class="num">1</output>
+                <button class="btn-plain" type="button" aria-label="One more Mysore pak, 1 kg">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#plus" /></svg>
+                </button>
+              </div>
+              <p class="caption">default: one pack of Mysore pak, 1 kg</p>
+            </div>
+            <div class="cell">
+              <div class="stepper" role="group" aria-label="Kaju katli, 250 g">
+                <button class="btn-plain" type="button" aria-label="One less Kaju katli, 250 g">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#minus" /></svg>
+                </button>
+                <output class="num">12</output>
+                <button class="btn-plain" type="button" aria-label="One more Kaju katli, 250 g" data-state="pressed">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#plus" /></svg>
+                </button>
+              </div>
+              <p class="caption">+ pressed, at 12: two digits take the same space as one</p>
+            </div>
+            <div class="cell" lang="kn">
+              <div class="stepper" role="group" aria-label="ಸಿಹಿ, ಸಿಲ್ವರ್ ಪ್ಲೇಟ್">
+                <button class="btn-plain" type="button" aria-label="ಒಂದು ಕಡಿಮೆ">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#minus" /></svg>
+                </button>
+                <output class="num">2</output>
+                <button class="btn-plain" type="button" aria-label="ಇನ್ನೊಂದು" disabled>
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#plus" /></svg>
+                </button>
+              </div>
+              <p class="caption" lang="en">at a limit: + is disabled. The Silver plate allows 2 sweets. Names in Kannada for a screen reader.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s05">
+          <h2 class="section-label" id="s05"><span class="num">05</span>Stamps</h2>
+          <p class="lead">A status is a stamp: an uppercase word in a 2 px box, Anek 700, square corners. The colour tells who has work to do; the word tells what.</p>
+          <div class="cells">
+            <div class="cell">
+              <div class="row">
+                <span class="stamp">New</span>
+                <span class="stamp">Making</span>
+                <span class="stamp">Sold out</span>
+              </div>
+              <p class="caption">kumkum: still needs her</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <span class="stamp" data-kind="done">Ready</span>
+                <span class="stamp" data-kind="done">Picked up</span>
+                <span class="stamp" data-kind="done">Delivered</span>
+                <span class="stamp" data-kind="done">Paid</span>
+              </div>
+              <p class="caption">leaf: finished</p>
+            </div>
+            <div class="cell">
+              <span class="stamp" data-kind="mark">Closed</span>
+              <p class="caption">ink: a status with no work left, for example a closed request. The Special tag of a dish is not a stamp: see block 15.</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <span class="stamp" data-hand>Making</span>
+                <span class="stamp" data-kind="done" data-hand style="--tilt: 3deg">Paid</span>
+                <span class="stamp" data-kind="done">Paid</span>
+              </div>
+              <p class="caption">
+                her hand tilts 3°, at an angle fixed for each order: MAKING, and PAID for cash. The slip sets the angle in <code>--tilt</code>. A system
+                stamp stays straight: PAID from an online payment.
+              </p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <span class="stamp" data-kind="done" data-hand data-landing id="landing">Ready</span>
+                <button class="btn-plain" type="button" data-replay="landing">Stamp again</button>
+              </div>
+              <p class="caption">lands: 120 ms, linear, no overshoot, from 125% and clear. Only a stamp she has just made lands; a page load does not move.</p>
+            </div>
+            <div class="cell">
+              <div class="row" lang="hi">
+                <span class="stamp">नया</span>
+                <span class="stamp" data-kind="done" data-hand>तैयार</span>
+              </div>
+              <div class="row" lang="kn">
+                <span class="stamp">ಹೊಸ</span>
+                <span class="stamp" data-kind="done" data-hand>ಸಿದ್ಧ</span>
+              </div>
+              <p class="caption">Hindi and Kannada (NEW, READY): no letter spacing, which would break the Devanagari headline, and the line height of the script</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s06">
+          <h2 class="section-label" id="s06"><span class="num">06</span>Order slip</h2>
+          <p class="lead">A card: a 1.5 px brass-tint border, 16 px corners, a flat 2 px edge, and two ticket notches on the dashed tear line under the head. Item rows, then the total over a hairline. Section 13 shows the slip of the desk.</p>
+          <div class="cells">
+            <div class="cell wide">
+              <article class="slip" lang="kn">
+                <header class="slip-head">
+                  <span>ಆರ್ಡರ್ <span class="order-no num">104</span></span><span>ಶನಿವಾರ</span>
+                </header>
+                <p class="slip-who">ಪ್ರಿಯಾ · ಡೆಲಿವರಿ · ಜಯನಗರ</p>
+                <table class="slip-lines">
+                  <tbody>
+                    <tr>
+                      <td>ಮೈಸೂರು ಪಾಕ್</td>
+                      <td class="num">1 kg</td>
+                      <td class="num">₹880</td>
+                    </tr>
+                    <tr>
+                      <td>ಚಕ್ಕುಲಿ</td>
+                      <td class="num">500 g</td>
+                      <td class="num">₹210</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="slip-total"><span>ಒಟ್ಟು</span><span class="num">₹1,090</span></p>
+                <p class="slip-stamps" lang="en">
+                  <span class="stamp" data-hand>Making</span>
+                  <span class="stamp" data-kind="done">Paid</span>
+                </p>
+              </article>
+              <p class="caption">Kannada, on Shobha's desk: her MAKING tilts −3°; PAID came from an online payment, so it is straight</p>
+            </div>
+            <div class="cell wide">
+              <article class="slip" style="--tilt: 3deg">
+                <header class="slip-head">
+                  <span>Order <span class="order-no num">105</span></span><span>Sunday</span>
+                </header>
+                <p class="slip-who">Suresh · Pickup</p>
+                <table class="slip-lines">
+                  <tbody>
+                    <tr>
+                      <td>Kaju katli</td>
+                      <td class="num">2 × 1 kg</td>
+                      <td class="num">₹2,560</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="slip-total"><span>Total</span><span class="num">₹2,560</span></p>
+                <p class="slip-stamps">
+                  <span class="stamp" data-kind="done" data-hand>Ready</span>
+                  <span class="stamp" data-kind="done" data-hand>Paid</span>
+                </p>
+              </article>
+              <p class="caption">English, another order: this slip sets <code>--tilt: 3deg</code>, so both of her stamps tilt the other way. PAID by hand, for cash.</p>
+            </div>
+            <div class="cell wide">
+              <article class="slip" lang="hi">
+                <header class="slip-head">
+                  <span>ऑर्डर <span class="order-no num">12</span></span><span>शनिवार</span>
+                </header>
+                <p class="slip-who">रोहित · डिलीवरी · HSR लेआउट</p>
+                <table class="slip-lines">
+                  <tbody>
+                    <tr>
+                      <td>काजू कतली</td>
+                      <td class="num">1 kg</td>
+                      <td class="num">₹1,300</td>
+                    </tr>
+                    <tr>
+                      <td>मोतीचूर लड्डू</td>
+                      <td class="num">500 g</td>
+                      <td class="num">₹300</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="slip-total"><span>कुल</span><span class="num">₹1,600</span></p>
+                <p class="slip-stamps">
+                  <span class="stamp">नया</span>
+                </p>
+              </article>
+              <p class="caption">Hindi, at Ghar Ki Mithai: a new order starts as NEW, from the system, so it is straight</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s07">
+          <h2 class="section-label" id="s07"><span class="num">07</span>Capacity gauge</h2>
+          <p class="lead">One segment for each unit of the daily limit, 25 at most. Booked is ink, open is leaf. The readout is Plex Mono 600 at 31 px.</p>
+          <div class="cells">
+            <div class="cell wide">
+              <section class="gauge" aria-label="ಶನಿವಾರ" lang="kn">
+                <p class="gauge-head"><span>ಶನಿವಾರ</span><span class="readout num">23 / 25 kg</span></p>
+                <meter class="visually-hidden" min="0" max="25" value="23">23 / 25 kg</meter>
+                <ol class="segments" aria-hidden="true">
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="open"></li><li data-state="open"></li>
+                </ol>
+                <p class="gauge-foot"><span class="num">2 kg</span> ಉಳಿದಿದೆ</p>
+              </section>
+              <p class="caption">open space: 23 kg booked, 2 kg left. Kannada, on Shobha's desk.</p>
+            </div>
+            <div class="cell wide">
+              <section class="gauge" aria-label="Saturday">
+                <p class="gauge-head"><span>Saturday</span><span class="readout num">23 / 25 kg</span></p>
+                <meter class="visually-hidden" min="0" max="25" value="23">23 / 25 kg</meter>
+                <ol class="segments" aria-hidden="true">
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="draft"></li><li data-state="draft"></li>
+                </ol>
+                <p class="gauge-foot">This order: <span class="num">2 kg</span>, not saved yet</p>
+              </section>
+              <p class="caption">a draft order: its 2 kg are dashed, 2 px ink, until she saves it</p>
+            </div>
+            <div class="cell wide">
+              <section class="gauge" aria-label="Saturday">
+                <p class="gauge-head"><span>Saturday</span><span class="readout num">25 / 25 kg</span></p>
+                <meter class="visually-hidden" min="0" max="25" value="25">25 / 25 kg</meter>
+                <ol class="segments" aria-hidden="true">
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                </ol>
+                <p class="gauge-foot"><span class="full">Full</span></p>
+              </section>
+              <p class="caption">a full day: every segment ink, and Full in kumkum</p>
+            </div>
+            <div class="cell wide">
+              <section class="gauge" aria-label="शनिवार" lang="hi">
+                <p class="gauge-head"><span>शनिवार</span><span class="readout num">9 / 15</span></p>
+                <meter class="visually-hidden" min="0" max="15" value="9">9 / 15</meter>
+                <ol class="segments" aria-hidden="true">
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li>
+                  <li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="booked"></li><li data-state="open"></li>
+                  <li data-state="open"></li><li data-state="open"></li><li data-state="open"></li><li data-state="open"></li><li data-state="open"></li>
+                </ol>
+                <p class="gauge-foot"><span class="num">6</span> ऑर्डर बाकी</p>
+              </section>
+              <p class="caption">a limit of 15 orders: the segments share the full width. Hindi.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s08">
+          <h2 class="section-label" id="s08"><span class="num">08</span>Cart bar</h2>
+          <p class="lead">A 2 px ink box. The total sits in its own 1 px ink box, in Plex Mono 600 at 20 px. Its one action is the primary button.</p>
+          <div class="cells">
+            <div class="cell wide">
+              <div class="cart-bar">
+                <p class="cart-sum">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#cart" /></svg>
+                  <span><span class="num">2</span> items</span>
+                  <span class="cart-total num">₹1,530</span>
+                </p>
+                <button class="btn-primary" type="button">Order</button>
+              </div>
+              <p class="caption">English: Mysore pak 1 kg and kaju katli 500 g</p>
+            </div>
+            <div class="cell wide">
+              <div class="cart-bar" lang="hi">
+                <p class="cart-sum">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#cart" /></svg>
+                  <span><span class="num">2</span> आइटम</span>
+                  <span class="cart-total num">₹1,900</span>
+                </p>
+                <button class="btn-primary" type="button">ऑर्डर करें</button>
+              </div>
+              <p class="caption">Hindi, at Ghar Ki Mithai</p>
+            </div>
+            <div class="cell wide">
+              <div class="cart-bar" lang="kn">
+                <p class="cart-sum">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#cart" /></svg>
+                  <span><span class="num">1</span> ಐಟಂ</span>
+                  <span class="cart-total num">₹880</span>
+                </p>
+                <button class="btn-primary" type="button">ಆರ್ಡರ್ ಮಾಡಿ</button>
+              </div>
+              <p class="caption">Kannada</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s09">
+          <h2 class="section-label" id="s09"><span class="num">09</span>Marks and badges</h2>
+          <p class="lead">
+            The FSSAI marks follow the 2020 regulation: the square is twice the circle, and the triangle side is 7/16 of the square. Shape tells them
+            apart, not only colour.
+          </p>
+          <div class="cells">
+            <div class="cell">
+              <p class="item-name"><span class="food-mark" role="img" aria-label="Veg"></span><span lang="kn">ಮೈಸೂರು ಪಾಕ್</span> <span>Mysore pak</span></p>
+              <p class="item-meta">Dairy</p>
+              <p class="caption">veg: a leaf dot in a leaf square, 16 px</p>
+            </div>
+            <div class="cell">
+              <p class="item-name"><span class="food-mark" data-food="non-veg" role="img" aria-label="Non-veg"></span><span>Rose cookies</span></p>
+              <p class="item-meta">Egg</p>
+              <p class="caption">egg: FSSAI counts egg as non-veg, so an egg item shows the non-veg mark and the word Egg</p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <span class="food-mark" role="img" aria-label="Veg"></span>
+                <span class="food-mark" data-food="non-veg" role="img" aria-label="Non-veg"></span>
+                <span class="food-mark" style="--mark-size: 48px" role="img" aria-label="Veg"></span>
+                <span class="food-mark" data-food="non-veg" style="--mark-size: 48px" role="img" aria-label="Non-veg"></span>
+              </div>
+              <p class="caption">veg and non-veg at 16 px and at 48 px, to check the shapes: a brown triangle in a brown square</p>
+            </div>
+          </div>
+
+          <h3 class="group">Status badges</h3>
+          <div class="cells">
+            <div class="cell">
+              <div class="row">
+                <span class="badge">Demo</span>
+                <span class="badge">Recorded</span>
+                <span class="badge">Prototype</span>
+              </div>
+              <div class="row" lang="hi">
+                <span class="badge">डेमो</span>
+                <span class="badge">रिकॉर्डेड</span>
+                <span class="badge">प्रोटोटाइप</span>
+              </div>
+              <div class="row" lang="kn">
+                <span class="badge">ಡೆಮೊ</span>
+                <span class="badge">ರೆಕಾರ್ಡೆಡ್</span>
+                <span class="badge">ಪ್ರೊಟೊಟೈಪ್</span>
+              </div>
+              <p class="caption">
+                a word in ink-2, Anek 600, in a 1 px brass box with 4 px corners. Not a stamp: no colour and no capitals. Not a button: no ink border.
+              </p>
+            </div>
+            <div class="cell">
+              <div class="row">
+                <span class="s1">Shobha's Kitchen</span>
+                <span class="badge">Demo</span>
+              </div>
+              <div class="row">
+                <span>What we heard</span>
+                <span class="badge">Recorded</span>
+              </div>
+              <div class="row">
+                <span>Pay <span class="num">₹450</span></span>
+                <span class="badge">Prototype</span>
+              </div>
+              <p class="caption">in use: a demo store, a reading replayed in recorded mode, the simulated payment</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s10">
+          <h2 class="section-label" id="s10"><span class="num">10</span>Forms and the check screen</h2>
+          <p class="lead">Native fields: 44 px tall, a 1 px ink border, 8 px corners. Each error says what to do next.</p>
+          <form class="cells" novalidate>
+            <div class="cell wide field">
+              <label for="name">Your name</label>
+              <p class="field-hint" id="name-hint">The seller sees it on your order.</p>
+              <input id="name" name="name" autocomplete="given-name" aria-describedby="name-hint" value="Arjun" />
+              <p class="caption">default, with a hint in ink-2. Tap it: the 3 px ink focus ring.</p>
+            </div>
+            <div class="cell wide field">
+              <label for="phone">WhatsApp number</label>
+              <input id="phone" name="phone" class="num" inputmode="numeric" autocomplete="tel-national" value="98450" aria-invalid="true" aria-describedby="phone-error" />
+              <p class="field-error" id="phone-error">Enter all 10 digits, for example 98450 12345.</p>
+              <p class="caption">error: a kumkum border and a kumkum line that says what to do next. Numbers in Plex Mono.</p>
+            </div>
+            <div class="cell wide field">
+              <label for="note">Note for the seller</label>
+              <textarea id="note" name="note">Less sugar, please.</textarea>
+              <p class="caption">a longer answer: two rows high, and it grows down</p>
+            </div>
+            <div class="cell wide field">
+              <label for="area">Pickup from</label>
+              <input id="area" name="area" value="Basavanagudi" disabled />
+              <p class="caption">disabled: border and value in ink-3</p>
+            </div>
+            <div class="cell wide field">
+              <label for="day">Day</label>
+              <select id="day" name="day">
+                <option>Saturday</option>
+                <option disabled>Sunday · Full</option>
+                <option>Monday</option>
+              </select>
+              <p class="caption">a select: the native list, with a full day closed</p>
+            </div>
+            <div class="cell wide field" lang="kn">
+              <label for="name-kn">ನಿಮ್ಮ ಹೆಸರು</label>
+              <input id="name-kn" name="name-kn" value="ಪ್ರಿಯಾ" />
+              <p class="caption" lang="en">Kannada</p>
+            </div>
+            <div class="cell wide field" lang="hi">
+              <label for="name-hi">आपका नाम</label>
+              <input id="name-hi" name="name-hi" value="रोहित" />
+              <p class="caption" lang="en">Hindi</p>
+            </div>
+            <fieldset class="cell wide">
+              <legend class="s1">How do you want it?</legend>
+              <label class="choice">
+                <input type="radio" name="way" checked />
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#pickup" /></svg>
+                <span>Pickup<small>From Basavanagudi</small></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="way" />
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#delivery" /></svg>
+                <span>Delivery<small>To your address</small></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="day-pick" disabled />
+                <span>Sunday<small><span class="full">Full</span></small></span>
+              </label>
+              <label class="choice">
+                <input type="checkbox" name="pay-online" />
+                <span>Ask strangers to pay online</span>
+              </label>
+              <p class="caption">choices: the native radio and check box at 24 px in ink, each row a 44 px tap target. A full day is closed, with the reason in words.</p>
+            </fieldset>
+          </form>
+
+          <h3 class="group">Check screen</h3>
+          <div class="cells">
+            <div class="cell wide" lang="kn">
+              <div class="row">
+                <p class="heard-label">ಕೇಳಿದ್ದು</p>
+                <span class="badge">ರೆಕಾರ್ಡೆಡ್</span>
+              </div>
+              <p class="heard">“<mark>2 kilo</mark> <mark>ಮೈಸೂರು ಪಾಕ್</mark>, <mark>less sugar</mark>”</p>
+              <dl class="answers">
+                <div>
+                  <dt>ಐಟಂ</dt>
+                  <dd><span class="draft">ಮೈಸೂರು ಪಾಕ್</span></dd>
+                  <dd><button class="link-btn" type="button">ಬದಲಿಸಿ</button></dd>
+                </div>
+                <div>
+                  <dt>ಪ್ರಮಾಣ</dt>
+                  <dd><span class="draft num">2 × 1 kg</span></dd>
+                  <dd><button class="link-btn" type="button">ಬದಲಿಸಿ</button></dd>
+                </div>
+                <div>
+                  <dt>ಸೂಚನೆ</dt>
+                  <dd><span class="draft">less sugar</span></dd>
+                  <dd><button class="link-btn" type="button">ಬದಲಿಸಿ</button></dd>
+                </div>
+                <div>
+                  <dt>ದಿನ</dt>
+                  <dd>ಶನಿವಾರ</dd>
+                  <dd><button class="link-btn" type="button">ಬದಲಿಸಿ</button></dd>
+                </div>
+              </dl>
+              <button class="btn-primary" type="button">ಆರ್ಡರ್ ಉಳಿಸಿ</button>
+              <p class="caption" lang="en">
+                Kannada, on Shobha's desk. Each heard word sits on an ink tint (8%). A value that the model filled has a dashed underline until she confirms
+                it; the day is confirmed, so it has none. Change is a link button.
+              </p>
+            </div>
+            <div class="cell wide" lang="hi">
+              <p class="heard-label">सुना गया</p>
+              <p class="heard">“<mark>शनिवार</mark> के लिए <mark>एक किलो</mark> <mark>काजू कतली</mark> चाहिए”</p>
+              <dl class="answers">
+                <div>
+                  <dt>आइटम</dt>
+                  <dd><span class="draft">काजू कतली</span></dd>
+                  <dd><button class="link-btn" type="button">बदलें</button></dd>
+                </div>
+                <div>
+                  <dt>मात्रा</dt>
+                  <dd><span class="draft num">1 kg</span></dd>
+                  <dd><button class="link-btn" type="button">बदलें</button></dd>
+                </div>
+                <div>
+                  <dt>दिन</dt>
+                  <dd><span class="draft">शनिवार</span></dd>
+                  <dd><button class="link-btn" type="button">बदलें</button></dd>
+                </div>
+              </dl>
+              <button class="btn-primary" type="button">ऑर्डर सेव करें</button>
+              <p class="caption" lang="en">Hindi</p>
+            </div>
+          </div>
+
+          <h3 class="group">Done and error lines</h3>
+          <div class="cells">
+            <div class="cell">
+              <p class="done" role="status">
+                <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#check" /></svg>Order saved
+                <button class="link-btn" type="button"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#undo" /></svg>Undo</button>
+              </p>
+              <p class="caption">done: leaf, Anek 600, with the check. Undo is right there, not "are you sure?".</p>
+            </div>
+            <div class="cell">
+              <p class="error">No network. Try again.</p>
+              <p class="error" lang="hi">नेटवर्क नहीं है। फिर से कोशिश करें।</p>
+              <p class="error" lang="kn">ನೆಟ್‌ವರ್ಕ್ ಇಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</p>
+              <p class="caption">error: kumkum, Anek 600. What went wrong, then what to do. The typed text and the recording stay on the screen.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s11">
+          <h2 class="section-label" id="s11"><span class="num">11</span>Icons</h2>
+          <p class="lead">
+            Ink lines, 1.75 px at 24 px, with round ends, and one flat brass-tint fill. Holes take the colour behind the icon. The redraw for every icon;
+            catering and bulk keep draft 1.
+          </p>
+          <h3 class="group">Controls</h3>
+          <ul class="icon-set">
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>mic</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>stop</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#plus" /></svg>plus</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#minus" /></svg>minus</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#check" /></svg>check</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#undo" /></svg>undo</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#close" /></svg>close</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#search" /></svg>search</li>
+          </ul>
+          <h3 class="group">Order</h3>
+          <ul class="icon-set">
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#cart" /></svg>cart</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#share" /></svg>share</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#location" /></svg>location</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#message" /></svg>message</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#pickup" /></svg>pickup</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#delivery" /></svg>delivery</li>
+          </ul>
+          <h3 class="group">Categories</h3>
+          <ul class="icon-set">
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#sweets" /></svg>sweets</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#snacks" /></svg>snacks</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#savouries" /></svg>savouries</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#meals" /></svg>meals</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#catering" /></svg>catering</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#bulk" /></svg>bulk</li>
+          </ul>
+
+          <h3 class="group">At 44 px</h3>
+          <ul class="icon-set icon-set-44">
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>mic</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>stop</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#plus" /></svg>plus</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#minus" /></svg>minus</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#check" /></svg>check</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#undo" /></svg>undo</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#close" /></svg>close</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#cart" /></svg>cart</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#location" /></svg>location</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#message" /></svg>message</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#search" /></svg>search</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#sweets" /></svg>sweets</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#snacks" /></svg>snacks</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#savouries" /></svg>savouries</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#meals" /></svg>meals</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#catering" /></svg>catering</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#bulk" /></svg>bulk</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#pickup" /></svg>pickup</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#delivery" /></svg>delivery</li>
+            <li><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#share" /></svg>share</li>
+          </ul>
+
+          <h3 class="group">On other grounds</h3>
+          <div class="cells">
+            <div class="cell">
+              <div class="row">
+                <button class="btn-primary" type="button">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#location" /></svg>Map
+                </button>
+                <button class="btn-plain" type="button" aria-pressed="true">
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#meals" /></svg>Meals
+                </button>
+                <button class="btn-primary" type="button" disabled>
+                  <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#delivery" /></svg>Deliver
+                </button>
+              </div>
+              <p class="caption">the line follows the word colour; the holes follow the ground: haldi, ink, paper</p>
+            </div>
+            <div class="cell wide">
+              <pre class="num"><code>&lt;svg class="icon" aria-hidden="true"&gt;&lt;use href="/icons.svg#cart"/&gt;&lt;/svg&gt;</code></pre>
+              <p class="caption">
+                the markup in a page. The sprite is built from <code>src/icons/*.svg</code> by <code>node scripts/icons.ts</code>. This page uses the
+                relative path <code>../src/public/icons.svg</code>.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="s12">
+          <h2 class="section-label" id="s12"><span class="num">12</span>Voice</h2>
+          <p class="lead">
+            The record button, the level meter, the timer and the upload control. No colour means recording: the moving level and the running timer
+            show that the app is listening.
+          </p>
+          <div id="voice-block">
+            <div class="cells">
+              <div class="cell wide">
+                <div class="voice">
+                  <button class="voice-button" type="button" data-phase="idle">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>Record</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>Stop</span>
+                  </button>
+                  <span class="voice-level" aria-hidden="true"></span>
+                  <span class="voice-timer" role="timer">0:00 / 5:00</span>
+                  <label class="file-pick">Choose a voice note<input type="file" accept="audio/*" /></label>
+                </div>
+                <p class="caption">idle: Record with the mic. The meter is 20 empty brass cells; the timer shows the 5:00 limit.</p>
+              </div>
+              <div class="cell wide">
+                <div class="voice">
+                  <button class="voice-button" type="button" data-phase="opening">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>Record</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>Stop</span>
+                  </button>
+                  <span class="voice-level" aria-hidden="true"></span>
+                  <span class="voice-timer" role="timer">0:00 / 5:00</span>
+                </div>
+                <p class="caption">opening the mic: the busy line enters after 300 ms, so a quick open shows nothing</p>
+              </div>
+              <div class="cell wide">
+                <div class="voice">
+                  <button class="voice-button" type="button" data-phase="recording">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>Record</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>Stop</span>
+                  </button>
+                  <span class="voice-level" style="--level: 0.6" aria-hidden="true"></span>
+                  <span class="voice-timer" role="timer">0:07 / 5:00</span>
+                </div>
+                <p class="caption">
+                  recording: Stop with the stop icon, at the width of the wider face. Ink fills the cells up to <code>--level</code> (0.6 here), which the
+                  page sets on each frame; it follows in 120 ms, linear. The timer is Plex Mono, tabular.
+                </p>
+              </div>
+              <div class="cell wide">
+                <div class="voice">
+                  <button class="voice-button" type="button" data-phase="stopping">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>Record</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>Stop</span>
+                  </button>
+                  <span class="voice-level" aria-hidden="true"></span>
+                  <span class="voice-timer" role="timer">0:07 / 5:00</span>
+                </div>
+                <p class="caption">stopping: the busy line, after 300 ms</p>
+              </div>
+              <div class="cell">
+                <div class="row">
+                  <label class="file-pick">Choose a voice note<input type="file" accept="audio/*" /></label>
+                  <label class="file-pick" data-state="focus">Choose a voice note<input type="file" accept="audio/*" tabindex="-1" /></label>
+                </div>
+                <p class="caption">
+                  the upload control: a label that looks like a plain button, with the native file input hidden inside. Tab to it: the 3 px ink ring.
+                </p>
+              </div>
+              <div class="cell wide">
+                <div class="voice">
+                  <button class="btn-primary voice-button" type="button" data-phase="recording">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>Record</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>Stop</span>
+                  </button>
+                  <span class="voice-level" style="--level: 0.6" aria-hidden="true"></span>
+                  <span class="voice-timer" role="timer">0:07 / 5:00</span>
+                </div>
+                <p class="caption">with <code>btn-primary</code>, where recording is the one primary action of the screen, as on the desk</p>
+              </div>
+              <div class="cell wide" lang="kn">
+                <div class="voice">
+                  <button class="voice-button" type="button" data-phase="idle">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>ರೆಕಾರ್ಡ್ ಮಾಡಿ</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>ನಿಲ್ಲಿಸಿ</span>
+                  </button>
+                  <span class="voice-level" aria-hidden="true"></span>
+                  <span class="voice-timer" role="timer">0:00 / 5:00</span>
+                  <label class="file-pick">ವಾಯ್ಸ್ ನೋಟ್ ಆಯ್ಕೆಮಾಡಿ<input type="file" accept="audio/*" /></label>
+                </div>
+                <p class="caption" lang="en">Kannada, idle</p>
+              </div>
+              <div class="cell wide" lang="kn">
+                <div class="voice">
+                  <button class="voice-button" type="button" data-phase="recording">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>ರೆಕಾರ್ಡ್ ಮಾಡಿ</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>ನಿಲ್ಲಿಸಿ</span>
+                  </button>
+                  <span class="voice-level" style="--level: 0.6" aria-hidden="true"></span>
+                  <span class="voice-timer" role="timer">0:07 / 5:00</span>
+                </div>
+                <p class="caption" lang="en">Kannada, recording</p>
+              </div>
+              <div class="cell" lang="kn">
+                <div class="row">
+                  <button class="voice-button" type="button" data-phase="opening">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>ರೆಕಾರ್ಡ್ ಮಾಡಿ</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>ನಿಲ್ಲಿಸಿ</span>
+                  </button>
+                  <button class="voice-button" type="button" data-phase="stopping">
+                    <span class="voice-record"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#mic" /></svg>ರೆಕಾರ್ಡ್ ಮಾಡಿ</span>
+                    <span class="voice-stop"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#stop" /></svg>ನಿಲ್ಲಿಸಿ</span>
+                  </button>
+                </div>
+                <p class="caption" lang="en">Kannada, opening and stopping</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="s13">
+          <h2 class="section-label" id="s13"><span class="num">13</span>Laptop pieces</h2>
+          <p class="lead">
+            From the layout reference, in our palette, fonts, icons and stamps. The app is a laptop website at
+            1280 px and wider. The product name Plattr comes from one text key (<code>common.product</code>).
+          </p>
+          <div class="laptop stack">
+            <h3 class="group">App bar</h3>
+            <header class="app-bar">
+              <div class="app-bar-inner">
+                <div class="brand">
+                  <span class="brand-tile" aria-hidden="true"><svg class="icon"><use href="../src/public/icons.svg#catering" /></svg></span>
+                  <div>
+                    <p class="brand-line"><span class="wordmark">Plattr</span><span class="badge">Demo</span></p>
+                    <p class="app-bar-sub">Shobha's Kitchen</p>
+                  </div>
+                </div>
+                <div class="app-bar-end">
+                  <p role="status">Up to date</p>
+                  <a class="link-btn" href="#s13">View your store</a>
+                  <div class="bar-controls">
+                    <button type="button" class="chip" aria-pressed="true">Sound: on</button>
+                    <span class="picker language-picker"><label class="visually-hidden" for="lang-a">Language</label><select id="lang-a"><option value="en" lang="en">English</option><option value="hi" lang="hi">हिन्दी</option><option value="kn" lang="kn">ಕನ್ನಡ</option><option value="ta" lang="ta">தமிழ்</option><option value="te" lang="te">తెలుగు</option><option value="mr" lang="mr">मराठी</option></select></span>
+                  </div>
+                </div>
+              </div>
+            </header>
+            <p class="caption">
+              The desk of a demo store: the brand tile is ink with our handi icon in paper lines, with Apple's icon corner (22.37% × 1.84, squircle); the
+              wordmark is Anek 700; the badge slot holds the status badge (Demo); the subtitle is the store in ink-2. No demo nav: one plain <b>View your
+              store</b> link. The status wraps beside the controls: Sound across the top row, Language under it, each language in its own script. Sticky,
+              on paper, over a 1.5 px brass-tint line.
+            </p>
+            <header class="app-bar" lang="kn">
+              <div class="app-bar-inner">
+                <div class="brand">
+                  <span class="brand-tile" aria-hidden="true"><svg class="icon"><use href="../src/public/icons.svg#catering" /></svg></span>
+                  <div>
+                    <p class="brand-line"><span class="wordmark" lang="en">Plattr</span></p>
+                    <p class="app-bar-sub">ಮನೆ ಅಡುಗೆಯವರಿಂದ ಊಟ</p>
+                  </div>
+                </div>
+                <div class="app-bar-end">
+                  <div class="bar-controls">
+                    <span class="picker city"><label class="visually-hidden" for="city-a">City</label><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#location" /></svg><select id="city-a"><option>ಬೆಂಗಳೂರು · Bengaluru</option><option>ಮೈಸೂರು · Mysuru</option></select></span>
+                    <button type="button" class="chip" aria-pressed="true">ಶಬ್ದ: ಆನ್</button>
+                    <span class="picker language-picker"><label class="visually-hidden" for="lang-b">Language</label><select id="lang-b"><option value="en" lang="en">English</option><option value="hi" lang="hi">हिन्दी</option><option value="kn" lang="kn" selected>ಕನ್ನಡ</option><option value="ta" lang="ta">தமிழ்</option><option value="te" lang="te">తెలుగు</option><option value="mr" lang="mr">मराठी</option></select></span>
+                  </div>
+                </div>
+              </div>
+            </header>
+            <p class="caption">A buyer page in Kannada: City and Sound side by side at one width, Language under both. The city follows the names rule: the Kannada name, then the English one.</p>
+
+            <h3 class="group">Cards</h3>
+            <div class="laptop-grid">
+              <section class="card stack" aria-label="Card example">
+                <div class="card-head">
+                  <h2>Today's khata</h2>
+                  <p class="card-lead">Tuesday 24 November</p>
+                </div>
+                <p>A card: paper, a 1.5 px brass-tint border, 16 px corners, a flat 2 px brass-tint edge under it, 24 px padding.</p>
+              </section>
+              <section class="card stack" data-edge="brass" aria-label="Card with a brass border">
+                <div class="card-head">
+                  <div>
+                    <h2>Add order</h2>
+                    <p class="card-lead">Record the order, choose a voice note, or paste the message.</p>
+                  </div>
+                  <span class="badge">Recorded</span>
+                </div>
+                <p><code>data-edge="brass"</code>: the card of the main tool on a page has a brass border. One on each page.</p>
+              </section>
+            </div>
+
+            <h3 class="group">Order slip on the desk</h3>
+            <div class="laptop-grid">
+              <article class="slip" style="--tilt: -3deg">
+                <header class="slip-head">
+                  <h3 class="slip-title"><span class="visually-hidden">Order</span> <span class="order-no num">104</span></h3>
+                  <p class="slip-who">
+                    Lakshmi Rao ·
+                    <span class="slip-way"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#delivery" /></svg>Delivery</span> ·
+                    Banashankari 2nd Stage
+                  </p>
+                  <span class="stamp" data-hand>Making</span>
+                </header>
+                <table class="slip-lines">
+                  <tbody>
+                    <tr>
+                      <td class="line-name">
+                        <span class="food-mark" role="img" aria-label="Veg"></span><span class="line-item" lang="kn">ಮೈಸೂರು ಪಾಕ್</span
+                        ><span class="line-latin">Mysore pak</span><span class="num line-amount">2 × 1 kg</span>
+                      </td>
+                      <td class="num line-price">₹1,760</td>
+                    </tr>
+                    <tr>
+                      <td class="line-name">
+                        <span class="food-mark" role="img" aria-label="Veg"></span><span class="line-item" lang="kn">ಚಕ್ಕುಲಿ</span
+                        ><span class="line-latin">Chakkuli</span><span class="num line-amount">500 g</span>
+                      </td>
+                      <td class="num line-price">₹210</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="slip-note" lang="kn"><span class="visually-hidden" lang="en">Note</span>ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ ಹಾಕಿ</p>
+                <footer class="slip-foot">
+                  <p class="slip-sum">
+                    <span class="visually-hidden">Total</span><span class="num slip-amount">₹1,970</span><span class="stamp" data-kind="done">Paid</span>
+                  </p>
+                  <div class="slip-do">
+                    <button class="btn-plain" type="button">Mark ready</button>
+                  </div>
+                </footer>
+                <div class="slip-more">
+                  <a class="link-btn" href="#s13"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#share" /></svg>Send on WhatsApp</a>
+                  <button class="link-btn" type="button">Change</button>
+                  <button class="link-btn" type="button">Cancel order</button>
+                </div>
+              </article>
+              <article class="slip" style="--tilt: 3deg">
+                <header class="slip-head">
+                  <h3 class="slip-title"><span class="visually-hidden">Order</span> <span class="order-no num">105</span></h3>
+                  <p class="slip-who">
+                    Ravi Kumar ·
+                    <span class="slip-way"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#pickup" /></svg>Pickup</span>
+                  </p>
+                  <span class="stamp">New</span>
+                </header>
+                <table class="slip-lines">
+                  <tbody>
+                    <tr>
+                      <td class="line-name">
+                        <span class="food-mark" role="img" aria-label="Veg"></span><span class="line-item" lang="kn">ಕಾಜು ಕಟ್ಲಿ</span
+                        ><span class="line-latin">Kaju katli</span><span class="num line-amount">1 kg</span>
+                      </td>
+                      <td class="num line-price">₹1,300</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <footer class="slip-foot">
+                  <p class="slip-sum">
+                    <span class="visually-hidden">Total</span><span class="num slip-amount">₹1,300</span
+                    ><button class="btn-plain" type="button">Mark paid</button>
+                  </p>
+                  <div class="slip-do">
+                    <span class="row"><button class="link-btn" type="button"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#undo" /></svg>Undo</button><span class="num">8 s</span></span>
+                    <button class="btn-plain" type="button">Start making</button>
+                  </div>
+                </footer>
+              </article>
+            </div>
+            <p class="caption">
+              The head is one line: the number in Plex Mono, the buyer, the way and the stamp at the end. Her stamps tilt 3° (the side comes from the order id);
+              NEW comes from the system, so it is straight. Rows: the FSSAI mark, the name in both scripts at one size, the amount in ink-2, the price in mono
+              600. The note box has 8 px corners. The foot: the total and PAID (or <b>Mark paid</b>), her next stamp on the right, Undo for 10 s after a stamp.
+            </p>
+
+            <h3 class="group">Chips</h3>
+            <div class="laptop-grid">
+              <div class="stack">
+                <div class="chips" role="group" aria-label="Category">
+                  <button class="chip" type="button" aria-pressed="true">All</button>
+                  <button class="chip" type="button" aria-pressed="false">Sweets</button>
+                  <button class="chip" type="button" aria-pressed="false" data-state="pressed">Snacks</button>
+                  <button class="chip" type="button" aria-pressed="false" data-state="focus">Savouries</button>
+                  <button class="chip" type="button" aria-pressed="false" disabled>Meals</button>
+                </div>
+                <p class="caption">
+                  filter chips: paper, a 1.5 px brass-tint border, ink-2 Anek 600; hover: brass border and ink word, 120 ms linear; pressed: ink-tint, 0 ms;
+                  chosen: ink; keyboard focus: the 3 px ink ring; disabled: ink-3
+                </p>
+              </div>
+              <div class="stack">
+                <fieldset class="chips">
+                  <legend class="visually-hidden">Pack</legend>
+                  <label class="chip chip-pack"><input type="radio" name="pack-demo" checked />250 g · ₹230</label>
+                  <label class="chip chip-pack"><input type="radio" name="pack-demo" />500 g · ₹450</label>
+                  <label class="chip chip-pack"><input type="radio" name="pack-demo" />1 kg · ₹880</label>
+                </fieldset>
+                <div class="chips" lang="kn" role="group" aria-label="ದಿನ">
+                  <button class="chip" type="button" aria-pressed="true">ಇಂದು</button>
+                  <button class="chip" type="button" aria-pressed="false">ಶನಿವಾರ</button>
+                  <button class="chip" type="button" aria-pressed="false">ಭಾನುವಾರ</button>
+                </div>
+                <p class="caption">pack chips: a native radio in each label, the numbers in Plex Mono, tabular; the chosen pack in mono 600. Kannada day chips.</p>
+              </div>
+            </div>
+
+            <h3 class="group">Tabs</h3>
+            <div class="laptop-grid">
+              <div class="stack">
+                <fieldset class="tabs">
+                  <legend class="visually-hidden">Language</legend>
+                  <label><input type="radio" name="lang-demo" checked />English</label>
+                  <label lang="kn"><input type="radio" name="lang-demo" />ಕನ್ನಡ</label>
+                  <label lang="hi"><input type="radio" name="lang-demo" />हिन्दी</label>
+                </fieldset>
+                <p class="caption">a choice of one: a native radio in each segment, so the arrow keys move the choice</p>
+              </div>
+              <div class="stack">
+                <nav class="tabs" aria-label="Views">
+                  <a href="#s13" aria-current="page">Seller desk</a>
+                  <a href="#s13" data-state="focus">Buyer storefront</a>
+                </nav>
+                <p class="caption">links between pages: the current page has aria-current. Each segment is 36 px; its hit area is 44 px, across the padding of the track.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="s14">
+          <h2 class="section-label" id="s14"><span class="num">14</span>Sound</h2>
+          <p class="lead">
+            The engine of the build (<code>src/sound/</code>) plays the picks of the soundboard: one raag, one room, one master bus and the loudness
+            tiers. Each button calls one role, as a page does. The first click starts the audio. The buttons load the TypeScript modules of the
+            build, so the page needs a server that strips their types (the components preview does).
+          </p>
+          <p class="caption" id="sound-status" role="status">Loading the sound engine…</p>
+          <div class="laptop stack">
+            <h3 class="group">Toggle</h3>
+            <header class="app-bar">
+              <div class="app-bar-inner">
+                <div class="brand">
+                  <span class="brand-tile" aria-hidden="true"><svg class="icon"><use href="../src/public/icons.svg#catering" /></svg></span>
+                  <div>
+                    <p class="brand-line"><span class="wordmark">Plattr</span><span class="badge">Demo</span></p>
+                    <p class="app-bar-sub">Shobha's Kitchen</p>
+                  </div>
+                </div>
+                <nav class="tabs app-nav" aria-label="Demo pages">
+                  <a href="#s14" aria-current="page">Seller desk</a>
+                  <a href="#s14">Buyer storefront</a>
+                </nav>
+                <div class="app-bar-end">
+                  <button type="button" class="chip" id="sound-toggle" aria-pressed="true">
+                    <span class="visually-hidden" data-text="common.sound">Sound and vibration</span>
+                    <span aria-hidden="true" data-sound-state>Sound: on</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+            <p class="caption">
+              One toggle for sound and vibration, on by default, kept in localStorage (key <code>sound</code>). A chip with aria-pressed: on is
+              the chosen chip (ink), off is the plain chip. Its name stays "Sound and vibration"; the words show the state. Turning it on plays a
+              tick. Our icon set has no speaker, so the pill carries words only.
+            </p>
+
+            <h3 class="group">Roles</h3>
+            <div class="laptop-grid">
+              <div class="stack">
+                <p class="caption">Hand: what you did, by hand or by voice</p>
+                <div class="row">
+                  <button type="button" class="btn-plain" data-play="tick">tick</button>
+                  <button type="button" class="btn-plain" data-play="tick" data-args="[1]">tick · 500 g</button>
+                  <button type="button" class="btn-plain" data-play="tick" data-args="[2]">tick · 1 kg</button>
+                  <button type="button" class="btn-plain" data-play="step" data-args="[1]">step 1</button>
+                  <button type="button" class="btn-plain" data-play="step" data-args="[2]">step 2</button>
+                  <button type="button" class="btn-plain" data-play="step" data-args="[3]">step 3</button>
+                  <button type="button" class="btn-plain" data-play="step" data-args="[0]">step 0</button>
+                  <button type="button" class="btn-plain" data-play="pick" data-args="[true]">pick in</button>
+                  <button type="button" class="btn-plain" data-play="pick" data-args="[false]">pick out</button>
+                  <button type="button" class="btn-plain" data-play="record" data-args='["start"]'>record start</button>
+                  <button type="button" class="btn-plain" data-play="record" data-args='["stop"]'>record stop</button>
+                  <button type="button" class="btn-plain" data-play="cascade" data-args="[4]">cascade, 4 fields</button>
+                  <button type="button" class="btn-plain" data-play="cascade" data-args="[4, [2]]">cascade, field 3 unsure</button>
+                </div>
+                <p class="caption">kulhad tok on the pack's swara; tabla tarang 'tin' on the quantity; 'na' or 'te'; 'na–tin' up, 'tin–te' down</p>
+              </div>
+              <div class="stack">
+                <p class="caption">Counter: a commitment that goes on record</p>
+                <div class="row">
+                  <button type="button" class="btn-plain" data-play="stamp" data-args='["ready"]'>stamp</button>
+                  <button type="button" class="btn-plain" data-play="stamp" data-args='["paid"]'>stamp PAID</button>
+                  <button type="button" class="btn-plain" data-play="commit" data-args='["sent"]'>commit, sent</button>
+                  <button type="button" class="btn-plain" data-play="commit" data-args='["publish"]'>commit, publish</button>
+                  <button type="button" class="btn-plain" data-play="cancel">cancel</button>
+                  <button type="button" class="btn-plain" data-play="undo">undo</button>
+                  <button type="button" class="btn-plain" data-play="saved">saved</button>
+                  <button type="button" class="btn-plain" data-play="placed">placed</button>
+                </div>
+                <p class="caption">a real rubber stamp, the ink pad for PAID; the slip, then the positive ending; the logo: slip, stamp, katori</p>
+              </div>
+              <div class="stack">
+                <p class="caption">Steel: the app and the shop answer</p>
+                <div class="row">
+                  <button type="button" class="btn-plain" data-play="settle">settle</button>
+                  <button type="button" class="btn-plain" data-play="avail" data-args='["open"]'>avail open</button>
+                  <button type="button" class="btn-plain" data-play="avail" data-args='["close"]'>avail close</button>
+                  <button type="button" class="btn-plain" data-play="avail" data-args='["pause"]'>avail pause</button>
+                  <button type="button" class="btn-plain" data-play="avail" data-args='["resume"]'>avail resume</button>
+                  <button type="button" class="btn-plain" data-play="working">working</button>
+                  <button type="button" class="btn-plain" data-play="arrival" data-args='["order"]'>arrival</button>
+                  <button type="button" class="btn-plain" data-play="arrival" data-args='["quote"]'>arrival, quote</button>
+                </div>
+                <p class="caption">katori Pa then Sa; tiffin latch; a spoon stirring chai; a bicycle bell, which rings once in 10 s, as on the desk</p>
+              </div>
+              <div class="stack">
+                <p class="caption">Negative: a rule said no, or it failed</p>
+                <div class="row">
+                  <button type="button" class="btn-plain" data-play="limit">limit</button>
+                  <button type="button" class="btn-plain" data-play="error">error</button>
+                  <button type="button" class="btn-plain" data-play="fallback">fallback</button>
+                </div>
+                <p class="caption">the bayan falls into the raag; to Ma, with a slap, for the error; a small fall to Sa</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="s15">
+          <h2 class="section-label" id="s15"><span class="num">15</span>Special tag</h2>
+          <p class="lead">
+            The Special tag marks a dish for a festival, so it is festive: marigold to kumkum, in sentence case, with no stamp box. Every colour reads
+            at AA on paper, at both ends of a gradient: marigold 5.1:1, kumkum 6:1, and paper on either 5.1:1 or more. Three options; the app uses A.
+          </p>
+          <div class="cells">
+            <div class="cell wide">
+              <div class="row">
+                <span class="festive-tag">Special</span>
+                <span class="festive-tag" lang="hi">विशेष</span>
+                <span class="festive-tag" lang="kn">ವಿಶೇಷ</span>
+              </div>
+              <p class="dish-sample">
+                <span class="food-mark" role="img" aria-label="Veg"></span>
+                <span>Kaju katli</span>
+                <span class="festive-tag">Special</span>
+                <span class="num">₹330</span>
+              </p>
+              <p class="caption"><b>A · Garland frame, in the app.</b> The word in a marigold-to-kumkum gradient, in a 1.5 px frame of the same gradient, 4 px corners. Reason: the festival colours carry it, and the thin frame stays quiet beside the dish name.</p>
+            </div>
+            <div class="cell wide">
+              <div class="row">
+                <span class="festive-ribbon">Special</span>
+                <span class="festive-ribbon" lang="hi">विशेष</span>
+                <span class="festive-ribbon" lang="kn">ವಿಶೇಷ</span>
+              </div>
+              <p class="dish-sample">
+                <span class="food-mark" role="img" aria-label="Veg"></span>
+                <span>Kaju katli</span>
+                <span class="festive-ribbon">Special</span>
+                <span class="num">₹330</span>
+              </p>
+              <p class="caption"><b>B · Ribbon.</b> A paper word on a marigold-to-kumkum fill. Reason: the easiest to spot, but a filled tag shouts in a list of dishes and competes with the haldi button.</p>
+            </div>
+            <div class="cell wide">
+              <div class="row">
+                <span class="festive-rule">Special</span>
+                <span class="festive-rule" lang="hi">विशेष</span>
+                <span class="festive-rule" lang="kn">ವಿಶೇಷ</span>
+              </div>
+              <p class="dish-sample">
+                <span class="food-mark" role="img" aria-label="Veg"></span>
+                <span>Kaju katli</span>
+                <span class="festive-rule">Special</span>
+                <span class="num">₹330</span>
+              </p>
+              <p class="caption"><b>C · Invitation rule.</b> A kumkum word in a marigold double rule, like the border of a wedding card. Reason: festive with no gradient text, but the double rule looks busy at this size.</p>
+            </div>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="s16">
+          <h2 class="section-label" id="s16"><span class="num">16</span>Squircle corners</h2>
+          <p class="lead">
+            Every card of the site takes Apple's squircle, a superellipse with continuous curvature, and the buttons stay fully round,
+            as on apple.com's product pages. One rule in <code>base.css</code> sets <code>corner-shape: squircle</code> on every element; pills and circles
+            keep round ends. A squircle cuts less deep than an arc of the same radius, so each token is calibrated larger, by eye, against apple.com's 28 px
+            and 18 px card arcs. Chromium draws the squircle; another browser draws the plain radius.
+          </p>
+          <div class="laptop cells">
+            <div class="cell wide">
+              <div class="row" style="align-items: end; gap: calc(var(--space) * 3)">
+                <div class="stack"><div style="inline-size: 15rem; block-size: 10rem; border: var(--card-line) solid var(--brass-tint); border-radius: 28px; corner-shape: round; box-shadow: var(--card-edge)"></div><p class="caption">apple.com: a 28 px arc</p></div>
+                <div class="stack"><div style="inline-size: 15rem; block-size: 10rem; border: var(--card-line) solid var(--brass-tint); border-radius: 28px; box-shadow: var(--card-edge)"></div><p class="caption">28 px squircle: too square</p></div>
+                <div class="stack"><div style="inline-size: 15rem; block-size: 10rem; border: var(--card-line) solid var(--brass); border-radius: var(--radius-card); box-shadow: var(--card-edge)"></div><p class="caption"><b>48 px squircle</b> (<code>--radius-card</code>): the same weight</p></div>
+              </div>
+              <p class="caption"><b>Large: 48 px.</b> Dialogs and other large surfaces. Reason: the arc and the squircle cut the corner to the same depth, and the squircle's curve starts earlier, so it reads organic, not drawn with a compass.</p>
+            </div>
+            <div class="cell wide">
+              <div class="row" style="align-items: end; gap: calc(var(--space) * 3)">
+                <div class="stack"><div style="inline-size: 12rem; block-size: 8rem; border: var(--card-line) solid var(--brass-tint); border-radius: 18px; corner-shape: round; box-shadow: var(--card-edge)"></div><p class="caption">apple.com: an 18 px arc</p></div>
+                <div class="card" style="inline-size: 12rem; block-size: 8rem"></div>
+                <label class="field" style="inline-size: 16rem"><span>Input · 24 px, capped at 22 px</span><input type="text" value="Lakshmi Rao" /></label>
+              </div>
+              <p class="caption"><b>Small: 32 px</b> (<code>--radius-card-small</code>) for cards, slips, panels and the cart bar; <b>24 px</b> (<code>--radius-input</code>) for inputs and the boxes inside a card. A 44 px field caps the corner at half its height, which reads as Apple's 12 px field.</p>
+            </div>
+            <div class="cell wide">
+              <div class="row" style="align-items: center; gap: calc(var(--space) * 3)">
+                <span class="brand-tile" aria-hidden="true"><svg class="icon"><use href="../src/public/icons.svg#catering" /></svg></span>
+                <span class="brand-tile" aria-hidden="true" style="border-radius: 22.37%"><svg class="icon"><use href="../src/public/icons.svg#catering" /></svg></span>
+                <button type="button" class="btn-primary">Save order</button>
+                <button type="button" class="btn-plain">Start making</button>
+                <span class="chip">Sweets</span>
+                <span class="stamp" data-kind="done">Paid</span>
+                <span class="badge">Recorded</span>
+              </div>
+              <p class="caption"><b>Icon tile: 41%</b> (<code>--radius-tile</code>, first): Apple's icon corner of 22.37% of the width, times 1.84 for the squircle. The second tile is a plain 22.37% squircle: too square. Buttons, chips, tabs and selects keep round ends. Stamps stay square; badges keep a round 4 px corner.</p>
+            </div>
+            <div class="cell wide">
+              <div class="row app-bar" style="position: static; align-items: start; gap: calc(var(--space) * 3); border: 0; background: none">
+                <div class="bar-controls">
+                  <span class="picker city"><label class="visually-hidden" for="city-b">City</label><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#location" /></svg><select id="city-b"><option>Bengaluru</option><option>Mysuru</option></select></span>
+                  <button type="button" class="chip" aria-pressed="true">Sound: on</button>
+                  <span class="picker language-picker"><label class="visually-hidden" for="lang-c">Language</label><select id="lang-c"><option value="en" lang="en">English</option><option value="hi" lang="hi">हिन्दी</option><option value="kn" lang="kn">ಕನ್ನಡ</option><option value="ta" lang="ta">தமிழ்</option><option value="te" lang="te">తెలుగు</option><option value="mr" lang="mr">मराठी</option></select></span>
+                </div>
+                <div class="bar-controls">
+                  <div class="picker city city-lock"><button type="button" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#location" /></svg>Bengaluru</button></div>
+                  <button type="button" class="chip" aria-pressed="true">Sound: on</button>
+                  <span class="picker language-picker"><label class="visually-hidden" for="lang-d">Language</label><select id="lang-d"><option value="en" lang="en">English</option><option value="hi" lang="hi">हिन्दी</option><option value="kn" lang="kn">ಕನ್ನಡ</option><option value="ta" lang="ta">தமிழ்</option><option value="te" lang="te">తెలుగు</option><option value="mr" lang="mr">मराठी</option></select></span>
+                </div>
+                <p class="card" style="display: flex; gap: var(--space); max-inline-size: 18rem; margin: 0; padding: calc(var(--space) * 1.5) calc(var(--space) * 2)"><svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#block" /></svg><span>This store is in Bengaluru. Go back to the homepage to change the city.</span></p>
+              </div>
+              <p class="caption"><b>The controls of the app bar.</b> A buyer page; a store's page, where the city is the store's own, locked, with the note that a hover, a focus or a click shows; the sound pill stays paper, because its words say whether it is on. Icons: <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#filter" /></svg> filter and <svg class="icon" aria-hidden="true"><use href="../src/public/icons.svg#block" /></svg> block.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module">
+      for (const button of document.querySelectorAll("[data-replay]")) {
+        button.addEventListener("click", () => {
+          const stamp = document.getElementById(button.dataset.replay);
+          stamp.removeAttribute("data-landing");
+          void stamp.offsetWidth;
+          stamp.setAttribute("data-landing", "");
+        });
+      }
+      document.addEventListener("touchstart", () => {}, { passive: true });
+    </script>
+    <script type="module">
+      const status = document.querySelector("#sound-status");
+      try {
+        const [{ createSounds }, { bindSoundToggle }, { default: en }] = await Promise.all([
+          import("../src/sound/engine.ts"),
+          import("../src/sound/toggle.ts"),
+          import("../src/text/en.json", { with: { type: "json" } }),
+        ]);
+        const sounds = createSounds({ store: localStorage });
+        bindSoundToggle(document.querySelector("#sound-toggle"), sounds, en.sound);
+        for (const button of document.querySelectorAll("[data-play]")) {
+          button.addEventListener("click", () => sounds[button.dataset.play](...JSON.parse(button.dataset.args ?? "[]")));
+        }
+        status.textContent = "Ready. The first click starts the audio.";
+      } catch (error) {
+        status.textContent = "No sound here: the server did not send the sound modules as JavaScript (see above).";
+        console.error(error);
+      }
+    </script>
+  </body>
+</html>

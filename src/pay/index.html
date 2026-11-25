@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="pay.title">Pay for your order</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/pay/pay.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/pay/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub" id="store-name"></p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <div class="picker city city-lock" id="city-lock" hidden>
+              <button
+                type="button"
+                aria-disabled="true"
+                aria-describedby="city-lock-note"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#location" />
+                </svg>
+                <span class="visually-hidden" data-text="city.label">City</span>
+                <span id="city-lock-name"></span>
+              </button>
+              <p
+                class="city-note"
+                id="city-lock-note"
+                popover="manual"
+                role="tooltip"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#block" />
+                </svg>
+                <span id="city-lock-words"></span>
+              </p>
+            </div>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page pay-page">
+      <div class="load-problem" id="load-problem" hidden>
+        <p class="error" id="load-error" role="alert"></p>
+        <button
+          class="btn-plain"
+          type="button"
+          id="load-retry"
+          data-text="common.action.try_again"
+        >
+          Try again
+        </button>
+      </div>
+
+      <section
+        class="card pay"
+        id="pay"
+        data-edge="brass"
+        aria-labelledby="pay-title"
+        hidden
+      >
+        <div class="card-head">
+          <div>
+            <h1 id="pay-title" data-text="pay.title">Pay for your order</h1>
+            <p class="card-lead" id="pay-for"></p>
+          </div>
+          <span class="badge" data-text="common.badge.prototype"
+            >Prototype</span
+          >
+        </div>
+        <p class="pay-note" data-text="pay.note">
+          This is a prototype, so no money moves. Choose what the payment does.
+        </p>
+        <p class="pay-amount">
+          <span data-text="pay.amount">Amount</span>
+          <span class="num" id="pay-amount"></span>
+        </p>
+        <p class="pay-status" id="pay-status" role="status"></p>
+        <p class="error" id="pay-error" role="alert" hidden></p>
+        <div class="pay-actions" id="pay-actions">
+          <button
+            class="btn-primary"
+            type="button"
+            id="pay-pay"
+            data-text="pay.pay"
+          >
+            Pay
+          </button>
+          <button
+            class="btn-plain"
+            type="button"
+            id="pay-fail"
+            data-text="pay.fail"
+          >
+            Fail
+          </button>
+          <p class="wait" id="pay-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+        </div>
+        <p>
+          <a class="link-btn" id="order-link" href="/" data-text="pay.back"
+            >Back to your order</a
+          >
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

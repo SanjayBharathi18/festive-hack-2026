@@ -1,0 +1,1157 @@
+/* The desk on a laptop: the app bar, the order
+   board in the main column, and a side column with Add order and the khata.
+   Looks come from the components in src/styles; this file places them, in
+   steps of the one spacing unit. */
+
+body {
+  margin: 0;
+}
+
+.desk {
+  /* The app bar: its tallest part is the brand, with the wordmark over the
+     store and its area, so the bar is about 13 units tall. */
+  --bar: calc(var(--space) * 13);
+  --gutter: calc(var(--space) * 3);
+
+  max-inline-size: var(--page);
+  margin-inline: auto;
+  padding: var(--gutter) var(--page-margin);
+}
+
+/* A wait line takes no room until it has words; it stays in the page, so
+   that a screen reader still hears it when the words come. */
+.wait:has([role="status"]:empty) {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.problem {
+  display: grid;
+  justify-items: start;
+  gap: var(--space);
+
+  .error {
+    margin: 0;
+  }
+
+  &.card {
+    max-inline-size: 32rem;
+    margin: calc(var(--space) * 6) auto;
+  }
+}
+
+.desk-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: start;
+  gap: var(--gutter);
+}
+
+/* The main column: the order board, the quote requests and the request
+   board share it, under one row of tabs. The radios of the tabs choose the
+   panel, so no script shows or hides it. */
+.desk-main {
+  display: grid;
+  align-content: start;
+  gap: calc(var(--space) * 2.5);
+
+  > .desk-main-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space) calc(var(--space) * 2);
+  }
+
+  &:has([name="main-tab"][value="orders"]:not(:checked)) > .board,
+  &:has([name="main-tab"][value="quotes"]:not(:checked)) > #quotes,
+  &:has([name="main-tab"][value="posts"]:not(:checked)) > #posts {
+    display: none;
+  }
+}
+
+.requests {
+  display: grid;
+  align-content: start;
+  gap: calc(var(--space) * 2);
+
+  :is(.requests-lead, .requests-empty) {
+    margin: 0;
+    color: var(--ink-2);
+  }
+}
+
+.request-list {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* A quote request or a board post: what, how much, when and where, in her
+   language. It is not an order, so it has no stamp and no ticket notches. */
+.request {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+
+  p {
+    margin: 0;
+  }
+
+  .request-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space) calc(var(--space) * 2);
+    padding-block-end: calc(var(--space) * 1.5);
+    border-block-end: var(--hair) dashed var(--brass-tint);
+  }
+
+  .request-title {
+    font-size: var(--step-1);
+  }
+
+  .request-meta {
+    color: var(--ink-2);
+
+    > :not([hidden]) ~ :not([hidden])::before {
+      content: "·";
+      margin-inline: 0.5ch;
+    }
+  }
+
+  .request-from {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .request-lines {
+    inline-size: 100%;
+    border-collapse: collapse;
+
+    td {
+      padding: calc(var(--space) / 2) 0;
+      vertical-align: baseline;
+    }
+
+    td + td {
+      padding-inline-start: calc(var(--space) * 2);
+      text-align: end;
+      white-space: nowrap;
+    }
+  }
+
+  .request-item {
+    font-weight: 600;
+  }
+
+  .request-price {
+    color: var(--ink-2);
+  }
+
+  .request-facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: calc(var(--space) / 2) calc(var(--space) * 2);
+    margin: 0;
+
+    div {
+      display: contents;
+    }
+
+    dt {
+      color: var(--ink-2);
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  :is(.request-note, .post-your-note) {
+    padding: var(--space) calc(var(--space) * 1.5);
+    border: var(--card-line) solid var(--brass-tint);
+    border-radius: var(--radius-input);
+  }
+
+  .request-label {
+    margin-inline-end: var(--space);
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .request-translated:not(:has(> :not([hidden]))) {
+    display: none;
+  }
+
+  .request-translated {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space);
+  }
+
+  .request-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space) calc(var(--space) * 2);
+    padding-block-start: calc(var(--space) * 1.5);
+    border-block-start: var(--hair) solid var(--brass-tint);
+  }
+
+  .request-estimate {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space);
+    color: var(--ink-2);
+
+    .num {
+      color: var(--ink);
+      font-size: var(--step-1);
+      font-weight: 600;
+    }
+  }
+
+  .request-reply {
+    margin-inline-start: auto;
+  }
+}
+
+.post {
+  .post-answered {
+    display: grid;
+    justify-items: start;
+    gap: var(--space);
+  }
+
+  .post-form {
+    display: grid;
+    justify-items: start;
+    gap: calc(var(--space) * 1.5);
+    padding-block-start: calc(var(--space) * 1.5);
+    border-block-start: var(--hair) solid var(--brass-tint);
+
+    .field {
+      justify-self: stretch;
+    }
+  }
+}
+
+/* A note from a buyer: the badge, her language first, and the switch to the
+   original at the end of the box. */
+.slip .slip-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: calc(var(--space) / 2) var(--space);
+
+  .slip-note-label {
+    margin-inline-end: 0;
+  }
+
+  .translated-switch {
+    margin-inline-start: auto;
+  }
+}
+
+.slip .slip-state .done {
+  color: var(--leaf);
+}
+
+.board {
+  display: grid;
+  gap: calc(var(--space) * 2);
+
+  h1 {
+    margin: 0;
+    font-size: var(--step-2);
+  }
+}
+
+.board-empty {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.board-days {
+  display: grid;
+  gap: calc(var(--space) * 5);
+}
+
+.board-day {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+
+  .gauge-head {
+    flex-wrap: wrap;
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: inherit;
+
+    .readout {
+      margin-inline-start: auto;
+      font-size: var(--step-2);
+      white-space: nowrap;
+    }
+  }
+
+  .segments {
+    margin-block: calc(var(--space) / 2) var(--space);
+  }
+}
+
+.gauge-foot {
+  min-block-size: 1lh;
+}
+
+.slips {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The desk fills each part of the head of a slip. CSS puts a dot between
+   the parts that show. */
+.slip {
+  .slip-head > .slip-who > :not([hidden]) ~ :not([hidden])::before {
+    content: "·";
+    margin-inline: 0.5ch;
+    color: var(--ink-2);
+  }
+
+  .slip-buyer {
+    color: var(--ink);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  .slip-note-label {
+    margin-inline-end: var(--space);
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .slip-undo,
+  .slip-keep {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--space) / 2);
+    color: var(--ink-2);
+  }
+
+  .slip-state {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space);
+    margin-block-start: calc(var(--space) * 1.5);
+
+    &:not(:has(.slip-state-text:not(:empty))) {
+      display: none;
+    }
+  }
+
+  .slip-do,
+  .slip-more {
+    &:not(:has(> :not([hidden]))) {
+      display: none;
+    }
+  }
+
+  .slip-messages {
+    margin-block-start: calc(var(--space) * 2);
+    padding-block-start: var(--space);
+    border-block-start: var(--hair) solid var(--brass);
+
+    summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space);
+      min-block-size: var(--tap);
+      cursor: pointer;
+    }
+
+    ol {
+      display: grid;
+      gap: var(--space);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      white-space: pre-line;
+      color: var(--ink-2);
+    }
+  }
+
+  &[data-closed] {
+    .slip-lines,
+    .slip-amount {
+      color: var(--ink-2);
+    }
+  }
+
+  /* The long motion lifts the saved slip over its neighbours while it moves. */
+  &[data-moving] {
+    z-index: 1;
+  }
+}
+
+/* Under the 3° tilt a stamp's corner reaches past its box, so its row keeps
+   a little room. */
+.stamp[data-hand] {
+  margin-inline: calc(var(--space) / 4);
+}
+
+/* The side column stays in view while the board scrolls, and scrolls on its
+   own when the check screen is long. */
+.desk-side {
+  position: sticky;
+  inset-block-start: calc(var(--bar) + var(--gutter));
+  display: grid;
+  gap: var(--gutter);
+  max-block-size: calc(100dvh - var(--bar) - var(--gutter) * 2);
+  margin: calc(var(--ring) * -2);
+  padding: calc(var(--ring) * 2);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.add,
+.daily,
+.stock,
+.side-tools {
+  display: grid;
+  align-content: start;
+  gap: calc(var(--space) * 2.5);
+}
+
+/* Menu stock and the khata share one card: the
+   tabs on top, over a hairline, and the chosen tab's panel under them. The
+   radios of the tabs choose the panel, so no script shows or hides it. */
+.side-tabs {
+  justify-self: start;
+}
+
+.side-tools {
+  > .side-tabs {
+    margin-block-end: calc(var(--space) / 2);
+  }
+
+  &:has([name="side-tab"][value="stock"]:not(:checked)) > .stock,
+  &:has([name="side-tab"][value="khata"]:not(:checked)) > .daily {
+    display: none;
+  }
+
+  > :is(.stock, .daily) {
+    padding-block-start: calc(var(--space) * 2.5);
+    border-block-start: var(--hair) solid var(--brass-tint);
+  }
+
+  .field-hint {
+    margin: 0;
+    color: var(--ink-2);
+  }
+}
+
+/* A stop that she sets with one touch: a native checkbox and its word.
+   Checked, it still needs her, so a round kumkum box marks it; unchecked, the
+   box shows only under the pointer. */
+.toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space);
+  min-block-size: var(--tap);
+  padding-inline: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border: var(--card-line) solid transparent;
+  border-radius: var(--radius-round);
+  background: var(--paper);
+  color: var(--ink-2);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-quick) linear,
+    color var(--dur-quick) linear;
+
+  input {
+    inline-size: calc(var(--space) * 2.5);
+    block-size: calc(var(--space) * 2.5);
+    margin: 0;
+    accent-color: var(--kumkum);
+    cursor: inherit;
+  }
+
+  &:hover,
+  :hover > & {
+    border-color: var(--brass);
+    color: var(--ink);
+  }
+
+  &:active,
+  :active > & {
+    background: var(--ink-tint);
+    transition-duration: var(--dur-instant);
+  }
+
+  &:has(:checked) {
+    border-color: var(--kumkum);
+    color: var(--kumkum);
+  }
+
+  &:has(:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  input:focus-visible {
+    outline: none;
+  }
+}
+
+.stop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space) calc(var(--space) * 1.5);
+}
+
+.stock-items {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li + li {
+    border-block-start: var(--hair) solid var(--brass-tint);
+  }
+}
+
+/* Each row is one label, so a touch anywhere on the item changes it. */
+.stock-item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 1.5);
+  min-block-size: calc(var(--tap) + var(--space) * 1.5);
+  cursor: pointer;
+
+  .stock-name {
+    flex: 1;
+    min-inline-size: 0;
+  }
+
+  .line-item {
+    font-weight: 600;
+  }
+
+  :is(.line-latin, .line-egg) {
+    margin-inline-start: calc(var(--space) / 2);
+    color: var(--ink-2);
+  }
+}
+
+.stock-empty {
+  padding-block: var(--space);
+  color: var(--ink-2);
+}
+
+/* The day chips, then the native date field for any other day. */
+.daily-days {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space) calc(var(--space) * 2);
+}
+
+.daily-pick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+
+  label {
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  input {
+    min-block-size: var(--tap);
+    padding: 0 calc(var(--space) * 1.5);
+    border: var(--hair) solid var(--ink);
+    border-radius: var(--radius-input);
+    background: var(--paper);
+  }
+}
+
+/* The pause shows on the board too, where she looks, with its undo. */
+.paused-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space) calc(var(--space) * 2);
+  padding: calc(var(--space) * 2) calc(var(--space) * 2.5);
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    margin-inline-end: var(--space);
+    color: var(--kumkum);
+  }
+
+  span {
+    color: var(--ink-2);
+  }
+}
+
+/* The store and its place in the app bar, with a dot between them. Beside
+   the demo nav the line is too short for both, so the store and its place
+   take a line each. Their lines are tighter, so that the bar stays as tall
+   as the sound pill and the status under it, and the side column below it
+   stays clear. Only the sides clip, so no letter of a script is cut. */
+#store-place:not(:empty)::before {
+  content: "·";
+  margin-inline: 0.5ch;
+}
+
+.app-bar-inner:has(> .app-nav:not([hidden])) .app-bar-sub {
+  overflow: visible;
+
+  > span {
+    display: block;
+    overflow-x: clip;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+  }
+
+  #store-place::before {
+    content: none;
+  }
+}
+
+.add-step {
+  display: grid;
+  align-content: start;
+  gap: calc(var(--space) * 2.5);
+
+  :is(h3, p) {
+    margin: 0;
+  }
+}
+
+/* Record and Choose share a line; the level meter and the timer go under
+   them. */
+.add .voice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 1.5);
+
+  .voice-button {
+    order: 1;
+  }
+
+  .file-pick {
+    order: 2;
+  }
+
+  .voice-level {
+    order: 3;
+    flex: 1 1 60%;
+  }
+
+  .voice-timer {
+    order: 4;
+  }
+
+  /* The meter and the timer show while she records. */
+  &:has(.voice-button[data-phase="idle"]) :is(.voice-level, .voice-timer) {
+    display: none;
+  }
+}
+
+.samples {
+  display: grid;
+  gap: var(--space);
+  padding-block-start: calc(var(--space) * 2.5);
+  border-block-start: var(--hair) solid var(--brass-tint);
+
+  h3 {
+    font-size: var(--step-0);
+  }
+}
+
+.sample-list {
+  display: grid;
+  gap: var(--space);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* A sample voice note: a box inside the card with its language, the action
+   and the words. The busy line shows on the box that she touched. */
+.sample {
+  position: relative;
+  display: grid;
+  gap: calc(var(--space) / 2);
+  inline-size: 100%;
+  min-block-size: var(--tap);
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-input);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color var(--dur-quick) linear;
+
+  &:hover {
+    border-color: var(--brass);
+  }
+
+  &:active {
+    background: var(--ink-tint);
+    transition-duration: var(--dur-instant);
+  }
+
+  &:focus-visible {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  &[aria-busy="true"] {
+    cursor: progress;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: auto var(--radius-input) 0;
+      block-size: var(--rule);
+      background: var(--brass);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sample[aria-busy="true"]::after {
+    background: linear-gradient(var(--brass) 0 0) no-repeat;
+    background-size: 30% 100%;
+    animation: busy-sweep calc(var(--dur-long) * 2) linear infinite backwards;
+  }
+}
+
+.sample-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space);
+  font-weight: 600;
+}
+
+.sample-read {
+  text-decoration: underline;
+}
+
+/* Two lines of the words are enough to pick a note; the check screen shows
+   all of them. */
+.sample-words {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--ink-2);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.paste {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 1.5);
+  padding-block-start: calc(var(--space) * 2.5);
+  border-block-start: var(--hair) solid var(--brass-tint);
+
+  .field {
+    justify-self: stretch;
+  }
+}
+
+#add-saved {
+  justify-items: start;
+}
+
+.daily {
+  .chips {
+    gap: var(--space);
+  }
+
+  .daily-load .gauge-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space);
+    margin: 0;
+
+    .readout {
+      font-size: var(--step-2);
+    }
+  }
+
+  :is(.daily-empty, .daily-none) {
+    margin: 0;
+    color: var(--ink-2);
+  }
+}
+
+.daily-shown {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.make {
+  inline-size: 100%;
+  border-collapse: collapse;
+
+  caption {
+    padding-block-end: var(--space);
+    color: var(--ink-2);
+    text-align: start;
+  }
+
+  th,
+  td {
+    padding: calc(var(--space) * 0.75) 0;
+    border-block-start: var(--hair) solid var(--brass);
+    vertical-align: baseline;
+  }
+
+  thead th {
+    color: var(--ink-2);
+    font-weight: 400;
+    text-align: start;
+  }
+
+  tbody th {
+    font-weight: 600;
+    text-align: start;
+  }
+
+  .make-amount {
+    padding-inline-start: var(--space);
+    text-align: end;
+    white-space: nowrap;
+  }
+
+  /* The packs go under the item, so the card stays two columns wide. */
+  .make-packs {
+    display: block;
+    color: var(--ink-2);
+    font-weight: 400;
+  }
+
+  .line-latin {
+    color: var(--ink-2);
+    font-weight: 400;
+  }
+}
+
+.money {
+  display: grid;
+  margin: 0;
+
+  div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space);
+    padding-block: var(--space);
+    border-block-start: var(--hair) solid var(--brass-tint);
+  }
+
+  dt {
+    color: var(--ink-2);
+  }
+
+  dd {
+    margin: 0;
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  /* Paid is finished, like PAID; owed still needs her. The words say so too. */
+  [data-money="paid"]:not([data-zero]) {
+    color: var(--leaf);
+  }
+
+  [data-money="owed"]:not([data-zero]) {
+    color: var(--kumkum);
+  }
+}
+
+.daily-month {
+  display: grid;
+  gap: var(--space);
+  padding-block-start: calc(var(--space) * 2);
+  border-block-start: var(--hair) solid var(--brass-tint);
+
+  h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space);
+    margin: 0;
+    font-size: var(--step-0);
+  }
+}
+
+.daily-range {
+  color: var(--ink-2);
+  font-weight: 400;
+}
+
+.sign-in {
+  display: grid;
+  gap: calc(var(--space) * 3);
+  max-inline-size: 32rem;
+  margin: calc(var(--space) * 6) auto;
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: var(--step-2);
+  }
+}
+
+.sign-in-step {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+
+  .field {
+    justify-self: stretch;
+  }
+}
+
+.heard-block {
+  display: grid;
+  gap: var(--space);
+
+  p {
+    margin: 0;
+  }
+
+  .heard-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space);
+  }
+}
+
+.trace {
+  color: var(--ink-2);
+}
+
+.check-lead {
+  color: var(--ink-2);
+}
+
+.check-form {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space) * 3);
+
+  > div {
+    justify-self: stretch;
+  }
+}
+
+/* The rows of the check answers list. An editor, a need and the capacity of
+   the day open under their row, across its width. */
+.answers {
+  .answer-edit,
+  .answer-need,
+  .answer-capacity {
+    grid-column: 1 / -1;
+    padding-block-end: calc(var(--space) * 1.5);
+  }
+
+  .answer-value {
+    padding-block: calc(var(--space) * 1.5);
+    overflow-wrap: anywhere;
+
+    ul {
+      display: grid;
+      gap: calc(var(--space) / 2);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  }
+
+  .answer-lines .num {
+    white-space: nowrap;
+  }
+
+  .answer-marks:empty {
+    display: none;
+  }
+
+  .answer-mark {
+    display: block;
+    color: var(--ink-2);
+  }
+
+  .answer-marks .stamp {
+    margin-inline-end: var(--space);
+  }
+
+  .answer-empty {
+    color: var(--ink-2);
+  }
+
+  .answer-total {
+    border-block-start: var(--rule) solid var(--ink);
+    font-size: var(--step-1);
+    font-weight: 600;
+
+    dt {
+      color: inherit;
+    }
+
+    dd {
+      grid-column: 2 / -1;
+      text-align: end;
+    }
+  }
+
+  &[data-mode="fill"] {
+    .answer-action,
+    .answer-value {
+      display: none;
+    }
+
+    dt {
+      grid-column: 1 / -1;
+      padding-block-start: calc(var(--space) * 1.5);
+      color: var(--ink);
+      font-weight: 600;
+    }
+  }
+}
+
+.answer-capacity {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+
+  .gauge .segments {
+    margin-block-start: 0;
+  }
+}
+
+.notice {
+  display: grid;
+  justify-items: start;
+  gap: var(--space);
+
+  p {
+    margin: 0;
+  }
+
+  .notice-text {
+    color: var(--kumkum);
+    font-weight: 600;
+  }
+}
+
+.notice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+}
+
+.pack-rows {
+  display: grid;
+  gap: var(--space);
+  margin: 0 0 calc(var(--space) * 2);
+  padding: 0;
+  list-style: none;
+}
+
+.pack-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0 var(--space);
+
+  .pack-name {
+    grid-column: 1 / -1;
+  }
+
+  .pack-price {
+    text-align: end;
+  }
+}
+
+/* Save order stays in view at the foot of the side column while she scrolls
+   a long check screen, over the card's paper. */
+.check-form .check-foot {
+  position: sticky;
+  inset-block-end: 0;
+  z-index: 1;
+  display: grid;
+  justify-items: start;
+  gap: var(--space);
+  margin-inline: calc(var(--space) * -3);
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 3);
+  border-block-start: var(--hair) solid var(--brass-tint);
+  background: var(--paper);
+}
+
+/* The way past the slips to Add order shows only when the keyboard is on
+   it. */
+.to-add:not(:focus-visible) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.saved-undo {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space) / 2);
+  color: var(--ink-2);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.pack-row .line-latin {
+  color: var(--ink-2);
+}

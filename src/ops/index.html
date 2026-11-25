@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="ops.title">Developer console · Plattr</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/ops/ops.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/ops/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="prototype-badge"
+                data-text="common.badge.prototype"
+                >Prototype</span
+              ><span
+                class="badge"
+                id="recorded-badge"
+                data-text="common.badge.recorded"
+                hidden
+                >Recorded</span
+              >
+            </p>
+            <p class="app-bar-sub" data-text="ops.sub">Incident view</p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="state-wait">
+            <span role="status"></span>
+          </p>
+          <div class="bar-controls">
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="ops-page" id="ops-main">
+      <div class="ops-head">
+        <h1 data-text="ops.heading">Developer console</h1>
+        <p class="ops-audience" data-text="ops.audience">
+          For the team that builds and runs Plattr, not for sellers or buyers.
+          It shows what Flagsmith, NudgeBee and Sarvam do on this server.
+        </p>
+      </div>
+
+      <div class="ops-problem" id="open-problem" hidden>
+        <p class="error" id="open-error" role="alert"></p>
+        <a
+          class="btn-plain"
+          href="/desk"
+          id="desk-link"
+          data-text="ops.sign_in_link"
+          >Go to the desk</a
+        >
+      </div>
+
+      <div class="ops-console" id="ops-console" hidden>
+        <fieldset class="ops-sections">
+          <legend class="visually-hidden" data-text="ops.sections.label">
+            Sections of the console
+          </legend>
+          <div class="tabs">
+            <label
+              ><input
+                type="radio"
+                name="section"
+                value="flagsmith"
+                autocomplete="off"
+              /><span data-text="ops.sections.flagsmith">Flagsmith</span></label
+            >
+            <label
+              ><input
+                type="radio"
+                name="section"
+                value="nudgebee"
+                autocomplete="off"
+                checked
+              /><span data-text="ops.sections.nudgebee">NudgeBee</span></label
+            >
+            <label
+              ><input
+                type="radio"
+                name="section"
+                value="sarvam"
+                autocomplete="off"
+              /><span data-text="ops.sections.sarvam">Sarvam</span></label
+            >
+          </div>
+        </fieldset>
+
+        <section
+          class="ops-section"
+          id="section-flagsmith"
+          aria-labelledby="flagsmith-title"
+          hidden
+        >
+          <h2
+            class="visually-hidden"
+            id="flagsmith-title"
+            data-text="ops.sections.flagsmith"
+          >
+            Flagsmith
+          </h2>
+          <p class="ops-read" id="flags-read"></p>
+          <p class="error" id="flags-error" role="alert" hidden></p>
+          <div class="ops-grid" id="flags-grid" hidden>
+            <div class="ops-column">
+              <section class="card" aria-labelledby="flags-title">
+                <h3 id="flags-title" data-text="ops.flagsmith.flags_heading">
+                  Flags
+                </h3>
+                <p class="card-lead" data-text="ops.flagsmith.flags_lead">
+                  The value that this server reads now, from
+                  flags.environment(), and the default in code of each flag.
+                </p>
+                <table class="ops-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-text="ops.flagsmith.flag">Flag</th>
+                      <th scope="col" data-text="ops.flagsmith.kind">Kind</th>
+                      <th scope="col" data-text="ops.flagsmith.value">
+                        Value now
+                      </th>
+                      <th scope="col" data-text="ops.flagsmith.default">
+                        Default in code
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="flag-rows"></tbody>
+                </table>
+              </section>
+
+              <section class="card" aria-labelledby="segments-title">
+                <h3
+                  id="segments-title"
+                  data-text="ops.flagsmith.segments_heading"
+                >
+                  Decision for each language segment
+                </h3>
+                <p class="card-lead" data-text="ops.flagsmith.segments_lead">
+                  For one preview order of each language, from flags.forOrder
+                  with its language trait and the in-memory overrides. Reading
+                  these decisions records no experiment exposure.
+                </p>
+                <table class="ops-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-text="ops.flagsmith.segment">
+                        Segment
+                      </th>
+                      <th scope="col"><code>ops_reading</code></th>
+                      <th scope="col"><code>exp_reading_path</code></th>
+                      <th scope="col"><code>cfg_sarvam</code></th>
+                    </tr>
+                  </thead>
+                  <tbody id="segment-rows"></tbody>
+                </table>
+              </section>
+            </div>
+
+            <div class="ops-column">
+              <section class="card" aria-labelledby="connection-title">
+                <h3
+                  id="connection-title"
+                  data-text="ops.flagsmith.connection_heading"
+                >
+                  Connection
+                </h3>
+                <p class="ops-strong" id="connection-state"></p>
+                <dl class="ops-facts">
+                  <div>
+                    <dt data-text="ops.flagsmith.api">API base</dt>
+                    <dd><code id="api-url"></code></dd>
+                  </div>
+                  <div>
+                    <dt data-text="ops.flagsmith.admin_api">
+                      Management API base
+                    </dt>
+                    <dd><code id="admin-api-url"></code></dd>
+                  </div>
+                </dl>
+                <h4 data-text="ops.flagsmith.keys">Keys and ids</h4>
+                <dl class="ops-facts" id="key-rows"></dl>
+                <p class="card-lead" id="changes-via"></p>
+              </section>
+
+              <section class="card" aria-labelledby="overrides-title">
+                <h3
+                  id="overrides-title"
+                  data-text="ops.flagsmith.overrides_heading"
+                >
+                  Overrides in memory
+                </h3>
+                <p class="card-lead" data-text="ops.flagsmith.overrides_lead">
+                  The simulation on the NudgeBee tab sets these on top of the
+                  flags. A restart removes them.
+                </p>
+                <p id="overrides-none" data-text="ops.flagsmith.overrides_none">
+                  None. The flags apply as they are.
+                </p>
+                <dl class="ops-facts" id="override-rows"></dl>
+              </section>
+
+              <section class="card" aria-labelledby="experiment-title">
+                <h3
+                  id="experiment-title"
+                  data-text="ops.flagsmith.experiment_heading"
+                >
+                  Experiment
+                </h3>
+                <dl class="ops-facts">
+                  <div>
+                    <dt data-text="ops.flagsmith.question">Question</dt>
+                    <dd data-text="ops.flagsmith.question_text">
+                      Does native reading need fewer corrections than
+                      translate-first reading?
+                    </dd>
+                  </div>
+                  <div>
+                    <dt data-text="ops.flagsmith.metric">Metric</dt>
+                    <dd id="experiment-metric"></dd>
+                  </div>
+                  <div>
+                    <dt data-text="ops.flagsmith.identity">Identity</dt>
+                    <dd data-text="ops.flagsmith.identity_text">The order</dd>
+                  </div>
+                </dl>
+                <table class="ops-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-text="ops.flagsmith.variation">
+                        Variation
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.flagsmith.exposures"
+                      >
+                        Exposures
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.flagsmith.conversions"
+                      >
+                        Conversions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="variation-rows"></tbody>
+                </table>
+                <p id="experiment-outside"></p>
+                <p class="card-lead" data-text="ops.flagsmith.experiment_note">
+                  Counted by this server since it started. Flagsmith shows the
+                  results of the experiment, with their statistics.
+                </p>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="ops-section"
+          id="section-nudgebee"
+          aria-labelledby="nudgebee-title"
+        >
+          <h2
+            class="visually-hidden"
+            id="nudgebee-title"
+            data-text="ops.sections.nudgebee"
+          >
+            NudgeBee
+          </h2>
+          <p class="ops-prototype" data-text="ops.prototype_line">
+            NudgeBee is simulated in this prototype. The alert rules and the
+            workflow files are the real ones from deploy/ and nudgebee/.
+          </p>
+          <div class="ops-grid" id="ops-grid">
+            <div class="ops-column">
+              <section
+                class="card ops-readings"
+                aria-labelledby="readings-title"
+              >
+                <h3 id="readings-title" data-text="ops.readings.heading">
+                  Readings in the last 2 minutes
+                </h3>
+                <p class="card-lead" data-text="ops.readings.lead">
+                  From the metrics of this server (reading_results_total), by
+                  language. The table updates every 2 seconds.
+                </p>
+                <table class="ops-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-text="ops.readings.language">
+                        Language
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.readings.count"
+                      >
+                        Readings
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.readings.invalid"
+                      >
+                        Invalid
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.readings.share"
+                      >
+                        Invalid share
+                      </th>
+                      <th scope="col" data-text="ops.readings.alert">
+                        ReadingInvalidRateHigh
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="language-rows"></tbody>
+                </table>
+                <p class="ops-rule" data-text="ops.readings.rule">
+                  The alert would fire when more than 30% of 5 or more readings
+                  of one language are invalid in 2 minutes.
+                </p>
+                <p class="error" id="stale" role="alert" hidden></p>
+              </section>
+
+              <section
+                class="card ops-controls"
+                aria-labelledby="controls-title"
+              >
+                <h3 id="controls-title" data-text="ops.controls.heading">
+                  Demo controls
+                </h3>
+                <p
+                  class="card-lead"
+                  id="controls-memory"
+                  data-text="ops.controls.memory"
+                >
+                  This server has no Flagsmith project, so these controls change
+                  the flag defaults in its memory.
+                </p>
+                <p
+                  class="card-lead"
+                  id="controls-flagsmith"
+                  data-text="ops.controls.flagsmith"
+                  hidden
+                >
+                  This server reads its flags from Flagsmith.
+                </p>
+                <div class="ops-actions" id="control-actions">
+                  <button
+                    class="btn-plain"
+                    type="button"
+                    id="trigger"
+                    data-text="ops.controls.trigger"
+                  >
+                    Set the bad cfg_sarvam for lang_kn
+                  </button>
+                  <button
+                    class="btn-plain"
+                    type="button"
+                    id="reset"
+                    data-text="ops.controls.reset"
+                  >
+                    Remove both overrides
+                  </button>
+                </div>
+                <p class="done" id="control-done" role="status" hidden></p>
+                <p class="error" id="control-error" role="alert" hidden></p>
+              </section>
+            </div>
+
+            <div class="ops-column">
+              <section
+                class="card ops-run"
+                data-edge="brass"
+                aria-labelledby="run-title"
+              >
+                <h3 id="run-title" data-text="ops.run.heading">NudgeBee run</h3>
+                <p class="wait" id="run-watching" data-text="ops.run.watching">
+                  Waiting for an alert. A critical alert starts the
+                  investigation.
+                </p>
+                <ol class="ops-steps" id="run-steps" hidden>
+                  <li class="ops-step" id="step-alert">
+                    <p class="ops-alert" data-text="ops.run.alert">
+                      ReadingInvalidRateHigh would fire for Kannada (kn-IN).
+                    </p>
+                  </li>
+                  <li class="ops-step">
+                    <h4 data-text="ops.run.investigation_heading">
+                      Investigation
+                    </h4>
+                    <p data-text="ops.run.investigation">
+                      Likely cause: a change of cfg_sarvam for the segment
+                      lang_kn.
+                    </p>
+                    <p data-text="ops.run.fix">
+                      Fix: switch ops_reading to safe for lang_kn only.
+                    </p>
+                  </li>
+                  <li class="ops-step" id="step-approval">
+                    <h4 data-text="ops.run.approval_heading">Approval</h4>
+                    <p data-text="ops.run.approval">
+                      Approve to switch only Kannada to the safe reading path.
+                    </p>
+                    <div class="ops-actions" id="approval-actions">
+                      <button
+                        class="btn-primary"
+                        type="button"
+                        id="approve"
+                        data-text="ops.run.approve"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        class="btn-plain"
+                        type="button"
+                        id="reject"
+                        data-text="ops.run.reject"
+                      >
+                        Reject
+                      </button>
+                    </div>
+                    <p class="done" id="approved" role="status" hidden></p>
+                    <p
+                      class="wait"
+                      id="rejected"
+                      data-text="ops.run.rejected"
+                      hidden
+                    >
+                      Rejected. Nothing changed.
+                    </p>
+                    <p
+                      class="error"
+                      id="decision-error"
+                      role="alert"
+                      hidden
+                    ></p>
+                  </li>
+                  <li class="ops-step" id="step-recovery" hidden>
+                    <h4 data-text="ops.run.recovery_heading">
+                      Kannada since the change
+                    </h4>
+                    <p id="recovery-count"></p>
+                    <p
+                      class="done"
+                      id="recovered"
+                      data-text="ops.run.recovered"
+                      hidden
+                    >
+                      Kannada readings recovered.
+                    </p>
+                    <p data-text="ops.run.next">
+                      Next, by hand: remove the bad cfg_sarvam override for
+                      lang_kn.
+                    </p>
+                  </li>
+                </ol>
+              </section>
+
+              <section class="card ops-files" aria-labelledby="files-title">
+                <h3 id="files-title" data-text="ops.nudgebee.files_heading">
+                  Files for a NudgeBee tenant
+                </h3>
+                <p class="card-lead" data-text="ops.nudgebee.files_lead">
+                  The simulation follows these real files. This server does not
+                  load them.
+                </p>
+                <h4 data-text="ops.nudgebee.rules">
+                  Alert rules in deploy/prometheus-rules.yaml
+                </h4>
+                <ul class="ops-list" id="alert-rules">
+                  <li>
+                    <code>ReadingInvalidRateHigh</code>
+                    <span class="badge">critical</span>
+                  </li>
+                  <li>
+                    <code>SarvamErrorRateHigh</code>
+                    <span class="badge">warning</span>
+                  </li>
+                  <li>
+                    <code>SarvamNoCredit</code>
+                    <span class="badge">warning</span>
+                  </li>
+                  <li>
+                    <code>SarvamLatencyHigh</code>
+                    <span class="badge">warning</span>
+                  </li>
+                  <li>
+                    <code>Http5xxHigh</code> <span class="badge">warning</span>
+                  </li>
+                </ul>
+                <p class="card-lead" data-text="ops.nudgebee.rules_note">
+                  Only the critical alert starts a NudgeBee investigation.
+                </p>
+                <h4 data-text="ops.nudgebee.workflows">
+                  Workflows in nudgebee/
+                </h4>
+                <ul class="ops-list" id="workflow-files">
+                  <li>
+                    <code>flag-change-events.yaml</code>
+                    <span data-text="ops.nudgebee.flag_change_events"
+                      >Each Flagsmith flag change becomes a NudgeBee
+                      event.</span
+                    >
+                  </li>
+                  <li>
+                    <code>rollback-lang-kn.yaml</code>
+                    <span data-text="ops.nudgebee.rollback_lang_kn"
+                      >After approval, ops_reading is safe for lang_kn
+                      only.</span
+                    >
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="ops-section"
+          id="section-sarvam"
+          aria-labelledby="sarvam-title"
+          hidden
+        >
+          <h2
+            class="visually-hidden"
+            id="sarvam-title"
+            data-text="ops.sections.sarvam"
+          >
+            Sarvam
+          </h2>
+          <p class="ops-read" id="sarvam-read"></p>
+          <p class="error" id="sarvam-error" role="alert" hidden></p>
+          <div class="ops-grid" id="sarvam-grid" hidden>
+            <div class="ops-column">
+              <section class="card" aria-labelledby="calls-title">
+                <h3 id="calls-title" data-text="ops.sarvam.calls_heading">
+                  Calls since the server started
+                </h3>
+                <p class="card-lead" data-text="ops.sarvam.calls_lead">
+                  From sarvam_requests_total in the metrics of this server, by
+                  API and model.
+                </p>
+                <table class="ops-table" id="calls-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-text="ops.sarvam.api_name">API</th>
+                      <th scope="col" data-text="ops.sarvam.model">Model</th>
+                      <th scope="col" class="end" data-text="ops.sarvam.calls">
+                        Calls
+                      </th>
+                      <th scope="col" class="end" data-text="ops.sarvam.ok">
+                        OK
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.sarvam.invalid"
+                      >
+                        Invalid
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.sarvam.rate_limited"
+                      >
+                        Rate limited
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.sarvam.no_credit"
+                      >
+                        No credit
+                      </th>
+                      <th scope="col" class="end" data-text="ops.sarvam.error">
+                        Error
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.sarvam.timeout"
+                      >
+                        Timeout
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="call-rows"></tbody>
+                </table>
+                <p id="no-calls" data-text="ops.sarvam.no_calls" hidden>
+                  No Sarvam call since the server started.
+                </p>
+              </section>
+
+              <section class="card" aria-labelledby="billed-title">
+                <h3 id="billed-title" data-text="ops.sarvam.billed_heading">
+                  Billed units since the server started
+                </h3>
+                <p class="card-lead" data-text="ops.sarvam.billed_lead">
+                  From sarvam_billed_units_total. Only 2xx answers in live mode
+                  count.
+                </p>
+                <table class="ops-table" id="billed-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-text="ops.sarvam.api_name">API</th>
+                      <th scope="col" data-text="ops.sarvam.unit">Unit</th>
+                      <th scope="col" class="end" data-text="ops.sarvam.units">
+                        Units
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="billed-rows"></tbody>
+                </table>
+                <p id="no-billed" data-text="ops.sarvam.no_billed" hidden>
+                  No billed units since the server started.
+                </p>
+              </section>
+            </div>
+
+            <div class="ops-column">
+              <section class="card" aria-labelledby="mode-title">
+                <h3 id="mode-title" data-text="ops.sarvam.mode_heading">
+                  Mode
+                </h3>
+                <p class="ops-strong" id="sarvam-mode"></p>
+                <dl class="ops-facts">
+                  <div>
+                    <dt data-text="ops.sarvam.api">API base</dt>
+                    <dd><code id="sarvam-url"></code></dd>
+                  </div>
+                  <div>
+                    <dt><code>SARVAM_API_KEY</code></dt>
+                    <dd id="sarvam-key"></dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="card" aria-labelledby="saved-title">
+                <h3 id="saved-title" data-text="ops.sarvam.saved_heading">
+                  Saved answers in fixtures/sarvam/
+                </h3>
+                <p id="saved-summary"></p>
+                <table class="ops-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-text="ops.sarvam.api_name">API</th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.sarvam.saved_count"
+                      >
+                        Saved
+                      </th>
+                      <th
+                        scope="col"
+                        class="end"
+                        data-text="ops.sarvam.placeholders"
+                      >
+                        Placeholders
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="recording-rows"></tbody>
+                </table>
+              </section>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <template id="language-row">
+      <tr>
+        <th scope="row" class="ops-language"></th>
+        <td class="num ops-count"></td>
+        <td class="num ops-invalid"></td>
+        <td class="num ops-share"></td>
+        <td><span class="ops-state"></span></td>
+      </tr>
+    </template>
+
+    <template id="flag-row">
+      <tr>
+        <th scope="row"><code class="flag-name"></code></th>
+        <td class="flag-kind"></td>
+        <td>
+          <span class="flag-value"></span>
+          <span class="badge flag-changed" data-text="ops.flagsmith.changed"
+            >Not the default</span
+          >
+        </td>
+        <td class="flag-default"></td>
+      </tr>
+    </template>
+
+    <template id="segment-row">
+      <tr>
+        <th scope="row">
+          <code class="segment-name"></code>
+          <span class="ops-meta segment-language"></span>
+          <span class="ops-meta segment-from"></span>
+        </th>
+        <td>
+          <code class="segment-reading"></code>
+          <span
+            class="badge segment-memory"
+            data-memory="ops_reading"
+            data-text="ops.flagsmith.in_memory"
+            >Override in memory</span
+          >
+        </td>
+        <td>
+          <code class="segment-path"></code>
+          <span class="ops-meta segment-experiment"></span>
+        </td>
+        <td>
+          <span class="segment-sarvam"></span>
+          <span
+            class="badge segment-memory"
+            data-memory="cfg_sarvam"
+            data-text="ops.flagsmith.in_memory"
+            >Override in memory</span
+          >
+        </td>
+      </tr>
+    </template>
+
+    <template id="fact-row">
+      <div>
+        <dt><code class="fact-name"></code></dt>
+        <dd class="fact-value"></dd>
+      </div>
+    </template>
+
+    <template id="variation-row">
+      <tr>
+        <th scope="row">
+          <code class="variation-value"></code>
+          <span class="ops-meta variation-key"></span>
+        </th>
+        <td class="num variation-exposures"></td>
+        <td class="num variation-conversions"></td>
+      </tr>
+    </template>
+
+    <template id="call-row">
+      <tr>
+        <th scope="row"><code class="call-api"></code></th>
+        <td><code class="call-model"></code></td>
+        <td class="num call-total"></td>
+        <td class="num" data-outcome="ok"></td>
+        <td class="num" data-outcome="invalid"></td>
+        <td class="num" data-outcome="rate_limited"></td>
+        <td class="num" data-outcome="no_credit"></td>
+        <td class="num" data-outcome="error"></td>
+        <td class="num" data-outcome="timeout"></td>
+      </tr>
+    </template>
+
+    <template id="billed-row">
+      <tr>
+        <th scope="row"><code class="billed-api"></code></th>
+        <td><code class="billed-unit"></code></td>
+        <td class="num billed-units"></td>
+      </tr>
+    </template>
+
+    <template id="recording-row">
+      <tr>
+        <th scope="row"><code class="recording-api"></code></th>
+        <td class="num recording-saved"></td>
+        <td class="num recording-placeholders"></td>
+      </tr>
+    </template>
+  </body>
+</html>

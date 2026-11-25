@@ -1,0 +1,4188 @@
+[
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c255fe9f55d0ab672ae914c68d5f53a2469e160ff9620b970d7cf84c41720cea",
+    "input": "Mysore pak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-1",
+      "transliterated_text": "मैसूर पाक",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c255fe9f55d0ab672ae914c68d5f53a2469e160ff9620b970d7cf84c41720cea",
+    "input": "Mysore pak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-2",
+      "transliterated_text": "மைசூர் பாக்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c255fe9f55d0ab672ae914c68d5f53a2469e160ff9620b970d7cf84c41720cea",
+    "input": "Mysore pak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-3",
+      "transliterated_text": "మైసూర్ పాక్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c255fe9f55d0ab672ae914c68d5f53a2469e160ff9620b970d7cf84c41720cea",
+    "input": "Mysore pak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-4",
+      "transliterated_text": "म्हैसूर पाक",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-5",
+      "transliterated_text": "काजू कतली",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-6",
+      "transliterated_text": "காஜு கட்லி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-7",
+      "transliterated_text": "కాజు కట్లీ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-8",
+      "transliterated_text": "काजू कतली",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1df127ebb31e5b7ab752f1980bf1b5cbffaa6b13293e269f41f48504f720cbf7",
+    "input": "Besan laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-9",
+      "transliterated_text": "बेसन लड्डू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1df127ebb31e5b7ab752f1980bf1b5cbffaa6b13293e269f41f48504f720cbf7",
+    "input": "Besan laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-10",
+      "transliterated_text": "பேசன் லட்டு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1df127ebb31e5b7ab752f1980bf1b5cbffaa6b13293e269f41f48504f720cbf7",
+    "input": "Besan laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-11",
+      "transliterated_text": "బేసన్ లడ్డు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1df127ebb31e5b7ab752f1980bf1b5cbffaa6b13293e269f41f48504f720cbf7",
+    "input": "Besan laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-12",
+      "transliterated_text": "बेसन लाडू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1f79a03ee81af40a0c7a1994f05bcf4fa1ded0d679bece3353f32e507c7b46ab",
+    "input": "Kobbari mithai (coconut burfi)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-13",
+      "transliterated_text": "कोब्बरी मिठाई (कोकोनट बर्फी)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1f79a03ee81af40a0c7a1994f05bcf4fa1ded0d679bece3353f32e507c7b46ab",
+    "input": "Kobbari mithai (coconut burfi)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-14",
+      "transliterated_text": "கொப்பரி மிட்டாய் (கோகனட் பர்ஃபி)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1f79a03ee81af40a0c7a1994f05bcf4fa1ded0d679bece3353f32e507c7b46ab",
+    "input": "Kobbari mithai (coconut burfi)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-15",
+      "transliterated_text": "కొబ్బరి మిఠాయి (కోకోనట్ బర్ఫీ)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1f79a03ee81af40a0c7a1994f05bcf4fa1ded0d679bece3353f32e507c7b46ab",
+    "input": "Kobbari mithai (coconut burfi)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-16",
+      "transliterated_text": "कोब्बरी मिठाई (कोकोनट बर्फी)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8155dd6f312434796e1e02bc9d3879e71a8d799e2f157a639242dbd14ea90217",
+    "input": "Chakkuli (chakli)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-17",
+      "transliterated_text": "चक्कुली (चकली)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8155dd6f312434796e1e02bc9d3879e71a8d799e2f157a639242dbd14ea90217",
+    "input": "Chakkuli (chakli)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-18",
+      "transliterated_text": "சக்குலி (சக்லி)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8155dd6f312434796e1e02bc9d3879e71a8d799e2f157a639242dbd14ea90217",
+    "input": "Chakkuli (chakli)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-19",
+      "transliterated_text": "చక్కులి (చక్లీ)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8155dd6f312434796e1e02bc9d3879e71a8d799e2f157a639242dbd14ea90217",
+    "input": "Chakkuli (chakli)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-20",
+      "transliterated_text": "चक्कुली (चकली)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e446c51a9d3d0f3710c3b608234ed1ee61b9ffc0c4ffe0fbeb75bac75a8c8393",
+    "input": "Kodubale",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-21",
+      "transliterated_text": "कोडुबले",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e446c51a9d3d0f3710c3b608234ed1ee61b9ffc0c4ffe0fbeb75bac75a8c8393",
+    "input": "Kodubale",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-22",
+      "transliterated_text": "கோடுபளே",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e446c51a9d3d0f3710c3b608234ed1ee61b9ffc0c4ffe0fbeb75bac75a8c8393",
+    "input": "Kodubale",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-23",
+      "transliterated_text": "కోడుబళే",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e446c51a9d3d0f3710c3b608234ed1ee61b9ffc0c4ffe0fbeb75bac75a8c8393",
+    "input": "Kodubale",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-24",
+      "transliterated_text": "कोडुबळे",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1a41deaef295619694c59a0694fed789ee590392b585505988e59695486d",
+    "input": "Nippattu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-25",
+      "transliterated_text": "निप्पट्टू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1a41deaef295619694c59a0694fed789ee590392b585505988e59695486d",
+    "input": "Nippattu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-26",
+      "transliterated_text": "நிப்பட்டு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1a41deaef295619694c59a0694fed789ee590392b585505988e59695486d",
+    "input": "Nippattu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-27",
+      "transliterated_text": "నిప్పట్టు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1a41deaef295619694c59a0694fed789ee590392b585505988e59695486d",
+    "input": "Nippattu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-28",
+      "transliterated_text": "निप्पट्टू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6b5788794b1c30b1ffff8fc25b09d74bfb8dc5a8f6747af0e31f662b1981deb4",
+    "input": "Diwali assorted box",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-29",
+      "transliterated_text": "दिवाली असॉर्टेड बॉक्स",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6b5788794b1c30b1ffff8fc25b09d74bfb8dc5a8f6747af0e31f662b1981deb4",
+    "input": "Diwali assorted box",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-30",
+      "transliterated_text": "தீபாவளி அசார்ட்டட் பாக்ஸ்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6b5788794b1c30b1ffff8fc25b09d74bfb8dc5a8f6747af0e31f662b1981deb4",
+    "input": "Diwali assorted box",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-31",
+      "transliterated_text": "దీపావళి అసార్టెడ్ బాక్స్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6b5788794b1c30b1ffff8fc25b09d74bfb8dc5a8f6747af0e31f662b1981deb4",
+    "input": "Diwali assorted box",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-32",
+      "transliterated_text": "दिवाळी असॉर्टेड बॉक्स",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-33",
+      "transliterated_text": "ಕಾಜು ಕಟ್ಲಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "fb6e7af67f94b87f630895106c1be0375bddc476295f1500a759e42d466b0002",
+    "input": "Motichoor laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-34",
+      "transliterated_text": "मोतीचूर लड्डू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "fb6e7af67f94b87f630895106c1be0375bddc476295f1500a759e42d466b0002",
+    "input": "Motichoor laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-35",
+      "transliterated_text": "ಮೋತಿಚೂರ್ ಲಡ್ಡು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "fb6e7af67f94b87f630895106c1be0375bddc476295f1500a759e42d466b0002",
+    "input": "Motichoor laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-36",
+      "transliterated_text": "மோதிசூர் லட்டு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "fb6e7af67f94b87f630895106c1be0375bddc476295f1500a759e42d466b0002",
+    "input": "Motichoor laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-37",
+      "transliterated_text": "మోతీచూర్ లడ్డు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "fb6e7af67f94b87f630895106c1be0375bddc476295f1500a759e42d466b0002",
+    "input": "Motichoor laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-38",
+      "transliterated_text": "मोतीचूर लाडू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e89e783dcac4cc8f3647174b9735575b34f6cbbfaf85668b7f4d04ea214c2f39",
+    "input": "Gujiya",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-39",
+      "transliterated_text": "गुजिया",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e89e783dcac4cc8f3647174b9735575b34f6cbbfaf85668b7f4d04ea214c2f39",
+    "input": "Gujiya",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-40",
+      "transliterated_text": "ಗುಜಿಯಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e89e783dcac4cc8f3647174b9735575b34f6cbbfaf85668b7f4d04ea214c2f39",
+    "input": "Gujiya",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-41",
+      "transliterated_text": "குஜியா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e89e783dcac4cc8f3647174b9735575b34f6cbbfaf85668b7f4d04ea214c2f39",
+    "input": "Gujiya",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-42",
+      "transliterated_text": "గుజియా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e89e783dcac4cc8f3647174b9735575b34f6cbbfaf85668b7f4d04ea214c2f39",
+    "input": "Gujiya",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-43",
+      "transliterated_text": "गुजिया",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "195839f8c1fa32fe0fb52167603a0832614f2db1641a751b740a3ff633afac45",
+    "input": "Namak para",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-44",
+      "transliterated_text": "नमक पारा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "195839f8c1fa32fe0fb52167603a0832614f2db1641a751b740a3ff633afac45",
+    "input": "Namak para",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-45",
+      "transliterated_text": "ನಮಕ್ ಪಾರಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "195839f8c1fa32fe0fb52167603a0832614f2db1641a751b740a3ff633afac45",
+    "input": "Namak para",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-46",
+      "transliterated_text": "நமக் பாரா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "195839f8c1fa32fe0fb52167603a0832614f2db1641a751b740a3ff633afac45",
+    "input": "Namak para",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-47",
+      "transliterated_text": "నమక్ పారా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "195839f8c1fa32fe0fb52167603a0832614f2db1641a751b740a3ff633afac45",
+    "input": "Namak para",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-48",
+      "transliterated_text": "नमक पारा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e62052a63a765a03ffc6e6b847aab1f8fa735df2bb18c45f8f156e6ea2e875f4",
+    "input": "Mathri",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-49",
+      "transliterated_text": "मठरी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e62052a63a765a03ffc6e6b847aab1f8fa735df2bb18c45f8f156e6ea2e875f4",
+    "input": "Mathri",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-50",
+      "transliterated_text": "ಮಠರಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e62052a63a765a03ffc6e6b847aab1f8fa735df2bb18c45f8f156e6ea2e875f4",
+    "input": "Mathri",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-51",
+      "transliterated_text": "மட்ரி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e62052a63a765a03ffc6e6b847aab1f8fa735df2bb18c45f8f156e6ea2e875f4",
+    "input": "Mathri",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-52",
+      "transliterated_text": "మఠరీ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e62052a63a765a03ffc6e6b847aab1f8fa735df2bb18c45f8f156e6ea2e875f4",
+    "input": "Mathri",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-53",
+      "transliterated_text": "मठरी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3a8e04fcd8c95660d531c8e23d573c9b1817e92c44e6d8c527f40f27d6059dc",
+    "input": "Assorted gift box (250 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-54",
+      "transliterated_text": "असॉर्टेड गिफ्ट बॉक्स (250 g)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3a8e04fcd8c95660d531c8e23d573c9b1817e92c44e6d8c527f40f27d6059dc",
+    "input": "Assorted gift box (250 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-55",
+      "transliterated_text": "ಅಸಾರ್ಟೆಡ್ ಗಿಫ್ಟ್ ಬಾಕ್ಸ್ (250 g)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3a8e04fcd8c95660d531c8e23d573c9b1817e92c44e6d8c527f40f27d6059dc",
+    "input": "Assorted gift box (250 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-56",
+      "transliterated_text": "அசார்ட்டட் கிஃப்ட் பாக்ஸ் (250 g)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3a8e04fcd8c95660d531c8e23d573c9b1817e92c44e6d8c527f40f27d6059dc",
+    "input": "Assorted gift box (250 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-57",
+      "transliterated_text": "అసార్టెడ్ గిఫ్ట్ బాక్స్ (250 g)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3a8e04fcd8c95660d531c8e23d573c9b1817e92c44e6d8c527f40f27d6059dc",
+    "input": "Assorted gift box (250 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-58",
+      "transliterated_text": "असॉर्टेड गिफ्ट बॉक्स (250 g)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "241a21055cf49992b3f15c304aa03eeb6167e4920669352387a4f0b31b3f75ee",
+    "input": "Murukku",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-59",
+      "transliterated_text": "मुरुक्कु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "241a21055cf49992b3f15c304aa03eeb6167e4920669352387a4f0b31b3f75ee",
+    "input": "Murukku",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-60",
+      "transliterated_text": "ಮುರುಕ್ಕು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "241a21055cf49992b3f15c304aa03eeb6167e4920669352387a4f0b31b3f75ee",
+    "input": "Murukku",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-61",
+      "transliterated_text": "முறுக்கு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "241a21055cf49992b3f15c304aa03eeb6167e4920669352387a4f0b31b3f75ee",
+    "input": "Murukku",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-62",
+      "transliterated_text": "మురుక్కు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "241a21055cf49992b3f15c304aa03eeb6167e4920669352387a4f0b31b3f75ee",
+    "input": "Murukku",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-63",
+      "transliterated_text": "मुरुक्कू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ae23525d079a89025bf768514414ad9f00b0d996900924fa6deabb226acf9f64",
+    "input": "Thattai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-64",
+      "transliterated_text": "तट्टई",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ae23525d079a89025bf768514414ad9f00b0d996900924fa6deabb226acf9f64",
+    "input": "Thattai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-65",
+      "transliterated_text": "ತಟ್ಟೈ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ae23525d079a89025bf768514414ad9f00b0d996900924fa6deabb226acf9f64",
+    "input": "Thattai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-66",
+      "transliterated_text": "தட்டை",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ae23525d079a89025bf768514414ad9f00b0d996900924fa6deabb226acf9f64",
+    "input": "Thattai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-67",
+      "transliterated_text": "తట్టై",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ae23525d079a89025bf768514414ad9f00b0d996900924fa6deabb226acf9f64",
+    "input": "Thattai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-68",
+      "transliterated_text": "तट्टई",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8fa79dd827628494d7081e3108fa27cd6fd2a16ad5e71042cacb7552773fa10c",
+    "input": "Ribbon pakoda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-69",
+      "transliterated_text": "रिबन पकोड़ा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8fa79dd827628494d7081e3108fa27cd6fd2a16ad5e71042cacb7552773fa10c",
+    "input": "Ribbon pakoda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-70",
+      "transliterated_text": "ರಿಬ್ಬನ್ ಪಕೋಡ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8fa79dd827628494d7081e3108fa27cd6fd2a16ad5e71042cacb7552773fa10c",
+    "input": "Ribbon pakoda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-71",
+      "transliterated_text": "ரிப்பன் பக்கோடா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8fa79dd827628494d7081e3108fa27cd6fd2a16ad5e71042cacb7552773fa10c",
+    "input": "Ribbon pakoda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-72",
+      "transliterated_text": "రిబ్బన్ పకోడా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "8fa79dd827628494d7081e3108fa27cd6fd2a16ad5e71042cacb7552773fa10c",
+    "input": "Ribbon pakoda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-73",
+      "transliterated_text": "रिबन पकोडा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "944078d35226bcd25d1478fd9dd00c888016ada7a129917697b22a3983e19cac",
+    "input": "Adhirasam",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-74",
+      "transliterated_text": "अधिरसम",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "944078d35226bcd25d1478fd9dd00c888016ada7a129917697b22a3983e19cac",
+    "input": "Adhirasam",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-75",
+      "transliterated_text": "ಅಧಿರಸಂ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "944078d35226bcd25d1478fd9dd00c888016ada7a129917697b22a3983e19cac",
+    "input": "Adhirasam",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-76",
+      "transliterated_text": "அதிரசம்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "944078d35226bcd25d1478fd9dd00c888016ada7a129917697b22a3983e19cac",
+    "input": "Adhirasam",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-77",
+      "transliterated_text": "అధిరసం",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "944078d35226bcd25d1478fd9dd00c888016ada7a129917697b22a3983e19cac",
+    "input": "Adhirasam",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-78",
+      "transliterated_text": "अधिरसम",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c255fe9f55d0ab672ae914c68d5f53a2469e160ff9620b970d7cf84c41720cea",
+    "input": "Mysore pak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-79",
+      "transliterated_text": "ಮೈಸೂರು ಪಾಕ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3ae8c46caaa5515b935220776611be5bed2eb4253a73a620513a2e099f6c5b9",
+    "input": "Kajjikayalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-80",
+      "transliterated_text": "कज्जिकायलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3ae8c46caaa5515b935220776611be5bed2eb4253a73a620513a2e099f6c5b9",
+    "input": "Kajjikayalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-81",
+      "transliterated_text": "ಕಜ್ಜಿಕಾಯಲು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3ae8c46caaa5515b935220776611be5bed2eb4253a73a620513a2e099f6c5b9",
+    "input": "Kajjikayalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-82",
+      "transliterated_text": "கஜ்ஜிகாயலு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3ae8c46caaa5515b935220776611be5bed2eb4253a73a620513a2e099f6c5b9",
+    "input": "Kajjikayalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-83",
+      "transliterated_text": "కజ్జికాయలు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f3ae8c46caaa5515b935220776611be5bed2eb4253a73a620513a2e099f6c5b9",
+    "input": "Kajjikayalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-84",
+      "transliterated_text": "कज्जिकायलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4dbff9662abefcc33c07a9831b6be682128bdb0bb6df75525923f9a72d5e1244",
+    "input": "Chekkalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-85",
+      "transliterated_text": "चेक्कलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4dbff9662abefcc33c07a9831b6be682128bdb0bb6df75525923f9a72d5e1244",
+    "input": "Chekkalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-86",
+      "transliterated_text": "ಚೆಕ್ಕಲು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4dbff9662abefcc33c07a9831b6be682128bdb0bb6df75525923f9a72d5e1244",
+    "input": "Chekkalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-87",
+      "transliterated_text": "செக்கலு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4dbff9662abefcc33c07a9831b6be682128bdb0bb6df75525923f9a72d5e1244",
+    "input": "Chekkalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-88",
+      "transliterated_text": "చెక్కలు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4dbff9662abefcc33c07a9831b6be682128bdb0bb6df75525923f9a72d5e1244",
+    "input": "Chekkalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-89",
+      "transliterated_text": "चेक्कलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9fa81e11a61c7424fb8f79e78a0c452ad11b5cee459813c7bc6176cf5a63dd7",
+    "input": "Sunnundalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-90",
+      "transliterated_text": "सुन्नुंडलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9fa81e11a61c7424fb8f79e78a0c452ad11b5cee459813c7bc6176cf5a63dd7",
+    "input": "Sunnundalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-91",
+      "transliterated_text": "ಸುನ್ನುಂಡಲು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9fa81e11a61c7424fb8f79e78a0c452ad11b5cee459813c7bc6176cf5a63dd7",
+    "input": "Sunnundalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-92",
+      "transliterated_text": "சுன்னுண்டலு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9fa81e11a61c7424fb8f79e78a0c452ad11b5cee459813c7bc6176cf5a63dd7",
+    "input": "Sunnundalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-93",
+      "transliterated_text": "సున్నుండలు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9fa81e11a61c7424fb8f79e78a0c452ad11b5cee459813c7bc6176cf5a63dd7",
+    "input": "Sunnundalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-94",
+      "transliterated_text": "सुन्नुंडलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1623e56a4b7156428e5ec84da57bd49bc098074ccb0fa816c0bf4fc4d353",
+    "input": "Gavvalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-95",
+      "transliterated_text": "गव्वलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1623e56a4b7156428e5ec84da57bd49bc098074ccb0fa816c0bf4fc4d353",
+    "input": "Gavvalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-96",
+      "transliterated_text": "ಗವ್ವಲು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1623e56a4b7156428e5ec84da57bd49bc098074ccb0fa816c0bf4fc4d353",
+    "input": "Gavvalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-97",
+      "transliterated_text": "கவ்வலு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1623e56a4b7156428e5ec84da57bd49bc098074ccb0fa816c0bf4fc4d353",
+    "input": "Gavvalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-98",
+      "transliterated_text": "గవ్వలు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0c7e1623e56a4b7156428e5ec84da57bd49bc098074ccb0fa816c0bf4fc4d353",
+    "input": "Gavvalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-99",
+      "transliterated_text": "गव्वलु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "736c5fca98b6523d669260d2321f7f9823518e7d43e7c132dec9acf9d7d6d6b3",
+    "input": "Boondi laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-100",
+      "transliterated_text": "बूंदी लड्डू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "736c5fca98b6523d669260d2321f7f9823518e7d43e7c132dec9acf9d7d6d6b3",
+    "input": "Boondi laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-101",
+      "transliterated_text": "ಬೂಂದಿ ಲಡ್ಡು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "736c5fca98b6523d669260d2321f7f9823518e7d43e7c132dec9acf9d7d6d6b3",
+    "input": "Boondi laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-102",
+      "transliterated_text": "பூந்தி லட்டு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "736c5fca98b6523d669260d2321f7f9823518e7d43e7c132dec9acf9d7d6d6b3",
+    "input": "Boondi laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-103",
+      "transliterated_text": "బూందీ లడ్డు",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "736c5fca98b6523d669260d2321f7f9823518e7d43e7c132dec9acf9d7d6d6b3",
+    "input": "Boondi laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-104",
+      "transliterated_text": "बुंदी लाडू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "51e7fa5adff4d7e92007c7caf68cd98f0b3662499249d83ed49d62d3af7499ce",
+    "input": "Chakli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-105",
+      "transliterated_text": "चकली",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "51e7fa5adff4d7e92007c7caf68cd98f0b3662499249d83ed49d62d3af7499ce",
+    "input": "Chakli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-106",
+      "transliterated_text": "ಚಕ್ಲಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "51e7fa5adff4d7e92007c7caf68cd98f0b3662499249d83ed49d62d3af7499ce",
+    "input": "Chakli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-107",
+      "transliterated_text": "சக்லி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "51e7fa5adff4d7e92007c7caf68cd98f0b3662499249d83ed49d62d3af7499ce",
+    "input": "Chakli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-108",
+      "transliterated_text": "చక్లీ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "51e7fa5adff4d7e92007c7caf68cd98f0b3662499249d83ed49d62d3af7499ce",
+    "input": "Chakli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-109",
+      "transliterated_text": "चकली",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "892d21be808cbdc4c06d3563c50f91cbea95d8b634246e6ce20325a819e9aa9d",
+    "input": "Shankarpali",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-110",
+      "transliterated_text": "शंकरपाली",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "892d21be808cbdc4c06d3563c50f91cbea95d8b634246e6ce20325a819e9aa9d",
+    "input": "Shankarpali",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-111",
+      "transliterated_text": "ಶಂಕರಪಾಳಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "892d21be808cbdc4c06d3563c50f91cbea95d8b634246e6ce20325a819e9aa9d",
+    "input": "Shankarpali",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-112",
+      "transliterated_text": "ஷங்கர்பாளி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "892d21be808cbdc4c06d3563c50f91cbea95d8b634246e6ce20325a819e9aa9d",
+    "input": "Shankarpali",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-113",
+      "transliterated_text": "శంకరపాళి",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "892d21be808cbdc4c06d3563c50f91cbea95d8b634246e6ce20325a819e9aa9d",
+    "input": "Shankarpali",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-114",
+      "transliterated_text": "शंकरपाळी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "dc2ff0fdc7d7ce51f05cd1dd8d6f0f8ff444c82da36304373561c9cf246c32a4",
+    "input": "Karanji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-115",
+      "transliterated_text": "करंजी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "dc2ff0fdc7d7ce51f05cd1dd8d6f0f8ff444c82da36304373561c9cf246c32a4",
+    "input": "Karanji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-116",
+      "transliterated_text": "ಕರಂಜಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "dc2ff0fdc7d7ce51f05cd1dd8d6f0f8ff444c82da36304373561c9cf246c32a4",
+    "input": "Karanji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-117",
+      "transliterated_text": "கரஞ்சி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "dc2ff0fdc7d7ce51f05cd1dd8d6f0f8ff444c82da36304373561c9cf246c32a4",
+    "input": "Karanji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-118",
+      "transliterated_text": "కరంజి",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "dc2ff0fdc7d7ce51f05cd1dd8d6f0f8ff444c82da36304373561c9cf246c32a4",
+    "input": "Karanji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-119",
+      "transliterated_text": "करंजी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "1df127ebb31e5b7ab752f1980bf1b5cbffaa6b13293e269f41f48504f720cbf7",
+    "input": "Besan laddu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-120",
+      "transliterated_text": "ಬೇಸನ್ ಲಡ್ಡು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4d659e2ba26845bb37e1a9de9c77c5c83865bf7a002009caa594ba8d3c103258",
+    "input": "Poha chivda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-121",
+      "transliterated_text": "पोहा चिवड़ा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4d659e2ba26845bb37e1a9de9c77c5c83865bf7a002009caa594ba8d3c103258",
+    "input": "Poha chivda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-122",
+      "transliterated_text": "ಪೋಹಾ ಚಿವ್ಡಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4d659e2ba26845bb37e1a9de9c77c5c83865bf7a002009caa594ba8d3c103258",
+    "input": "Poha chivda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-123",
+      "transliterated_text": "போஹா சிவ்டா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4d659e2ba26845bb37e1a9de9c77c5c83865bf7a002009caa594ba8d3c103258",
+    "input": "Poha chivda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-124",
+      "transliterated_text": "పోహా చివ్డా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4d659e2ba26845bb37e1a9de9c77c5c83865bf7a002009caa594ba8d3c103258",
+    "input": "Poha chivda",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-125",
+      "transliterated_text": "पोहा चिवडा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "34b805461105c7c7d89c5b2a0033f9b396d13cf32d63c091b7c62fc868c6cf9d",
+    "input": "Anarse",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-126",
+      "transliterated_text": "अनरसे",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "34b805461105c7c7d89c5b2a0033f9b396d13cf32d63c091b7c62fc868c6cf9d",
+    "input": "Anarse",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-127",
+      "transliterated_text": "ಅನರ್ಸೆ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "34b805461105c7c7d89c5b2a0033f9b396d13cf32d63c091b7c62fc868c6cf9d",
+    "input": "Anarse",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-128",
+      "transliterated_text": "அனர்சே",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "34b805461105c7c7d89c5b2a0033f9b396d13cf32d63c091b7c62fc868c6cf9d",
+    "input": "Anarse",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-129",
+      "transliterated_text": "అనర్సే",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "34b805461105c7c7d89c5b2a0033f9b396d13cf32d63c091b7c62fc868c6cf9d",
+    "input": "Anarse",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-130",
+      "transliterated_text": "अनारसे",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c8b2651245cc698fa46cdc5310c4abaa1913b5e4e27c27994f92b35cc33232d1",
+    "input": "Kulkuls",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-131",
+      "transliterated_text": "कुलकुल्स",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c8b2651245cc698fa46cdc5310c4abaa1913b5e4e27c27994f92b35cc33232d1",
+    "input": "Kulkuls",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-132",
+      "transliterated_text": "ಕುಲ್ಕುಲ್ಸ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c8b2651245cc698fa46cdc5310c4abaa1913b5e4e27c27994f92b35cc33232d1",
+    "input": "Kulkuls",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-133",
+      "transliterated_text": "குல்குல்ஸ்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c8b2651245cc698fa46cdc5310c4abaa1913b5e4e27c27994f92b35cc33232d1",
+    "input": "Kulkuls",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-134",
+      "transliterated_text": "కుల్కుల్స్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "c8b2651245cc698fa46cdc5310c4abaa1913b5e4e27c27994f92b35cc33232d1",
+    "input": "Kulkuls",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-135",
+      "transliterated_text": "कुलकुल्स",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d8f65b4020ad629779780706277be74ecb4b025ece9d20f985a7d4bc1c22c517",
+    "input": "Rose cookies",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-136",
+      "transliterated_text": "रोज़ कुकीज़",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d8f65b4020ad629779780706277be74ecb4b025ece9d20f985a7d4bc1c22c517",
+    "input": "Rose cookies",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-137",
+      "transliterated_text": "ರೋಸ್ ಕುಕೀಸ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d8f65b4020ad629779780706277be74ecb4b025ece9d20f985a7d4bc1c22c517",
+    "input": "Rose cookies",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-138",
+      "transliterated_text": "ரோஸ் குக்கீஸ்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d8f65b4020ad629779780706277be74ecb4b025ece9d20f985a7d4bc1c22c517",
+    "input": "Rose cookies",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-139",
+      "transliterated_text": "రోజ్ కుకీస్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d8f65b4020ad629779780706277be74ecb4b025ece9d20f985a7d4bc1c22c517",
+    "input": "Rose cookies",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-140",
+      "transliterated_text": "रोझ कुकीज",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2e8b3796df359f911d47a87721cae7cc5aab4ca8dbd43b34efd783e532898b7c",
+    "input": "Nankhatai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-141",
+      "transliterated_text": "नानखटाई",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2e8b3796df359f911d47a87721cae7cc5aab4ca8dbd43b34efd783e532898b7c",
+    "input": "Nankhatai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-142",
+      "transliterated_text": "ನಾನ್‌ಖಟಾಯಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2e8b3796df359f911d47a87721cae7cc5aab4ca8dbd43b34efd783e532898b7c",
+    "input": "Nankhatai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-143",
+      "transliterated_text": "நான்கட்டாய்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2e8b3796df359f911d47a87721cae7cc5aab4ca8dbd43b34efd783e532898b7c",
+    "input": "Nankhatai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-144",
+      "transliterated_text": "నాన్‌ఖటాయి",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2e8b3796df359f911d47a87721cae7cc5aab4ca8dbd43b34efd783e532898b7c",
+    "input": "Nankhatai",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-145",
+      "transliterated_text": "नानकटाई",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9d595e968221f877cdb23948064990cc6fd92b4626febe80f572729de98ceac",
+    "input": "Plum cake",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-146",
+      "transliterated_text": "प्लम केक",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9d595e968221f877cdb23948064990cc6fd92b4626febe80f572729de98ceac",
+    "input": "Plum cake",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-147",
+      "transliterated_text": "ಪ್ಲಮ್ ಕೇಕ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9d595e968221f877cdb23948064990cc6fd92b4626febe80f572729de98ceac",
+    "input": "Plum cake",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-148",
+      "transliterated_text": "பிளம் கேக்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9d595e968221f877cdb23948064990cc6fd92b4626febe80f572729de98ceac",
+    "input": "Plum cake",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-149",
+      "transliterated_text": "ప్లమ్ కేక్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "d9d595e968221f877cdb23948064990cc6fd92b4626febe80f572729de98ceac",
+    "input": "Plum cake",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-150",
+      "transliterated_text": "प्लम केक",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "54fa8c347fbd4f184870182d7719d75c60a511b3fba1190ddac3ab38aaf14627",
+    "input": "Vada pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-151",
+      "transliterated_text": "ವಡಾ ಪಾವ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "54fa8c347fbd4f184870182d7719d75c60a511b3fba1190ddac3ab38aaf14627",
+    "input": "Vada pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-152",
+      "transliterated_text": "வடா பாவ்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "54fa8c347fbd4f184870182d7719d75c60a511b3fba1190ddac3ab38aaf14627",
+    "input": "Vada pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-153",
+      "transliterated_text": "వడా పావ్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6a8a5a0a11df8954e1a7f66e5f443a78687038b9bac84a3fbf0ba85cb25f52f4",
+    "input": "Pav bhaji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-154",
+      "transliterated_text": "ಪಾವ್ ಭಾಜಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6a8a5a0a11df8954e1a7f66e5f443a78687038b9bac84a3fbf0ba85cb25f52f4",
+    "input": "Pav bhaji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-155",
+      "transliterated_text": "பாவ் பாஜி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6a8a5a0a11df8954e1a7f66e5f443a78687038b9bac84a3fbf0ba85cb25f52f4",
+    "input": "Pav bhaji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-156",
+      "transliterated_text": "పావ్ భాజీ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4bcff7fdd526b74e5108a2d3ad919bd2072af3005c1fd88450db6d102ea3e29f",
+    "input": "Anda bhurji pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-157",
+      "transliterated_text": "ಅಂಡಾ ಭುರ್ಜಿ ಪಾವ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4bcff7fdd526b74e5108a2d3ad919bd2072af3005c1fd88450db6d102ea3e29f",
+    "input": "Anda bhurji pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-158",
+      "transliterated_text": "அண்டா புர்ஜி பாவ்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4bcff7fdd526b74e5108a2d3ad919bd2072af3005c1fd88450db6d102ea3e29f",
+    "input": "Anda bhurji pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-159",
+      "transliterated_text": "అండా భుర్జీ పావ్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "9c1cf56018ba1d8ea6589ae7a82601492d0e8c2ccb836db65635193c23718224",
+    "input": "Kolambi bhaat (prawn rice)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-160",
+      "transliterated_text": "ಕೊಲಂಬಿ ಭಾತ್ (ಪ್ರಾನ್ ರೈಸ್)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "9c1cf56018ba1d8ea6589ae7a82601492d0e8c2ccb836db65635193c23718224",
+    "input": "Kolambi bhaat (prawn rice)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-161",
+      "transliterated_text": "கொலம்பி பாத் (பிரான் ரைஸ்)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "9c1cf56018ba1d8ea6589ae7a82601492d0e8c2ccb836db65635193c23718224",
+    "input": "Kolambi bhaat (prawn rice)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-162",
+      "transliterated_text": "కొలంబి భాత్ (ప్రాన్ రైస్)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "b1e72c1e0f525df0be970122c882aba1f7ba2a88764d50d4a994c0a3cdc8f69d",
+    "input": "Ukadiche modak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-163",
+      "transliterated_text": "ಉಕಡಿಚೆ ಮೋದಕ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "b1e72c1e0f525df0be970122c882aba1f7ba2a88764d50d4a994c0a3cdc8f69d",
+    "input": "Ukadiche modak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-164",
+      "transliterated_text": "உகடிசே மோதக்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "b1e72c1e0f525df0be970122c882aba1f7ba2a88764d50d4a994c0a3cdc8f69d",
+    "input": "Ukadiche modak",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-165",
+      "transliterated_text": "ఉకడిచే మోదక్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "20df5331604a8b1495919cf9c4e39205b07ff759618435559561446f82dd4171",
+    "input": "Chole bhature",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-166",
+      "transliterated_text": "ಛೋಲೆ ಭಟೂರೆ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "20df5331604a8b1495919cf9c4e39205b07ff759618435559561446f82dd4171",
+    "input": "Chole bhature",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-167",
+      "transliterated_text": "சோலே பட்டூரே",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "20df5331604a8b1495919cf9c4e39205b07ff759618435559561446f82dd4171",
+    "input": "Chole bhature",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-168",
+      "transliterated_text": "ఛోలే భటూరే",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e496777a290283cb53ae15cd90816e528833ac4efcfa324ee45c4443ca5027d1",
+    "input": "Samosa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-169",
+      "transliterated_text": "ಸಮೋಸಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e496777a290283cb53ae15cd90816e528833ac4efcfa324ee45c4443ca5027d1",
+    "input": "Samosa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-170",
+      "transliterated_text": "சமோசா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "e496777a290283cb53ae15cd90816e528833ac4efcfa324ee45c4443ca5027d1",
+    "input": "Samosa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-171",
+      "transliterated_text": "సమోసా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ba810018b187e2c0e8cf3b1c8d02bbfee67c7828b76624ffdb928a8a861810e7",
+    "input": "Chicken seekh kebab",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-172",
+      "transliterated_text": "ಚಿಕನ್ ಸೀಖ್ ಕಬಾಬ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ba810018b187e2c0e8cf3b1c8d02bbfee67c7828b76624ffdb928a8a861810e7",
+    "input": "Chicken seekh kebab",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-173",
+      "transliterated_text": "சிக்கன் சீக் கபாப்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ba810018b187e2c0e8cf3b1c8d02bbfee67c7828b76624ffdb928a8a861810e7",
+    "input": "Chicken seekh kebab",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-174",
+      "transliterated_text": "చికెన్ సీఖ్ కబాబ్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5449500fb5f0718a9796b7b795ff6052b658c2f20f19277e88118bfc82aa5a73",
+    "input": "Butter chicken",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-175",
+      "transliterated_text": "ಬಟರ್ ಚಿಕನ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5449500fb5f0718a9796b7b795ff6052b658c2f20f19277e88118bfc82aa5a73",
+    "input": "Butter chicken",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-176",
+      "transliterated_text": "பட்டர் சிக்கன்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5449500fb5f0718a9796b7b795ff6052b658c2f20f19277e88118bfc82aa5a73",
+    "input": "Butter chicken",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-177",
+      "transliterated_text": "బటర్ చికెన్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f52a216cd511d0d8fe728a8332d14040ae4cb89704c7418ef0467f41a0755dbb",
+    "input": "Gajar ka halwa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-178",
+      "transliterated_text": "ಗಾಜರ್ ಕಾ ಹಲ್ವಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f52a216cd511d0d8fe728a8332d14040ae4cb89704c7418ef0467f41a0755dbb",
+    "input": "Gajar ka halwa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-179",
+      "transliterated_text": "காஜர் கா ஹல்வா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "f52a216cd511d0d8fe728a8332d14040ae4cb89704c7418ef0467f41a0755dbb",
+    "input": "Gajar ka halwa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-180",
+      "transliterated_text": "గాజర్ కా హల్వా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4f6d9a92d672e64fcd66518886fa38ecececb843ed8ac3b4bebf3d0795424ff8",
+    "input": "Egg kothu parotta",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-181",
+      "transliterated_text": "एग कोथु परोट्टा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4f6d9a92d672e64fcd66518886fa38ecececb843ed8ac3b4bebf3d0795424ff8",
+    "input": "Egg kothu parotta",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-182",
+      "transliterated_text": "ಎಗ್ ಕೊತ್ತು ಪರೋಟ್ಟಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4f6d9a92d672e64fcd66518886fa38ecececb843ed8ac3b4bebf3d0795424ff8",
+    "input": "Egg kothu parotta",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-183",
+      "transliterated_text": "ఎగ్ కొత్తు పరోటా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "4f6d9a92d672e64fcd66518886fa38ecececb843ed8ac3b4bebf3d0795424ff8",
+    "input": "Egg kothu parotta",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-184",
+      "transliterated_text": "एग कोथू परोट्टा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "898125884d06a0102d615618cb7d462e05841d08be8158e8f5d2fb89090a96de",
+    "input": "Veg meals",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-185",
+      "transliterated_text": "वेज मील्स",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "898125884d06a0102d615618cb7d462e05841d08be8158e8f5d2fb89090a96de",
+    "input": "Veg meals",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-186",
+      "transliterated_text": "ವೆಜ್ ಮೀಲ್ಸ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "898125884d06a0102d615618cb7d462e05841d08be8158e8f5d2fb89090a96de",
+    "input": "Veg meals",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-187",
+      "transliterated_text": "వెజ్ మీల్స్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "898125884d06a0102d615618cb7d462e05841d08be8158e8f5d2fb89090a96de",
+    "input": "Veg meals",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-188",
+      "transliterated_text": "व्हेज मील्स",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "af3e11adf18b537781e36e593dd229d76c3c802444c3bc2dc917269b172547a9",
+    "input": "Chicken 65",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-189",
+      "transliterated_text": "चिकन 65",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "af3e11adf18b537781e36e593dd229d76c3c802444c3bc2dc917269b172547a9",
+    "input": "Chicken 65",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-190",
+      "transliterated_text": "ಚಿಕನ್ 65",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "af3e11adf18b537781e36e593dd229d76c3c802444c3bc2dc917269b172547a9",
+    "input": "Chicken 65",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-191",
+      "transliterated_text": "చికెన్ 65",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "af3e11adf18b537781e36e593dd229d76c3c802444c3bc2dc917269b172547a9",
+    "input": "Chicken 65",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-192",
+      "transliterated_text": "चिकन 65",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0dd3c9fd59f1de6d1e2716779e6f7515734d9c11d0ec454af5ea52329112e96b",
+    "input": "Medu vada",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-193",
+      "transliterated_text": "मेदु वडा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0dd3c9fd59f1de6d1e2716779e6f7515734d9c11d0ec454af5ea52329112e96b",
+    "input": "Medu vada",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-194",
+      "transliterated_text": "ಮೆದು ವಡಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0dd3c9fd59f1de6d1e2716779e6f7515734d9c11d0ec454af5ea52329112e96b",
+    "input": "Medu vada",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-195",
+      "transliterated_text": "మెదు వడ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "0dd3c9fd59f1de6d1e2716779e6f7515734d9c11d0ec454af5ea52329112e96b",
+    "input": "Medu vada",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-196",
+      "transliterated_text": "मेदू वडा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "efa4cf9308bd9575239d593e445056ac83931c5f4f59fa898b0969ec5e61e404",
+    "input": "Sakkarai pongal",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-197",
+      "transliterated_text": "सक्करई पोंगल",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "efa4cf9308bd9575239d593e445056ac83931c5f4f59fa898b0969ec5e61e404",
+    "input": "Sakkarai pongal",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-198",
+      "transliterated_text": "ಸಕ್ಕರೈ ಪೊಂಗಲ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "efa4cf9308bd9575239d593e445056ac83931c5f4f59fa898b0969ec5e61e404",
+    "input": "Sakkarai pongal",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-199",
+      "transliterated_text": "సక్కరై పొంగల్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "efa4cf9308bd9575239d593e445056ac83931c5f4f59fa898b0969ec5e61e404",
+    "input": "Sakkarai pongal",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-200",
+      "transliterated_text": "सक्करई पोंगल",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "b016f377bcb02f320fbc0ef15825c92c89ab80fa0af6ec2e41edc2f1b77a591e",
+    "input": "Hyderabadi chicken dum biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-201",
+      "transliterated_text": "हैदराबादी चिकन दम बिरयानी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "b016f377bcb02f320fbc0ef15825c92c89ab80fa0af6ec2e41edc2f1b77a591e",
+    "input": "Hyderabadi chicken dum biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-202",
+      "transliterated_text": "ಹೈದರಾಬಾದಿ ಚಿಕನ್ ದಮ್ ಬಿರಿಯಾನಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "b016f377bcb02f320fbc0ef15825c92c89ab80fa0af6ec2e41edc2f1b77a591e",
+    "input": "Hyderabadi chicken dum biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-203",
+      "transliterated_text": "ஹைதராபாதி சிக்கன் தம் பிரியாணி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "b016f377bcb02f320fbc0ef15825c92c89ab80fa0af6ec2e41edc2f1b77a591e",
+    "input": "Hyderabadi chicken dum biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-204",
+      "transliterated_text": "हैदराबादी चिकन दम बिर्याणी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ea9fef8f8860dab3f836572161008e8bf345a08e1779dd3b4f9e0d2f96f1de6d",
+    "input": "Egg biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-205",
+      "transliterated_text": "एग बिरयानी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ea9fef8f8860dab3f836572161008e8bf345a08e1779dd3b4f9e0d2f96f1de6d",
+    "input": "Egg biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-206",
+      "transliterated_text": "ಎಗ್ ಬಿರಿಯಾನಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ea9fef8f8860dab3f836572161008e8bf345a08e1779dd3b4f9e0d2f96f1de6d",
+    "input": "Egg biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-207",
+      "transliterated_text": "எக் பிரியாணி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ea9fef8f8860dab3f836572161008e8bf345a08e1779dd3b4f9e0d2f96f1de6d",
+    "input": "Egg biryani",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-208",
+      "transliterated_text": "एग बिर्याणी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a806c21a8ce3a1738cdb872d03f988a8b791bf0ddc53cbfb7dcf9b3b3e9a1854",
+    "input": "Mirchi bajji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-209",
+      "transliterated_text": "मिर्ची बज्जी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a806c21a8ce3a1738cdb872d03f988a8b791bf0ddc53cbfb7dcf9b3b3e9a1854",
+    "input": "Mirchi bajji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-210",
+      "transliterated_text": "ಮಿರ್ಚಿ ಬಜ್ಜಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a806c21a8ce3a1738cdb872d03f988a8b791bf0ddc53cbfb7dcf9b3b3e9a1854",
+    "input": "Mirchi bajji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-211",
+      "transliterated_text": "மிர்ச்சி பஜ்ஜி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a806c21a8ce3a1738cdb872d03f988a8b791bf0ddc53cbfb7dcf9b3b3e9a1854",
+    "input": "Mirchi bajji",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-212",
+      "transliterated_text": "मिरची बज्जी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "477fe2490985f560347d6a7154c6f5ad15913dbc01e41a3b65f68434ab9a1e58",
+    "input": "Sakinalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-213",
+      "transliterated_text": "सकिनालु",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "477fe2490985f560347d6a7154c6f5ad15913dbc01e41a3b65f68434ab9a1e58",
+    "input": "Sakinalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-214",
+      "transliterated_text": "ಸಕಿನಾಲು",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "477fe2490985f560347d6a7154c6f5ad15913dbc01e41a3b65f68434ab9a1e58",
+    "input": "Sakinalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-215",
+      "transliterated_text": "சகினாலு",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "477fe2490985f560347d6a7154c6f5ad15913dbc01e41a3b65f68434ab9a1e58",
+    "input": "Sakinalu",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-216",
+      "transliterated_text": "सकिनालू",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "21392f184c326a44589a2476218ba3b51c2a63febf713a27e24328caa8dfb012",
+    "input": "Double ka meetha",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-217",
+      "transliterated_text": "डबल का मीठा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "21392f184c326a44589a2476218ba3b51c2a63febf713a27e24328caa8dfb012",
+    "input": "Double ka meetha",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-218",
+      "transliterated_text": "ಡಬಲ್ ಕಾ ಮೀಠಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "21392f184c326a44589a2476218ba3b51c2a63febf713a27e24328caa8dfb012",
+    "input": "Double ka meetha",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-219",
+      "transliterated_text": "டபுள் கா மீட்டா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "21392f184c326a44589a2476218ba3b51c2a63febf713a27e24328caa8dfb012",
+    "input": "Double ka meetha",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-220",
+      "transliterated_text": "डबल का मीठा",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "92603678c9a67d5ed1d9fa35543204dd56814613399b1d19e28f2b14707df2ec",
+    "input": "Misal pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-221",
+      "transliterated_text": "ಮಿಸಲ್ ಪಾವ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "92603678c9a67d5ed1d9fa35543204dd56814613399b1d19e28f2b14707df2ec",
+    "input": "Misal pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-222",
+      "transliterated_text": "மிசல் பாவ்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "92603678c9a67d5ed1d9fa35543204dd56814613399b1d19e28f2b14707df2ec",
+    "input": "Misal pav",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-223",
+      "transliterated_text": "మిసల్ పావ్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "7bcf5b06f99c6d2a8ae5b7a4a8b584755943086ba83a0814d67ccc255d1b3e91",
+    "input": "Sabudana vada",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-224",
+      "transliterated_text": "ಸಾಬುದಾನಾ ವಡಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "7bcf5b06f99c6d2a8ae5b7a4a8b584755943086ba83a0814d67ccc255d1b3e91",
+    "input": "Sabudana vada",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-225",
+      "transliterated_text": "சாபுதானா வடா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "7bcf5b06f99c6d2a8ae5b7a4a8b584755943086ba83a0814d67ccc255d1b3e91",
+    "input": "Sabudana vada",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-226",
+      "transliterated_text": "సాబుదానా వడా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ab758e51ebffdcc269ee455559357c4998db2d38901320f50fb86e89a1bd9338",
+    "input": "Bhakarwadi",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-227",
+      "transliterated_text": "ಭಾಕರ್ವಡಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ab758e51ebffdcc269ee455559357c4998db2d38901320f50fb86e89a1bd9338",
+    "input": "Bhakarwadi",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-228",
+      "transliterated_text": "பாகர்வடி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "ab758e51ebffdcc269ee455559357c4998db2d38901320f50fb86e89a1bd9338",
+    "input": "Bhakarwadi",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-229",
+      "transliterated_text": "భాకర్వడి",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "490ec39920f78f70cd0959d786397c078c885ce29a4ac7d11c47d867872771ea",
+    "input": "Mutton tambda rassa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-230",
+      "transliterated_text": "ಮಟನ್ ತಾಂಬಡಾ ರಸ್ಸಾ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "490ec39920f78f70cd0959d786397c078c885ce29a4ac7d11c47d867872771ea",
+    "input": "Mutton tambda rassa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-231",
+      "transliterated_text": "மட்டன் தாம்படா ரஸ்ஸா",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "490ec39920f78f70cd0959d786397c078c885ce29a4ac7d11c47d867872771ea",
+    "input": "Mutton tambda rassa",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-232",
+      "transliterated_text": "మటన్ తాంబడా రస్సా",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "599014f4d7afebf906e710d84ef6c2bbc08aec26682610832f6cd242ab35b06a",
+    "input": "Puran poli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-233",
+      "transliterated_text": "ಪೂರನ್ ಪೋಳಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "599014f4d7afebf906e710d84ef6c2bbc08aec26682610832f6cd242ab35b06a",
+    "input": "Puran poli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-234",
+      "transliterated_text": "பூரண் போளி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "599014f4d7afebf906e710d84ef6c2bbc08aec26682610832f6cd242ab35b06a",
+    "input": "Puran poli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-235",
+      "transliterated_text": "పూరన్ పోలి",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a27f54032b0f79ab36776973a44a07c30d002dcbc3a2112714d446f950b388bc",
+    "input": "Egg roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-236",
+      "transliterated_text": "एग रोल",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a27f54032b0f79ab36776973a44a07c30d002dcbc3a2112714d446f950b388bc",
+    "input": "Egg roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-237",
+      "transliterated_text": "ಎಗ್ ರೋಲ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a27f54032b0f79ab36776973a44a07c30d002dcbc3a2112714d446f950b388bc",
+    "input": "Egg roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-238",
+      "transliterated_text": "எக் ரோல்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a27f54032b0f79ab36776973a44a07c30d002dcbc3a2112714d446f950b388bc",
+    "input": "Egg roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-239",
+      "transliterated_text": "ఎగ్ రోల్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "a27f54032b0f79ab36776973a44a07c30d002dcbc3a2112714d446f950b388bc",
+    "input": "Egg roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-240",
+      "transliterated_text": "एग रोल",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5643bde072665729ed3a5402988985db0e6ad7085a6972be9c41d4cd2f15e983",
+    "input": "Chicken kathi roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-241",
+      "transliterated_text": "चिकन काठी रोल",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5643bde072665729ed3a5402988985db0e6ad7085a6972be9c41d4cd2f15e983",
+    "input": "Chicken kathi roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-242",
+      "transliterated_text": "ಚಿಕನ್ ಕಾಠಿ ರೋಲ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5643bde072665729ed3a5402988985db0e6ad7085a6972be9c41d4cd2f15e983",
+    "input": "Chicken kathi roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-243",
+      "transliterated_text": "சிக்கன் காத்தி ரோல்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5643bde072665729ed3a5402988985db0e6ad7085a6972be9c41d4cd2f15e983",
+    "input": "Chicken kathi roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-244",
+      "transliterated_text": "చికెన్ కాఠీ రోల్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5643bde072665729ed3a5402988985db0e6ad7085a6972be9c41d4cd2f15e983",
+    "input": "Chicken kathi roll",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-245",
+      "transliterated_text": "चिकन काठी रोल",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6ff356b8f1aa5584cac1c9fc54cca6dfa32b1522037eb8a2a68428f9a19d2972",
+    "input": "Macher jhol (fish curry)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-246",
+      "transliterated_text": "माछेर झोल (फिश करी)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6ff356b8f1aa5584cac1c9fc54cca6dfa32b1522037eb8a2a68428f9a19d2972",
+    "input": "Macher jhol (fish curry)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-247",
+      "transliterated_text": "ಮಾಛೇರ್ ಝೋಲ್ (ಫಿಶ್ ಕರಿ)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6ff356b8f1aa5584cac1c9fc54cca6dfa32b1522037eb8a2a68428f9a19d2972",
+    "input": "Macher jhol (fish curry)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-248",
+      "transliterated_text": "மாச்சேர் ஜோல் (ஃபிஷ் கறி)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6ff356b8f1aa5584cac1c9fc54cca6dfa32b1522037eb8a2a68428f9a19d2972",
+    "input": "Macher jhol (fish curry)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-249",
+      "transliterated_text": "మాఛేర్ ఝోల్ (ఫిష్ కర్రీ)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "6ff356b8f1aa5584cac1c9fc54cca6dfa32b1522037eb8a2a68428f9a19d2972",
+    "input": "Macher jhol (fish curry)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-250",
+      "transliterated_text": "माछेर झोल (फिश करी)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5f4cf259904325c90d2f57d7caff6d2078ede56fdaf11b2aa623c42ba0e54191",
+    "input": "Luchi aloor dom",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-251",
+      "transliterated_text": "लूची आलूर दोम",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5f4cf259904325c90d2f57d7caff6d2078ede56fdaf11b2aa623c42ba0e54191",
+    "input": "Luchi aloor dom",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-252",
+      "transliterated_text": "ಲುಚಿ ಆಲೂರ್ ದೋಮ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5f4cf259904325c90d2f57d7caff6d2078ede56fdaf11b2aa623c42ba0e54191",
+    "input": "Luchi aloor dom",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-253",
+      "transliterated_text": "லூச்சி ஆலூர் தோம்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5f4cf259904325c90d2f57d7caff6d2078ede56fdaf11b2aa623c42ba0e54191",
+    "input": "Luchi aloor dom",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-254",
+      "transliterated_text": "లూచి ఆలూర్ దోమ్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "5f4cf259904325c90d2f57d7caff6d2078ede56fdaf11b2aa623c42ba0e54191",
+    "input": "Luchi aloor dom",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-255",
+      "transliterated_text": "लुची आलूर दोम",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2363a5e0efc89ccc897e9fe3c23b969be3a43bedee9e01a6bed021cbd34f88f1",
+    "input": "Nolen gurer sandesh",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-256",
+      "transliterated_text": "नोलेन गुरेर संदेश",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2363a5e0efc89ccc897e9fe3c23b969be3a43bedee9e01a6bed021cbd34f88f1",
+    "input": "Nolen gurer sandesh",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-257",
+      "transliterated_text": "ನೊಲೆನ್ ಗುರೇರ್ ಸಂದೇಶ್",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2363a5e0efc89ccc897e9fe3c23b969be3a43bedee9e01a6bed021cbd34f88f1",
+    "input": "Nolen gurer sandesh",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-258",
+      "transliterated_text": "நோலென் குரேர் சந்தேஷ்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2363a5e0efc89ccc897e9fe3c23b969be3a43bedee9e01a6bed021cbd34f88f1",
+    "input": "Nolen gurer sandesh",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-259",
+      "transliterated_text": "నోలెన్ గురేర్ సందేశ్",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "2363a5e0efc89ccc897e9fe3c23b969be3a43bedee9e01a6bed021cbd34f88f1",
+    "input": "Nolen gurer sandesh",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-260",
+      "transliterated_text": "नोलेन गुरेर संदेश",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "33b84f858d6cfe1c4b3a69d35f5f14bfca37ab3bea33e7ddb4f8eda609f2d036",
+    "input": "ಕಾಜು ಕಟ್ಲಿ",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-search-kn-en",
+      "transliterated_text": "kaju katli",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "transliterate",
+    "model": "transliterate",
+    "input_sha256": "261ff12b408c772c2f45599c5a62c60fa0153b29501fd598448e6f42402c3a7e",
+    "input": "काजू कतली",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-transliterate-search-hi-en",
+      "transliterated_text": "kaju katli",
+      "source_language_code": "hi-IN"
+    }
+  }
+]

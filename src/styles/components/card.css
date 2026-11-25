@@ -1,0 +1,43 @@
+/* A card: paper with a light brass-tint border,
+   squircle corners and a flat 2 px edge under it. No blur and no card inside a
+   card. The card of the main tool on a page has a brass border. */
+.card {
+  padding: calc(var(--space) * 3);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-card-small);
+  background: var(--paper);
+  box-shadow: var(--card-edge);
+
+  &[data-edge="brass"] {
+    border-color: var(--brass);
+  }
+
+  :is(h2, h3) {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: var(--step-1);
+    line-height: 1.2;
+  }
+}
+
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space) calc(var(--space) * 2);
+
+  p {
+    margin: 0;
+  }
+
+  > :first-child {
+    flex: 1 1 16rem;
+  }
+}
+
+.card-lead {
+  color: var(--ink-2);
+}

@@ -1,0 +1,19 @@
+/* One calm card at reading width, on the left edge of the page, under the
+   brand. */
+.privacy {
+  display: grid;
+  gap: calc(var(--space) * 3);
+  max-inline-size: 44rem;
+  padding: calc(var(--space) * 4);
+
+  .lead {
+    font-size: var(--step-1);
+  }
+
+  .answers > div {
+    grid-template-columns: 7em 1fr;
+    align-items: start;
+    padding-block: calc(var(--space) * 1.5);
+    border-top-color: var(--brass-tint);
+  }
+}

@@ -1,0 +1,137 @@
+/* The app bar of the laptop pages: the brand tile, the wordmark with its
+   badge slot and the subtitle, which link to the homepage; the nav of the
+   desk pages in the middle; at the end, the status of the page and the
+   controls. It stays at the top, on paper, over a light border. */
+.app-bar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  border-block-end: var(--card-line) solid var(--brass-tint);
+  background: var(--paper);
+
+  p {
+    margin: 0;
+  }
+}
+
+/* The sides share the room, so a nav stays in the middle, and no side is
+   narrower than its content: the wordmark stays whole, the store line ends
+   in an ellipsis, and the status wraps beside the controls. */
+.app-bar-inner {
+  display: grid;
+  grid-template-columns: minmax(min-content, 1fr) auto minmax(min-content, 1fr);
+  align-items: center;
+  gap: 0 calc(var(--space) * 3);
+  max-inline-size: var(--page);
+  margin-inline: auto;
+  padding: calc(var(--space) * 1.5) var(--page-margin);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+  min-inline-size: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* The tile is ink, so the handi draws in paper lines with no fill
+   (icon.css). It is the mark of the product, so it is a size up, with the
+   corner of an app icon. */
+.brand-tile {
+  --icon-size: calc(var(--space) * 3.5);
+
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: calc(var(--space) * 6);
+  block-size: calc(var(--space) * 6);
+  border-radius: var(--radius-tile);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.brand-line {
+  display: flex;
+  align-items: center;
+  gap: 0 var(--space);
+}
+
+/* The name of the product is the largest words in the bar. */
+.wordmark {
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand > div {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+/* The store line takes the room that the brand gets and never asks for
+   more, so a long store name or place ends in an ellipsis. */
+.app-bar-sub {
+  contain: inline-size;
+  overflow: hidden;
+  color: var(--ink-2);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-nav {
+  grid-column: 2;
+}
+
+/* The status of the page wraps in up to three lines beside the controls,
+   so a long sentence in Tamil or Telugu never covers them. */
+.app-bar-end {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: calc(var(--space) * 2);
+  grid-column: 3;
+  min-inline-size: 0;
+  color: var(--ink-2);
+  text-align: end;
+
+  > p {
+    max-inline-size: calc(var(--space) * 30);
+  }
+
+  .wait {
+    justify-content: end;
+  }
+}
+
+/* The controls are one block: City and Sound side by side at one width,
+   and Language under both, across their width. A page with no city choice
+   has Sound across the top row. The words of the sound pill say whether it
+   is on, so it stays paper, like the selects beside and under it. */
+.bar-controls {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space);
+  anchor-name: --bar-controls;
+
+  > .language-picker,
+  &:not(:has(> .city:not([hidden]))) > .chip {
+    grid-column: 1 / -1;
+  }
+
+  .app-bar & > .chip[aria-pressed] {
+    border-color: var(--brass-tint);
+    background: var(--paper);
+    color: var(--ink);
+
+    &:hover {
+      border-color: var(--brass);
+    }
+
+    &:active {
+      background: var(--ink-tint);
+    }
+  }
+}

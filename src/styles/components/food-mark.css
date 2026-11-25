@@ -1,0 +1,33 @@
+/* FSSAI Labelling and Display Regulations 2020, 5(4)(c): the square is twice the diameter of the circle,
+   and the side of the triangle is 7/16 of the square (a 16 mm square holds an 8 mm circle or a 7 mm triangle). */
+.food-mark {
+  --mark-size: calc(var(--space) * 2);
+
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--mark-size);
+  block-size: var(--mark-size);
+  border: calc(var(--mark-size) * 3 / 32) solid currentColor;
+  color: var(--leaf);
+  forced-color-adjust: none;
+
+  &::before {
+    content: "";
+    inline-size: calc(var(--mark-size) / 2);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  &[data-food="non-veg"] {
+    color: var(--fssai-brown);
+
+    &::before {
+      inline-size: calc(var(--mark-size) * 7 / 16);
+      aspect-ratio: 1.1547;
+      border-radius: 0;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+  }
+}

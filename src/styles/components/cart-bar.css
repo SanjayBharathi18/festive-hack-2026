@@ -1,0 +1,26 @@
+.cart-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+  padding: calc(var(--space) * 1.5);
+  border: var(--rule) solid var(--ink);
+  border-radius: var(--radius-card-small);
+  background: var(--paper);
+
+  .cart-sum {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space);
+    margin: 0;
+  }
+}
+
+.cart-total {
+  padding: calc(var(--space) / 4) var(--space);
+  border: var(--hair) solid var(--ink);
+  font-size: var(--step-1);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}

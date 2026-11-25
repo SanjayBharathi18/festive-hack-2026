@@ -1,0 +1,79 @@
+# Placeholder host: replace 0-0-0-0 with the static IP, with dashes
+# (34-12-56-78.sslip.io), in all three places in this file and in PUBLIC_URL
+# (configmap.yaml). The deploy job refuses to run while 0-0-0-0 is here.
+# Use letsencrypt-staging until the certificate works, then letsencrypt-prod
+# (production allows 5 certificates for each hostname in 7 days).
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app
+  namespace: app
+  labels:
+    app.kubernetes.io/name: app
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    traefik.ingress.kubernetes.io/router.middlewares: app-redirect-https@kubernetescrd
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - 0-0-0-0.sslip.io
+      secretName: app-tls
+  rules:
+    - host: 0-0-0-0.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app
+                port:
+                  name: http
+---
+# /metrics is not public. Prometheus scrapes the Service inside the cluster
+# (service-monitor.yaml). This longer path wins over / and answers 403 to all.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-metrics-blocked
+  namespace: app
+  labels:
+    app.kubernetes.io/name: app
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: app-deny-all@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: 0-0-0-0.sslip.io
+      http:
+        paths:
+          - path: /metrics
+            pathType: Prefix
+            backend:
+              service:
+                name: app
+                port:
+                  name: http
+---
+# HTTP requests get a redirect to HTTPS. HTTPS requests pass through. The
+# cert-manager HTTP-01 challenge has its own, longer path, so it is not redirected.
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https
+  namespace: app
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: deny-all
+  namespace: app
+spec:
+  ipAllowList:
+    sourceRange:
+      - 127.0.0.1/32

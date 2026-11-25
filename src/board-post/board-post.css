@@ -1,0 +1,153 @@
+/* A board post: the request of a company in the main column, the stores
+   that answered at the side. The form has a row for each item and place. */
+.board-post,
+.form-card,
+.board-interests {
+  display: grid;
+  gap: calc(var(--space) * 2);
+
+  fieldset {
+    display: grid;
+    gap: var(--space);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    margin-block-end: var(--space);
+    font-weight: 600;
+  }
+}
+
+.board-page h2 {
+  font-size: var(--step-1);
+}
+
+.board-tags,
+.board-actions,
+.submit-line,
+.interest-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+}
+
+.board-items {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: calc(var(--space) * 2);
+    min-block-size: var(--tap);
+    align-items: center;
+    border-block-start: var(--hair) solid var(--brass);
+    font-size: var(--step-1);
+  }
+}
+
+.board-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--space) * 2);
+  margin: 0;
+
+  dt {
+    color: var(--ink-2);
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+.board-rows {
+  display: grid;
+  gap: var(--space);
+}
+
+.board-row {
+  display: grid;
+  align-items: end;
+  gap: var(--space) calc(var(--space) * 2);
+
+  &.item-row {
+    grid-template-columns: minmax(0, 1fr) 8rem 8rem auto;
+  }
+
+  &.place-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.board-when {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(var(--space) * 2);
+}
+
+.form-card > .btn-plain,
+.board-places > .btn-plain {
+  justify-self: start;
+}
+
+.codes {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+
+  .code-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space);
+    margin: 0;
+    color: var(--ink-2);
+  }
+
+  .code-value {
+    color: var(--ink);
+    font-size: var(--step-1);
+    letter-spacing: 0.12em;
+  }
+}
+
+.interest-list {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.interest {
+  display: grid;
+  gap: var(--space);
+  padding-block-start: calc(var(--space) * 2);
+  border-block-start: var(--hair) solid var(--brass);
+
+  .interest-store {
+    color: inherit;
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+
+  .interest-area {
+    color: var(--ink-2);
+  }
+
+  .interest-contact {
+    justify-self: start;
+  }
+}
+
+/* Each control fills its column, so that a long label wraps in it. */
+.board-form .field :is(input, select) {
+  inline-size: 100%;
+  min-inline-size: 0;
+}

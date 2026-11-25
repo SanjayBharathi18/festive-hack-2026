@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="home.page_title">
+      Plattr · From a dozen to a thousand
+    </title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/home/home.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/home/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span>
+            </p>
+            <p class="app-bar-sub" data-text="home.title">
+              From a dozen to a thousand
+            </p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <span class="picker city">
+              <label
+                class="visually-hidden"
+                for="city-picker"
+                data-text="city.label"
+                >City</label
+              >
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#location" />
+              </svg>
+              <select id="city-picker"></select>
+            </span>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page home-page">
+      <h1 class="visually-hidden" data-text="home.title">
+        From a dozen to a thousand
+      </h1>
+      <fieldset class="home-tabs" id="tabs">
+        <legend class="visually-hidden" data-text="home.tabs.label">
+          What do you want?
+        </legend>
+        <label class="card home-tab">
+          <input
+            class="visually-hidden"
+            type="radio"
+            name="tab"
+            value="food"
+            aria-labelledby="tab-food"
+            aria-describedby="tab-food-line"
+            checked
+          />
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#sweets" />
+          </svg>
+          <span class="home-tab-words">
+            <span class="home-tab-name" id="tab-food" data-text="home.tabs.food"
+              >Order Here</span
+            >
+            <span
+              class="home-tab-line"
+              id="tab-food-line"
+              data-text="home.tabs.food_line"
+              >From home cooks near you</span
+            >
+          </span>
+        </label>
+        <label class="card home-tab">
+          <input
+            class="visually-hidden"
+            type="radio"
+            name="tab"
+            value="bulk"
+            aria-labelledby="tab-bulk"
+            aria-describedby="tab-bulk-line"
+          />
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#bulk" />
+          </svg>
+          <span class="home-tab-words">
+            <span class="home-tab-name" id="tab-bulk" data-text="home.tabs.bulk"
+              >Corporate Bulk Orders</span
+            >
+            <span
+              class="home-tab-line"
+              id="tab-bulk-line"
+              data-text="home.tabs.bulk_line"
+              >Sweets, snacks and gift boxes for offices</span
+            >
+          </span>
+        </label>
+        <label class="card home-tab">
+          <input
+            class="visually-hidden"
+            type="radio"
+            name="tab"
+            value="catering"
+            aria-labelledby="tab-catering"
+            aria-describedby="tab-catering-line"
+          />
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#catering" />
+          </svg>
+          <span class="home-tab-words">
+            <span
+              class="home-tab-name"
+              id="tab-catering"
+              data-text="home.tabs.catering"
+              >Catering Servicing</span
+            >
+            <span
+              class="home-tab-line"
+              id="tab-catering-line"
+              data-text="home.tabs.catering_line"
+              >Caterers for weddings and parties</span
+            >
+          </span>
+        </label>
+      </fieldset>
+
+      <section class="tab-panel food" id="food" aria-labelledby="tab-food">
+        <form class="search" id="search-form" role="search">
+          <label class="visually-hidden" for="q" data-text="search.label"
+            >Dish or cook</label
+          >
+          <div class="search-box" id="search-box">
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons.svg#search" />
+            </svg>
+            <input
+              id="q"
+              name="q"
+              type="search"
+              maxlength="100"
+              autocomplete="off"
+              enterkeyhint="search"
+              placeholder="Search a dish or a cook, in any language"
+              data-text-placeholder="search.placeholder"
+            />
+            <button
+              class="search-tool search-clear"
+              type="button"
+              id="search-clear"
+              aria-label="Clear the search"
+              data-text-label="search.clear"
+            >
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#close" />
+              </svg>
+            </button>
+            <button
+              class="search-tool voice-button"
+              type="button"
+              id="mic"
+              aria-label="Say a dish"
+              data-text-label="search.voice.say"
+              data-phase="idle"
+              hidden
+            >
+              <span class="voice-record"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#mic" /></svg
+              ></span>
+              <span class="voice-stop"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#stop" /></svg
+              ></span>
+            </button>
+            <button
+              class="search-tool filters-button"
+              type="button"
+              id="filters-button"
+              popovertarget="filters"
+            >
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#filter" />
+              </svg>
+              <span data-text="search.filters.label">Filters</span>
+              <span
+                class="filters-count"
+                id="filters-count"
+                aria-hidden="true"
+                hidden
+                >(<span class="num" id="filters-number"></span>)</span
+              >
+              <span class="visually-hidden" id="filters-on"></span>
+            </button>
+          </div>
+          <div class="voice search-voice" id="listening" hidden>
+            <p class="hint" role="status" data-text="search.voice.listening">
+              Listening. Say the dish, then press Stop listening.
+            </p>
+            <span
+              class="voice-level"
+              id="voice-level"
+              aria-hidden="true"
+              hidden
+            ></span>
+            <span
+              class="voice-timer"
+              id="voice-timer"
+              role="timer"
+              aria-label="Recording time"
+              data-text-label="search.voice.timer"
+              hidden
+              >0:00 / 5:00</span
+            >
+          </div>
+
+          <div
+            class="card filters"
+            id="filters"
+            popover
+            role="dialog"
+            aria-labelledby="filters-title"
+          >
+            <div class="filters-head">
+              <h2 id="filters-title" data-text="search.filters.label">
+                Filters
+              </h2>
+              <button
+                class="search-tool"
+                type="button"
+                popovertarget="filters"
+                popovertargetaction="hide"
+                aria-label="Close"
+                data-text-label="common.action.close"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#close" />
+                </svg>
+              </button>
+            </div>
+            <div class="filter field">
+              <label for="need-by" data-text="search.need_by">Need it by</label>
+              <input
+                id="need-by"
+                name="need_by"
+                type="date"
+                class="num"
+                aria-describedby="need-by-hint"
+              />
+              <p
+                class="field-hint"
+                id="need-by-hint"
+                data-text="search.need_by_hint"
+              >
+                Optional. Cooks with space on or before this day.
+              </p>
+            </div>
+            <fieldset class="filter">
+              <legend class="filter-name" data-text="search.food.label">
+                Food type
+              </legend>
+              <div class="chips">
+                <label class="chip">
+                  <input type="radio" name="veg" value="" checked />
+                  <span data-text="search.food.all">All</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="veg" value="veg" />
+                  <span class="food-mark" aria-hidden="true"></span>
+                  <span data-text="search.food.veg">Veg</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="veg" value="non_veg" />
+                  <span
+                    class="food-mark"
+                    data-food="non-veg"
+                    aria-hidden="true"
+                  ></span>
+                  <span data-text="search.food.non_veg">Non-veg</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="veg" value="egg" />
+                  <span
+                    class="food-mark"
+                    data-food="non-veg"
+                    aria-hidden="true"
+                  ></span>
+                  <span data-text="search.food.egg">Egg</span>
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="filter">
+              <legend class="filter-name" data-text="search.sort.label">
+                Sort
+              </legend>
+              <div class="filter-values">
+                <div class="chips">
+                  <label class="chip">
+                    <input type="radio" name="sort" value="rating" checked />
+                    <span data-text="search.sort.rating">Best rated</span>
+                  </label>
+                  <label class="chip">
+                    <input
+                      type="radio"
+                      name="sort"
+                      value="distance"
+                      id="sort-distance"
+                    />
+                    <span data-text="search.sort.distance">Nearest</span>
+                  </label>
+                  <button class="link-btn" type="button" id="use-location">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#location" />
+                    </svg>
+                    <span data-text="search.location.use">Use my location</span>
+                  </button>
+                </div>
+                <p class="wait" id="location-wait">
+                  <span role="status"></span><span class="num"></span>
+                </p>
+                <p class="hint" id="location-status" role="status"></p>
+                <p class="hint" id="sort-note" role="status" hidden></p>
+              </div>
+            </fieldset>
+            <fieldset class="filter">
+              <legend class="filter-name" data-text="search.category.label">
+                Category
+              </legend>
+              <div class="chips">
+                <label class="chip">
+                  <input type="radio" name="category" value="" checked />
+                  <span data-text="search.category.all">All</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="category" value="sweets" />
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#sweets" />
+                  </svg>
+                  <span data-text="store.category.sweets">Sweets</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="category" value="snacks" />
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#snacks" />
+                  </svg>
+                  <span data-text="store.category.snacks">Snacks</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="category" value="savouries" />
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#savouries" />
+                  </svg>
+                  <span data-text="store.category.savouries">Savouries</span>
+                </label>
+                <label class="chip">
+                  <input type="radio" name="category" value="meals" />
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#meals" />
+                  </svg>
+                  <span data-text="store.category.meals">Meals</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <p class="wait" id="voice-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <p class="heard-line" id="heard" hidden>
+            <span id="heard-words"></span>
+            <span
+              class="badge"
+              id="heard-recorded"
+              data-text="common.badge.recorded"
+              hidden
+              >Recorded</span
+            >
+          </p>
+          <p class="error" id="voice-error" role="alert" hidden></p>
+        </form>
+
+        <section class="results" id="results" aria-labelledby="results-title">
+          <div class="results-head">
+            <h2 id="results-title" data-text="search.results.city">
+              Cooks in the city
+            </h2>
+            <p class="results-count" id="results-count"></p>
+          </div>
+          <p class="hint" id="results-latin" hidden>
+            <span id="results-latin-words"></span>
+            <span
+              class="badge"
+              id="results-recorded"
+              data-text="common.badge.recorded"
+              hidden
+              >Recorded</span
+            >
+          </p>
+          <p class="hint" id="results-note" role="status" hidden></p>
+          <div class="load-problem" id="search-problem" hidden>
+            <p class="error" id="search-error" role="alert"></p>
+            <button
+              class="btn-plain"
+              type="button"
+              id="search-retry"
+              data-text="common.action.try_again"
+            >
+              Try again
+            </button>
+          </div>
+          <ul class="results-grid" id="results-list"></ul>
+          <p class="hint" id="results-none" hidden></p>
+        </section>
+
+        <p class="my-orders" hidden>
+          <a class="link-btn" href="/me" data-text="home.my_orders"
+            >My orders</a
+          >
+        </p>
+      </section>
+
+      <section
+        class="tab-panel"
+        id="bulk"
+        aria-labelledby="tab-bulk"
+        hidden
+      ></section>
+      <section
+        class="tab-panel"
+        id="catering"
+        aria-labelledby="tab-catering"
+        hidden
+      ></section>
+    </main>
+
+    <template id="store-template">
+      <li class="card cook-card">
+        <div class="cook-card-head">
+          <p class="cook-card-kind"></p>
+          <h3 class="cook-card-name">
+            <a class="cook-card-link" href="/"></a>
+          </h3>
+          <p class="cook-card-rating"></p>
+        </div>
+        <ul class="cook-card-dishes"></ul>
+        <div class="cook-card-foot">
+          <a class="cook-card-more" href="/"></a>
+          <p class="cook-card-day"></p>
+        </div>
+      </li>
+    </template>
+
+    <template id="dish-template">
+      <li class="cook-card-dish">
+        <span class="food-mark" role="img"></span>
+        <span class="cook-card-dish-name">
+          <span class="cook-card-dish-first"></span>
+          <span class="cook-card-dish-second"></span>
+          <span class="cook-card-dish-egg" data-text="store.item.egg" hidden
+            >Egg</span
+          >
+        </span>
+        <span class="cook-card-pack num"></span>
+        <span class="cook-card-price num"></span>
+      </li>
+    </template>
+  </body>
+</html>

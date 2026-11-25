@@ -1,0 +1,213 @@
+/* The plan builder: one card with the guests,
+   the packages, a box for each category of dishes, the event and the total
+   with Contact seller. */
+.plan {
+  display: grid;
+  gap: calc(var(--space) * 3);
+  padding: calc(var(--space) * 4);
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+}
+
+.plan-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: calc(var(--space) * 3);
+}
+
+.plan-words {
+  display: grid;
+  gap: var(--space);
+}
+
+.plan-eyebrow {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.plan-guests input {
+  inline-size: calc(var(--space) * 16);
+  font-size: var(--step-1);
+}
+
+.package-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: calc(var(--space) * 2);
+}
+
+/* A package is a radio card. The chosen one has the ink border of a chosen
+   choice. */
+.package-card {
+  position: relative;
+  display: grid;
+  gap: var(--space);
+  padding: calc(var(--space) * 2.5);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-input);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--brass);
+  }
+
+  &:has(:checked) {
+    border: var(--rule) solid var(--ink);
+  }
+
+  &:has(:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  input {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+}
+
+.package-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space);
+}
+
+.package-name {
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+.package-limits,
+.package-min {
+  color: var(--ink-2);
+}
+
+.plan-refused {
+  display: grid;
+  gap: var(--space);
+  padding: calc(var(--space) * 2);
+  border: var(--card-line) solid var(--kumkum);
+  border-radius: var(--radius-input);
+}
+
+.plan-categories {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.plan-category {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+  padding: calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-input);
+
+  h2 {
+    font-size: var(--step-1);
+  }
+}
+
+.category-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space);
+}
+
+.category-count {
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.category-need {
+  color: var(--kumkum);
+  font-weight: 600;
+}
+
+.dish {
+  gap: var(--space);
+}
+
+.dish-tag {
+  font-weight: 400;
+}
+
+.plan-event {
+  display: grid;
+  gap: calc(var(--space) * 2);
+  padding-block-start: calc(var(--space) * 3);
+  border-block-start: var(--hair) solid var(--brass);
+}
+
+.event-fields {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr);
+  gap: calc(var(--space) * 2) calc(var(--space) * 3);
+}
+
+.event-choice {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: var(--space);
+
+  legend {
+    margin-block-end: var(--space);
+    font-weight: 600;
+  }
+}
+
+.plan-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 2);
+  padding-block-start: calc(var(--space) * 3);
+  border-block-start: var(--hair) solid var(--brass);
+}
+
+.plan-sum {
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.plan-status {
+  color: var(--ink-2);
+}
+
+.event-fields .field input {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+/* After a request: what was sent, with Send on WhatsApp in the lead. */
+.plan-actions,
+.plan-sent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.plan-sent {
+  margin: 0;
+
+  &[hidden] {
+    display: none;
+  }
+
+  .done {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space);
+  }
+}

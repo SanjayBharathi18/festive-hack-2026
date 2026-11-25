@@ -1,0 +1,1642 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="sell.page_title">Make your store</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/store/store.css" />
+    <link rel="stylesheet" href="/sell/sell.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/sell/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span>
+            </p>
+            <p class="app-bar-sub" id="bar-store" data-text="sell.bar">
+              Make your store
+            </p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="save-status" id="save-status" role="status"></p>
+          <div class="bar-controls">
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="sell-page">
+      <div class="sell-head">
+        <div>
+          <h1 data-text="sell.title">Make your store</h1>
+          <p class="sell-lead" id="sell-lead" data-text="sell.lead">
+            You need no account until you publish. Your draft stays in this
+            browser.
+          </p>
+        </div>
+        <a class="link-btn" href="/desk" data-text="sell.have_store"
+          >I have a store: open my desk</a
+        >
+      </div>
+
+      <div class="sell-cols">
+        <nav
+          class="card steps"
+          aria-labelledby="steps-title"
+          data-text-label="sell.steps.label"
+        >
+          <h2 id="steps-title" data-text="sell.steps.title">Your store</h2>
+          <ol class="step-list" id="step-list">
+            <li>
+              <button class="step" type="button" data-step="language">
+                <span class="step-mark" aria-hidden="true"
+                  ><svg class="icon"><use href="/icons.svg#check" /></svg
+                ></span>
+                <span class="step-words">
+                  <span class="step-name" data-text="sell.steps.language"
+                    >Language</span
+                  >
+                  <span class="step-value"></span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button class="step" type="button" data-step="items">
+                <span class="step-mark" aria-hidden="true"
+                  ><svg class="icon"><use href="/icons.svg#check" /></svg
+                ></span>
+                <span class="step-words">
+                  <span class="step-name" data-text="sell.steps.items"
+                    >What you sell</span
+                  >
+                  <span class="step-value"></span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button class="step" type="button" data-step="store">
+                <span class="step-mark" aria-hidden="true"
+                  ><svg class="icon"><use href="/icons.svg#check" /></svg
+                ></span>
+                <span class="step-words">
+                  <span class="step-name" data-text="sell.steps.store"
+                    >Name and link</span
+                  >
+                  <span class="step-value num"></span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button class="step" type="button" data-step="ways">
+                <span class="step-mark" aria-hidden="true"
+                  ><svg class="icon"><use href="/icons.svg#check" /></svg
+                ></span>
+                <span class="step-words">
+                  <span class="step-name" data-text="sell.steps.ways"
+                    >Pickup or delivery</span
+                  >
+                  <span class="step-value"></span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button class="step" type="button" data-step="preview">
+                <span class="step-mark" aria-hidden="true"
+                  ><svg class="icon"><use href="/icons.svg#check" /></svg
+                ></span>
+                <span class="step-words">
+                  <span class="step-name" data-text="sell.steps.preview"
+                    >Preview</span
+                  >
+                  <span class="step-value"></span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button class="step" type="button" data-step="publish">
+                <span class="step-mark" aria-hidden="true"
+                  ><svg class="icon"><use href="/icons.svg#check" /></svg
+                ></span>
+                <span class="step-words">
+                  <span class="step-name" data-text="sell.steps.publish"
+                    >Publish</span
+                  >
+                  <span class="step-value"></span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button class="step" type="button" data-step="share">
+                <span class="step-mark" aria-hidden="true"
+                  ><svg class="icon"><use href="/icons.svg#check" /></svg
+                ></span>
+                <span class="step-words">
+                  <span class="step-name" data-text="sell.steps.share"
+                    >Share</span
+                  >
+                  <span class="step-value"></span>
+                </span>
+              </button>
+            </li>
+          </ol>
+        </nav>
+
+        <div class="sell-main">
+          <section
+            class="card step-card"
+            id="step-language"
+            aria-labelledby="language-title"
+            hidden
+          >
+            <form class="step-form" id="language-form">
+              <div class="card-head">
+                <div>
+                  <h2
+                    id="language-title"
+                    tabindex="-1"
+                    data-text="sell.language.title"
+                  >
+                    Your language
+                  </h2>
+                  <p class="card-lead" data-text="sell.language.lead">
+                    The app shows its words in your language. Buyers see their
+                    own language.
+                  </p>
+                </div>
+              </div>
+              <fieldset class="choices">
+                <legend class="visually-hidden" data-text="sell.language.title">
+                  Your language
+                </legend>
+                <div class="chips language-chips">
+                  <label class="chip" lang="en"
+                    ><input
+                      type="radio"
+                      name="language"
+                      value="en"
+                      required
+                    />English</label
+                  >
+                  <label class="chip" lang="hi"
+                    ><input
+                      type="radio"
+                      name="language"
+                      value="hi"
+                    />हिन्दी</label
+                  >
+                  <label class="chip" lang="kn"
+                    ><input
+                      type="radio"
+                      name="language"
+                      value="kn"
+                    />ಕನ್ನಡ</label
+                  >
+                  <label class="chip" lang="ta"
+                    ><input
+                      type="radio"
+                      name="language"
+                      value="ta"
+                    />தமிழ்</label
+                  >
+                  <label class="chip" lang="te"
+                    ><input
+                      type="radio"
+                      name="language"
+                      value="te"
+                    />తెలుగు</label
+                  >
+                  <label class="chip" lang="mr"
+                    ><input
+                      type="radio"
+                      name="language"
+                      value="mr"
+                    />मराठी</label
+                  >
+                </div>
+              </fieldset>
+              <div class="step-foot">
+                <button
+                  class="btn-primary"
+                  type="submit"
+                  data-text="sell.action.continue"
+                >
+                  Continue
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section
+            class="card step-card"
+            id="step-items"
+            aria-labelledby="items-title"
+            hidden
+          >
+            <div class="card-head">
+              <div>
+                <h2 id="items-title" tabindex="-1" data-text="sell.items.title">
+                  What you sell
+                </h2>
+                <p class="card-lead" data-text="sell.items.lead">
+                  Add each item with its packs and prices. Buyers order these
+                  packs.
+                </p>
+              </div>
+            </div>
+            <section
+              class="say-item"
+              id="say-item"
+              aria-labelledby="say-title"
+              hidden
+            >
+              <div class="say-head">
+                <div>
+                  <h3 id="say-title" data-text="sell.say.title">Say an item</h3>
+                  <p class="field-hint" id="say-lead" data-text="sell.say.lead">
+                    Say or type one item: its name, its price for a kg or a
+                    piece, veg or not, and what it contains. We fill in the
+                    item, and you check it.
+                  </p>
+                </div>
+                <span
+                  class="badge"
+                  id="say-recorded"
+                  data-text="common.badge.recorded"
+                  hidden
+                  >Recorded</span
+                >
+              </div>
+              <div class="say-inputs">
+                <div class="voice" id="say-voice" hidden>
+                  <button
+                    class="btn-plain voice-button"
+                    type="button"
+                    id="say-record"
+                    data-phase="idle"
+                  >
+                    <span class="voice-record">
+                      <svg class="icon" aria-hidden="true">
+                        <use href="/icons.svg#mic" />
+                      </svg>
+                      <span data-text="sell.say.record">Record an item</span>
+                    </span>
+                    <span class="voice-stop">
+                      <svg class="icon" aria-hidden="true">
+                        <use href="/icons.svg#stop" />
+                      </svg>
+                      <span data-text="common.action.stop">Stop</span>
+                    </span>
+                  </button>
+                  <span
+                    class="voice-level"
+                    id="say-level"
+                    aria-hidden="true"
+                    hidden
+                  ></span>
+                  <span
+                    class="voice-timer"
+                    id="say-timer"
+                    role="timer"
+                    aria-label="Recording time"
+                    data-text-label="sell.say.timer"
+                    hidden
+                    >0:00 / 5:00</span
+                  >
+                  <label class="link-btn file-pick">
+                    <span data-text="sell.say.file"
+                      >Or choose a voice note</span
+                    >
+                    <input type="file" accept="audio/*" id="say-file" />
+                  </label>
+                </div>
+                <form class="say-type" id="say-form" novalidate>
+                  <div class="field">
+                    <label for="say-text" data-text="sell.say.type"
+                      >Type the item</label
+                    >
+                    <p
+                      class="field-hint"
+                      id="say-text-hint"
+                      data-text="sell.say.type_hint"
+                    >
+                      For example: Kaju katli, 1200 rupees a kilo, veg, contains
+                      nuts
+                    </p>
+                    <textarea
+                      id="say-text"
+                      name="text"
+                      maxlength="5000"
+                      required
+                      aria-describedby="say-text-hint"
+                    ></textarea>
+                  </div>
+                  <button
+                    class="btn-plain"
+                    type="submit"
+                    id="say-read"
+                    data-text="sell.say.read"
+                  >
+                    Fill in the item
+                  </button>
+                </form>
+              </div>
+              <p class="wait" id="say-wait">
+                <span role="status"></span> <span class="num"></span>
+              </p>
+              <p class="error" id="say-error" role="alert" hidden></p>
+              <p class="hint" id="say-note" role="status" hidden></p>
+              <button
+                class="btn-plain"
+                type="button"
+                id="say-by-hand"
+                data-text="sell.say.by_hand"
+                hidden
+              >
+                Fill in the form
+              </button>
+              <div class="say-result" id="say-result" hidden>
+                <p class="heard-label" data-text="sell.say.heard">
+                  What we heard
+                </p>
+                <p class="heard" id="say-heard"></p>
+                <div class="say-check" id="say-check" hidden>
+                  <p class="field-hint" data-text="sell.say.check">
+                    A dashed value is what we understood. Check each one, then
+                    add the item.
+                  </p>
+                  <dl class="answers" id="say-answers"></dl>
+                  <div class="say-actions">
+                    <button
+                      class="btn-primary"
+                      type="button"
+                      id="say-add"
+                      data-text="sell.say.add"
+                    >
+                      Add this item
+                    </button>
+                    <button
+                      class="link-btn"
+                      type="button"
+                      id="say-clear"
+                      data-text="sell.say.clear"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <p class="hint" id="items-empty" data-text="sell.items.empty">
+              No items yet. Add your first item, for example chakli or laddu.
+            </p>
+            <ul class="item-rows" id="item-rows"></ul>
+            <p class="undo-line" id="items-undo" hidden>
+              <span id="items-undo-words" role="status"></span>
+              <button class="link-btn" type="button" id="items-undo-button">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#undo" />
+                </svg>
+                <span data-text="common.action.undo">Undo</span>
+              </button>
+            </p>
+            <div class="step-foot">
+              <button
+                class="link-btn"
+                type="button"
+                data-back
+                data-text="sell.action.back"
+              >
+                Back
+              </button>
+              <button class="btn-plain" type="button" id="add-item">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#plus" />
+                </svg>
+                <span data-text="sell.items.add">Add an item</span>
+              </button>
+              <button
+                class="btn-primary"
+                type="button"
+                id="items-next"
+                data-text="sell.action.continue"
+              >
+                Continue
+              </button>
+            </div>
+          </section>
+
+          <section
+            class="card step-card"
+            id="step-store"
+            aria-labelledby="name-title"
+            hidden
+          >
+            <form class="step-form" id="store-form">
+              <div class="card-head">
+                <div>
+                  <h2
+                    id="name-title"
+                    tabindex="-1"
+                    data-text="sell.store.title"
+                  >
+                    Your store name and link
+                  </h2>
+                  <p class="card-lead" data-text="sell.store.lead">
+                    Buyers see the name. The link opens your store.
+                  </p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="store-name" data-text="sell.store.name"
+                  >Store name</label
+                >
+                <p
+                  class="field-hint"
+                  id="store-name-hint"
+                  data-text="sell.store.name_hint"
+                >
+                  For example Shobha's Kitchen
+                </p>
+                <input
+                  id="store-name"
+                  name="name"
+                  required
+                  maxlength="60"
+                  autocomplete="organization"
+                  aria-describedby="store-name-hint"
+                />
+              </div>
+              <div class="field">
+                <label for="slug" data-text="sell.store.link">Store link</label>
+                <p
+                  class="field-hint"
+                  id="slug-hint"
+                  data-text="sell.store.link_hint"
+                >
+                  Small letters a to z, digits and dashes. You can change it one
+                  time after you publish.
+                </p>
+                <div class="link-field">
+                  <span class="num link-origin" id="link-origin"></span>
+                  <input
+                    class="num"
+                    id="slug"
+                    name="slug"
+                    required
+                    minlength="3"
+                    maxlength="40"
+                    pattern="[a-z0-9]+(-[a-z0-9]+)*"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    aria-describedby="slug-hint slug-status"
+                  />
+                </div>
+                <p class="link-status" id="slug-status" role="status">
+                  <svg class="icon" aria-hidden="true" hidden>
+                    <use href="/icons.svg#check" />
+                  </svg>
+                  <span id="slug-words"></span>
+                  <button
+                    class="link-btn num"
+                    type="button"
+                    id="slug-use"
+                    hidden
+                  ></button>
+                </p>
+              </div>
+              <div class="field cover-field">
+                <p class="field-label" id="cover-label">
+                  <span data-text="sell.store.cover">Cover photo</span>
+                  <span class="field-hint" data-text="sell.store.optional"
+                    >(optional)</span
+                  >
+                </p>
+                <p class="field-hint" data-text="sell.store.cover_hint">
+                  Your own photo, for example your kitchen or your sweets.
+                  Without one, buyers see your name.
+                </p>
+                <div class="cover-box">
+                  <img class="cover-pick" id="cover-img" alt="" hidden />
+                  <p class="type-tile" id="cover-tile"></p>
+                </div>
+                <div class="cover-actions">
+                  <label class="file-pick" id="cover-pick-label">
+                    <span data-text="sell.store.cover_choose"
+                      >Choose a photo</span
+                    >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="cover-file"
+                      aria-describedby="cover-label"
+                    />
+                  </label>
+                  <button
+                    class="link-btn"
+                    type="button"
+                    id="cover-remove"
+                    data-text="sell.store.cover_remove"
+                    hidden
+                  >
+                    Remove the photo
+                  </button>
+                  <p class="wait" id="cover-wait">
+                    <span role="status"></span><span class="num"></span>
+                  </p>
+                </div>
+                <p class="error" id="cover-error" role="alert" hidden></p>
+              </div>
+              <div class="step-foot">
+                <button
+                  class="link-btn"
+                  type="button"
+                  data-back
+                  data-text="sell.action.back"
+                >
+                  Back
+                </button>
+                <button
+                  class="btn-primary"
+                  type="submit"
+                  data-text="sell.action.continue"
+                >
+                  Continue
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <section
+            class="card step-card"
+            id="step-ways"
+            aria-labelledby="ways-title"
+            hidden
+          >
+            <form class="step-form" id="ways-form">
+              <div class="card-head">
+                <div>
+                  <h2 id="ways-title" tabindex="-1" data-text="sell.ways.title">
+                    Pickup or delivery
+                  </h2>
+                  <p class="card-lead" data-text="sell.ways.lead">
+                    Choose how buyers get their food, and tell them where you
+                    cook.
+                  </p>
+                </div>
+              </div>
+              <fieldset class="choices ways-choices">
+                <legend data-text="sell.ways.how">
+                  How buyers get their food
+                </legend>
+                <label class="choice">
+                  <input type="checkbox" id="offers-pickup" name="pickup" />
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#pickup" />
+                  </svg>
+                  <span
+                    ><span data-text="sell.ways.pickup">Pickup</span
+                    ><small data-text="sell.ways.pickup_hint"
+                      >Buyers come to you.</small
+                    ></span
+                  >
+                </label>
+                <label class="choice">
+                  <input type="checkbox" id="offers-delivery" name="delivery" />
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#delivery" />
+                  </svg>
+                  <span
+                    ><span data-text="sell.ways.delivery">Delivery</span
+                    ><small data-text="sell.ways.delivery_hint"
+                      >You bring the food to buyers.</small
+                    ></span
+                  >
+                </label>
+              </fieldset>
+              <fieldset class="choices">
+                <legend data-text="sell.ways.where">Where you cook</legend>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="area" data-text="sell.ways.area">Area</label>
+                    <p
+                      class="field-hint"
+                      id="area-hint"
+                      data-text="sell.ways.area_hint"
+                    >
+                      For example Basavanagudi
+                    </p>
+                    <input
+                      id="area"
+                      name="area"
+                      required
+                      maxlength="60"
+                      autocomplete="address-level3"
+                      aria-describedby="area-hint"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="city" data-text="sell.ways.city">City</label>
+                    <p
+                      class="field-hint"
+                      id="city-hint"
+                      data-text="sell.ways.city_hint"
+                    >
+                      For example Bengaluru
+                    </p>
+                    <input
+                      id="city"
+                      name="city"
+                      required
+                      maxlength="60"
+                      autocomplete="address-level2"
+                      aria-describedby="city-hint"
+                    />
+                  </div>
+                </div>
+                <div class="field" id="address-field">
+                  <label for="address"
+                    ><span data-text="sell.ways.address">Pickup address</span>
+                    <span class="field-hint" data-text="sell.store.optional"
+                      >(optional)</span
+                    ></label
+                  >
+                  <p
+                    class="field-hint"
+                    id="address-hint"
+                    data-text="sell.ways.address_hint"
+                  >
+                    Buyers see it only after they order for pickup.
+                  </p>
+                  <textarea
+                    id="address"
+                    name="address"
+                    maxlength="300"
+                    autocomplete="street-address"
+                    aria-describedby="address-hint"
+                  ></textarea>
+                </div>
+                <div class="pin">
+                  <button class="btn-plain" type="button" id="use-location">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#location" />
+                    </svg>
+                    <span data-text="sell.ways.use_location"
+                      >Use my location</span
+                    >
+                  </button>
+                  <p class="hint" id="location-status" role="status"></p>
+                  <button
+                    class="link-btn"
+                    type="button"
+                    id="location-clear"
+                    data-text="sell.ways.location_clear"
+                    hidden
+                  >
+                    Remove my location
+                  </button>
+                </div>
+              </fieldset>
+              <div class="step-foot">
+                <button
+                  class="link-btn"
+                  type="button"
+                  data-back
+                  data-text="sell.action.back"
+                >
+                  Back
+                </button>
+                <button
+                  class="btn-primary"
+                  type="submit"
+                  data-text="sell.ways.next"
+                >
+                  See the preview
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <div class="step-card preview-step" id="step-preview" hidden>
+            <section class="card" aria-labelledby="preview-title">
+              <div class="card-head">
+                <div>
+                  <h2
+                    id="preview-title"
+                    tabindex="-1"
+                    data-text="sell.preview.title"
+                  >
+                    Preview
+                  </h2>
+                  <p class="card-lead" data-text="sell.preview.lead">
+                    This is how buyers see your store. Check the names and the
+                    prices.
+                  </p>
+                </div>
+              </div>
+              <div class="step-foot">
+                <button
+                  class="link-btn"
+                  type="button"
+                  data-back
+                  data-text="sell.action.back"
+                >
+                  Back
+                </button>
+                <button
+                  class="btn-primary"
+                  type="button"
+                  id="preview-next"
+                  data-text="sell.preview.next"
+                >
+                  Continue to publish
+                </button>
+              </div>
+            </section>
+
+            <div
+              class="preview-frame"
+              role="region"
+              aria-labelledby="preview-frame-title"
+            >
+              <p class="preview-bar">
+                <span id="preview-frame-title" data-text="sell.preview.frame"
+                  >Buyer view</span
+                >
+                <span class="num" id="preview-path"></span>
+              </p>
+              <div class="store preview-store">
+                <section class="card store-head" aria-labelledby="pv-title">
+                  <img class="cover-photo" id="pv-cover" alt="" hidden />
+                  <p
+                    class="type-tile pv-tile"
+                    id="pv-tile"
+                    aria-hidden="true"
+                  ></p>
+                  <div class="store-head-top">
+                    <div class="store-head-name">
+                      <p class="store-tags">
+                        <span class="num store-path" id="pv-path"></span>
+                        <span class="store-open" data-text="store.open"
+                          >Taking orders</span
+                        >
+                      </p>
+                      <h3 class="pv-title" id="pv-title"></h3>
+                    </div>
+                  </div>
+                  <div class="store-head-foot">
+                    <ul class="store-facts">
+                      <li id="pv-area"></li>
+                      <li>
+                        <span class="ways-icons" aria-hidden="true">
+                          <svg class="icon" id="pv-icon-pickup">
+                            <use href="/icons.svg#pickup" />
+                          </svg>
+                          <svg class="icon" id="pv-icon-delivery">
+                            <use href="/icons.svg#delivery" />
+                          </svg>
+                        </span>
+                        <span id="pv-ways"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+                <div
+                  class="chips categories"
+                  id="pv-categories"
+                  role="group"
+                  aria-label="Menu sections"
+                  data-text-label="store.category.label"
+                >
+                  <button
+                    class="chip"
+                    type="button"
+                    aria-pressed="true"
+                    data-category=""
+                    data-text="store.category.all"
+                  >
+                    All
+                  </button>
+                </div>
+                <div class="menu" id="pv-menu"></div>
+              </div>
+            </div>
+          </div>
+
+          <section
+            class="card step-card"
+            id="step-publish"
+            aria-labelledby="publish-title"
+            hidden
+          >
+            <div class="card-head">
+              <div>
+                <h2
+                  id="publish-title"
+                  tabindex="-1"
+                  data-text="sell.publish.title"
+                >
+                  Publish your store
+                </h2>
+                <p class="card-lead" data-text="sell.publish.lead">
+                  Verify your WhatsApp number. Then buyers can open your store.
+                </p>
+              </div>
+            </div>
+
+            <form class="sign-in-step" id="phone-form">
+              <div class="field">
+                <label for="phone" data-text="sell.publish.phone"
+                  >Your WhatsApp number</label
+                >
+                <p
+                  class="field-hint"
+                  id="phone-hint"
+                  data-text="sell.publish.phone_hint"
+                >
+                  For example 98450 12345. Your desk opens with it.
+                </p>
+                <input
+                  class="num"
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="tel"
+                  autocomplete="tel"
+                  required
+                  aria-describedby="phone-hint phone-error"
+                />
+                <p class="field-error" id="phone-error" hidden></p>
+              </div>
+              <fieldset class="choices agreements">
+                <legend data-text="sell.publish.agree">You agree</legend>
+                <label class="choice">
+                  <input type="checkbox" name="whatsapp_updates" required />
+                  <span data-text="sell.publish.agree_whatsapp"
+                    >Send me order and request updates on WhatsApp.</span
+                  >
+                </label>
+                <label class="choice">
+                  <input type="checkbox" name="food_safety" required />
+                  <span data-text="sell.publish.agree_food"
+                    >I am responsible for my food and its safety.</span
+                  >
+                </label>
+              </fieldset>
+              <p class="wait" id="phone-wait">
+                <span role="status"></span> <span class="num"></span>
+              </p>
+              <div class="step-foot">
+                <button
+                  class="link-btn"
+                  type="button"
+                  data-back
+                  data-text="sell.action.back"
+                >
+                  Back
+                </button>
+                <button
+                  class="btn-primary"
+                  type="submit"
+                  data-text="sell.publish.get_code"
+                >
+                  Get the code
+                </button>
+              </div>
+            </form>
+
+            <form class="sign-in-step" id="code-form" hidden>
+              <div class="code-shown">
+                <p class="code-shown-head">
+                  <span data-text="sell.publish.code_shown">Your code</span>
+                  <span class="badge" data-text="common.badge.prototype"
+                    >Prototype</span
+                  >
+                </p>
+                <p class="readout num" id="code-shown"></p>
+                <p class="field-hint" data-text="sell.publish.prototype_hint">
+                  This prototype shows the code here. The real app sends it on
+                  WhatsApp.
+                </p>
+              </div>
+              <div class="field">
+                <label for="code" data-text="sell.publish.code">Code</label>
+                <p
+                  class="field-hint"
+                  id="code-hint"
+                  data-text="sell.publish.code_hint"
+                >
+                  6 digits
+                </p>
+                <input
+                  class="num"
+                  id="code"
+                  name="code"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  maxlength="7"
+                  required
+                  aria-describedby="code-hint code-error"
+                />
+                <p class="field-error" id="code-error" hidden></p>
+              </div>
+              <p class="wait" id="code-wait">
+                <span role="status"></span> <span class="num"></span>
+              </p>
+              <div class="step-foot">
+                <button
+                  class="link-btn"
+                  type="button"
+                  id="change-number"
+                  data-text="sell.publish.change_number"
+                >
+                  Change the number
+                </button>
+                <button
+                  class="btn-primary"
+                  type="submit"
+                  data-text="sell.publish.publish"
+                >
+                  Publish
+                </button>
+              </div>
+            </form>
+
+            <div class="sign-in-step" id="publish-retry" hidden>
+              <p class="error" id="retry-error" role="alert"></p>
+              <p class="wait" id="retry-wait">
+                <span role="status"></span> <span class="num"></span>
+              </p>
+              <div class="step-foot">
+                <button
+                  class="btn-primary"
+                  type="button"
+                  id="retry"
+                  data-text="sell.publish.publish"
+                >
+                  Publish
+                </button>
+              </div>
+            </div>
+
+            <div class="sign-in-step" id="has-store" hidden>
+              <p class="error" role="alert">
+                <span data-text="sell.publish.has_store"
+                  >This number already has a store:</span
+                >
+                <span id="has-store-name"></span>
+              </p>
+              <p class="hint" data-text="sell.publish.has_store_hint">
+                One WhatsApp number has one store. Change your store on your
+                desk, or publish this one with another number.
+              </p>
+              <div class="step-foot">
+                <button
+                  class="link-btn"
+                  type="button"
+                  id="other-number"
+                  data-text="sell.publish.other_number"
+                >
+                  Use another number
+                </button>
+                <a
+                  class="btn-primary"
+                  href="/desk"
+                  data-text="sell.publish.open_desk"
+                  >Open my desk</a
+                >
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="card step-card"
+            id="step-share"
+            aria-labelledby="share-title"
+            hidden
+          >
+            <p class="done">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#check" />
+              </svg>
+              <span data-text="sell.share.done">Your store is published.</span>
+            </p>
+            <div class="card-head">
+              <div>
+                <h2 id="share-title" tabindex="-1" data-text="sell.share.title">
+                  Share your store
+                </h2>
+                <p class="card-lead" data-text="sell.share.lead">
+                  Send your link to your buyers, or print the QR code for your
+                  counter.
+                </p>
+              </div>
+            </div>
+            <div class="share-body">
+              <div class="share-link">
+                <p class="field-label" data-text="sell.share.link">
+                  Your store link
+                </p>
+                <p class="num share-url" id="share-url"></p>
+                <div class="share-actions">
+                  <a
+                    class="btn-primary"
+                    id="share-whatsapp"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#message" />
+                    </svg>
+                    <span data-text="sell.share.whatsapp"
+                      >Share on WhatsApp</span
+                    >
+                  </a>
+                  <button class="btn-plain" type="button" id="share-copy">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#share" />
+                    </svg>
+                    <span data-text="sell.share.copy">Copy link</span>
+                  </button>
+                  <span class="done" id="share-copied" role="status"></span>
+                </div>
+                <p class="share-next">
+                  <a
+                    class="link-btn"
+                    id="share-open"
+                    data-text="sell.share.open_store"
+                    >Open your store</a
+                  >
+                  <a
+                    class="link-btn"
+                    href="/desk"
+                    data-text="sell.share.open_desk"
+                    >Open your desk</a
+                  >
+                  <button
+                    class="link-btn"
+                    type="button"
+                    id="share-new"
+                    data-text="sell.share.new"
+                  >
+                    Make another store
+                  </button>
+                </p>
+              </div>
+              <figure class="share-qr">
+                <img id="share-qr" alt="" width="200" height="200" />
+                <figcaption data-text="sell.share.qr_caption">
+                  Buyers scan this QR code with the phone camera.
+                </figcaption>
+                <a
+                  class="link-btn"
+                  id="share-qr-download"
+                  download
+                  data-text="sell.share.qr_download"
+                  >Download the QR code</a
+                >
+              </figure>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <dialog
+      class="sheet item-sheet"
+      id="item-dialog"
+      aria-labelledby="item-dialog-title"
+    >
+      <form class="sheet-body item-form" id="item-form">
+        <div class="sheet-head">
+          <h2 id="item-dialog-title"></h2>
+          <button
+            class="btn-plain icon-only"
+            type="button"
+            id="item-close"
+            aria-label="Close"
+            data-text-label="common.action.close"
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons.svg#close" />
+            </svg>
+          </button>
+        </div>
+        <p class="item-draft" id="item-draft" role="status" hidden>
+          <span data-text="sell.item.draft_kept">We kept what you typed.</span>
+          <button
+            class="link-btn"
+            type="button"
+            id="item-draft-clear"
+            data-text="sell.item.draft_clear"
+          >
+            Clear the form
+          </button>
+        </p>
+        <div class="field">
+          <label for="item-name" data-text="sell.item.name">Name</label>
+          <p
+            class="field-hint"
+            id="item-name-hint"
+            data-text="sell.item.name_hint"
+          >
+            In your words, for example ಚಕ್ಕುಲಿ or Chakli
+          </p>
+          <input
+            id="item-name"
+            name="name"
+            required
+            maxlength="60"
+            autocomplete="off"
+            aria-describedby="item-name-hint"
+          />
+        </div>
+        <div class="field" id="item-latin-field" hidden>
+          <label for="item-latin"
+            ><span data-text="sell.item.latin">Name in English letters</span>
+            <span class="field-hint" data-text="sell.store.optional"
+              >(optional)</span
+            ></label
+          >
+          <p
+            class="field-hint"
+            id="item-latin-hint"
+            data-text="sell.item.latin_hint"
+          >
+            For buyers who read another script, for example Chakkuli
+          </p>
+          <input
+            id="item-latin"
+            name="name_latin"
+            maxlength="60"
+            autocomplete="off"
+            aria-describedby="item-latin-hint"
+          />
+        </div>
+        <fieldset class="choices">
+          <legend data-text="sell.item.category">Section of your menu</legend>
+          <div class="chips">
+            <label class="chip"
+              ><input
+                type="radio"
+                name="category"
+                value="sweets"
+                required
+              /><svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#sweets" /></svg
+              ><span data-text="store.category.sweets">Sweets</span></label
+            >
+            <label class="chip"
+              ><input type="radio" name="category" value="snacks" /><svg
+                class="icon"
+                aria-hidden="true"
+              >
+                <use href="/icons.svg#snacks" /></svg
+              ><span data-text="store.category.snacks">Snacks</span></label
+            >
+            <label class="chip"
+              ><input type="radio" name="category" value="savouries" /><svg
+                class="icon"
+                aria-hidden="true"
+              >
+                <use href="/icons.svg#savouries" /></svg
+              ><span data-text="store.category.savouries"
+                >Savouries</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="radio" name="category" value="meals" /><svg
+                class="icon"
+                aria-hidden="true"
+              >
+                <use href="/icons.svg#meals" /></svg
+              ><span data-text="store.category.meals">Meals</span></label
+            >
+          </div>
+        </fieldset>
+        <fieldset class="choices">
+          <legend data-text="sell.item.mark">Food mark</legend>
+          <div class="chips">
+            <label class="chip mark-chip"
+              ><input type="radio" name="veg_mark" value="veg" required /><span
+                class="food-mark"
+                aria-hidden="true"
+              ></span
+              ><span data-text="store.item.veg">Veg</span></label
+            >
+            <label class="chip mark-chip"
+              ><input type="radio" name="veg_mark" value="non_veg" /><span
+                class="food-mark"
+                data-food="non-veg"
+                aria-hidden="true"
+              ></span
+              ><span data-text="store.item.non_veg">Non-veg</span></label
+            >
+            <label class="chip mark-chip"
+              ><input type="radio" name="veg_mark" value="egg" /><span
+                class="food-mark"
+                data-food="non-veg"
+                aria-hidden="true"
+              ></span
+              ><span data-text="store.item.egg">Egg</span></label
+            >
+          </div>
+        </fieldset>
+        <fieldset
+          class="choices allergen-set"
+          aria-describedby="allergens-hint"
+        >
+          <legend data-text="sell.item.allergens">What it contains</legend>
+          <p
+            class="field-hint"
+            id="allergens-hint"
+            data-text="sell.item.allergens_hint"
+          >
+            Buyers see these on your item. Leave them all empty if it has none.
+          </p>
+          <div class="chips">
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="dairy" /><span
+                data-text="store.allergen.dairy"
+                >dairy</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="nuts" /><span
+                data-text="store.allergen.nuts"
+                >nuts</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="peanuts" /><span
+                data-text="store.allergen.peanuts"
+                >peanuts</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="sesame" /><span
+                data-text="store.allergen.sesame"
+                >sesame</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="wheat" /><span
+                data-text="store.allergen.wheat"
+                >wheat</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="gluten" /><span
+                data-text="store.allergen.gluten"
+                >gluten</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="soy" /><span
+                data-text="store.allergen.soy"
+                >soy</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="egg" /><span
+                data-text="store.allergen.egg"
+                >egg</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="mustard" /><span
+                data-text="store.allergen.mustard"
+                >mustard</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="fish" /><span
+                data-text="store.allergen.fish"
+                >fish</span
+              ></label
+            >
+            <label class="chip"
+              ><input type="checkbox" name="allergen" value="shellfish" /><span
+                data-text="store.allergen.shellfish"
+                >shellfish</span
+              ></label
+            >
+          </div>
+        </fieldset>
+        <fieldset class="choices price-set">
+          <legend data-text="sell.item.price">Your price</legend>
+          <div class="price-line">
+            <label class="money-field">
+              <span class="num" aria-hidden="true">₹</span>
+              <span class="visually-hidden" data-text="sell.item.price_rupees"
+                >Price in rupees</span
+              >
+              <input
+                class="num"
+                id="item-price"
+                type="number"
+                min="1"
+                max="100000"
+                step="1"
+                inputmode="numeric"
+                aria-describedby="price-hint"
+              />
+            </label>
+            <div
+              class="tabs"
+              role="radiogroup"
+              aria-label="Price for"
+              data-text-label="sell.item.per"
+            >
+              <label
+                ><input type="radio" name="per" value="kg" checked /><span
+                  data-text="sell.item.per_kg"
+                  >a kg</span
+                ></label
+              >
+              <label
+                ><input type="radio" name="per" value="piece" /><span
+                  data-text="sell.item.per_piece"
+                  >a piece</span
+                ></label
+              >
+            </div>
+          </div>
+          <p
+            class="field-hint"
+            id="price-hint"
+            data-text="sell.item.price_hint"
+          >
+            We make packs from this price. Change or remove any pack.
+          </p>
+        </fieldset>
+        <fieldset class="choices">
+          <legend data-text="sell.item.packs">Packs and prices</legend>
+          <ul class="pack-rows" id="pack-rows"></ul>
+          <p class="field-error" id="packs-error" hidden></p>
+          <button class="link-btn add-pack" type="button" id="add-pack">
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons.svg#plus" />
+            </svg>
+            <span data-text="sell.item.add_pack">Add a pack</span>
+          </button>
+        </fieldset>
+        <label class="choice">
+          <input type="checkbox" id="item-is-box" />
+          <span
+            ><span data-text="sell.item.box">This is an assorted box</span
+            ><small data-text="sell.item.box_hint"
+              >Buyers see what is in it.</small
+            ></span
+          >
+        </label>
+        <div class="field" id="box-field" hidden>
+          <label for="item-box" data-text="sell.item.box_contents"
+            >What is in the box</label
+          >
+          <p
+            class="field-hint"
+            id="item-box-hint"
+            data-text="sell.item.box_contents_hint"
+          >
+            For example Mysore pak, kaju katli, besan laddu
+          </p>
+          <textarea
+            id="item-box"
+            name="box_contents"
+            maxlength="300"
+            aria-describedby="item-box-hint"
+          ></textarea>
+        </div>
+        <div class="sheet-actions">
+          <button class="btn-primary" type="submit" data-text="sell.item.save">
+            Save item
+          </button>
+          <button
+            class="btn-plain"
+            type="button"
+            id="item-cancel"
+            data-text="common.action.cancel"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <template id="item-row-template">
+      <li class="item-row">
+        <span class="food-mark" role="img"></span>
+        <div class="item-row-words">
+          <p class="item-row-name">
+            <span class="item-native"></span>
+            <span class="item-latin"></span>
+          </p>
+          <p class="item-row-meta">
+            <span class="item-row-category"></span>
+            <span class="num item-row-packs"></span>
+          </p>
+          <p class="item-row-box" hidden></p>
+          <p class="item-row-allergens" hidden></p>
+        </div>
+        <div class="item-row-actions">
+          <button
+            class="link-btn item-change"
+            type="button"
+            data-text="common.action.change"
+          >
+            Change
+          </button>
+          <button
+            class="link-btn item-remove"
+            type="button"
+            data-text="sell.items.remove"
+          >
+            Remove
+          </button>
+        </div>
+      </li>
+    </template>
+
+    <template id="say-answer-template">
+      <div class="answer">
+        <dt></dt>
+        <dd class="answer-value"></dd>
+        <dd class="answer-action">
+          <button
+            class="link-btn answer-change"
+            type="button"
+            data-text="common.action.change"
+          >
+            Change
+          </button>
+        </dd>
+      </div>
+    </template>
+
+    <template id="pack-row-template">
+      <li class="pack-row">
+        <input
+          class="num pack-amount"
+          type="number"
+          min="0.001"
+          max="100000"
+          step="any"
+          required
+        />
+        <select class="pack-unit">
+          <option value="g" data-text="sell.item.unit_g">g</option>
+          <option value="kg" data-text="sell.item.unit_kg">kg</option>
+          <option value="pieces" data-text="sell.item.unit_pieces">
+            pieces
+          </option>
+        </select>
+        <span class="num pack-rupee" aria-hidden="true">₹</span>
+        <input
+          class="num pack-price"
+          type="number"
+          min="1"
+          max="100000"
+          step="1"
+          required
+        />
+        <button class="btn-plain icon-only pack-remove" type="button">
+          <svg class="icon" aria-hidden="true">
+            <use href="/icons.svg#close" />
+          </svg>
+        </button>
+      </li>
+    </template>
+
+    <template id="category-template">
+      <button class="chip" type="button" aria-pressed="false">
+        <svg class="icon" aria-hidden="true"><use href="" /></svg>
+        <span class="category-word"></span>
+      </button>
+    </template>
+
+    <template id="section-template">
+      <section class="menu-section">
+        <h4 class="menu-head">
+          <svg class="icon" aria-hidden="true"><use href="" /></svg>
+          <span class="menu-head-word"></span>
+        </h4>
+        <div class="menu-items"></div>
+      </section>
+    </template>
+
+    <template id="item-template">
+      <article class="card item">
+        <div class="item-head">
+          <h5 class="item-name">
+            <span class="food-mark" role="img"></span>
+            <span class="item-words">
+              <span class="item-native"></span>
+              <span class="item-latin"
+                ><span class="visually-hidden">, </span
+                ><span class="item-latin-words"></span
+              ></span>
+              <span class="item-script"
+                ><span class="visually-hidden">, </span
+                ><span class="item-script-words"></span
+              ></span>
+            </span>
+          </h5>
+          <span
+            class="festive-tag item-special"
+            data-text="store.item.special"
+            hidden
+            >Special</span
+          >
+          <span
+            class="stamp item-sold-out"
+            data-text="store.item.sold_out"
+            hidden
+            >Sold out</span
+          >
+        </div>
+        <p class="item-meta"></p>
+        <p class="item-box" hidden></p>
+        <fieldset class="chips packs">
+          <legend class="visually-hidden"></legend>
+        </fieldset>
+        <div class="item-foot">
+          <span class="num item-price"></span>
+          <span class="stepper item-step" role="group" data-count="0">
+            <button class="btn-plain step-less" type="button">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#minus" />
+              </svg>
+            </button>
+            <output class="num step-count">0</output>
+            <button class="btn-plain step-more" type="button">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#plus" />
+              </svg>
+              <span class="step-add" data-text="store.item.add">Add</span>
+            </button>
+          </span>
+        </div>
+      </article>
+    </template>
+
+    <template id="pack-template">
+      <label class="chip chip-pack pack">
+        <input type="radio" />
+        <span class="num pack-size"></span><span class="pack-dot"> · </span
+        ><span class="num pack-price"></span
+        ><span class="num pack-count" aria-hidden="true"></span>
+      </label>
+    </template>
+  </body>
+</html>

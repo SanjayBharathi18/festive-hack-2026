@@ -1,0 +1,1630 @@
+{
+  "stores": [
+    {
+      "slug": "shobhas-kitchen",
+      "name": "Shobha's Kitchen",
+      "is_demo": true,
+      "seller": { "phone": "+910000000001", "language": "kn" },
+      "area": "Basavanagudi",
+      "city": "Bengaluru",
+      "address": "No. 1, Demo Lane, Basavanagudi, Bengaluru",
+      "lat": 12.9417,
+      "lng": 77.5755,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": true,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.8, "count": 312 },
+      "bulk_on": true,
+      "bulk_line": "Diwali gift boxes for offices and families",
+      "limit_unit": "kg",
+      "daily_limit": 25000,
+      "items": [
+        {
+          "key": "mysore-pak",
+          "name": "ಮೈಸೂರು ಪಾಕ್",
+          "name_latin": "Mysore pak",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["dairy"],
+          "packs": [
+            { "label": "250 g", "grams": 250, "price": 23000 },
+            { "label": "500 g", "grams": 500, "price": 45000 },
+            { "label": "1 kg", "grams": 1000, "price": 88000 }
+          ]
+        },
+        {
+          "key": "kaju-katli",
+          "name": "ಕಾಜು ಕಟ್ಲಿ",
+          "name_latin": "Kaju katli",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["nuts"],
+          "packs": [
+            { "label": "250 g", "grams": 250, "price": 33000 },
+            { "label": "500 g", "grams": 500, "price": 65000 },
+            { "label": "1 kg", "grams": 1000, "price": 128000 }
+          ]
+        },
+        {
+          "key": "besan-laddu",
+          "name": "ಬೇಸನ್ ಲಡ್ಡು",
+          "name_latin": "Besan laddu",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["dairy"],
+          "packs": [
+            { "label": "250 g", "grams": 250, "price": 17000 },
+            { "label": "500 g", "grams": 500, "price": 33000 },
+            { "label": "1 kg", "grams": 1000, "price": 65000 }
+          ]
+        },
+        {
+          "key": "kobbari-mithai",
+          "name": "ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ",
+          "name_latin": "Kobbari mithai (coconut burfi)",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["dairy"],
+          "packs": [
+            { "label": "250 g", "grams": 250, "price": 16000 },
+            { "label": "500 g", "grams": 500, "price": 31000 },
+            { "label": "1 kg", "grams": 1000, "price": 60000 }
+          ]
+        },
+        {
+          "key": "chakkuli",
+          "name": "ಚಕ್ಕುಲಿ",
+          "name_latin": "Chakkuli (chakli)",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "allergens": ["sesame"],
+          "packs": [
+            { "label": "250 g", "grams": 250, "price": 11000 },
+            { "label": "500 g", "grams": 500, "price": 21000 },
+            { "label": "1 kg", "grams": 1000, "price": 40000 }
+          ]
+        },
+        {
+          "key": "kodubale",
+          "name": "ಕೋಡುಬಳೆ",
+          "name_latin": "Kodubale",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "allergens": ["wheat"],
+          "packs": [
+            { "label": "250 g", "grams": 250, "price": 11000 },
+            { "label": "500 g", "grams": 500, "price": 21000 },
+            { "label": "1 kg", "grams": 1000, "price": 40000 }
+          ]
+        },
+        {
+          "key": "nippattu",
+          "name": "ನಿಪ್ಪಟ್ಟು",
+          "name_latin": "Nippattu",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "allergens": ["peanuts"],
+          "packs": [
+            { "label": "250 g", "grams": 250, "price": 11000 },
+            { "label": "500 g", "grams": 500, "price": 21000 },
+            { "label": "1 kg", "grams": 1000, "price": 40000 }
+          ]
+        },
+        {
+          "key": "diwali-box",
+          "name": "ದೀಪಾವಳಿ ಸ್ವೀಟ್ ಬಾಕ್ಸ್",
+          "name_latin": "Diwali assorted box",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["nuts", "dairy"],
+          "box_contents": "Mysore pak, kaju katli, besan laddu, kobbari mithai",
+          "special": true,
+          "bulk": { "min_qty": 25, "unit": "pieces", "price": 42000 },
+          "packs": [
+            { "label": "500 g", "grams": 500, "price": 45000 },
+            { "label": "1 kg", "grams": 1000, "price": 88000 }
+          ]
+        }
+      ],
+      "quotes": [
+        {
+          "key": "office-gifts",
+          "buyer_name": "Rohan Mehta",
+          "buyer_phone": "+910000003001",
+          "language": "hi",
+          "lines": [
+            {
+              "item": "diwali-box",
+              "quantity": 60
+            }
+          ],
+          "need_by_days": 6,
+          "place": "Koramangala office",
+          "note": "हर डिब्बे पर हमारी कंपनी का नाम चाहिए।",
+          "minutes_ago": 50
+        },
+        {
+          "key": "family-boxes",
+          "buyer_name": "Lakshmi Rao",
+          "buyer_phone": "+910000003002",
+          "language": "kn",
+          "lines": [
+            {
+              "item": "diwali-box",
+              "quantity": 30
+            }
+          ],
+          "need_by_days": 9,
+          "place": "Jayanagar",
+          "note": "ಪ್ರತಿ ಡಬ್ಬದ ಜೊತೆ ಶುಭಾಶಯ ಪತ್ರ ಬೇಕು.",
+          "minutes_ago": 20
+        }
+      ],
+      "orders": [
+        {
+          "day": "saturday",
+          "buyer_name": "Lakshmi Rao",
+          "buyer_phone": "+910000001001",
+          "buyer_language": "kn",
+          "source": "link",
+          "fulfilment": "delivery",
+          "address": "Banashankari 2nd Stage, Bengaluru",
+          "paid": true,
+          "lines": [{ "item": "mysore-pak", "pack": "1 kg", "quantity": 2 }]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Ravi Kumar",
+          "buyer_phone": "+910000001002",
+          "buyer_language": "kn",
+          "source": "marketplace",
+          "fulfilment": "pickup",
+          "lines": [
+            { "item": "kaju-katli", "pack": "1 kg", "quantity": 1 },
+            { "item": "chakkuli", "pack": "1 kg", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Divya Hegde",
+          "buyer_phone": "+910000001003",
+          "buyer_language": "kn",
+          "source": "desk",
+          "fulfilment": "delivery",
+          "address": "JP Nagar 6th Phase, Bengaluru",
+          "lines": [{ "item": "diwali-box", "pack": "1 kg", "quantity": 3 }]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Prakash Murthy",
+          "buyer_phone": "+910000001004",
+          "buyer_language": "kn",
+          "source": "link",
+          "fulfilment": "pickup",
+          "note": "ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ",
+          "note_language": "kn-IN",
+          "lines": [
+            { "item": "besan-laddu", "pack": "1 kg", "quantity": 1 },
+            { "item": "kodubale", "pack": "500 g", "quantity": 1 },
+            { "item": "nippattu", "pack": "500 g", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Shruti Iyer",
+          "buyer_phone": "+910000001005",
+          "buyer_language": "en",
+          "source": "marketplace",
+          "fulfilment": "delivery",
+          "address": "Jayanagar 9th Block, Bengaluru",
+          "paid": true,
+          "lines": [{ "item": "kaju-katli", "pack": "1 kg", "quantity": 2 }]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Manjunath Gowda",
+          "buyer_phone": "+910000001006",
+          "buyer_language": "kn",
+          "source": "desk",
+          "fulfilment": "pickup",
+          "lines": [
+            { "item": "mysore-pak", "pack": "500 g", "quantity": 1 },
+            { "item": "kobbari-mithai", "pack": "500 g", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Asha Nair",
+          "buyer_phone": "+910000001007",
+          "buyer_language": "en",
+          "source": "link",
+          "fulfilment": "delivery",
+          "address": "Hanumanthnagar, Bengaluru",
+          "lines": [
+            { "item": "diwali-box", "pack": "1 kg", "quantity": 2 },
+            { "item": "chakkuli", "pack": "500 g", "quantity": 1 },
+            { "item": "kodubale", "pack": "250 g", "quantity": 2 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Girish Shetty",
+          "buyer_phone": "+910000001008",
+          "buyer_language": "kn",
+          "source": "desk",
+          "fulfilment": "pickup",
+          "lines": [
+            { "item": "nippattu", "pack": "1 kg", "quantity": 1 },
+            { "item": "chakkuli", "pack": "1 kg", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Nandini Bhat",
+          "buyer_phone": "+910000001009",
+          "buyer_language": "kn",
+          "source": "link",
+          "fulfilment": "pickup",
+          "paid": true,
+          "lines": [
+            { "item": "kaju-katli", "pack": "500 g", "quantity": 1 },
+            { "item": "besan-laddu", "pack": "500 g", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Harish Patil",
+          "buyer_phone": "+910000001010",
+          "buyer_language": "hi",
+          "source": "marketplace",
+          "fulfilment": "delivery",
+          "address": "Girinagar, Bengaluru",
+          "lines": [
+            { "item": "diwali-box", "pack": "500 g", "quantity": 2 },
+            { "item": "mysore-pak", "pack": "1 kg", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Pallavi Joshi",
+          "buyer_phone": "+910000001011",
+          "buyer_language": "hi",
+          "source": "link",
+          "fulfilment": "pickup",
+          "lines": [
+            { "item": "kobbari-mithai", "pack": "1 kg", "quantity": 1 },
+            { "item": "kodubale", "pack": "500 g", "quantity": 2 }
+          ]
+        },
+        {
+          "day": "saturday",
+          "buyer_name": "Sneha Reddy",
+          "buyer_phone": "+910000001012",
+          "buyer_language": "en",
+          "source": "desk",
+          "fulfilment": "delivery",
+          "address": "Kumaraswamy Layout, Bengaluru",
+          "lines": [{ "item": "mysore-pak", "pack": "1 kg", "quantity": 1 }]
+        },
+        {
+          "day": "sunday",
+          "buyer_name": "Vijay Kulkarni",
+          "buyer_phone": "+910000001013",
+          "buyer_language": "kn",
+          "source": "link",
+          "fulfilment": "pickup",
+          "lines": [{ "item": "kaju-katli", "pack": "1 kg", "quantity": 2 }]
+        },
+        {
+          "day": "sunday",
+          "buyer_name": "Rekha Srinivas",
+          "buyer_phone": "+910000001014",
+          "buyer_language": "kn",
+          "source": "desk",
+          "fulfilment": "delivery",
+          "address": "Basavanagudi, Bengaluru",
+          "lines": [
+            { "item": "mysore-pak", "pack": "1 kg", "quantity": 1 },
+            { "item": "chakkuli", "pack": "1 kg", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "sunday",
+          "buyer_name": "Mohan Das",
+          "buyer_phone": "+910000001015",
+          "buyer_language": "en",
+          "source": "marketplace",
+          "fulfilment": "pickup",
+          "paid": true,
+          "lines": [
+            { "item": "diwali-box", "pack": "1 kg", "quantity": 1 },
+            { "item": "besan-laddu", "pack": "1 kg", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "sunday",
+          "buyer_name": "Bhavya Gowda",
+          "buyer_phone": "+910000001016",
+          "buyer_language": "kn",
+          "source": "link",
+          "fulfilment": "delivery",
+          "address": "Banashankari 3rd Stage, Bengaluru",
+          "lines": [
+            { "item": "nippattu", "pack": "1 kg", "quantity": 1 },
+            { "item": "kodubale", "pack": "1 kg", "quantity": 1 }
+          ]
+        },
+        {
+          "day": "sunday",
+          "buyer_name": "Arun Prasad",
+          "buyer_phone": "+910000001017",
+          "buyer_language": "kn",
+          "source": "desk",
+          "fulfilment": "pickup",
+          "lines": [
+            { "item": "kobbari-mithai", "pack": "500 g", "quantity": 1 },
+            { "item": "chakkuli", "pack": "500 g", "quantity": 1 }
+          ]
+        },
+        {
+          "day": { "days_ago": 3 },
+          "buyer_name": "Kavya Rao",
+          "buyer_phone": "+910000001018",
+          "buyer_language": "kn",
+          "source": "link",
+          "status": "delivered",
+          "fulfilment": "delivery",
+          "address": "Gandhi Bazaar, Bengaluru",
+          "paid": true,
+          "lines": [{ "item": "mysore-pak", "pack": "1 kg", "quantity": 1 }]
+        },
+        {
+          "day": { "days_ago": 9 },
+          "buyer_name": "Suresh Babu",
+          "buyer_phone": "+910000001019",
+          "buyer_language": "kn",
+          "source": "desk",
+          "status": "picked_up",
+          "fulfilment": "pickup",
+          "paid": true,
+          "lines": [
+            { "item": "kaju-katli", "pack": "500 g", "quantity": 1 },
+            { "item": "chakkuli", "pack": "500 g", "quantity": 1 }
+          ]
+        },
+        {
+          "day": { "days_ago": 16 },
+          "buyer_name": "Anita Desai",
+          "buyer_phone": "+910000001020",
+          "buyer_language": "en",
+          "source": "marketplace",
+          "status": "picked_up",
+          "fulfilment": "pickup",
+          "paid": true,
+          "lines": [{ "item": "diwali-box", "pack": "1 kg", "quantity": 1 }]
+        }
+      ]
+    },
+    {
+      "slug": "test-kitchen",
+      "name": "Test Kitchen",
+      "is_demo": false,
+      "seller": { "phone": "+910000000002", "language": "en" },
+      "area": "Basavanagudi",
+      "city": "Bengaluru",
+      "address": "No. 2, Demo Lane, Basavanagudi, Bengaluru",
+      "lat": 12.9417,
+      "lng": 77.5755,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": true,
+      "advance_for_strangers": false,
+      "in_marketplace": false,
+      "fssai": null,
+      "limit_unit": "kg",
+      "daily_limit": null,
+      "menu_of": "shobhas-kitchen"
+    },
+    {
+      "slug": "ghar-ki-mithai",
+      "name": "Ghar Ki Mithai",
+      "is_demo": true,
+      "seller": { "phone": "+910000000003", "language": "hi" },
+      "area": "HSR Layout",
+      "city": "Bengaluru",
+      "address": "No. 3, Demo Lane, HSR Layout, Bengaluru",
+      "lat": 12.9116,
+      "lng": 77.6474,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.5, "count": 186 },
+      "bulk_on": true,
+      "bulk_line": "Bulk and corporate orders taken",
+      "limit_unit": "orders",
+      "daily_limit": null,
+      "items": [
+        {
+          "key": "kaju-katli",
+          "name": "Kaju katli",
+          "name_latin": "Kaju katli",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 130000,
+          "bulk": { "min_qty": 500, "unit": "pieces", "price": 1500 }
+        },
+        {
+          "key": "motichoor-laddu",
+          "name": "Motichoor laddu",
+          "name_latin": "Motichoor laddu",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "special": true,
+          "price_per_kg": 60000
+        },
+        {
+          "key": "gujiya",
+          "name": "Gujiya",
+          "name_latin": "Gujiya",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_piece": 3000
+        },
+        {
+          "key": "namak-para",
+          "name": "Namak para",
+          "name_latin": "Namak para",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 40000
+        },
+        {
+          "key": "mathri",
+          "name": "Mathri",
+          "name_latin": "Mathri",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 45000
+        },
+        {
+          "key": "assorted-gift-box",
+          "name": "Assorted gift box (250 g)",
+          "name_latin": "Assorted gift box (250 g)",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "in_menu": false,
+          "bulk": { "min_qty": 100, "unit": "pieces", "price": null }
+        }
+      ]
+    },
+    {
+      "slug": "ammas-murukku-corner",
+      "name": "Amma's Murukku Corner",
+      "is_demo": true,
+      "seller": { "phone": "+910000000004", "language": "ta" },
+      "area": "Ulsoor",
+      "city": "Bengaluru",
+      "address": "No. 4, Demo Lane, Ulsoor, Bengaluru",
+      "lat": 12.9817,
+      "lng": 77.6286,
+      "offers_pickup": true,
+      "offers_delivery": false,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.3, "count": 94 },
+      "limit_unit": "orders",
+      "daily_limit": null,
+      "items": [
+        {
+          "key": "murukku",
+          "name": "Murukku",
+          "name_latin": "Murukku",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 42000
+        },
+        {
+          "key": "thattai",
+          "name": "Thattai",
+          "name_latin": "Thattai",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 42000
+        },
+        {
+          "key": "ribbon-pakoda",
+          "name": "Ribbon pakoda",
+          "name_latin": "Ribbon pakoda",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 40000
+        },
+        {
+          "key": "adhirasam",
+          "name": "Adhirasam",
+          "name_latin": "Adhirasam",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_piece": 2500
+        },
+        {
+          "key": "mysore-pak",
+          "name": "Mysore pak",
+          "name_latin": "Mysore pak",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 85000
+        }
+      ]
+    },
+    {
+      "slug": "andhra-ruchulu",
+      "name": "Andhra Ruchulu",
+      "is_demo": true,
+      "seller": { "phone": "+910000000005", "language": "te" },
+      "area": "Marathahalli",
+      "city": "Bengaluru",
+      "address": "No. 5, Demo Lane, Marathahalli, Bengaluru",
+      "lat": 12.9569,
+      "lng": 77.7011,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.1, "count": 57 },
+      "limit_unit": "orders",
+      "daily_limit": 15,
+      "items": [
+        {
+          "key": "kajjikayalu",
+          "name": "Kajjikayalu",
+          "name_latin": "Kajjikayalu",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_piece": 2500
+        },
+        {
+          "key": "chekkalu",
+          "name": "Chekkalu",
+          "name_latin": "Chekkalu",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 40000
+        },
+        {
+          "key": "sunnundalu",
+          "name": "Sunnundalu",
+          "name_latin": "Sunnundalu",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 70000
+        },
+        {
+          "key": "gavvalu",
+          "name": "Gavvalu",
+          "name_latin": "Gavvalu",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 45000
+        },
+        {
+          "key": "boondi-laddu",
+          "name": "Boondi laddu",
+          "name_latin": "Boondi laddu",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 55000
+        }
+      ]
+    },
+    {
+      "slug": "faral-ghar",
+      "name": "Faral Ghar",
+      "is_demo": true,
+      "seller": { "phone": "+910000000006", "language": "mr" },
+      "area": "Whitefield",
+      "city": "Bengaluru",
+      "address": "No. 6, Demo Lane, Whitefield, Bengaluru",
+      "lat": 12.9698,
+      "lng": 77.75,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.4, "count": 128 },
+      "limit_unit": "kg",
+      "daily_limit": 20000,
+      "items": [
+        {
+          "key": "chakli",
+          "name": "Chakli",
+          "name_latin": "Chakli",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 42000
+        },
+        {
+          "key": "shankarpali",
+          "name": "Shankarpali",
+          "name_latin": "Shankarpali",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 40000
+        },
+        {
+          "key": "karanji",
+          "name": "Karanji",
+          "name_latin": "Karanji",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_piece": 2500,
+          "grams_per_piece": 40
+        },
+        {
+          "key": "besan-laddu",
+          "name": "Besan laddu",
+          "name_latin": "Besan laddu",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 65000
+        },
+        {
+          "key": "poha-chivda",
+          "name": "Poha chivda",
+          "name_latin": "Poha chivda",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "price_per_kg": 38000
+        },
+        {
+          "key": "anarse",
+          "name": "Anarse",
+          "name_latin": "Anarse",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "special": true,
+          "price_per_piece": 3000,
+          "grams_per_piece": 30
+        }
+      ]
+    },
+    {
+      "slug": "coastal-kitchen",
+      "name": "Coastal Kitchen",
+      "is_demo": true,
+      "seller": { "phone": "+910000000007", "language": "en" },
+      "area": "Bannerghatta Road",
+      "city": "Bengaluru",
+      "address": "No. 7, Demo Lane, Bannerghatta Road, Bengaluru",
+      "lat": 12.8889,
+      "lng": 77.597,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 3.9, "count": 23 },
+      "limit_unit": "orders",
+      "daily_limit": null,
+      "items": [
+        {
+          "key": "kulkuls",
+          "name": "Kulkuls",
+          "name_latin": "Kulkuls",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 50000
+        },
+        {
+          "key": "rose-cookies",
+          "name": "Rose cookies",
+          "name_latin": "Rose cookies",
+          "category": "sweets",
+          "veg_mark": "egg",
+          "price_per_kg": 55000
+        },
+        {
+          "key": "nankhatai",
+          "name": "Nankhatai",
+          "name_latin": "Nankhatai",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "price_per_kg": 50000
+        },
+        {
+          "key": "plum-cake",
+          "name": "Plum cake",
+          "name_latin": "Plum cake",
+          "category": "sweets",
+          "veg_mark": "egg",
+          "special": true,
+          "packs": [
+            { "label": "500 g", "grams": 500, "price": 45000 },
+            { "label": "1 kg", "grams": 1000, "price": 88000 }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "daawat-caterers",
+      "name": "Daawat Caterers",
+      "is_demo": true,
+      "seller": {
+        "phone": "+910000000008",
+        "language": "kn"
+      },
+      "area": "Jayanagar",
+      "city": "Bengaluru",
+      "address": "No. 8, Demo Lane, Jayanagar, Bengaluru",
+      "lat": 12.925,
+      "lng": 77.5938,
+      "offers_pickup": false,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "normal_orders_on": false,
+      "catering_on": true,
+      "limit_unit": "orders",
+      "daily_limit": null,
+      "closed": ["sunday"],
+      "packages": [
+        {
+          "key": "silver-plate",
+          "kind": "plate",
+          "name": "Silver plate",
+          "price": 35000,
+          "min_count": 100,
+          "free_choice": false,
+          "max_total": 9,
+          "service_styles": ["delivery", "staff", "live_counters"],
+          "style_extras": { "staff": 4000, "live_counters": 7500 },
+          "categories": [
+            {
+              "name": "Sweets",
+              "min": 1,
+              "max": 2,
+              "dishes": [
+                {
+                  "name": "Gulab jamun",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Mysore pak",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Kesari bath",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Payasam",
+                  "veg_mark": "veg",
+                  "jain": true
+                }
+              ]
+            },
+            {
+              "name": "Starters",
+              "min": 0,
+              "max": 2,
+              "dishes": [
+                {
+                  "name": "Gobi manchurian",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Paneer tikka",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Veg cutlet",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Mains",
+              "min": 2,
+              "max": 3,
+              "dishes": [
+                {
+                  "name": "Bisi bele bath",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Paneer butter masala",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Veg kurma",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Dal tadka",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Breads",
+              "min": 1,
+              "max": 1,
+              "dishes": [
+                {
+                  "name": "Poori",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Chapati",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Butter naan",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Rice",
+              "min": 1,
+              "max": 2,
+              "dishes": [
+                {
+                  "name": "Jeera rice",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Curd rice",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Lemon rice",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "gold-plate",
+          "kind": "plate",
+          "name": "Gold plate",
+          "price": 50000,
+          "min_count": 100,
+          "free_choice": false,
+          "max_total": 13,
+          "service_styles": ["delivery", "staff", "live_counters"],
+          "style_extras": { "staff": 4000, "live_counters": 7500 },
+          "categories": [
+            {
+              "name": "Sweets",
+              "min": 1,
+              "max": 3,
+              "dishes": [
+                {
+                  "name": "Gulab jamun",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Mysore pak",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Kesari bath",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Payasam",
+                  "veg_mark": "veg",
+                  "jain": true
+                }
+              ]
+            },
+            {
+              "name": "Starters",
+              "min": 0,
+              "max": 3,
+              "dishes": [
+                {
+                  "name": "Gobi manchurian",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Paneer tikka",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Veg cutlet",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Mains",
+              "min": 2,
+              "max": 4,
+              "dishes": [
+                {
+                  "name": "Bisi bele bath",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Paneer butter masala",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Veg kurma",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Dal tadka",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Breads",
+              "min": 1,
+              "max": 2,
+              "dishes": [
+                {
+                  "name": "Poori",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Chapati",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Butter naan",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Rice",
+              "min": 1,
+              "max": 2,
+              "dishes": [
+                {
+                  "name": "Jeera rice",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Curd rice",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Lemon rice",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "buffet",
+          "kind": "buffet",
+          "name": "Buffet",
+          "price": null,
+          "min_count": 150,
+          "free_choice": true,
+          "max_total": null,
+          "service_styles": ["delivery", "staff", "live_counters"],
+          "style_extras": { "staff": 0, "live_counters": 0 },
+          "categories": [
+            {
+              "name": "Sweets",
+              "min": 0,
+              "max": null,
+              "dishes": [
+                {
+                  "name": "Gulab jamun",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Mysore pak",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Kesari bath",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Payasam",
+                  "veg_mark": "veg",
+                  "jain": true
+                }
+              ]
+            },
+            {
+              "name": "Starters",
+              "min": 0,
+              "max": null,
+              "dishes": [
+                {
+                  "name": "Gobi manchurian",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Paneer tikka",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Veg cutlet",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Mains",
+              "min": 0,
+              "max": null,
+              "dishes": [
+                {
+                  "name": "Bisi bele bath",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Paneer butter masala",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Veg kurma",
+                  "veg_mark": "veg",
+                  "jain": false
+                },
+                {
+                  "name": "Dal tadka",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Breads",
+              "min": 0,
+              "max": null,
+              "dishes": [
+                {
+                  "name": "Poori",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Chapati",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Butter naan",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            },
+            {
+              "name": "Rice",
+              "min": 0,
+              "max": null,
+              "dishes": [
+                {
+                  "name": "Jeera rice",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Curd rice",
+                  "veg_mark": "veg",
+                  "jain": true
+                },
+                {
+                  "name": "Lemon rice",
+                  "veg_mark": "veg",
+                  "jain": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "aais-dabba",
+      "name": "Aai's Dabba",
+      "is_demo": true,
+      "seller": { "phone": "+910000000009", "language": "mr" },
+      "area": "Dadar",
+      "city": "Mumbai",
+      "address": "No. 9, Demo Lane, Dadar, Mumbai",
+      "lat": 19.0178,
+      "lng": 72.8478,
+      "offers_pickup": true,
+      "offers_delivery": false,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.6, "count": 241 },
+      "limit_unit": "orders",
+      "daily_limit": null,
+      "items": [
+        {
+          "key": "vada-pav",
+          "name": "वडा पाव",
+          "name_latin": "Vada pav",
+          "category": "snacks",
+          "veg_mark": "veg",
+          "allergens": ["wheat"],
+          "price_per_piece": 2500
+        },
+        {
+          "key": "pav-bhaji",
+          "name": "पाव भाजी",
+          "name_latin": "Pav bhaji",
+          "category": "meals",
+          "veg_mark": "veg",
+          "allergens": ["wheat", "dairy"],
+          "packs": [{ "label": "1 plate", "price": 14000 }]
+        },
+        {
+          "key": "anda-bhurji-pav",
+          "name": "अंडा भुर्जी पाव",
+          "name_latin": "Anda bhurji pav",
+          "category": "meals",
+          "veg_mark": "egg",
+          "allergens": ["egg", "wheat", "dairy"],
+          "packs": [{ "label": "1 plate", "price": 9000 }]
+        },
+        {
+          "key": "kolambi-bhaat",
+          "name": "कोळंबी भात",
+          "name_latin": "Kolambi bhaat (prawn rice)",
+          "category": "meals",
+          "veg_mark": "non_veg",
+          "allergens": ["shellfish"],
+          "packs": [{ "label": "1 plate", "price": 26000 }]
+        },
+        {
+          "key": "ukadiche-modak",
+          "name": "उकडीचे मोदक",
+          "name_latin": "Ukadiche modak",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["dairy"],
+          "special": true,
+          "price_per_piece": 5000
+        }
+      ]
+    },
+    {
+      "slug": "bijis-rasoi",
+      "name": "Biji's Rasoi",
+      "is_demo": true,
+      "seller": { "phone": "+910000000010", "language": "hi" },
+      "area": "Lajpat Nagar",
+      "city": "Delhi",
+      "address": "No. 10, Demo Lane, Lajpat Nagar, Delhi",
+      "lat": 28.5677,
+      "lng": 77.2433,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.7, "count": 398 },
+      "limit_unit": "orders",
+      "daily_limit": null,
+      "items": [
+        {
+          "key": "chole-bhature",
+          "name": "छोले भटूरे",
+          "name_latin": "Chole bhature",
+          "category": "meals",
+          "veg_mark": "veg",
+          "allergens": ["wheat", "dairy"],
+          "packs": [{ "label": "1 plate", "price": 13000 }]
+        },
+        {
+          "key": "samosa",
+          "name": "समोसा",
+          "name_latin": "Samosa",
+          "category": "snacks",
+          "veg_mark": "veg",
+          "allergens": ["wheat"],
+          "price_per_piece": 2000
+        },
+        {
+          "key": "chicken-seekh-kebab",
+          "name": "चिकन सीख कबाब",
+          "name_latin": "Chicken seekh kebab",
+          "category": "snacks",
+          "veg_mark": "non_veg",
+          "allergens": [],
+          "price_per_piece": 6000
+        },
+        {
+          "key": "butter-chicken",
+          "name": "बटर चिकन",
+          "name_latin": "Butter chicken",
+          "category": "meals",
+          "veg_mark": "non_veg",
+          "allergens": ["dairy", "nuts"],
+          "price_per_kg": 75000
+        },
+        {
+          "key": "gajar-ka-halwa",
+          "name": "गाजर का हलवा",
+          "name_latin": "Gajar ka halwa",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["dairy", "nuts"],
+          "special": true,
+          "price_per_kg": 52000
+        }
+      ]
+    },
+    {
+      "slug": "paati-samayal",
+      "name": "Paati Samayal",
+      "is_demo": true,
+      "seller": { "phone": "+910000000011", "language": "ta" },
+      "area": "Mylapore",
+      "city": "Chennai",
+      "address": "No. 11, Demo Lane, Mylapore, Chennai",
+      "lat": 13.0368,
+      "lng": 80.2676,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.5, "count": 163 },
+      "limit_unit": "orders",
+      "daily_limit": null,
+      "working_days": [0, 1, 3, 4, 5, 6],
+      "items": [
+        {
+          "key": "egg-kothu-parotta",
+          "name": "முட்டை கொத்து பரோட்டா",
+          "name_latin": "Egg kothu parotta",
+          "category": "meals",
+          "veg_mark": "egg",
+          "allergens": ["wheat", "egg"],
+          "packs": [{ "label": "1 plate", "price": 13000 }]
+        },
+        {
+          "key": "veg-meals",
+          "name": "சைவ சாப்பாடு",
+          "name_latin": "Veg meals",
+          "category": "meals",
+          "veg_mark": "veg",
+          "allergens": ["dairy"],
+          "packs": [{ "label": "1 plate", "price": 15000 }]
+        },
+        {
+          "key": "chicken-65",
+          "name": "சிக்கன் 65",
+          "name_latin": "Chicken 65",
+          "category": "snacks",
+          "veg_mark": "non_veg",
+          "allergens": ["egg"],
+          "price_per_kg": 66000
+        },
+        {
+          "key": "medu-vada",
+          "name": "மெது வடை",
+          "name_latin": "Medu vada",
+          "category": "snacks",
+          "veg_mark": "veg",
+          "allergens": [],
+          "price_per_piece": 1500
+        },
+        {
+          "key": "sakkarai-pongal",
+          "name": "சர்க்கரை பொங்கல்",
+          "name_latin": "Sakkarai pongal",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["dairy", "nuts"],
+          "price_per_kg": 38000
+        }
+      ]
+    },
+    {
+      "slug": "ammammas-biryani",
+      "name": "Ammamma's Biryani",
+      "is_demo": true,
+      "seller": { "phone": "+910000000012", "language": "te" },
+      "area": "Kukatpally",
+      "city": "Hyderabad",
+      "address": "No. 12, Demo Lane, Kukatpally, Hyderabad",
+      "lat": 17.4849,
+      "lng": 78.4138,
+      "offers_pickup": false,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.6, "count": 276 },
+      "limit_unit": "kg",
+      "daily_limit": 15000,
+      "items": [
+        {
+          "key": "chicken-dum-biryani",
+          "name": "హైదరాబాదీ చికెన్ దమ్ బిర్యానీ",
+          "name_latin": "Hyderabadi chicken dum biryani",
+          "category": "meals",
+          "veg_mark": "non_veg",
+          "allergens": ["dairy"],
+          "special": true,
+          "price_per_kg": 65000
+        },
+        {
+          "key": "egg-biryani",
+          "name": "ఎగ్ బిర్యానీ",
+          "name_latin": "Egg biryani",
+          "category": "meals",
+          "veg_mark": "egg",
+          "allergens": ["egg", "dairy"],
+          "price_per_kg": 42000
+        },
+        {
+          "key": "mirchi-bajji",
+          "name": "మిర్చి బజ్జీ",
+          "name_latin": "Mirchi bajji",
+          "category": "snacks",
+          "veg_mark": "veg",
+          "allergens": [],
+          "price_per_piece": 1500,
+          "grams_per_piece": 50
+        },
+        {
+          "key": "sakinalu",
+          "name": "సకినాలు",
+          "name_latin": "Sakinalu",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "allergens": ["sesame"],
+          "price_per_kg": 46000
+        },
+        {
+          "key": "double-ka-meetha",
+          "name": "డబుల్ కా మీఠా",
+          "name_latin": "Double ka meetha",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["wheat", "dairy", "nuts"],
+          "price_per_kg": 56000
+        }
+      ]
+    },
+    {
+      "slug": "puneri-misal-house",
+      "name": "Puneri Misal House",
+      "is_demo": true,
+      "seller": { "phone": "+910000000013", "language": "mr" },
+      "area": "Kothrud",
+      "city": "Pune",
+      "address": "No. 13, Demo Lane, Kothrud, Pune",
+      "lat": 18.5074,
+      "lng": 73.8077,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.2, "count": 88 },
+      "limit_unit": "orders",
+      "daily_limit": 20,
+      "working_days": [0, 2, 3, 4, 5, 6],
+      "items": [
+        {
+          "key": "misal-pav",
+          "name": "मिसळ पाव",
+          "name_latin": "Misal pav",
+          "category": "meals",
+          "veg_mark": "veg",
+          "allergens": ["wheat"],
+          "packs": [{ "label": "1 plate", "price": 11000 }]
+        },
+        {
+          "key": "sabudana-vada",
+          "name": "साबुदाणा वडा",
+          "name_latin": "Sabudana vada",
+          "category": "snacks",
+          "veg_mark": "veg",
+          "allergens": ["peanuts"],
+          "price_per_piece": 2000
+        },
+        {
+          "key": "bhakarwadi",
+          "name": "बाकरवडी",
+          "name_latin": "Bhakarwadi",
+          "category": "savouries",
+          "veg_mark": "veg",
+          "allergens": ["wheat", "sesame"],
+          "price_per_kg": 45000
+        },
+        {
+          "key": "mutton-tambda-rassa",
+          "name": "मटण तांबडा रस्सा",
+          "name_latin": "Mutton tambda rassa",
+          "category": "meals",
+          "veg_mark": "non_veg",
+          "allergens": [],
+          "price_per_kg": 115000
+        },
+        {
+          "key": "puran-poli",
+          "name": "पुरणपोळी",
+          "name_latin": "Puran poli",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["wheat", "dairy"],
+          "price_per_piece": 4500
+        }
+      ]
+    },
+    {
+      "slug": "mashis-rannaghar",
+      "name": "Mashi's Rannaghar",
+      "is_demo": true,
+      "seller": { "phone": "+910000000014", "language": "en" },
+      "area": "Ballygunge",
+      "city": "Kolkata",
+      "address": "No. 14, Demo Lane, Ballygunge, Kolkata",
+      "lat": 22.5262,
+      "lng": 88.3639,
+      "offers_pickup": true,
+      "offers_delivery": true,
+      "accepts_online": false,
+      "advance_for_strangers": false,
+      "in_marketplace": true,
+      "fssai": "00000000000000",
+      "rating": { "average": 4.0, "count": 41 },
+      "limit_unit": "orders",
+      "daily_limit": 25,
+      "working_days": [0, 1, 2, 3, 5, 6],
+      "items": [
+        {
+          "key": "egg-roll",
+          "name": "Egg roll",
+          "name_latin": "Egg roll",
+          "category": "snacks",
+          "veg_mark": "egg",
+          "allergens": ["wheat", "egg"],
+          "price_per_piece": 6000
+        },
+        {
+          "key": "chicken-kathi-roll",
+          "name": "Chicken kathi roll",
+          "name_latin": "Chicken kathi roll",
+          "category": "snacks",
+          "veg_mark": "non_veg",
+          "allergens": ["wheat"],
+          "price_per_piece": 9000
+        },
+        {
+          "key": "macher-jhol",
+          "name": "Macher jhol (fish curry)",
+          "name_latin": "Macher jhol (fish curry)",
+          "category": "meals",
+          "veg_mark": "non_veg",
+          "allergens": ["fish"],
+          "packs": [{ "label": "1 plate", "price": 18000 }]
+        },
+        {
+          "key": "luchi-aloor-dom",
+          "name": "Luchi aloor dom",
+          "name_latin": "Luchi aloor dom",
+          "category": "meals",
+          "veg_mark": "veg",
+          "allergens": ["wheat"],
+          "packs": [{ "label": "1 plate", "price": 9000 }]
+        },
+        {
+          "key": "nolen-gurer-sandesh",
+          "name": "Nolen gurer sandesh",
+          "name_latin": "Nolen gurer sandesh",
+          "category": "sweets",
+          "veg_mark": "veg",
+          "allergens": ["dairy"],
+          "special": true,
+          "price_per_piece": 3000
+        }
+      ]
+    }
+  ],
+  "board_posts": [
+    {
+      "key": "whitefield-diwali",
+      "company_name": null,
+      "description": "A tech company in Whitefield",
+      "buyer_phone": "+910000002001",
+      "work_email": "festive.gifts@whitefield-tech.example",
+      "language": "en",
+      "city": "Bengaluru",
+      "items": [
+        {
+          "name": "Kaju katli",
+          "quantity": 1000,
+          "unit": "pieces"
+        },
+        {
+          "name": "Diwali assorted box (500 g)",
+          "quantity": 500,
+          "unit": "boxes"
+        }
+      ],
+      "need_by_days": 10,
+      "places": ["Whitefield office", "Bellandur office"],
+      "budget_per_unit": 25000,
+      "interests": [
+        {
+          "store": "ghar-ki-mithai",
+          "note": "We can do both. Samples on WhatsApp."
+        }
+      ]
+    }
+  ]
+}

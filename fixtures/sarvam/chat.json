@@ -1,0 +1,1864 @@
+[
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "5b9e92c4073ba2ae9f2f5b2044285ef98817e97838458321e7c2f0d25970d505",
+    "input": "ನಮಸ್ಕಾರ, ಶನಿವಾರಕ್ಕೆ ಒಂದು ಕೆಜಿ ಮೈಸೂರು ಪಾಕ್ ಮತ್ತು ಅರ್ಧ ಕೆಜಿ ಚಕ್ಕುಲಿ ಬೇಕು. ನನ್ನ ಹೆಸರು ಪ್ರಿಯಾ, ಜಯನಗರಕ್ಕೆ ಡೆಲಿವರಿ ಮಾಡಿ.",
+    "line": "VK1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK1",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Mysore pak\",\"said\":\"ಒಂದು ಕೆಜಿ ಮೈಸೂರು ಪಾಕ್\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Chakkuli\",\"said\":\"ಅರ್ಧ ಕೆಜಿ ಚಕ್ಕುಲಿ\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"saturday\",\"date\":null,\"buyer_name\":\"ಪ್ರಿಯಾ\",\"fulfilment\":\"delivery\",\"address\":\"ಜಯನಗರ\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "5b9e92c4073ba2ae9f2f5b2044285ef98817e97838458321e7c2f0d25970d505",
+    "input": "ನಮಸ್ಕಾರ, ಶನಿವಾರಕ್ಕೆ ಒಂದು ಕೆಜಿ ಮೈಸೂರು ಪಾಕ್ ಮತ್ತು ಅರ್ಧ ಕೆಜಿ ಚಕ್ಕುಲಿ ಬೇಕು. ನನ್ನ ಹೆಸರು ಪ್ರಿಯಾ, ಜಯನಗರಕ್ಕೆ ಡೆಲಿವರಿ ಮಾಡಿ.",
+    "line": "VK1",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK1-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "096fd1c53ea19ec02c0711fb1a2b927a49468538318e50192c29d87d65182b6e",
+    "input": "Hello, I need one kg of Mysore pak and half a kg of chakkuli for Saturday. My name is Priya, please deliver to Jayanagar.",
+    "line": "VK1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK1-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Mysore pak\",\"said\":\"one kg of Mysore pak\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Chakkuli\",\"said\":\"half a kg of chakkuli\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"saturday\",\"date\":null,\"buyer_name\":\"Priya\",\"fulfilment\":\"delivery\",\"address\":\"Jayanagar\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "096fd1c53ea19ec02c0711fb1a2b927a49468538318e50192c29d87d65182b6e",
+    "input": "Hello, I need one kg of Mysore pak and half a kg of chakkuli for Saturday. My name is Priya, please deliver to Jayanagar.",
+    "line": "VK1",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK1-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "89c9636df112d5c84f33d365af0ea3227212ca5a05d04fadae262a3534556709",
+    "input": "ಭಾನುವಾರ ಎರಡು ಕೆಜಿ ಕಾಜು ಕಟ್ಲಿ ಬೇಕು. ನಾನೇ ಬಂದು ತಗೊಂಡು ಹೋಗ್ತೀನಿ. ಹೆಸರು ಸುರೇಶ್.",
+    "line": "VK2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK2",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"ಎರಡು ಕೆಜಿ ಕಾಜು ಕಟ್ಲಿ\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"sunday\",\"date\":null,\"buyer_name\":\"ಸುರೇಶ್\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "89c9636df112d5c84f33d365af0ea3227212ca5a05d04fadae262a3534556709",
+    "input": "ಭಾನುವಾರ ಎರಡು ಕೆಜಿ ಕಾಜು ಕಟ್ಲಿ ಬೇಕು. ನಾನೇ ಬಂದು ತಗೊಂಡು ಹೋಗ್ತೀನಿ. ಹೆಸರು ಸುರೇಶ್.",
+    "line": "VK2",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK2-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "4524590e77a4429f98850df30b972fcc8f4dc0021bba2ce3bcaa9362a8b366f3",
+    "input": "I need two kg of kaju katli on Sunday. I will come and pick it up myself. The name is Suresh.",
+    "line": "VK2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK2-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"two kg of kaju katli\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"sunday\",\"date\":null,\"buyer_name\":\"Suresh\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "4524590e77a4429f98850df30b972fcc8f4dc0021bba2ce3bcaa9362a8b366f3",
+    "input": "I need two kg of kaju katli on Sunday. I will come and pick it up myself. The name is Suresh.",
+    "line": "VK2",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK2-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "79ad23d7f82355e646f517f8653161ce7c4321de47faecb469880241d779515a",
+    "input": "ನಾಳೆಗೆ ಒಂದು ದೀಪಾವಳಿ ಸ್ವೀಟ್ ಬಾಕ್ಸ್, ಒಂದು ಕೆಜಿದು, ಮತ್ತೆ ಕಾಲು ಕೆಜಿ ಕೋಡುಬಳೆ. ಮಲ್ಲೇಶ್ವರಂಗೆ ಕಳಿಸಿ, ಹೆಸರು ಅನಿತಾ.",
+    "line": "VK3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK3",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Diwali assorted box\",\"said\":\"ಒಂದು ದೀಪಾವಳಿ ಸ್ವೀಟ್ ಬಾಕ್ಸ್, ಒಂದು ಕೆಜಿದು\",\"quantity\":1,\"unit\":\"packs\",\"pack_grams\":1000,\"pack_pieces\":null},{\"menu_name\":\"Kodubale\",\"said\":\"ಕಾಲು ಕೆಜಿ ಕೋಡುಬಳೆ\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tomorrow\",\"date\":null,\"buyer_name\":\"ಅನಿತಾ\",\"fulfilment\":\"delivery\",\"address\":\"ಮಲ್ಲೇಶ್ವರಂ\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "79ad23d7f82355e646f517f8653161ce7c4321de47faecb469880241d779515a",
+    "input": "ನಾಳೆಗೆ ಒಂದು ದೀಪಾವಳಿ ಸ್ವೀಟ್ ಬಾಕ್ಸ್, ಒಂದು ಕೆಜಿದು, ಮತ್ತೆ ಕಾಲು ಕೆಜಿ ಕೋಡುಬಳೆ. ಮಲ್ಲೇಶ್ವರಂಗೆ ಕಳಿಸಿ, ಹೆಸರು ಅನಿತಾ.",
+    "line": "VK3",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK3-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "4c025389ff7907cdd492efe63d9f380e09f62b8055a1970ea3a72f43aa4b3d03",
+    "input": "For tomorrow, one Diwali sweet box, the one kg one, and a quarter kg of kodubale. Send it to Malleshwaram, the name is Anita.",
+    "line": "VK3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK3-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Diwali assorted box\",\"said\":\"one Diwali sweet box, the one kg one\",\"quantity\":1,\"unit\":\"packs\",\"pack_grams\":1000,\"pack_pieces\":null},{\"menu_name\":\"Kodubale\",\"said\":\"a quarter kg of kodubale\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tomorrow\",\"date\":null,\"buyer_name\":\"Anita\",\"fulfilment\":\"delivery\",\"address\":\"Malleshwaram\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "4c025389ff7907cdd492efe63d9f380e09f62b8055a1970ea3a72f43aa4b3d03",
+    "input": "For tomorrow, one Diwali sweet box, the one kg one, and a quarter kg of kodubale. Send it to Malleshwaram, the name is Anita.",
+    "line": "VK3",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK3-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "e4183551c2f1d5332929c57cef1079beba3af84c77e441a88dde5a1e3c90724f",
+    "input": "ಶುಕ್ರವಾರ ಅರ್ಧ ಕೆಜಿ ಬೇಸನ್ ಲಡ್ಡು, ಅರ್ಧ ಕೆಜಿ ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ. ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ ಹಾಕಿ. ಹೆಸರು ರಮೇಶ್, ಪಿಕಪ್.",
+    "line": "VK4",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK4",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Besan laddu\",\"said\":\"ಅರ್ಧ ಕೆಜಿ ಬೇಸನ್ ಲಡ್ಡು\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kobbari mithai\",\"said\":\"ಅರ್ಧ ಕೆಜಿ ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"friday\",\"date\":null,\"buyer_name\":\"ರಮೇಶ್\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":\"ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ ಹಾಕಿ\"}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "e4183551c2f1d5332929c57cef1079beba3af84c77e441a88dde5a1e3c90724f",
+    "input": "ಶುಕ್ರವಾರ ಅರ್ಧ ಕೆಜಿ ಬೇಸನ್ ಲಡ್ಡು, ಅರ್ಧ ಕೆಜಿ ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ. ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ ಹಾಕಿ. ಹೆಸರು ರಮೇಶ್, ಪಿಕಪ್.",
+    "line": "VK4",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK4-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "10966817ec9428df11cd24ad82f77e8ddcaed10413f7bc0d0f02a8eccba63d5f",
+    "input": "On Friday, half a kg of besan laddu and half a kg of kobbari mithai. Put a little less sugar. The name is Ramesh, pickup.",
+    "line": "VK4",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK4-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Besan laddu\",\"said\":\"half a kg of besan laddu\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kobbari mithai\",\"said\":\"half a kg of kobbari mithai\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"friday\",\"date\":null,\"buyer_name\":\"Ramesh\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":\"Put a little less sugar.\"}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "10966817ec9428df11cd24ad82f77e8ddcaed10413f7bc0d0f02a8eccba63d5f",
+    "input": "On Friday, half a kg of besan laddu and half a kg of kobbari mithai. Put a little less sugar. The name is Ramesh, pickup.",
+    "line": "VK4",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK4-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "0f5c8143a57dc8b2560af09b622da4c1c824500f2ea01aee1037d894c66614b6",
+    "input": "ಮುಂದಿನ ಮಂಗಳವಾರ ಮೂರು ಕೆಜಿ ನಿಪ್ಪಟ್ಟು ಬೇಕು. ಬಸವನಗುಡಿಗೆ ಕಳಿಸಿ. ಹೆಸರು ಕಾವ್ಯ.",
+    "line": "VK5",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK5",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Nippattu\",\"said\":\"ಮೂರು ಕೆಜಿ ನಿಪ್ಪಟ್ಟು\",\"quantity\":3,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"next_tuesday\",\"date\":null,\"buyer_name\":\"ಕಾವ್ಯ\",\"fulfilment\":\"delivery\",\"address\":\"ಬಸವನಗುಡಿ\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "0f5c8143a57dc8b2560af09b622da4c1c824500f2ea01aee1037d894c66614b6",
+    "input": "ಮುಂದಿನ ಮಂಗಳವಾರ ಮೂರು ಕೆಜಿ ನಿಪ್ಪಟ್ಟು ಬೇಕು. ಬಸವನಗುಡಿಗೆ ಕಳಿಸಿ. ಹೆಸರು ಕಾವ್ಯ.",
+    "line": "VK5",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK5-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "abe46da3362100d000c70b09d8476d98414c83b8cff23b73d43a0a917b95fd8a",
+    "input": "I need three kg of nippattu next Tuesday. Send it to Basavanagudi. The name is Kavya.",
+    "line": "VK5",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK5-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Nippattu\",\"said\":\"three kg of nippattu\",\"quantity\":3,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"next_tuesday\",\"date\":null,\"buyer_name\":\"Kavya\",\"fulfilment\":\"delivery\",\"address\":\"Basavanagudi\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "abe46da3362100d000c70b09d8476d98414c83b8cff23b73d43a0a917b95fd8a",
+    "input": "I need three kg of nippattu next Tuesday. Send it to Basavanagudi. The name is Kavya.",
+    "line": "VK5",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK5-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "bdd7411312ee9a630dd1e38facf70c2fc5281b444a6f987fc7dad718b2c7180b",
+    "input": "ಇವತ್ತು ಸಂಜೆ ಒಂದು ಕೆಜಿ ಚಕ್ಕುಲಿ ಸಿಗುತ್ತಾ? ಹೆಸರು ವಿನಯ್.",
+    "line": "VK6",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK6",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Chakkuli\",\"said\":\"ಒಂದು ಕೆಜಿ ಚಕ್ಕುಲಿ\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"today\",\"date\":null,\"buyer_name\":\"ವಿನಯ್\",\"fulfilment\":null,\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "bdd7411312ee9a630dd1e38facf70c2fc5281b444a6f987fc7dad718b2c7180b",
+    "input": "ಇವತ್ತು ಸಂಜೆ ಒಂದು ಕೆಜಿ ಚಕ್ಕುಲಿ ಸಿಗುತ್ತಾ? ಹೆಸರು ವಿನಯ್.",
+    "line": "VK6",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK6-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "66f76295093b619b02285f34980877d19f11234ce8805254be90b72bd4cc82d9",
+    "input": "Can I get one kg of chakkuli this evening? The name is Vinay.",
+    "line": "VK6",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK6-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Chakkuli\",\"said\":\"one kg of chakkuli\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"today\",\"date\":null,\"buyer_name\":\"Vinay\",\"fulfilment\":null,\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "66f76295093b619b02285f34980877d19f11234ce8805254be90b72bd4cc82d9",
+    "input": "Can I get one kg of chakkuli this evening? The name is Vinay.",
+    "line": "VK6",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VK6-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "1ee66e72d5a0b6143d04a37c95e14c5889a38a708dce3d60b567b1d4355129dd",
+    "input": "नमस्ते, शनिवार के लिए एक किलो काजू कतली और आधा किलो बेसन लड्डू चाहिए। मेरा नाम रोहित है, HSR लेआउट में डिलीवरी कर दीजिए।",
+    "line": "VH1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH1",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"एक किलो काजू कतली\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Besan laddu\",\"said\":\"आधा किलो बेसन लड्डू\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"saturday\",\"date\":null,\"buyer_name\":\"रोहित\",\"fulfilment\":\"delivery\",\"address\":\"HSR लेआउट\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "ae78f6710501811354469ccb2d64dd7a436c588261cf85d730d245f2e922d3b3",
+    "input": "Hello, I need one kilo of kaju katli and half a kilo of besan laddu for Saturday. My name is Rohit, please deliver to HSR Layout.",
+    "line": "VH1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH1-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"one kilo of kaju katli\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Besan laddu\",\"said\":\"half a kilo of besan laddu\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"saturday\",\"date\":null,\"buyer_name\":\"Rohit\",\"fulfilment\":\"delivery\",\"address\":\"HSR Layout\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "d9f4f6e9e4d4586d6f387c53268ded39ab17598290578a92f4b136248da1175a",
+    "input": "रविवार को दो दिवाली स्वीट बॉक्स चाहिए, आधे-आधे किलो वाले। मैं खुद ले जाऊँगी। नाम पूजा।",
+    "line": "VH2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH2",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Diwali assorted box\",\"said\":\"दो दिवाली स्वीट बॉक्स, आधे-आधे किलो वाले\",\"quantity\":2,\"unit\":\"packs\",\"pack_grams\":500,\"pack_pieces\":null}],\"day\":\"sunday\",\"date\":null,\"buyer_name\":\"पूजा\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "9026fa8161300da7c31c9f694ebeb5061b8a8cf67d478c3828ee7d5b61904b57",
+    "input": "I need two Diwali sweet boxes on Sunday, half a kilo each. I will take them myself. Name Pooja.",
+    "line": "VH2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH2-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Diwali assorted box\",\"said\":\"two Diwali sweet boxes, half a kilo each\",\"quantity\":2,\"unit\":\"packs\",\"pack_grams\":500,\"pack_pieces\":null}],\"day\":\"sunday\",\"date\":null,\"buyer_name\":\"Pooja\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "2fe78a3552830eb533bfcad5faa0f1d53beb1fb2157b1637d5464f4c183a8529",
+    "input": "कल के लिए पाव किलो मैसूर पाक और पाव किलो चकली। नाम अमित, कोरमंगला में भेज दीजिए।",
+    "line": "VH3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH3",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Mysore pak\",\"said\":\"पाव किलो मैसूर पाक\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Chakkuli\",\"said\":\"पाव किलो चकली\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tomorrow\",\"date\":null,\"buyer_name\":\"अमित\",\"fulfilment\":\"delivery\",\"address\":\"कोरमंगला\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "f9e9fd082626a8ba43bf626f86348dd5a23f72eb6002ce94d51c870417f4f64f",
+    "input": "For tomorrow, a quarter kilo of Mysore pak and a quarter kilo of chakli. Name Amit, please send it to Koramangala.",
+    "line": "VH3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH3-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Mysore pak\",\"said\":\"a quarter kilo of Mysore pak\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Chakkuli\",\"said\":\"a quarter kilo of chakli\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tomorrow\",\"date\":null,\"buyer_name\":\"Amit\",\"fulfilment\":\"delivery\",\"address\":\"Koramangala\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "5912264d39e1ea4b585e6e5408335a083a17acffc87a0866905b19da99b99b2b",
+    "input": "शुक्रवार को डेढ़ किलो कोडुबले चाहिए। नाम सीमा, पिकअप।",
+    "line": "VH4",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH4",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kodubale\",\"said\":\"डेढ़ किलो कोडुबले\",\"quantity\":1.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"friday\",\"date\":null,\"buyer_name\":\"सीमा\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "eafa33cd5d560a954ffdefb4daeb9af121aea4e8da115f41a8d8f49302407728",
+    "input": "I need one and a half kilos of kodubale on Friday. Name Seema, pickup.",
+    "line": "VH4",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH4-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kodubale\",\"said\":\"one and a half kilos of kodubale\",\"quantity\":1.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"friday\",\"date\":null,\"buyer_name\":\"Seema\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "9a0cbc7beb80ff972e7a3fcfe0c5738f87b26d2d58f308248c31993fb977af13",
+    "input": "अगले बुधवार दो किलो निप्पट्टू और एक किलो नारियल बर्फी। नाम विकास, इंदिरानगर।",
+    "line": "VH5",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH5",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Nippattu\",\"said\":\"दो किलो निप्पट्टू\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kobbari mithai\",\"said\":\"एक किलो नारियल बर्फी\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"next_wednesday\",\"date\":null,\"buyer_name\":\"विकास\",\"fulfilment\":\"delivery\",\"address\":\"इंदिरानगर\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "e0b7398483349570c115ea29728e18af22503b37cc83c0938b20cb468351b81f",
+    "input": "Next Wednesday, two kilos of nippattu and one kilo of coconut burfi. Name Vikas, Indiranagar.",
+    "line": "VH5",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH5-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Nippattu\",\"said\":\"two kilos of nippattu\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kobbari mithai\",\"said\":\"one kilo of coconut burfi\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"next_wednesday\",\"date\":null,\"buyer_name\":\"Vikas\",\"fulfilment\":\"delivery\",\"address\":\"Indiranagar\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "2e1858477dd9ff6d7be551d3608ddbfb8734db6f8aa85ba08e0d19bdfa7f4bc4",
+    "input": "आज शाम तक आधा किलो काजू कतली मिल सकती है? नाम नेहा।",
+    "line": "VH6",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH6",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"आधा किलो काजू कतली\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"today\",\"date\":null,\"buyer_name\":\"नेहा\",\"fulfilment\":null,\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "6d0a8897fa4be5f14d4dc1eeba24810aecc62a863c6274e587adba6afc14de2c",
+    "input": "Can I get half a kilo of kaju katli by this evening? Name Neha.",
+    "line": "VH6",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VH6-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"half a kilo of kaju katli\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"today\",\"date\":null,\"buyer_name\":\"Neha\",\"fulfilment\":null,\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "0739766d4c4514b1f5cafa6040288b80819df6e765e98e951df6ca8bbf5ee5d4",
+    "input": "Hi, I'd like one kilo of Mysore pak and half a kilo of kaju katli for Saturday. Delivery to Jayanagar 4th Block, name Arjun.",
+    "line": "VE1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VE1",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Mysore pak\",\"said\":\"one kilo of Mysore pak\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kaju katli\",\"said\":\"half a kilo of kaju katli\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"saturday\",\"date\":null,\"buyer_name\":\"Arjun\",\"fulfilment\":\"delivery\",\"address\":\"Jayanagar 4th Block\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "87b9507417bcf4e8f491dde815247e621eee3ca8b6c2e39a8044345952d86e55",
+    "input": "Can I get two Diwali assorted boxes, one kilo each, for Sunday? I'll pick them up. This is Meera.",
+    "line": "VE2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VE2",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Diwali assorted box\",\"said\":\"two Diwali assorted boxes, one kilo each\",\"quantity\":2,\"unit\":\"packs\",\"pack_grams\":1000,\"pack_pieces\":null}],\"day\":\"sunday\",\"date\":null,\"buyer_name\":\"Meera\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "56183f419059a8843a66efa80cb4adce83e2d155d7b535906aedfd395bb7533e",
+    "input": "Three hundred grams of chakli for tomorrow, please. Name Kiran, delivery to BTM Layout.",
+    "line": "VE3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VE3",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Chakkuli\",\"said\":\"Three hundred grams of chakli\",\"quantity\":300,\"unit\":\"g\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tomorrow\",\"date\":null,\"buyer_name\":\"Kiran\",\"fulfilment\":\"delivery\",\"address\":\"BTM Layout\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "4ffdcae61fec9a5f757748761d807ed878563c0e333732d92acb98fdde9a2eda",
+    "input": "Hi aunty, Sunday ko 2 kg kaju katli aur 1 kg chakli chahiye, Koramangala delivery, naam Neha.",
+    "line": "VM1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM1",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"2 kg kaju katli\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Chakkuli\",\"said\":\"1 kg chakli\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"sunday\",\"date\":null,\"buyer_name\":\"Neha\",\"fulfilment\":\"delivery\",\"address\":\"Koramangala\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "67c378c27b20db143c8c73e4d8672eb8cdecb52a17c2eb66e30a9897edceb730",
+    "input": "Hi aunty, I need 2 kg kaju katli and 1 kg chakli on Sunday, delivery to Koramangala, name Neha.",
+    "line": "VM1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM1-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kaju katli\",\"said\":\"2 kg kaju katli\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Chakkuli\",\"said\":\"1 kg chakli\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"sunday\",\"date\":null,\"buyer_name\":\"Neha\",\"fulfilment\":\"delivery\",\"address\":\"Koramangala\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "5ad91eed35d0882358daf3df93c5adcbac7a2659574864dff805f11e8931a367",
+    "input": "Aunty, Friday ge one kg besan laddu and half kg kodubale beku, Basavanagudi delivery, name Arjun.",
+    "line": "VM2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM2",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Besan laddu\",\"said\":\"one kg besan laddu\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kodubale\",\"said\":\"half kg kodubale\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"friday\",\"date\":null,\"buyer_name\":\"Arjun\",\"fulfilment\":\"delivery\",\"address\":\"Basavanagudi\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "5ad91eed35d0882358daf3df93c5adcbac7a2659574864dff805f11e8931a367",
+    "input": "Aunty, Friday ge one kg besan laddu and half kg kodubale beku, Basavanagudi delivery, name Arjun.",
+    "line": "VM2",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM2-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "36bba93ba3dd4d1d43a5fca029b61cd14c93a7e4ab7909adb4bd79d3af9c3935",
+    "input": "Aunty, I need one kg besan laddu and half kg kodubale on Friday, Basavanagudi delivery, name Arjun.",
+    "line": "VM2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM2-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Besan laddu\",\"said\":\"one kg besan laddu\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kodubale\",\"said\":\"half kg kodubale\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"friday\",\"date\":null,\"buyer_name\":\"Arjun\",\"fulfilment\":\"delivery\",\"address\":\"Basavanagudi\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "36bba93ba3dd4d1d43a5fca029b61cd14c93a7e4ab7909adb4bd79d3af9c3935",
+    "input": "Aunty, I need one kg besan laddu and half kg kodubale on Friday, Basavanagudi delivery, name Arjun.",
+    "line": "VM2",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM2-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "ae9092b1879599507983bc9a07e6e5f944992ec947b84ee84fe1fb078bbe492f",
+    "input": "Kal ke liye ek Diwali box 1 kg wala, aur pav kilo nippattu, pickup karunga, naam Rahul.",
+    "line": "VM3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM3",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Diwali assorted box\",\"said\":\"ek Diwali box 1 kg wala\",\"quantity\":1,\"unit\":\"packs\",\"pack_grams\":1000,\"pack_pieces\":null},{\"menu_name\":\"Nippattu\",\"said\":\"pav kilo nippattu\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tomorrow\",\"date\":null,\"buyer_name\":\"Rahul\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "6c93af0805c3d52026955271b9019ac5183f0875de2a4c47a95cd6f0e9f2c68e",
+    "input": "For tomorrow, one Diwali box of 1 kg, and a quarter kilo of nippattu, I will pick it up, name Rahul.",
+    "line": "VM3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM3-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Diwali assorted box\",\"said\":\"one Diwali box of 1 kg\",\"quantity\":1,\"unit\":\"packs\",\"pack_grams\":1000,\"pack_pieces\":null},{\"menu_name\":\"Nippattu\",\"said\":\"a quarter kilo of nippattu\",\"quantity\":0.25,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tomorrow\",\"date\":null,\"buyer_name\":\"Rahul\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "42de1e1d677f691675ca8a4254dc52e4297d3601e3204aed0e8affa284b1279f",
+    "input": "Saturday ge Mysore pak 2 kg, coconut burfi half kg, Jayanagar ge kalsi, name Deepa.",
+    "line": "VM4",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM4",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Mysore pak\",\"said\":\"Mysore pak 2 kg\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kobbari mithai\",\"said\":\"coconut burfi half kg\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"saturday\",\"date\":null,\"buyer_name\":\"Deepa\",\"fulfilment\":\"delivery\",\"address\":\"Jayanagar\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "42de1e1d677f691675ca8a4254dc52e4297d3601e3204aed0e8affa284b1279f",
+    "input": "Saturday ge Mysore pak 2 kg, coconut burfi half kg, Jayanagar ge kalsi, name Deepa.",
+    "line": "VM4",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM4-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "7c2e91614aecd937ca3cb5b030b0eb9da056ec64faaf8dd7fb2b4774347ebb80",
+    "input": "On Saturday, Mysore pak 2 kg, coconut burfi half kg, send to Jayanagar, name Deepa.",
+    "line": "VM4",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM4-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Mysore pak\",\"said\":\"Mysore pak 2 kg\",\"quantity\":2,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Kobbari mithai\",\"said\":\"coconut burfi half kg\",\"quantity\":0.5,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"saturday\",\"date\":null,\"buyer_name\":\"Deepa\",\"fulfilment\":\"delivery\",\"address\":\"Jayanagar\",\"note\":null}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "7c2e91614aecd937ca3cb5b030b0eb9da056ec64faaf8dd7fb2b4774347ebb80",
+    "input": "On Saturday, Mysore pak 2 kg, coconut burfi half kg, send to Jayanagar, name Deepa.",
+    "line": "VM4",
+    "when": {
+      "reasoning_effort": "medium",
+      "max_tokens": 256
+    },
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM4-en-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "48c15783aeaec5439d347cdad2c7ff0d911cdea1a30340f92475cde4fedffc03",
+    "input": "Bhaiya, Tuesday ko kodubale aur nippattu dono ek-ek kilo, thoda kam teekha please, naam Sanjay, pickup.",
+    "line": "VM5",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM5",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kodubale\",\"said\":\"kodubale aur nippattu dono ek-ek kilo\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Nippattu\",\"said\":\"kodubale aur nippattu dono ek-ek kilo\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tuesday\",\"date\":null,\"buyer_name\":\"Sanjay\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":\"thoda kam teekha please\"}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "d0cd5a9796d247180e2c980acbd7f4b482f02b4eeb19321451b5c2c5b2da07cb",
+    "input": "Brother, on Tuesday, kodubale and nippattu, one kilo each, a little less spicy please, name Sanjay, pickup.",
+    "line": "VM5",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VM5-en",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"items\":[{\"menu_name\":\"Kodubale\",\"said\":\"kodubale, one kilo\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null},{\"menu_name\":\"Nippattu\",\"said\":\"nippattu, one kilo\",\"quantity\":1,\"unit\":\"kg\",\"pack_grams\":null,\"pack_pieces\":null}],\"day\":\"tuesday\",\"date\":null,\"buyer_name\":\"Sanjay\",\"fulfilment\":\"pickup\",\"address\":null,\"note\":\"a little less spicy please\"}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 140,
+        "total_tokens": 1100
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "4f959f2a490e121f96782871d551560742ac8913f81a074c212ff0fdd0d9ec05",
+    "input": "TEST cut-off answer",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-test-cut-off",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "length",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": "The buyer asks for a sweet. I should find the menu item and the amount, then the day. The day is"
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 256,
+        "total_tokens": 1216
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "35eb9adafdbbc5dc094deae5641e24fd883480687672640ab1fa31bdf6b436b7",
+    "input": "TEST empty answer",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-test-empty",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 960,
+        "completion_tokens": 12,
+        "total_tokens": 972
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "fd2102bc26cfa8199aa651a654d8396220917c2c2cfc0fda9492618994f61fcb",
+    "input": "ನಾನು ಮನೆಯಲ್ಲಿ ಸಿಹಿ ತಿಂಡಿ ಮತ್ತು ಖಾರ ತಿಂಡಿ ಮಾಡ್ತೀನಿ.",
+    "line": "VS1",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VS1",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"name\":null,\"name_latin\":null,\"category\":null,\"veg_mark\":null,\"price_rupees\":null,\"price_per\":null,\"allergens\":[]}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 60,
+        "total_tokens": 480
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "42857e5194a2856084a8e117819391dda13c310bbe13a0e924d2c4fa367ae13d",
+    "input": "ಚಕ್ಕುಲಿ, ಕೆಜಿಗೆ ನಾನೂರು ರೂಪಾಯಿ.",
+    "line": "VS2",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VS2",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"name\":\"ಚಕ್ಕುಲಿ\",\"name_latin\":\"Chakkuli\",\"category\":\"savouries\",\"veg_mark\":\"veg\",\"price_rupees\":400,\"price_per\":\"kg\",\"allergens\":[]}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 60,
+        "total_tokens": 480
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "8e8c717b161c4ce114dc54e2659281c83ee5226777b446fc127a72a589c4d475",
+    "input": "मैं घर पर मिठाई और नमकीन बनाती हूँ।",
+    "line": "VS3",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VS3",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"name\":null,\"name_latin\":null,\"category\":null,\"veg_mark\":null,\"price_rupees\":null,\"price_per\":null,\"allergens\":[]}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 60,
+        "total_tokens": 480
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "d28ef6dea0174f896e97bf69a36b271d466b05a5325254580f1c22f66601f242",
+    "input": "Kaju katli, twelve hundred rupees a kilo, veg, contains nuts.",
+    "line": "VS4",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VS4",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"name\":\"Kaju katli\",\"name_latin\":null,\"category\":\"sweets\",\"veg_mark\":\"veg\",\"price_rupees\":1200,\"price_per\":\"kg\",\"allergens\":[\"nuts\"]}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 60,
+        "total_tokens": 480
+      }
+    }
+  },
+  {
+    "api": "chat",
+    "model": "sarvam-105b",
+    "input_sha256": "9c879798b1da470ea80c276b2b1276fc02b59dba7e799dae602b92bf14678d9c",
+    "input": "बेसन लड्डू, पच्चीस रुपये का एक पीस, शुद्ध घी वाले।",
+    "line": "VS5",
+    "placeholder": true,
+    "response": {
+      "id": "placeholder-chat-VS5",
+      "object": "chat.completion",
+      "created": 1795500000,
+      "model": "sarvam-105b",
+      "choices": [
+        {
+          "index": 0,
+          "finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"name\":\"बेसन लड्डू\",\"name_latin\":\"Besan laddu\",\"category\":\"sweets\",\"veg_mark\":\"veg\",\"price_rupees\":25,\"price_per\":\"piece\",\"allergens\":[\"dairy\"]}",
+            "reasoning_content": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 420,
+        "completion_tokens": 60,
+        "total_tokens": 480
+      }
+    }
+  }
+]

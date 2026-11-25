@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="privacy.title">Privacy</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/privacy/privacy.css" />
+    <script type="module" src="/privacy/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span>
+            </p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <div class="bar-controls">
+            <span class="picker city">
+              <label
+                class="visually-hidden"
+                for="city-picker"
+                data-text="city.label"
+                >City</label
+              >
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#location" />
+              </svg>
+              <select id="city-picker"></select>
+            </span>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="buyer-page privacy-page">
+      <article class="card privacy" aria-labelledby="privacy-title">
+        <h1 id="privacy-title" data-text="privacy.title">Privacy</h1>
+        <p class="lead" id="privacy-lead">
+          Plattr uses your data only for your order.
+        </p>
+        <dl class="answers">
+          <div>
+            <dt data-text="privacy.data_label">Your data</dt>
+            <dd data-text="privacy.data">
+              Your WhatsApp number, your name, the delivery address, your note,
+              and the name and phone of a gift's receiver.
+            </dd>
+          </div>
+          <div>
+            <dt data-text="privacy.purpose_label">Why</dt>
+            <dd data-text="privacy.purpose">
+              Only for this order and its updates on WhatsApp. The cook sees it
+              so that she can make and send your order.
+            </dd>
+          </div>
+          <div>
+            <dt data-text="privacy.kept_label">How long</dt>
+            <dd data-text="privacy.kept">
+              Your order stays with the orders of the store. At a demo store,
+              every order is deleted each night, when the demo starts again.
+              This browser keeps your name and number for your next order.
+            </dd>
+          </div>
+          <div>
+            <dt data-text="privacy.withdraw_label">Stop</dt>
+            <dd data-text="privacy.withdraw">
+              To withdraw your consent, reply STOP to a message from us, or
+              message the store.
+            </dd>
+          </div>
+          <div>
+            <dt data-text="privacy.complain_label">Complain</dt>
+            <dd id="privacy-complain" data-text="privacy.complain">
+              Write to the store on WhatsApp: use Message the store in a message
+              from us or on your order page. If that does not solve it, you can
+              complain to the Data Protection Board of India.
+            </dd>
+          </div>
+        </dl>
+      </article>
+    </main>
+  </body>
+</html>

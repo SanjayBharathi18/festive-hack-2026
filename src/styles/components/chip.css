@@ -1,0 +1,91 @@
+/* A chip: one choice in a row of choices, fully round, with a light border.
+   A filter chip picks a group; a pack chip picks a pack and shows its numbers
+   in mono. The chosen chip is ink, like a pressed plain button. A chip is a
+   button with aria-pressed, a link with aria-current, or a label around a
+   radio or a checkbox. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
+  min-block-size: var(--tap);
+  padding: 0 calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-round);
+  background: var(--paper);
+  color: var(--ink-2);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-quick) linear,
+    color var(--dur-quick) linear;
+
+  &:hover {
+    border-color: var(--brass);
+    color: var(--ink);
+  }
+
+  &:active,
+  &[data-state="pressed"] {
+    background: var(--ink-tint);
+    transition-duration: var(--dur-instant);
+  }
+
+  &:is(
+    [aria-pressed="true"],
+    [aria-current]:not([aria-current="false"]),
+    :has(:checked)
+  ) {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  &:focus-visible,
+  &[data-state="focus"],
+  &:has(:focus-visible) {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+
+  &:is(:disabled, :has(:disabled)) {
+    border-color: var(--brass-tint);
+    background: var(--paper);
+    color: var(--ink-3);
+    cursor: not-allowed;
+  }
+
+  input:is([type="radio"], [type="checkbox"]) {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+.chip-pack {
+  font-family: var(--font-num);
+  font-size-adjust: var(--font-num-adjust);
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+
+  &:is([aria-pressed="true"], :has(:checked)) {
+    font-weight: 600;
+  }
+}

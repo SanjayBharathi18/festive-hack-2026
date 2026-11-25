@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title data-text="desk.title">Desk</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/desk/desk.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/desk/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span>
+              <span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub">
+              <span id="store-name"></span><span id="store-place"></span>
+            </p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p id="live-status" role="status"></p>
+          <a
+            class="link-btn"
+            id="store-link"
+            href="/s/shobhas-kitchen"
+            data-text="desk.view_store"
+            hidden
+            >View your store</a
+          >
+          <div class="bar-controls">
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="desk" id="desk-main">
+      <p class="wait desk-wait" id="open-wait">
+        <span role="status"></span> <span class="num"></span>
+      </p>
+      <div class="problem card" id="open-problem" hidden>
+        <p class="error" role="alert"></p>
+        <button
+          class="btn-plain"
+          type="button"
+          data-text="common.action.try_again"
+        >
+          Try again
+        </button>
+      </div>
+
+      <section
+        class="sign-in card"
+        id="sign-in"
+        aria-labelledby="sign-in-title"
+        hidden
+      >
+        <h1 id="sign-in-title" data-text="desk.sign_in.title">
+          Open your desk
+        </h1>
+        <p class="sign-in-lead" data-text="desk.sign_in.lead">
+          Enter the WhatsApp number of your store. We send a code to it.
+        </p>
+        <p class="error" id="sign-in-demo" role="alert" hidden></p>
+        <form class="sign-in-step" id="phone-form" novalidate>
+          <div class="field">
+            <label for="phone" data-text="desk.sign_in.phone"
+              >WhatsApp number</label
+            >
+            <p
+              class="field-hint"
+              id="phone-hint"
+              data-text="desk.sign_in.phone_hint"
+            >
+              For example 98450 12345
+            </p>
+            <input
+              class="num"
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              required
+              aria-describedby="phone-hint phone-error"
+            />
+            <p class="field-error" id="phone-error" hidden></p>
+          </div>
+          <p class="wait" id="phone-wait">
+            <span role="status"></span> <span class="num"></span>
+          </p>
+          <button
+            class="btn-primary"
+            type="submit"
+            data-text="desk.sign_in.get_code"
+          >
+            Get the code
+          </button>
+        </form>
+        <form class="sign-in-step" id="code-form" novalidate hidden>
+          <div class="code-shown">
+            <p class="code-shown-head">
+              <span data-text="desk.sign_in.code_shown">Your code</span>
+              <span class="badge" data-text="common.badge.prototype"
+                >Prototype</span
+              >
+            </p>
+            <p class="readout num" id="code-shown"></p>
+            <p class="field-hint" data-text="desk.sign_in.prototype_hint">
+              This prototype shows the code here. The real app sends it on
+              WhatsApp.
+            </p>
+          </div>
+          <div class="field">
+            <label for="code" data-text="desk.sign_in.code">Code</label>
+            <p
+              class="field-hint"
+              id="code-hint"
+              data-text="desk.sign_in.code_hint"
+            >
+              6 digits
+            </p>
+            <input
+              class="num"
+              id="code"
+              name="code"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              maxlength="7"
+              required
+              aria-describedby="code-hint code-error"
+            />
+            <p class="field-error" id="code-error" hidden></p>
+          </div>
+          <p class="wait" id="code-wait">
+            <span role="status"></span> <span class="num"></span>
+          </p>
+          <button
+            class="btn-primary"
+            type="submit"
+            data-text="desk.sign_in.open"
+          >
+            Open my desk
+          </button>
+          <button
+            class="link-btn"
+            type="button"
+            id="change-number"
+            data-text="desk.sign_in.change_number"
+          >
+            Change the number
+          </button>
+        </form>
+      </section>
+
+      <div class="desk-grid" id="desk-grid" hidden>
+        <div class="desk-main" id="desk-main-column">
+          <div class="desk-main-head">
+            <a
+              class="btn-plain to-add"
+              id="to-add"
+              href="#add"
+              data-text="desk.board.to_add"
+              >Go to Add order</a
+            >
+            <fieldset class="tabs main-tabs">
+              <legend class="visually-hidden" data-text="desk.main.show">
+                Show
+              </legend>
+              <label
+                ><input
+                  type="radio"
+                  name="main-tab"
+                  value="orders"
+                  checked
+                /><span data-text="desk.board.title">Order board</span></label
+              >
+              <label
+                ><input type="radio" name="main-tab" value="quotes" /><span
+                  data-text="desk.quotes.title"
+                  >Quote requests</span
+                ></label
+              >
+              <label id="posts-tab" hidden
+                ><input type="radio" name="main-tab" value="posts" /><span
+                  data-text="desk.posts.title"
+                  >Request board</span
+                ></label
+              >
+            </fieldset>
+            <a
+              class="btn-plain"
+              id="packages-link"
+              href="/desk/packages"
+              data-text="catering.editor.nav_packages"
+              hidden
+              >Catering packages</a
+            >
+          </div>
+          <section class="board" id="board" aria-labelledby="board-title">
+            <h1
+              class="visually-hidden"
+              id="board-title"
+              data-text="desk.board.title"
+            >
+              Order board
+            </h1>
+            <div class="paused-notice card" id="paused-notice" hidden>
+              <p>
+                <strong data-text="desk.stock.pause"
+                  >Not taking orders now</strong
+                >
+                <span data-text="desk.stock.paused_hint"
+                  >Buyers still see your store, but they cannot order.</span
+                >
+              </p>
+              <button
+                class="btn-plain"
+                type="button"
+                id="resume"
+                data-text="desk.stock.resume"
+              >
+                Take orders again
+              </button>
+            </div>
+            <div class="problem" id="board-problem" hidden>
+              <p class="error" role="alert"></p>
+              <button
+                class="btn-plain"
+                type="button"
+                data-text="common.action.try_again"
+              >
+                Try again
+              </button>
+            </div>
+            <p
+              class="board-empty card"
+              id="board-empty"
+              data-text="desk.board.empty"
+              hidden
+            >
+              No orders for the next 3 weeks.
+            </p>
+            <div class="board-days" id="board-days"></div>
+          </section>
+
+          <section class="requests" id="quotes" aria-labelledby="quotes-title">
+            <h2
+              class="visually-hidden"
+              id="quotes-title"
+              data-text="desk.quotes.title"
+            >
+              Quote requests
+            </h2>
+            <p class="requests-lead" data-text="desk.quotes.lead">
+              Bulk and catering requests. Agree the price and the deal with the
+              buyer on WhatsApp. A request has no payment and does not count
+              toward your daily limit.
+            </p>
+            <p class="wait" id="quotes-wait">
+              <span role="status"></span> <span class="num"></span>
+            </p>
+            <div class="problem" id="quotes-problem" hidden>
+              <p class="error" role="alert"></p>
+              <button
+                class="btn-plain"
+                type="button"
+                data-text="common.action.try_again"
+              >
+                Try again
+              </button>
+            </div>
+            <p
+              class="requests-empty card"
+              id="quotes-empty"
+              data-text="desk.quotes.empty"
+              hidden
+            >
+              No quote requests yet. When a buyer asks for a bulk order or
+              catering, the request shows here.
+            </p>
+            <ol class="request-list" id="quotes-list"></ol>
+          </section>
+
+          <section class="requests" id="posts" aria-labelledby="posts-title">
+            <h2
+              class="visually-hidden"
+              id="posts-title"
+              data-text="desk.posts.title"
+            >
+              Request board
+            </h2>
+            <p class="requests-lead" id="posts-lead"></p>
+            <p class="wait" id="posts-wait">
+              <span role="status"></span> <span class="num"></span>
+            </p>
+            <div class="problem" id="posts-problem" hidden>
+              <p class="error" role="alert"></p>
+              <button
+                class="btn-plain"
+                type="button"
+                data-text="common.action.try_again"
+              >
+                Try again
+              </button>
+            </div>
+            <p class="requests-empty card" id="posts-empty" hidden></p>
+            <ol class="request-list" id="posts-list"></ol>
+          </section>
+        </div>
+
+        <div class="desk-side">
+          <section
+            class="card add"
+            id="add"
+            data-edge="brass"
+            aria-labelledby="add-title"
+          >
+            <header class="card-head">
+              <div>
+                <h2 id="add-title" data-text="desk.add.title">Add order</h2>
+                <p class="card-lead" data-text="desk.add.lead">
+                  Record the order, choose a voice note, or paste the message.
+                </p>
+              </div>
+              <span
+                class="badge"
+                id="add-recorded"
+                data-text="common.badge.recorded"
+                hidden
+                >Recorded</span
+              >
+            </header>
+
+            <div class="add-step" id="add-input">
+              <div class="voice" id="voice">
+                <button
+                  class="btn-primary voice-button"
+                  type="button"
+                  data-phase="idle"
+                  id="record"
+                >
+                  <span class="voice-record"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#mic" /></svg
+                    ><span data-text="desk.add.record"
+                      >Record the order</span
+                    ></span
+                  >
+                  <span class="voice-stop"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="/icons.svg#stop" /></svg
+                    ><span data-text="common.action.stop">Stop</span></span
+                  >
+                </button>
+                <span class="voice-level" aria-hidden="true"></span>
+                <span
+                  class="voice-timer"
+                  role="timer"
+                  aria-label="Recording time"
+                  data-text-label="desk.add.timer"
+                  >0:00 / 5:00</span
+                >
+                <label class="file-pick" id="file-pick"
+                  ><span data-text="desk.add.upload">Choose a voice note</span
+                  ><input type="file" accept="audio/*" id="file"
+                /></label>
+              </div>
+              <section
+                class="samples"
+                id="samples"
+                aria-labelledby="samples-title"
+                hidden
+              >
+                <h3 id="samples-title" data-text="desk.add.samples">
+                  Sample voice notes
+                </h3>
+                <p class="field-hint" data-text="desk.add.samples_hint">
+                  The words of demo voice notes. Tap one to read it.
+                </p>
+                <ul class="sample-list" id="sample-list"></ul>
+              </section>
+              <form class="paste" id="paste-form" novalidate>
+                <div class="field">
+                  <label for="paste-text" data-text="desk.add.paste"
+                    >Or paste the order</label
+                  >
+                  <p
+                    class="field-hint"
+                    id="paste-hint"
+                    data-text="desk.add.paste_hint"
+                  >
+                    A WhatsApp message, or the order in your words.
+                  </p>
+                  <textarea
+                    id="paste-text"
+                    name="text"
+                    maxlength="5000"
+                    required
+                    aria-describedby="paste-hint"
+                  ></textarea>
+                </div>
+                <button
+                  class="btn-plain"
+                  type="submit"
+                  id="read-text"
+                  data-text="desk.add.read"
+                >
+                  Read the order
+                </button>
+              </form>
+              <p class="wait" id="add-wait">
+                <span role="status"></span> <span class="num"></span>
+              </p>
+              <div class="problem" id="add-problem" hidden>
+                <p class="error" role="alert"></p>
+                <button
+                  class="btn-plain"
+                  type="button"
+                  data-text="common.action.try_again"
+                >
+                  Try again
+                </button>
+              </div>
+              <button
+                class="link-btn"
+                type="button"
+                id="by-hand"
+                data-text="desk.add.by_hand"
+              >
+                Fill in the order yourself
+              </button>
+            </div>
+
+            <section
+              class="add-step"
+              id="add-check"
+              aria-labelledby="check-title"
+              hidden
+            >
+              <div class="heard-block" id="heard-block">
+                <p class="heard-head">
+                  <span class="heard-label" data-text="desk.check.heard"
+                    >What we heard</span
+                  >
+                  <span
+                    class="badge"
+                    id="recorded-badge"
+                    data-text="common.badge.recorded"
+                    hidden
+                    >Recorded</span
+                  >
+                </p>
+                <p class="heard" id="heard"></p>
+                <p class="trace" id="trace" hidden>
+                  <span data-text="desk.check.trace">Reading details</span>
+                  <span class="num" id="trace-line"></span>
+                </p>
+              </div>
+              <h3 id="check-title"></h3>
+              <p class="check-lead" id="check-lead"></p>
+              <p class="error" id="check-error" role="alert" hidden></p>
+              <form class="check-form" id="check-form" novalidate>
+                <div id="check-fields"></div>
+                <div class="check-foot">
+                  <p class="wait" id="save-wait">
+                    <span role="status"></span> <span class="num"></span>
+                  </p>
+                  <button
+                    class="btn-primary"
+                    type="submit"
+                    id="save-order"
+                    data-text="desk.check.save"
+                  >
+                    Save order
+                  </button>
+                </div>
+              </form>
+              <button
+                class="link-btn"
+                type="button"
+                id="start-again"
+                data-text="desk.add.start_again"
+              >
+                Start again
+              </button>
+            </section>
+
+            <section
+              class="add-step"
+              id="add-saved"
+              aria-labelledby="saved-title"
+              hidden
+            >
+              <p class="done" id="saved-title" role="status">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#check" /></svg
+                ><span data-text="desk.saved.done">Order saved</span>
+                <span class="num" id="saved-number"></span>
+              </p>
+              <p class="saved-undo" id="saved-undo">
+                <button class="link-btn" type="button" id="undo-save">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#undo" /></svg
+                  ><span data-text="common.action.undo">Undo</span>
+                </button>
+                <span class="num" id="undo-seconds"></span>
+              </p>
+              <p class="wait" id="undo-wait">
+                <span role="status"></span> <span class="num"></span>
+              </p>
+              <p class="error" id="saved-error" role="alert" hidden></p>
+              <a
+                class="btn-primary"
+                id="saved-share"
+                target="_blank"
+                rel="noopener"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#share" /></svg
+                ><span data-text="desk.slip.share">Send on WhatsApp</span></a
+              >
+              <p class="field-hint" data-text="desk.saved.share_hint">
+                WhatsApp opens with the order message for the buyer.
+              </p>
+              <button
+                class="link-btn"
+                type="button"
+                id="saved-back"
+                data-text="desk.saved.another"
+              >
+                Add another order
+              </button>
+            </section>
+          </section>
+
+          <div class="card side-tools" id="side-tools">
+            <fieldset class="tabs side-tabs">
+              <legend class="visually-hidden" data-text="desk.side.show">
+                Show
+              </legend>
+              <label
+                ><input type="radio" name="side-tab" value="stock" /><span
+                  data-text="desk.stock.title"
+                  >Menu stock</span
+                ></label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="side-tab"
+                  value="khata"
+                  checked
+                /><span data-text="desk.daily.today_title"
+                  >Today's khata</span
+                ></label
+              >
+            </fieldset>
+
+            <section class="stock" id="stock" aria-labelledby="stock-title">
+              <h2
+                class="visually-hidden"
+                id="stock-title"
+                data-text="desk.stock.title"
+              >
+                Menu stock
+              </h2>
+              <div class="stop">
+                <label class="toggle"
+                  ><input type="checkbox" id="pause" /><span
+                    data-text="desk.stock.pause"
+                    >Not taking orders now</span
+                  ></label
+                >
+                <p class="field-hint" id="pause-state"></p>
+              </div>
+              <p class="error" id="stock-error" role="alert" hidden></p>
+              <ul class="stock-items" id="stock-items"></ul>
+              <p class="field-hint" data-text="desk.stock.lead">
+                Touch an item when it runs out. Touch it again when you have
+                more.
+              </p>
+            </section>
+
+            <section class="daily" id="daily" aria-labelledby="daily-title">
+              <h2
+                class="visually-hidden"
+                id="daily-title"
+                data-text="desk.daily.today_title"
+              >
+                Today's khata
+              </h2>
+              <div class="daily-days">
+                <fieldset class="chips" id="daily-chips" hidden>
+                  <legend class="visually-hidden" data-text="desk.daily.days">
+                    Day
+                  </legend>
+                </fieldset>
+                <div class="daily-pick">
+                  <label for="daily-pick" data-text="desk.daily.pick"
+                    >Another day</label
+                  >
+                  <input class="num" type="date" id="daily-pick" />
+                </div>
+              </div>
+              <p class="wait" id="daily-wait">
+                <span role="status"></span> <span class="num"></span>
+              </p>
+              <div class="problem" id="daily-problem" hidden>
+                <p class="error" role="alert"></p>
+                <button
+                  class="btn-plain"
+                  type="button"
+                  data-text="common.action.try_again"
+                >
+                  Try again
+                </button>
+              </div>
+              <p
+                class="daily-empty"
+                id="daily-empty"
+                data-text="desk.daily.empty"
+                hidden
+              >
+                Nothing to make in the next 3 weeks.
+              </p>
+              <div class="daily-shown" id="daily-shown" hidden>
+                <div class="gauge daily-load">
+                  <p class="gauge-head">
+                    <span class="readout num"></span>
+                    <span class="gauge-foot"></span>
+                  </p>
+                  <meter class="visually-hidden" min="0"></meter>
+                </div>
+                <div class="stop">
+                  <label class="toggle"
+                    ><input type="checkbox" id="daily-close" /><span
+                      data-text="desk.daily.closed"
+                      >Closed</span
+                    ></label
+                  >
+                  <p class="field-hint" id="daily-close-state"></p>
+                </div>
+                <p class="error" id="daily-close-error" role="alert" hidden></p>
+                <p
+                  class="daily-none"
+                  id="daily-none"
+                  data-text="desk.daily.no_orders"
+                  hidden
+                >
+                  No orders for this day yet.
+                </p>
+                <table class="make" id="daily-make">
+                  <caption data-text="desk.daily.make">
+                    To make
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <span data-text="desk.daily.item">Item</span> ·
+                        <span data-text="desk.daily.packs">Packs</span>
+                      </th>
+                      <th
+                        scope="col"
+                        class="make-amount"
+                        data-text="desk.daily.amount"
+                      >
+                        Amount
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="daily-rows"></tbody>
+                </table>
+                <dl class="money" id="daily-money">
+                  <div>
+                    <dt data-text="desk.daily.orders">Orders</dt>
+                    <dd class="num" data-money="orders"></dd>
+                  </div>
+                  <div>
+                    <dt data-text="desk.daily.value">Value</dt>
+                    <dd class="num" data-money="value"></dd>
+                  </div>
+                  <div>
+                    <dt data-text="desk.daily.paid">Paid</dt>
+                    <dd class="num" data-money="paid"></dd>
+                  </div>
+                  <div>
+                    <dt data-text="desk.daily.owed">Owed</dt>
+                    <dd class="num" data-money="owed"></dd>
+                  </div>
+                </dl>
+              </div>
+              <section
+                class="daily-month"
+                id="daily-month"
+                aria-labelledby="daily-month-title"
+                hidden
+              >
+                <h3>
+                  <span id="daily-month-title" data-text="desk.daily.last_30"
+                    >Last 30 days</span
+                  >
+                  <span class="daily-range num" id="daily-range"></span>
+                </h3>
+                <dl class="money">
+                  <div>
+                    <dt data-text="desk.daily.orders">Orders</dt>
+                    <dd class="num" data-money="orders"></dd>
+                  </div>
+                  <div>
+                    <dt data-text="desk.daily.value">Value</dt>
+                    <dd class="num" data-money="value"></dd>
+                  </div>
+                  <div>
+                    <dt data-text="desk.daily.paid">Paid</dt>
+                    <dd class="num" data-money="paid"></dd>
+                  </div>
+                  <div>
+                    <dt data-text="desk.daily.owed">Owed</dt>
+                    <dd class="num" data-money="owed"></dd>
+                  </div>
+                </dl>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <dialog class="sheet" id="edit-dialog" aria-labelledby="edit-title">
+      <form class="sheet-body" id="edit-form" novalidate>
+        <header class="sheet-head">
+          <h2 id="edit-title">
+            <span data-text="desk.edit.title">Change order</span>
+            <span class="num" id="edit-number"></span>
+          </h2>
+          <button
+            class="btn-plain"
+            type="button"
+            data-close
+            aria-label="Close"
+            data-text-label="common.action.close"
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons.svg#close" />
+            </svg>
+          </button>
+        </header>
+        <div id="edit-fields"></div>
+        <div class="notice" id="edit-notice" hidden>
+          <p class="notice-text"></p>
+          <p class="notice-next"></p>
+          <div class="notice-actions">
+            <button
+              class="btn-plain"
+              type="button"
+              id="edit-move"
+              data-text="desk.notice.move"
+            >
+              Move it there
+            </button>
+            <button
+              class="btn-plain"
+              type="button"
+              id="edit-keep"
+              data-text="desk.edit.keep_day"
+            >
+              Save anyway
+            </button>
+          </div>
+        </div>
+        <p class="error" id="edit-error" role="alert" hidden></p>
+        <p class="wait" id="edit-wait">
+          <span role="status"></span> <span class="num"></span>
+        </p>
+        <button
+          class="btn-primary"
+          type="submit"
+          id="edit-save"
+          data-text="desk.edit.save"
+        >
+          Save changes
+        </button>
+      </form>
+    </dialog>
+
+    <dialog class="sheet" id="cancel-dialog" aria-labelledby="cancel-title">
+      <form class="sheet-body" id="cancel-form" method="dialog">
+        <header class="sheet-head">
+          <h2 id="cancel-title">
+            <span data-text="desk.cancel.title">Cancel order</span>
+            <span class="num" id="cancel-number"></span>
+          </h2>
+        </header>
+        <fieldset class="choices">
+          <legend data-text="desk.cancel.legend">
+            Why are you cancelling it?
+          </legend>
+          <label class="choice"
+            ><input
+              type="radio"
+              name="reason"
+              value="cant_deliver"
+              required
+            /><span data-text="desk.cancel.reason.cant_deliver"
+              >Can't deliver to your address</span
+            ></label
+          >
+          <label class="choice"
+            ><input type="radio" name="reason" value="item_ran_out" /><span
+              data-text="desk.cancel.reason.item_ran_out"
+              >An item ran out</span
+            ></label
+          >
+          <label class="choice"
+            ><input type="radio" name="reason" value="day_full" /><span
+              data-text="desk.cancel.reason.day_full"
+              >The day is full</span
+            ></label
+          >
+          <label class="choice"
+            ><input type="radio" name="reason" value="other" /><span
+              data-text="desk.cancel.reason.other"
+              >Other</span
+            ></label
+          >
+        </fieldset>
+        <p
+          class="field-hint"
+          id="cancel-hint"
+          data-text="desk.cancel.message_hint"
+          hidden
+        >
+          The buyer gets a WhatsApp message with this reason.
+        </p>
+        <div class="sheet-actions">
+          <button
+            class="btn-primary"
+            type="submit"
+            value="cancel"
+            data-text="desk.cancel.confirm"
+          >
+            Cancel order
+          </button>
+          <button
+            class="btn-plain"
+            type="submit"
+            value="keep"
+            formnovalidate
+            data-text="desk.cancel.keep"
+          >
+            Keep the order
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <template id="day-template">
+      <section class="board-day">
+        <div class="gauge">
+          <h2 class="gauge-head">
+            <span class="gauge-day"></span><span class="readout num"></span>
+          </h2>
+          <meter class="visually-hidden" min="0"></meter>
+          <ol class="segments" aria-hidden="true"></ol>
+          <p class="gauge-foot"></p>
+        </div>
+        <ol class="slips"></ol>
+      </section>
+    </template>
+
+    <template id="slip-template">
+      <li class="slip-item">
+        <article class="slip">
+          <header class="slip-head">
+            <h3 class="slip-title">
+              <span class="visually-hidden" data-text="desk.slip.order"
+                >Order</span
+              >
+              <span class="order-no num"></span>
+            </h3>
+            <p class="slip-who">
+              <span class="slip-buyer"></span>
+              <span class="slip-way"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#delivery" /></svg
+                ><span class="slip-way-name"></span
+              ></span>
+              <span class="slip-place"></span>
+              <span class="slip-gift"></span>
+            </p>
+            <span class="stamp slip-status"></span>
+          </header>
+          <table class="slip-lines">
+            <tbody></tbody>
+          </table>
+          <p class="slip-note">
+            <span class="slip-note-label" data-text="desk.slip.note">Note</span>
+            <span
+              class="badge translated-badge"
+              data-text="common.badge.translated"
+              hidden
+              >Translated</span
+            >
+            <q class="slip-note-text"></q>
+            <button
+              class="link-btn translated-switch"
+              type="button"
+              hidden
+            ></button>
+          </p>
+          <div class="slip-state">
+            <p class="slip-state-text" role="status"></p>
+            <span
+              class="badge slip-prototype"
+              data-text="common.badge.prototype"
+              hidden
+              >Prototype</span
+            >
+            <span class="slip-keep">
+              <button class="link-btn" type="button">
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#undo" /></svg
+                ><span data-text="common.action.undo">Undo</span>
+              </button>
+              <span class="num slip-seconds"></span>
+            </span>
+          </div>
+          <footer class="slip-foot">
+            <p class="slip-sum">
+              <span class="visually-hidden" data-text="desk.slip.total"
+                >Total</span
+              >
+              <span class="num slip-amount"></span>
+              <span
+                class="stamp slip-paid"
+                data-kind="done"
+                data-text="desk.stamp.paid"
+                >Paid</span
+              >
+              <button
+                class="btn-plain slip-pay"
+                type="button"
+                data-text="desk.slip.mark_paid"
+              >
+                Mark paid
+              </button>
+            </p>
+            <div class="slip-do">
+              <span class="slip-undo">
+                <button class="link-btn" type="button">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="/icons.svg#undo" /></svg
+                  ><span data-text="common.action.undo">Undo</span>
+                </button>
+                <span class="num slip-seconds"></span>
+              </span>
+              <button class="btn-plain slip-next" type="button"></button>
+            </div>
+          </footer>
+          <div class="slip-more">
+            <a class="link-btn slip-share" target="_blank" rel="noopener"
+              ><svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#share" /></svg
+              ><span data-text="desk.slip.share">Send on WhatsApp</span></a
+            >
+            <button
+              class="link-btn slip-edit"
+              type="button"
+              data-text="common.action.change"
+            >
+              Change
+            </button>
+            <button
+              class="link-btn slip-cancel"
+              type="button"
+              data-text="desk.slip.cancel"
+            >
+              Cancel order
+            </button>
+            <button
+              class="link-btn slip-refund"
+              type="button"
+              data-text="desk.slip.refund"
+            >
+              Refund
+            </button>
+          </div>
+          <details class="slip-messages">
+            <summary>
+              <span data-text="desk.slip.messages"
+                >WhatsApp messages to the buyer</span
+              >
+              <span class="badge" data-text="common.badge.prototype"
+                >Prototype</span
+              >
+            </summary>
+            <ol class="slip-message-list"></ol>
+          </details>
+        </article>
+      </li>
+    </template>
+
+    <template id="line-template">
+      <tr>
+        <td class="line-name">
+          <span class="food-mark" role="img"></span
+          ><span class="line-item"></span>
+          <span class="line-latin" lang="en"></span>
+          <span class="line-egg" data-text="desk.slip.egg">Egg</span>
+          <span class="num line-amount"></span>
+        </td>
+        <td class="num line-price"></td>
+      </tr>
+    </template>
+
+    <template id="stock-item-template">
+      <li>
+        <label class="stock-item"
+          ><span class="food-mark" aria-hidden="true"></span
+          ><span class="stock-name"
+            ><span class="line-item"></span>
+            <span class="line-latin" lang="en"></span>
+            <span class="line-egg" data-text="desk.slip.egg">Egg</span></span
+          ><span class="toggle"
+            ><input type="checkbox" /><span data-text="desk.stock.sold_out"
+              >Sold out</span
+            ></span
+          ></label
+        >
+      </li>
+    </template>
+
+    <template id="quote-template">
+      <li>
+        <article class="card request">
+          <header class="request-head">
+            <h3 class="request-title"></h3>
+            <p class="request-meta">
+              <span class="request-from"></span
+              ><span class="request-when"></span>
+            </p>
+          </header>
+          <p class="request-company" hidden></p>
+          <table class="request-lines">
+            <tbody></tbody>
+          </table>
+          <dl class="request-facts">
+            <div class="request-place">
+              <dt></dt>
+              <dd></dd>
+            </div>
+          </dl>
+          <p class="request-note">
+            <span class="request-label" data-text="desk.quotes.note">Note</span>
+            <q class="request-note-text"></q>
+          </p>
+          <p class="request-translated">
+            <span
+              class="badge translated-badge"
+              data-text="common.badge.translated"
+              hidden
+              >Translated</span
+            >
+            <button
+              class="link-btn translated-switch"
+              type="button"
+              hidden
+            ></button>
+          </p>
+          <footer class="request-foot">
+            <p class="request-estimate">
+              <span data-text="desk.quotes.estimate">Estimate</span>
+              <span class="num"></span>
+            </p>
+            <a class="btn-plain request-reply" target="_blank" rel="noopener"
+              ><svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#message" /></svg
+              ><span data-text="desk.quotes.reply">Reply on WhatsApp</span></a
+            >
+          </footer>
+        </article>
+      </li>
+    </template>
+
+    <template id="post-template">
+      <li>
+        <article class="card request post">
+          <header class="request-head">
+            <h3 class="request-title post-title"></h3>
+            <p class="request-meta">
+              <span
+                ><span data-text="desk.quotes.need_by">Need by</span>
+                <span class="post-need"></span
+              ></span>
+            </p>
+          </header>
+          <p class="post-description"></p>
+          <table class="request-lines">
+            <tbody></tbody>
+          </table>
+          <dl class="request-facts"></dl>
+          <p class="request-translated">
+            <span
+              class="badge translated-badge"
+              data-text="common.badge.translated"
+              hidden
+              >Translated</span
+            >
+            <button
+              class="link-btn translated-switch"
+              type="button"
+              hidden
+            ></button>
+          </p>
+          <div class="post-answered" hidden>
+            <p class="done" role="status">
+              <svg class="icon" aria-hidden="true">
+                <use href="/icons.svg#check" /></svg
+              ><span data-text="desk.posts.answered"
+                >You told them you can do this.</span
+              >
+            </p>
+            <p class="post-your-note" hidden>
+              <span class="request-label" data-text="desk.quotes.your_note"
+                >Your note</span
+              >
+              <q class="post-note-text"></q>
+            </p>
+            <button
+              class="link-btn post-change"
+              type="button"
+              data-text="desk.posts.change"
+            >
+              Change your note
+            </button>
+          </div>
+          <form class="post-form" novalidate>
+            <div class="field">
+              <label class="post-note-label" data-text="desk.posts.note"
+                >Your note</label
+              >
+              <p
+                class="field-hint post-note-hint"
+                data-text="desk.posts.note_hint"
+              >
+                Optional. For example your price, or when you can deliver.
+              </p>
+              <textarea
+                class="post-note"
+                name="note"
+                maxlength="500"
+              ></textarea>
+            </div>
+            <p class="error post-error" role="alert" hidden></p>
+            <button
+              class="btn-plain"
+              type="submit"
+              data-text="desk.posts.can_do"
+            >
+              I can do this
+            </button>
+          </form>
+        </article>
+      </li>
+    </template>
+
+    <template id="request-line-template">
+      <tr>
+        <td class="request-item"></td>
+        <td class="num request-amount"></td>
+        <td class="num request-price"></td>
+      </tr>
+    </template>
+
+    <template id="fact-template">
+      <div>
+        <dt></dt>
+        <dd></dd>
+      </div>
+    </template>
+
+    <template id="make-row-template">
+      <tr>
+        <th scope="row" class="make-item">
+          <span class="line-item"></span>
+          <span class="line-latin" lang="en"></span>
+          <span class="num make-packs"></span>
+        </th>
+        <td class="num make-amount"></td>
+      </tr>
+    </template>
+
+    <template id="day-chip-template">
+      <label class="chip"
+        ><input type="radio" name="daily-day" /><span></span
+      ></label>
+    </template>
+
+    <template id="sample-template">
+      <li>
+        <button class="sample" type="button">
+          <span class="sample-head">
+            <span class="sample-language"></span>
+            <span class="sample-read" data-text="desk.add.sample_read"
+              >Read it</span
+            >
+          </span>
+          <span class="sample-words"></span>
+        </button>
+      </li>
+    </template>
+
+    <template id="order-form-template">
+      <dl class="answers">
+        <div class="answer" data-field="items">
+          <dt data-text="desk.check.field.items">Items</dt>
+          <dd class="answer-value">
+            <ul class="answer-lines"></ul>
+            <ul class="answer-marks"></ul>
+          </dd>
+          <dd class="answer-action">
+            <button
+              class="link-btn answer-change"
+              type="button"
+              aria-expanded="false"
+            ></button>
+          </dd>
+          <dd class="answer-edit" hidden>
+            <ul class="pack-rows"></ul>
+            <div class="field">
+              <label class="add-pack-label" data-text="desk.check.add_item"
+                >Add an item</label
+              >
+              <select class="add-pack">
+                <option value="" data-text="desk.check.choose_item">
+                  Choose an item
+                </option>
+              </select>
+            </div>
+          </dd>
+          <dd class="answer-need field-error" hidden></dd>
+        </div>
+        <div class="answer" data-field="day">
+          <dt data-text="desk.check.field.day">Day</dt>
+          <dd class="answer-value"><span class="answer-text"></span></dd>
+          <dd class="answer-action">
+            <button
+              class="link-btn answer-change"
+              type="button"
+              aria-expanded="false"
+            ></button>
+          </dd>
+          <dd class="answer-edit" hidden>
+            <div class="field">
+              <select class="day-select">
+                <option value="" data-text="desk.check.choose_day">
+                  Choose a day
+                </option>
+              </select>
+            </div>
+          </dd>
+          <dd class="answer-need field-error" hidden></dd>
+          <dd class="answer-capacity" hidden>
+            <div class="gauge">
+              <ol class="segments" aria-hidden="true"></ol>
+              <p class="gauge-foot"></p>
+            </div>
+            <div class="notice" hidden>
+              <p class="notice-text"></p>
+              <p class="notice-next"></p>
+              <div class="notice-actions">
+                <button
+                  class="btn-plain notice-move"
+                  type="button"
+                  data-text="desk.notice.move"
+                >
+                  Move it there
+                </button>
+              </div>
+              <p class="field-hint" data-text="desk.notice.decide">
+                You can still save it for this day.
+              </p>
+            </div>
+          </dd>
+        </div>
+        <div class="answer" data-field="fulfilment">
+          <dt data-text="desk.check.field.fulfilment">Pickup or delivery</dt>
+          <dd class="answer-value"><span class="answer-text"></span></dd>
+          <dd class="answer-action">
+            <button
+              class="link-btn answer-change"
+              type="button"
+              aria-expanded="false"
+            ></button>
+          </dd>
+          <dd class="answer-edit" hidden>
+            <fieldset class="choices">
+              <legend
+                class="visually-hidden"
+                data-text="desk.check.field.fulfilment"
+              >
+                Pickup or delivery
+              </legend>
+              <label class="choice"
+                ><input type="radio" value="pickup" /><svg
+                  class="icon"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#pickup" /></svg
+                ><span data-text="desk.slip.pickup">Pickup</span></label
+              >
+              <label class="choice"
+                ><input type="radio" value="delivery" /><svg
+                  class="icon"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#delivery" /></svg
+                ><span data-text="desk.slip.delivery">Delivery</span></label
+              >
+            </fieldset>
+          </dd>
+          <dd class="answer-need field-error" hidden></dd>
+        </div>
+        <div class="answer" data-field="buyer_name">
+          <dt data-text="desk.check.field.buyer_name">Name</dt>
+          <dd class="answer-value"><span class="answer-text"></span></dd>
+          <dd class="answer-action">
+            <button
+              class="link-btn answer-change"
+              type="button"
+              aria-expanded="false"
+            ></button>
+          </dd>
+          <dd class="answer-edit" hidden>
+            <div class="field">
+              <input
+                class="text-input"
+                type="text"
+                maxlength="80"
+                autocomplete="off"
+              />
+            </div>
+          </dd>
+        </div>
+        <div class="answer" data-field="address">
+          <dt data-text="desk.check.field.address">Address</dt>
+          <dd class="answer-value"><span class="answer-text"></span></dd>
+          <dd class="answer-action">
+            <button
+              class="link-btn answer-change"
+              type="button"
+              aria-expanded="false"
+            ></button>
+          </dd>
+          <dd class="answer-edit" hidden>
+            <div class="field">
+              <input
+                class="text-input"
+                type="text"
+                maxlength="300"
+                autocomplete="off"
+              />
+            </div>
+          </dd>
+          <dd class="answer-need field-error" hidden></dd>
+        </div>
+        <div class="answer" data-field="note">
+          <dt data-text="desk.check.field.note">Note</dt>
+          <dd class="answer-value"><span class="answer-text"></span></dd>
+          <dd class="answer-action">
+            <button
+              class="link-btn answer-change"
+              type="button"
+              aria-expanded="false"
+            ></button>
+          </dd>
+          <dd class="answer-edit" hidden>
+            <div class="field">
+              <textarea class="text-input" maxlength="500"></textarea>
+            </div>
+          </dd>
+        </div>
+        <div class="answer answer-total">
+          <dt data-text="desk.check.field.total">Total</dt>
+          <dd class="num answer-total-value"></dd>
+        </div>
+      </dl>
+    </template>
+
+    <template id="pack-row-template">
+      <li class="pack-row">
+        <span class="pack-name"
+          ><span class="line-item"></span>
+          <span class="line-latin" lang="en"></span>
+          <span class="pack-label num"></span
+        ></span>
+        <div class="stepper" role="group">
+          <button class="btn-plain pack-less" type="button">
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons.svg#minus" />
+            </svg>
+          </button>
+          <output class="num pack-count"></output>
+          <button class="btn-plain pack-more" type="button">
+            <svg class="icon" aria-hidden="true">
+              <use href="/icons.svg#plus" />
+            </svg>
+          </button>
+        </div>
+        <span class="num pack-price"></span>
+      </li>
+    </template>
+  </body>
+</html>

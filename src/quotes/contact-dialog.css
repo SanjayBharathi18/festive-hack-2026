@@ -1,0 +1,84 @@
+/* Contact seller: one dialog for a bulk cart, a catering plan and a board
+   post answer. A card over the dimmed page. */
+.contact-dialog {
+  inline-size: min(36rem, calc(100vw - var(--space) * 4));
+  max-block-size: calc(100vh - var(--space) * 4);
+  padding: calc(var(--space) * 3);
+  border: var(--card-line) solid var(--brass);
+  border-radius: var(--radius-card);
+  background: var(--paper);
+  box-shadow: var(--card-edge);
+  color: var(--ink);
+
+  &::backdrop {
+    background: var(--ink-dim);
+  }
+
+  :is(h2, p, ul) {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: var(--step-1);
+    line-height: 1.2;
+  }
+}
+
+.contact-form,
+.contact-ask,
+.contact-done,
+.contact-code,
+.contact-bulk {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.contact-bulk {
+  grid-template-columns: 1fr 2fr;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.contact-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: calc(var(--space) * 2);
+}
+
+.contact-lines {
+  display: grid;
+  gap: calc(var(--space) / 2);
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border-radius: var(--radius-input);
+  background: var(--ink-tint);
+  list-style: none;
+}
+
+.contact-submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.code-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+
+  .code-value {
+    font-size: var(--step-2);
+    letter-spacing: 0.12em;
+  }
+}
+
+.contact-consent {
+  color: var(--ink-2);
+
+  a {
+    color: var(--ink);
+  }
+}

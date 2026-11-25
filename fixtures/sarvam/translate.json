@@ -1,0 +1,861 @@
+[
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "5b9e92c4073ba2ae9f2f5b2044285ef98817e97838458321e7c2f0d25970d505",
+    "input": "ನಮಸ್ಕಾರ, ಶನಿವಾರಕ್ಕೆ ಒಂದು ಕೆಜಿ ಮೈಸೂರು ಪಾಕ್ ಮತ್ತು ಅರ್ಧ ಕೆಜಿ ಚಕ್ಕುಲಿ ಬೇಕು. ನನ್ನ ಹೆಸರು ಪ್ರಿಯಾ, ಜಯನಗರಕ್ಕೆ ಡೆಲಿವರಿ ಮಾಡಿ.",
+    "line": "VK1",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VK1",
+      "translated_text": "Hello, I need one kg of Mysore pak and half a kg of chakkuli for Saturday. My name is Priya, please deliver to Jayanagar.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "89c9636df112d5c84f33d365af0ea3227212ca5a05d04fadae262a3534556709",
+    "input": "ಭಾನುವಾರ ಎರಡು ಕೆಜಿ ಕಾಜು ಕಟ್ಲಿ ಬೇಕು. ನಾನೇ ಬಂದು ತಗೊಂಡು ಹೋಗ್ತೀನಿ. ಹೆಸರು ಸುರೇಶ್.",
+    "line": "VK2",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VK2",
+      "translated_text": "I need two kg of kaju katli on Sunday. I will come and pick it up myself. The name is Suresh.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "79ad23d7f82355e646f517f8653161ce7c4321de47faecb469880241d779515a",
+    "input": "ನಾಳೆಗೆ ಒಂದು ದೀಪಾವಳಿ ಸ್ವೀಟ್ ಬಾಕ್ಸ್, ಒಂದು ಕೆಜಿದು, ಮತ್ತೆ ಕಾಲು ಕೆಜಿ ಕೋಡುಬಳೆ. ಮಲ್ಲೇಶ್ವರಂಗೆ ಕಳಿಸಿ, ಹೆಸರು ಅನಿತಾ.",
+    "line": "VK3",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VK3",
+      "translated_text": "For tomorrow, one Diwali sweet box, the one kg one, and a quarter kg of kodubale. Send it to Malleshwaram, the name is Anita.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "e4183551c2f1d5332929c57cef1079beba3af84c77e441a88dde5a1e3c90724f",
+    "input": "ಶುಕ್ರವಾರ ಅರ್ಧ ಕೆಜಿ ಬೇಸನ್ ಲಡ್ಡು, ಅರ್ಧ ಕೆಜಿ ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ. ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ ಹಾಕಿ. ಹೆಸರು ರಮೇಶ್, ಪಿಕಪ್.",
+    "line": "VK4",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VK4",
+      "translated_text": "On Friday, half a kg of besan laddu and half a kg of kobbari mithai. Put a little less sugar. The name is Ramesh, pickup.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "0f5c8143a57dc8b2560af09b622da4c1c824500f2ea01aee1037d894c66614b6",
+    "input": "ಮುಂದಿನ ಮಂಗಳವಾರ ಮೂರು ಕೆಜಿ ನಿಪ್ಪಟ್ಟು ಬೇಕು. ಬಸವನಗುಡಿಗೆ ಕಳಿಸಿ. ಹೆಸರು ಕಾವ್ಯ.",
+    "line": "VK5",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VK5",
+      "translated_text": "I need three kg of nippattu next Tuesday. Send it to Basavanagudi. The name is Kavya.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "bdd7411312ee9a630dd1e38facf70c2fc5281b444a6f987fc7dad718b2c7180b",
+    "input": "ಇವತ್ತು ಸಂಜೆ ಒಂದು ಕೆಜಿ ಚಕ್ಕುಲಿ ಸಿಗುತ್ತಾ? ಹೆಸರು ವಿನಯ್.",
+    "line": "VK6",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VK6",
+      "translated_text": "Can I get one kg of chakkuli this evening? The name is Vinay.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "1ee66e72d5a0b6143d04a37c95e14c5889a38a708dce3d60b567b1d4355129dd",
+    "input": "नमस्ते, शनिवार के लिए एक किलो काजू कतली और आधा किलो बेसन लड्डू चाहिए। मेरा नाम रोहित है, HSR लेआउट में डिलीवरी कर दीजिए।",
+    "line": "VH1",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VH1",
+      "translated_text": "Hello, I need one kilo of kaju katli and half a kilo of besan laddu for Saturday. My name is Rohit, please deliver to HSR Layout.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "d9f4f6e9e4d4586d6f387c53268ded39ab17598290578a92f4b136248da1175a",
+    "input": "रविवार को दो दिवाली स्वीट बॉक्स चाहिए, आधे-आधे किलो वाले। मैं खुद ले जाऊँगी। नाम पूजा।",
+    "line": "VH2",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VH2",
+      "translated_text": "I need two Diwali sweet boxes on Sunday, half a kilo each. I will take them myself. Name Pooja.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "2fe78a3552830eb533bfcad5faa0f1d53beb1fb2157b1637d5464f4c183a8529",
+    "input": "कल के लिए पाव किलो मैसूर पाक और पाव किलो चकली। नाम अमित, कोरमंगला में भेज दीजिए।",
+    "line": "VH3",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VH3",
+      "translated_text": "For tomorrow, a quarter kilo of Mysore pak and a quarter kilo of chakli. Name Amit, please send it to Koramangala.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "5912264d39e1ea4b585e6e5408335a083a17acffc87a0866905b19da99b99b2b",
+    "input": "शुक्रवार को डेढ़ किलो कोडुबले चाहिए। नाम सीमा, पिकअप।",
+    "line": "VH4",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VH4",
+      "translated_text": "I need one and a half kilos of kodubale on Friday. Name Seema, pickup.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "9a0cbc7beb80ff972e7a3fcfe0c5738f87b26d2d58f308248c31993fb977af13",
+    "input": "अगले बुधवार दो किलो निप्पट्टू और एक किलो नारियल बर्फी। नाम विकास, इंदिरानगर।",
+    "line": "VH5",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VH5",
+      "translated_text": "Next Wednesday, two kilos of nippattu and one kilo of coconut burfi. Name Vikas, Indiranagar.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "2e1858477dd9ff6d7be551d3608ddbfb8734db6f8aa85ba08e0d19bdfa7f4bc4",
+    "input": "आज शाम तक आधा किलो काजू कतली मिल सकती है? नाम नेहा।",
+    "line": "VH6",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VH6",
+      "translated_text": "Can I get half a kilo of kaju katli by this evening? Name Neha.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "4ffdcae61fec9a5f757748761d807ed878563c0e333732d92acb98fdde9a2eda",
+    "input": "Hi aunty, Sunday ko 2 kg kaju katli aur 1 kg chakli chahiye, Koramangala delivery, naam Neha.",
+    "line": "VM1",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VM1",
+      "translated_text": "Hi aunty, I need 2 kg kaju katli and 1 kg chakli on Sunday, delivery to Koramangala, name Neha.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "5ad91eed35d0882358daf3df93c5adcbac7a2659574864dff805f11e8931a367",
+    "input": "Aunty, Friday ge one kg besan laddu and half kg kodubale beku, Basavanagudi delivery, name Arjun.",
+    "line": "VM2",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VM2",
+      "translated_text": "Aunty, I need one kg besan laddu and half kg kodubale on Friday, Basavanagudi delivery, name Arjun.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "ae9092b1879599507983bc9a07e6e5f944992ec947b84ee84fe1fb078bbe492f",
+    "input": "Kal ke liye ek Diwali box 1 kg wala, aur pav kilo nippattu, pickup karunga, naam Rahul.",
+    "line": "VM3",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VM3",
+      "translated_text": "For tomorrow, one Diwali box of 1 kg, and a quarter kilo of nippattu, I will pick it up, name Rahul.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "42de1e1d677f691675ca8a4254dc52e4297d3601e3204aed0e8affa284b1279f",
+    "input": "Saturday ge Mysore pak 2 kg, coconut burfi half kg, Jayanagar ge kalsi, name Deepa.",
+    "line": "VM4",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VM4",
+      "translated_text": "On Saturday, Mysore pak 2 kg, coconut burfi half kg, send to Jayanagar, name Deepa.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "48c15783aeaec5439d347cdad2c7ff0d911cdea1a30340f92475cde4fedffc03",
+    "input": "Bhaiya, Tuesday ko kodubale aur nippattu dono ek-ek kilo, thoda kam teekha please, naam Sanjay, pickup.",
+    "line": "VM5",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-VM5",
+      "translated_text": "Brother, on Tuesday, kodubale and nippattu, one kilo each, a little less spicy please, name Sanjay, pickup.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "a5692cf98a5c3338e861cd0d5a4dcac77ec61c1a0bde39ad30187bd4c0a8508e",
+    "input": "ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-1",
+      "translated_text": "A little less sugar",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "a5692cf98a5c3338e861cd0d5a4dcac77ec61c1a0bde39ad30187bd4c0a8508e",
+    "input": "ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-2",
+      "translated_text": "चीनी थोड़ी कम",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "a5692cf98a5c3338e861cd0d5a4dcac77ec61c1a0bde39ad30187bd4c0a8508e",
+    "input": "ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-3",
+      "translated_text": "சர்க்கரை கொஞ்சம் குறைவாக",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "a5692cf98a5c3338e861cd0d5a4dcac77ec61c1a0bde39ad30187bd4c0a8508e",
+    "input": "ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-4",
+      "translated_text": "చక్కెర కొంచెం తక్కువ",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "a5692cf98a5c3338e861cd0d5a4dcac77ec61c1a0bde39ad30187bd4c0a8508e",
+    "input": "ಸಕ್ಕರೆ ಸ್ವಲ್ಪ ಕಡಿಮೆ",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-5",
+      "translated_text": "साखर थोडी कमी",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "07c59301c723d4f2de71eeb1e9de90eb80f0adeef6be69d2fad3c19e805e53e7",
+    "input": "A tech company in Whitefield",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-6",
+      "translated_text": "ವೈಟ್‌ಫೀಲ್ಡ್‌ನಲ್ಲಿರುವ ಒಂದು ಟೆಕ್ ಕಂಪನಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "07c59301c723d4f2de71eeb1e9de90eb80f0adeef6be69d2fad3c19e805e53e7",
+    "input": "A tech company in Whitefield",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-7",
+      "translated_text": "व्हाइटफ़ील्ड की एक टेक कंपनी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "07c59301c723d4f2de71eeb1e9de90eb80f0adeef6be69d2fad3c19e805e53e7",
+    "input": "A tech company in Whitefield",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-8",
+      "translated_text": "வைட்ஃபீல்டில் உள்ள ஒரு டெக் நிறுவனம்",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "07c59301c723d4f2de71eeb1e9de90eb80f0adeef6be69d2fad3c19e805e53e7",
+    "input": "A tech company in Whitefield",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-9",
+      "translated_text": "వైట్‌ఫీల్డ్‌లోని ఒక టెక్ కంపెనీ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "07c59301c723d4f2de71eeb1e9de90eb80f0adeef6be69d2fad3c19e805e53e7",
+    "input": "A tech company in Whitefield",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-10",
+      "translated_text": "व्हाइटफील्डमधील एक टेक कंपनी",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-11",
+      "translated_text": "ಕಾಜು ಕಟ್ಲಿ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-12",
+      "translated_text": "काजू कतली",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-13",
+      "translated_text": "காஜு கட்லி",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-14",
+      "translated_text": "కాజు కట్లీ",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "28670af54fcc50cd51c5983623672ed0d63c3355b5be96ef666812b0da6b6bf5",
+    "input": "Kaju katli",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-15",
+      "translated_text": "काजू कतली",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "46e2a9ef5b3037b419ed658e2d5c373ec6e3482252b3525affdbe245288a2690",
+    "input": "Diwali assorted box (500 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-16",
+      "translated_text": "ದೀಪಾವಳಿ ಮಿಶ್ರ ಸಿಹಿ ಬಾಕ್ಸ್ (500 ಗ್ರಾಂ)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "46e2a9ef5b3037b419ed658e2d5c373ec6e3482252b3525affdbe245288a2690",
+    "input": "Diwali assorted box (500 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-17",
+      "translated_text": "दिवाली मिक्स मिठाई डिब्बा (500 ग्राम)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "46e2a9ef5b3037b419ed658e2d5c373ec6e3482252b3525affdbe245288a2690",
+    "input": "Diwali assorted box (500 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-18",
+      "translated_text": "தீபாவளி கலவை இனிப்பு பெட்டி (500 கிராம்)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "46e2a9ef5b3037b419ed658e2d5c373ec6e3482252b3525affdbe245288a2690",
+    "input": "Diwali assorted box (500 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-19",
+      "translated_text": "దీపావళి మిశ్రమ స్వీట్ బాక్స్ (500 గ్రాములు)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "46e2a9ef5b3037b419ed658e2d5c373ec6e3482252b3525affdbe245288a2690",
+    "input": "Diwali assorted box (500 g)",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-20",
+      "translated_text": "दिवाळी मिश्र मिठाई बॉक्स (500 ग्रॅम)",
+      "source_language_code": "en-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "0fbdc6cb70fac96130294a394da19da211c7704c8d94e4084706fc8458eac3eb",
+    "input": "We can do both. Samples on WhatsApp.",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-demo-21",
+      "translated_text": "We can do both. Samples on WhatsApp.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "26d2586ec7b4d20e754c3d66691bcab02c830da640055b8565d5599b26673d70",
+    "input": "हर डिब्बे पर हमारी कंपनी का नाम चाहिए।",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-note-en",
+      "translated_text": "We need our company's name on every box.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "26d2586ec7b4d20e754c3d66691bcab02c830da640055b8565d5599b26673d70",
+    "input": "हर डिब्बे पर हमारी कंपनी का नाम चाहिए।",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-note-kn",
+      "translated_text": "ಪ್ರತಿ ಡಬ್ಬದ ಮೇಲೆ ನಮ್ಮ ಕಂಪನಿಯ ಹೆಸರು ಬೇಕು.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "26d2586ec7b4d20e754c3d66691bcab02c830da640055b8565d5599b26673d70",
+    "input": "हर डिब्बे पर हमारी कंपनी का नाम चाहिए।",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-note-ta",
+      "translated_text": "ஒவ்வொரு டப்பாவிலும் எங்கள் நிறுவனத்தின் பெயர் வேண்டும்.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "26d2586ec7b4d20e754c3d66691bcab02c830da640055b8565d5599b26673d70",
+    "input": "हर डिब्बे पर हमारी कंपनी का नाम चाहिए।",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-note-te",
+      "translated_text": "ప్రతి డబ్బా మీద మా కంపెనీ పేరు కావాలి.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "26d2586ec7b4d20e754c3d66691bcab02c830da640055b8565d5599b26673d70",
+    "input": "हर डिब्बे पर हमारी कंपनी का नाम चाहिए।",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-note-mr",
+      "translated_text": "प्रत्येक डब्यावर आमच्या कंपनीचे नाव हवे.",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "b56e2301ab5a65911f00256fa868f3786b7b924a6e2c223a8e2702829e69159b",
+    "input": "Koramangala office",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-place-en",
+      "translated_text": "Koramangala office",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "b56e2301ab5a65911f00256fa868f3786b7b924a6e2c223a8e2702829e69159b",
+    "input": "Koramangala office",
+    "line": "demo",
+    "when": {
+      "target_language_code": "kn-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-place-kn",
+      "translated_text": "ಕೋರಮಂಗಲ ಆಫೀಸ್",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "b56e2301ab5a65911f00256fa868f3786b7b924a6e2c223a8e2702829e69159b",
+    "input": "Koramangala office",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-place-ta",
+      "translated_text": "கோரமங்களா அலுவலகம்",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "b56e2301ab5a65911f00256fa868f3786b7b924a6e2c223a8e2702829e69159b",
+    "input": "Koramangala office",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-place-te",
+      "translated_text": "కోరమంగళ ఆఫీస్",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "b56e2301ab5a65911f00256fa868f3786b7b924a6e2c223a8e2702829e69159b",
+    "input": "Koramangala office",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-office-place-mr",
+      "translated_text": "कोरमंगला ऑफिस",
+      "source_language_code": "hi-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "1cf5aadf1126ee56db2a300d5059e578643015f8e40e711a04ea60c5b16b3509",
+    "input": "ಪ್ರತಿ ಡಬ್ಬದ ಜೊತೆ ಶುಭಾಶಯ ಪತ್ರ ಬೇಕು.",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-note-en",
+      "translated_text": "We need a greeting card with every box.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "1cf5aadf1126ee56db2a300d5059e578643015f8e40e711a04ea60c5b16b3509",
+    "input": "ಪ್ರತಿ ಡಬ್ಬದ ಜೊತೆ ಶುಭಾಶಯ ಪತ್ರ ಬೇಕು.",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-note-hi",
+      "translated_text": "हर डिब्बे के साथ एक शुभकामना पत्र चाहिए।",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "1cf5aadf1126ee56db2a300d5059e578643015f8e40e711a04ea60c5b16b3509",
+    "input": "ಪ್ರತಿ ಡಬ್ಬದ ಜೊತೆ ಶುಭಾಶಯ ಪತ್ರ ಬೇಕು.",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-note-ta",
+      "translated_text": "ஒவ்வொரு டப்பாவுடனும் ஒரு வாழ்த்து அட்டை வேண்டும்.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "1cf5aadf1126ee56db2a300d5059e578643015f8e40e711a04ea60c5b16b3509",
+    "input": "ಪ್ರತಿ ಡಬ್ಬದ ಜೊತೆ ಶುಭಾಶಯ ಪತ್ರ ಬೇಕು.",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-note-te",
+      "translated_text": "ప్రతి డబ్బాతో ఒక శుభాకాంక్షల కార్డు కావాలి.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "1cf5aadf1126ee56db2a300d5059e578643015f8e40e711a04ea60c5b16b3509",
+    "input": "ಪ್ರತಿ ಡಬ್ಬದ ಜೊತೆ ಶುಭಾಶಯ ಪತ್ರ ಬೇಕು.",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-note-mr",
+      "translated_text": "प्रत्येक डब्यासोबत शुभेच्छा पत्र हवे.",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "3fed9f7321657249892c4ccba119738f520fd22f6922159209c9aa777f84bfdc",
+    "input": "Jayanagar",
+    "line": "demo",
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-place-en",
+      "translated_text": "Jayanagar",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "3fed9f7321657249892c4ccba119738f520fd22f6922159209c9aa777f84bfdc",
+    "input": "Jayanagar",
+    "line": "demo",
+    "when": {
+      "target_language_code": "hi-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-place-hi",
+      "translated_text": "जयनगर",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "3fed9f7321657249892c4ccba119738f520fd22f6922159209c9aa777f84bfdc",
+    "input": "Jayanagar",
+    "line": "demo",
+    "when": {
+      "target_language_code": "ta-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-place-ta",
+      "translated_text": "ஜெயநகர்",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "3fed9f7321657249892c4ccba119738f520fd22f6922159209c9aa777f84bfdc",
+    "input": "Jayanagar",
+    "line": "demo",
+    "when": {
+      "target_language_code": "te-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-place-te",
+      "translated_text": "జయనగర్",
+      "source_language_code": "kn-IN"
+    }
+  },
+  {
+    "api": "translate",
+    "model": "mayura:v1",
+    "input_sha256": "3fed9f7321657249892c4ccba119738f520fd22f6922159209c9aa777f84bfdc",
+    "input": "Jayanagar",
+    "line": "demo",
+    "when": {
+      "target_language_code": "mr-IN"
+    },
+    "placeholder": true,
+    "response": {
+      "request_id": "placeholder-translate-quote-family-place-mr",
+      "translated_text": "जयनगर",
+      "source_language_code": "kn-IN"
+    }
+  }
+]

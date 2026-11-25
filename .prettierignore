@@ -1,0 +1,12 @@
+docs/
+extra/
+dist/
+data/
+test-results/
+playwright-report/
+.claude/
+package-lock.json
+*.md
+AGENTS.md
+CLAUDE.md
+.node/

@@ -1,0 +1,20 @@
+.icon {
+  inline-size: var(--icon-size);
+  block-size: var(--icon-size);
+  flex: none;
+  overflow: visible;
+}
+
+/* An icon on an ink ground draws in paper lines with no fill: a brass-tint
+   fill beside paper lines blurs on ink. Its holes show the ink. The ink
+   grounds are the brand tile and each chosen control: a chosen tab, segment
+   or chip, a pressed plain button and the current step. */
+:where(
+  .brand-tile,
+  [aria-pressed="true"],
+  [aria-current]:not([aria-current="false"]),
+  :is(.chip, .tabs > label):has(:checked)
+) {
+  --icon-fill: none;
+  --icon-ground: var(--ink);
+}

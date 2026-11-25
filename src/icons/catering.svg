@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="4.75" r="1.25" style="fill: var(--icon-fill, #eadcc2)" />
+  <path d="M6.5 11.5a5.5 5.5 0 0 1 11 0z" style="fill: var(--icon-fill, #eadcc2)" />
+  <path d="M4.5 11.5h15V16a5 5 0 0 1-5 5h-5a5 5 0 0 1-5-5z" style="fill: var(--icon-fill, #eadcc2)" />
+  <path d="M4.5 11.5h15" />
+  <path d="M2.5 13.75h2M19.5 13.75h2" />
+</svg>

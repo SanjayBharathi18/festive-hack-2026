@@ -1,0 +1,61 @@
+<div class="bulk-panel">
+  <div class="bulk-cols">
+    <div class="bulk-main">
+      <div class="card bulk-intro">
+        <h2 data-text="bulk.panel.title">Bulk and corporate orders</h2>
+        <p class="card-lead" data-text="bulk.panel.lead">
+          Festival gifts and office orders from home cooks. Nothing is ordered
+          or paid here: you ask the seller for a quote.
+        </p>
+        <div class="field bulk-search">
+          <label data-text="bulk.panel.search">Search bulk items</label>
+          <input
+            type="search"
+            enterkeyhint="search"
+            data-text-placeholder="bulk.panel.search_placeholder"
+            placeholder="Kaju katli, gift box…"
+          />
+        </div>
+      </div>
+      <p class="wait bulk-wait">
+        <span role="status"></span><span class="num"></span>
+      </p>
+      <p class="error bulk-error" role="alert" hidden></p>
+      <p
+        class="hint bulk-none"
+        role="status"
+        hidden
+        data-text="bulk.panel.none"
+      >
+        No bulk store has this item. Post a request on the board instead.
+      </p>
+      <div class="bulk-stores"></div>
+    </div>
+    <aside class="bulk-side">
+      <section class="card bulk-cart" data-edge="brass">
+        <h2 data-text="bulk.cart.title">Bulk cart</h2>
+      </section>
+      <section class="card bulk-board">
+        <h2 data-text="bulk.panel.board_title">Request board</h2>
+        <p class="card-lead" data-text="bulk.panel.board_lead">
+          Post what your company needs. Stores near your offices answer, and you
+          choose one.
+        </p>
+        <p class="bulk-board-links">
+          <a
+            class="btn-plain"
+            href="/board-posts/new"
+            data-text="bulk.panel.board_new"
+            >Post a request</a
+          >
+          <a
+            class="link-btn bulk-example"
+            hidden
+            data-text="bulk.panel.board_example"
+            >See an example request</a
+          >
+        </p>
+      </section>
+    </aside>
+  </div>
+</div>

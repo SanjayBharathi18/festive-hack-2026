@@ -1,0 +1,21 @@
+/* The code that the prototype shows in place of the WhatsApp message: a box
+   with its label and the Prototype badge, the code as a readout, and a hint. */
+.code-shown {
+  display: grid;
+  gap: var(--space);
+  justify-self: stretch;
+  padding: calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-input);
+
+  .code-shown-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space);
+  }
+
+  .readout {
+    letter-spacing: 0.2ch;
+  }
+}

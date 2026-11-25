@@ -1,0 +1,75 @@
+/* The start page on a laptop: the head at reading width on the left edge,
+   then two groups of cards that fill the width. Looks come from the
+   components in src/styles; this file places them. */
+
+body {
+  margin: 0;
+}
+
+.demo-page {
+  display: grid;
+  gap: calc(var(--space) * 5);
+  max-inline-size: var(--page);
+  margin-inline: auto;
+  padding: calc(var(--space) * 4) var(--page-margin) calc(var(--space) * 8);
+}
+
+.demo-head {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+  max-inline-size: 44rem;
+
+  h1 {
+    margin: 0;
+    font-size: var(--step-3);
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 0;
+    color: var(--ink-2);
+  }
+
+  .demo-lead {
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+}
+
+.demo-group {
+  display: grid;
+  gap: calc(var(--space) * 2);
+
+  h2 {
+    margin: 0;
+    font-size: var(--step-2);
+    line-height: 1.2;
+  }
+}
+
+.demo-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: calc(var(--space) * 3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.demo-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: start;
+  gap: calc(var(--space) * 2);
+
+  h3 {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  p {
+    margin: 0;
+  }
+}

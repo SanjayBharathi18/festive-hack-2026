@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-text="checkout.title">Your order</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/buyer/buyer.css" />
+    <link rel="stylesheet" href="/checkout/checkout.css" />
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/api/*" } }
+              ]
+            },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+    <script type="module" src="/checkout/main.ts"></script>
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-bar-inner">
+        <a class="brand" href="/">
+          <span class="brand-tile" aria-hidden="true"
+            ><svg class="icon"><use href="/icons.svg#catering" /></svg
+          ></span>
+          <div>
+            <p class="brand-line">
+              <span class="wordmark" data-text="common.product">Plattr</span
+              ><span
+                class="badge"
+                id="demo-badge"
+                data-text="common.badge.demo"
+                hidden
+                >Demo</span
+              >
+            </p>
+            <p class="app-bar-sub" id="store-name"></p>
+          </div>
+        </a>
+        <div class="app-bar-end">
+          <p class="wait" id="load-wait">
+            <span role="status"></span><span class="num"></span>
+          </p>
+          <div class="bar-controls">
+            <div class="picker city city-lock" id="city-lock" hidden>
+              <button
+                type="button"
+                aria-disabled="true"
+                aria-describedby="city-lock-note"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#location" />
+                </svg>
+                <span class="visually-hidden" data-text="city.label">City</span>
+                <span id="city-lock-name"></span>
+              </button>
+              <p
+                class="city-note"
+                id="city-lock-note"
+                popover="manual"
+                role="tooltip"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="/icons.svg#block" />
+                </svg>
+                <span id="city-lock-words"></span>
+              </p>
+            </div>
+            <button
+              type="button"
+              class="chip"
+              id="sound-toggle"
+              aria-pressed="true"
+            >
+              <span class="visually-hidden" data-text="common.sound"
+                >Sound and vibration</span
+              ><span aria-hidden="true" data-sound-state>Sound: on</span>
+            </button>
+            <span class="picker language-picker">
+              <label
+                class="visually-hidden"
+                for="language-picker"
+                data-text="common.language"
+                >Language</label
+              >
+              <select id="language-picker">
+                <option value="en" lang="en">English</option>
+                <option value="hi" lang="hi">हिन्दी</option>
+                <option value="kn" lang="kn">ಕನ್ನಡ</option>
+                <option value="ta" lang="ta">தமிழ்</option>
+                <option value="te" lang="te">తెలుగు</option>
+                <option value="mr" lang="mr">मराठी</option>
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="page" class="buyer-page checkout-page">
+      <div class="load-problem" id="load-problem" hidden>
+        <p class="error" id="load-error" role="alert"></p>
+        <button
+          class="btn-plain"
+          type="button"
+          id="load-retry"
+          data-text="common.action.try_again"
+        >
+          Try again
+        </button>
+      </div>
+
+      <div class="checkout" id="checkout" hidden>
+        <div class="checkout-top">
+          <p class="back">
+            <a class="link-btn" id="back-link" href="/"></a>
+          </p>
+          <h1 data-text="checkout.title">Your order</h1>
+        </div>
+
+        <div class="buyer-cols">
+          <div class="buyer-main">
+            <p class="notice" id="cart-notice" role="status" hidden></p>
+            <div class="day-problem" id="day-problem" hidden>
+              <p class="error" id="day-problem-text" role="alert"></p>
+              <button
+                class="btn-plain"
+                type="button"
+                id="use-next-day"
+              ></button>
+            </div>
+
+            <div class="card empty" id="empty" hidden>
+              <p data-text="checkout.empty">Your cart is empty.</p>
+              <a class="btn-plain" id="empty-back" href="/"></a>
+            </div>
+
+            <form class="checkout-form" id="form" autocomplete="on">
+              <section class="card form-card" aria-labelledby="ways-title">
+                <fieldset class="ways" id="ways">
+                  <legend id="ways-title" data-text="checkout.ways">
+                    How do you want it?
+                  </legend>
+                  <div class="way-choices">
+                    <label class="choice way" id="way-pickup">
+                      <input
+                        type="radio"
+                        name="fulfilment"
+                        value="pickup"
+                        required
+                      />
+                      <svg class="icon" aria-hidden="true">
+                        <use href="/icons.svg#pickup" />
+                      </svg>
+                      <span>
+                        <span class="way-word" data-text="checkout.pickup"
+                          >Pickup</span
+                        >
+                        <small id="pickup-from"></small>
+                      </span>
+                    </label>
+                    <label class="choice way" id="way-delivery">
+                      <input
+                        type="radio"
+                        name="fulfilment"
+                        value="delivery"
+                        required
+                      />
+                      <svg class="icon" aria-hidden="true">
+                        <use href="/icons.svg#delivery" />
+                      </svg>
+                      <span>
+                        <span class="way-word" data-text="checkout.delivery"
+                          >Delivery</span
+                        >
+                        <small data-text="checkout.delivery_to"
+                          >To your address</small
+                        >
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="delivery" id="delivery" disabled hidden>
+                  <legend class="visually-hidden" data-text="checkout.delivery">
+                    Delivery
+                  </legend>
+                  <div class="field">
+                    <label for="address" data-text="checkout.address"
+                      >Delivery address</label
+                    >
+                    <p
+                      class="field-hint"
+                      id="address-hint"
+                      data-text="checkout.address_hint"
+                    >
+                      House, street and area. The cook checks that she can
+                      deliver there.
+                    </p>
+                    <textarea
+                      id="address"
+                      name="address"
+                      autocomplete="street-address"
+                      maxlength="300"
+                      required
+                      aria-describedby="address-hint"
+                    ></textarea>
+                  </div>
+                  <label class="choice gift-choice">
+                    <input type="checkbox" id="gift-on" name="gift" />
+                    <span>
+                      <span data-text="checkout.gift">Send as a gift</span>
+                      <small data-text="checkout.gift_hint"
+                        >She writes your message on a card.</small
+                      >
+                    </span>
+                  </label>
+                  <fieldset
+                    class="gift-fields"
+                    id="gift-fields"
+                    disabled
+                    hidden
+                  >
+                    <legend class="visually-hidden" data-text="checkout.gift">
+                      Send as a gift
+                    </legend>
+                    <div class="field">
+                      <label for="gift-name" data-text="checkout.gift_name"
+                        >Their name</label
+                      >
+                      <input
+                        id="gift-name"
+                        name="gift_name"
+                        autocomplete="off"
+                        maxlength="80"
+                        required
+                      />
+                    </div>
+                    <div class="field">
+                      <label for="gift-phone" data-text="checkout.gift_phone"
+                        >Their phone</label
+                      >
+                      <p
+                        class="field-hint"
+                        id="gift-phone-hint"
+                        data-text="checkout.optional"
+                      >
+                        Optional
+                      </p>
+                      <input
+                        id="gift-phone"
+                        name="gift_phone"
+                        class="num"
+                        type="tel"
+                        inputmode="tel"
+                        autocomplete="off"
+                        maxlength="20"
+                        aria-describedby="gift-phone-hint"
+                      />
+                    </div>
+                    <div class="field gift-message">
+                      <label
+                        for="gift-message"
+                        data-text="checkout.gift_message"
+                        >Message for the card</label
+                      >
+                      <p
+                        class="field-hint"
+                        id="gift-message-hint"
+                        data-text="checkout.optional"
+                      >
+                        Optional
+                      </p>
+                      <textarea
+                        id="gift-message"
+                        name="gift_message"
+                        maxlength="300"
+                        aria-describedby="gift-message-hint"
+                      ></textarea>
+                    </div>
+                  </fieldset>
+                </fieldset>
+              </section>
+
+              <section
+                class="card form-card"
+                aria-label="For the cook"
+                data-text-label="checkout.for_cook"
+              >
+                <div class="field">
+                  <label for="note" data-text="checkout.note"
+                    >Note for the cook</label
+                  >
+                  <p
+                    class="field-hint"
+                    id="note-hint"
+                    data-text="checkout.note_hint"
+                  >
+                    Optional. For example: less sugar.
+                  </p>
+                  <textarea
+                    id="note"
+                    name="note"
+                    maxlength="500"
+                    aria-describedby="note-hint"
+                  ></textarea>
+                </div>
+                <div class="field field-short">
+                  <label for="buyer-name" data-text="checkout.name"
+                    >Your name</label
+                  >
+                  <p
+                    class="field-hint"
+                    id="name-hint"
+                    data-text="checkout.name_hint"
+                  >
+                    The cook sees it on your order.
+                  </p>
+                  <input
+                    id="buyer-name"
+                    name="buyer_name"
+                    autocomplete="name"
+                    maxlength="80"
+                    required
+                    aria-describedby="name-hint"
+                  />
+                </div>
+              </section>
+
+              <section
+                class="card form-card"
+                id="payment"
+                aria-labelledby="payment-title"
+                hidden
+              >
+                <fieldset class="ways" id="payment-ways" disabled>
+                  <legend id="payment-title" data-text="checkout.payment.title">
+                    How do you want to pay?
+                  </legend>
+                  <div class="way-choices">
+                    <label class="choice way">
+                      <input type="radio" name="payment" value="now" required />
+                      <span>
+                        <span data-text="checkout.payment.now"
+                          >Pay online now</span
+                        >
+                        <small data-text="checkout.payment.now_hint"
+                          >On the next screen.</small
+                        >
+                      </span>
+                    </label>
+                    <label class="choice way">
+                      <input
+                        type="radio"
+                        name="payment"
+                        value="later"
+                        required
+                        checked
+                      />
+                      <span>
+                        <span data-text="checkout.payment.later"
+                          >Pay later or in cash</span
+                        >
+                        <small data-text="checkout.payment.later_hint"
+                          >Pay online from your order page, or in cash.</small
+                        >
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+                <p class="hint" id="payment-required" hidden></p>
+              </section>
+
+              <section
+                class="card form-card verify"
+                data-edge="brass"
+                aria-labelledby="verify-title"
+              >
+                <h2 id="verify-title" data-text="checkout.verify">
+                  Last step: confirm your number
+                </h2>
+                <div class="field field-short">
+                  <label for="phone" data-text="checkout.phone"
+                    >Your WhatsApp number</label
+                  >
+                  <p
+                    class="field-hint"
+                    id="phone-hint"
+                    data-text="checkout.phone_hint"
+                  >
+                    We send your code and the order updates here.
+                  </p>
+                  <input
+                    id="phone"
+                    name="phone"
+                    class="num"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    maxlength="20"
+                    required
+                    aria-describedby="phone-hint"
+                  />
+                </div>
+                <p class="consent">
+                  <span id="consent-words"
+                    >Plattr uses your number and address only for this order and
+                    its updates on WhatsApp.</span
+                  >
+                  <a
+                    href="/privacy"
+                    id="privacy-link"
+                    data-text="checkout.privacy"
+                    >Privacy</a
+                  >
+                </p>
+
+                <p
+                  class="hint"
+                  id="verified"
+                  role="status"
+                  data-text="checkout.verified"
+                  hidden
+                >
+                  Your number is confirmed.
+                </p>
+                <div class="code-step" id="code-step" hidden>
+                  <p class="code-line">
+                    <span data-text="checkout.code_label">Your code</span>
+                    <span class="num code-value" id="code-value"></span>
+                    <span class="badge" data-text="common.badge.prototype"
+                      >Prototype</span
+                    >
+                  </p>
+                  <p class="field-hint" data-text="checkout.code_note">
+                    This is a prototype, so the code shows here. In the full
+                    app, it comes on WhatsApp.
+                  </p>
+                  <div class="field field-code">
+                    <label for="code" data-text="checkout.code">Code</label>
+                    <input
+                      id="code"
+                      name="code"
+                      class="num"
+                      inputmode="numeric"
+                      autocomplete="one-time-code"
+                      maxlength="7"
+                      disabled
+                    />
+                  </div>
+                  <button
+                    class="link-btn"
+                    type="button"
+                    id="new-code"
+                    data-text="checkout.new_code"
+                  >
+                    Get a new code
+                  </button>
+                </div>
+
+                <p class="error" id="form-error" role="alert" hidden></p>
+                <div class="submit-line">
+                  <button
+                    class="btn-primary"
+                    type="submit"
+                    id="submit"
+                    data-text="checkout.send_code"
+                  >
+                    Get the code
+                  </button>
+                  <p class="wait" id="submit-wait">
+                    <span role="status"></span><span class="num"></span>
+                  </p>
+                </div>
+              </section>
+            </form>
+          </div>
+
+          <aside class="buyer-side">
+            <article
+              class="slip summary"
+              id="summary"
+              aria-labelledby="summary-store"
+            >
+              <header class="slip-head">
+                <h2 class="slip-title" id="summary-store"></h2>
+              </header>
+              <table class="slip-lines">
+                <tbody id="summary-lines"></tbody>
+              </table>
+              <p class="slip-total">
+                <span data-text="checkout.total">Total</span>
+                <span class="num" id="summary-total"></span>
+              </p>
+              <dl class="answers">
+                <div>
+                  <dt data-text="checkout.day">Day</dt>
+                  <dd id="summary-day"></dd>
+                  <dd>
+                    <a
+                      class="link-btn"
+                      id="change-day"
+                      href="/"
+                      data-text="common.action.change"
+                      >Change</a
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <template id="line-template">
+      <tr>
+        <td class="line-name">
+          <span class="food-mark" role="img"></span>
+          <span class="line-item"></span>
+          <span class="line-latin" lang="en" hidden></span>
+          <span class="line-egg" hidden></span>
+          <span class="num line-amount"></span>
+        </td>
+        <td class="num line-price"></td>
+      </tr>
+    </template>
+  </body>
+</html>

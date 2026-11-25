@@ -1,0 +1,156 @@
+/* A bulk store: her line, then one row for each bulk item with its minimum,
+   its price and a quantity. The bulk cart sums the rows of each store. */
+.bulk-store {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+
+  :is(h3, p) {
+    margin: 0;
+  }
+
+  h3 a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* The Demo badge of a store sits after her name, at the size of body text. */
+.bulk-store .cook-card-name .badge {
+  margin-inline-start: var(--space);
+  font-size: var(--step-0);
+  vertical-align: 0.15em;
+}
+
+.bulk-items {
+  inline-size: 100%;
+  border-collapse: collapse;
+
+  :is(th, td) {
+    padding: var(--space) 0;
+    border-block-start: var(--hair) solid var(--brass);
+    text-align: start;
+    vertical-align: middle;
+  }
+
+  thead :is(th, td) {
+    border: 0;
+  }
+}
+
+.bulk-item-name {
+  font-weight: 600;
+
+  .food-mark {
+    margin-inline-end: var(--space);
+    vertical-align: -0.15em;
+  }
+}
+
+.bulk-item-terms {
+  color: var(--ink-2);
+
+  .bulk-item-price {
+    display: block;
+    color: var(--ink);
+  }
+}
+
+.bulk-item-qty {
+  inline-size: 13rem;
+  white-space: nowrap;
+
+  input {
+    inline-size: 8rem;
+    min-height: var(--tap);
+    margin-inline-end: var(--space);
+    padding: 0 var(--space);
+    border: var(--hair) solid var(--ink);
+    border-radius: var(--radius-input);
+    background: var(--paper);
+
+    &:user-invalid {
+      border-color: var(--kumkum);
+    }
+  }
+}
+
+.bulk-cart-body {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+
+  p,
+  ul {
+    margin: 0;
+  }
+
+  ul {
+    display: grid;
+    gap: calc(var(--space) / 2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .hint {
+    color: var(--ink-2);
+  }
+}
+
+.bulk-cart-stores {
+  display: grid;
+  gap: calc(var(--space) * 3);
+
+  &:empty {
+    display: none;
+  }
+}
+
+/* Each store has its own cart and its own request; a brass line parts
+   them. */
+.bulk-cart-store {
+  display: grid;
+  gap: calc(var(--space) * 1.5);
+
+  & + & {
+    padding-block-start: calc(var(--space) * 3);
+    border-block-start: var(--hair) solid var(--brass);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--step-0);
+    font-weight: 600;
+  }
+}
+
+/* The English name, under the name in the language of the page. */
+.bulk-item-second {
+  display: block;
+  padding-inline-start: calc(var(--space) * 3);
+  color: var(--ink-2);
+  font-weight: 400;
+}
+
+.bulk-cart-sum {
+  display: flex;
+  justify-content: space-between;
+  padding-block-start: var(--space);
+  border-block-start: var(--rule) solid var(--ink);
+  font-weight: 600;
+}
+
+.bulk-cart-problem {
+  color: var(--kumkum);
+  font-weight: 600;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.bulk-contact {
+  justify-self: start;
+}

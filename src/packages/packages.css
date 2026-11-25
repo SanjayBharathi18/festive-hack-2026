@@ -1,0 +1,120 @@
+/* The package editor of the desk: her packages in the main column, the
+   form of one package at the side. */
+.packages-page {
+  --side: 34rem;
+
+  fieldset {
+    display: grid;
+    gap: var(--space);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  legend {
+    margin-block-end: var(--space);
+    font-weight: 600;
+  }
+
+  .hint {
+    color: var(--ink-2);
+  }
+}
+
+.packages-head,
+.editor {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.package-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: calc(var(--space) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.package-item {
+  display: grid;
+  align-content: start;
+  gap: var(--space);
+}
+
+.package-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space);
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+.package-limits,
+.package-meta {
+  color: var(--ink-2);
+}
+
+.package-actions,
+.editor-submit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+}
+
+.editor-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--space) * 2);
+}
+
+.editor-categories {
+  display: grid;
+  gap: calc(var(--space) * 2);
+}
+
+.packages-page .editor-category {
+  padding: calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-input);
+}
+
+.category-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.5rem 5.5rem auto;
+  align-items: end;
+  gap: var(--space);
+}
+
+.category-dishes {
+  display: grid;
+  gap: var(--space);
+}
+
+.dish-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 7.5rem auto auto;
+  align-items: end;
+  gap: var(--space);
+}
+
+.dish-add,
+#add-category {
+  justify-self: start;
+}
+
+/* Each control fills its column, so that a long label wraps in it. */
+.editor .field :is(input, select) {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+/* What a service style adds to each plate or guest, under its choice. */
+.style-extra {
+  padding-inline-start: calc(var(--space) * 4.5);
+
+  input {
+    max-inline-size: 12rem;
+  }
+}

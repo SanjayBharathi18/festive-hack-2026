@@ -1,0 +1,102 @@
+/* A picker: a native select in the shape of a chip, as City and Language
+   in the app bar. The system draws the arrow and the list. The select is as
+   wide as its chosen words, and fills its cell. An icon inside lets a click
+   through, so the whole chip opens the list. */
+.picker {
+  position: relative;
+  display: grid;
+  align-items: center;
+
+  > .icon {
+    position: absolute;
+    inset-inline-start: calc(var(--space) * 1.5);
+    pointer-events: none;
+  }
+
+  select {
+    inline-size: 100%;
+    min-block-size: var(--tap);
+    padding-block: 0;
+    padding-inline: calc(var(--space) * 2) var(--space);
+    border: var(--card-line) solid var(--brass-tint);
+    border-radius: var(--radius-round);
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 600;
+    field-sizing: content;
+    cursor: pointer;
+    transition: border-color var(--dur-quick) linear;
+
+    &:hover {
+      border-color: var(--brass);
+    }
+
+    &:focus-visible {
+      outline: var(--ring) solid var(--ink);
+      outline-offset: var(--ring);
+    }
+  }
+
+  > .icon ~ select {
+    padding-inline-start: calc(var(--space) * 2.5 + var(--icon-size));
+  }
+}
+
+/* Language spans the controls under City and Sound, so its words sit in
+   the middle, under the gap between them. */
+.language-picker select {
+  text-align: center;
+}
+
+/* The city of a store's pages: the same chip with the store's city, locked,
+   with no arrow. It keeps its focus, so a keyboard reaches the note. */
+.city-lock > button {
+  display: flex;
+  align-items: center;
+  gap: var(--space);
+  inline-size: 100%;
+  min-block-size: var(--tap);
+  padding-inline: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-round);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: not-allowed;
+
+  &:focus-visible {
+    outline: var(--ring) solid var(--ink);
+    outline-offset: var(--ring);
+  }
+}
+
+/* Why the city is locked: the block icon and one sentence, in a small card
+   under the controls, on their end edge. */
+.city-note {
+  inset: auto;
+  max-inline-size: calc(var(--space) * 36);
+  margin: var(--space) 0 0;
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border: var(--card-line) solid var(--brass-tint);
+  border-radius: var(--radius-card-small);
+  background: var(--paper);
+  box-shadow: var(--card-edge);
+  color: var(--ink);
+  text-align: start;
+  position-anchor: --bar-controls;
+  position-area: block-end span-inline-start;
+  justify-self: end;
+
+  &:popover-open {
+    display: flex;
+    align-items: start;
+    gap: var(--space);
+  }
+
+  > .icon {
+    flex: none;
+  }
+}

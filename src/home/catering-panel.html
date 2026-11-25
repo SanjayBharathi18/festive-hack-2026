@@ -1,0 +1,110 @@
+<div class="catering-panel">
+  <form class="card catering-filters" role="search">
+    <div>
+      <h2 data-text="catering.panel.title">Caterers for your event</h2>
+      <p class="card-lead" data-text="catering.panel.lead">
+        Plate and buffet packages. Nothing is ordered or paid here: you pick a
+        plan and ask the caterer for a quote.
+      </p>
+    </div>
+    <div class="filters-row">
+      <div class="field">
+        <label data-text="catering.panel.date">Event date</label>
+        <input class="num" type="date" name="date" />
+      </div>
+      <div class="field">
+        <label data-text="catering.panel.guests">Guests</label>
+        <input
+          class="num"
+          type="number"
+          name="guests"
+          min="1"
+          inputmode="numeric"
+        />
+      </div>
+      <div class="field">
+        <label data-text="catering.panel.max_price"
+          >Price up to (₹ a plate or guest)</label
+        >
+        <input
+          class="num"
+          type="number"
+          name="max_price"
+          min="1"
+          inputmode="numeric"
+        />
+      </div>
+    </div>
+    <fieldset class="filter-food">
+      <legend data-text="catering.panel.food">Food type</legend>
+      <div class="chips">
+        <label class="chip"
+          ><input type="radio" name="food" value="" checked /><span
+            data-text="catering.panel.any"
+            >Any</span
+          ></label
+        >
+        <label class="chip"
+          ><input type="radio" name="food" value="veg" /><span
+            data-text="catering.food.veg"
+            >Veg</span
+          ></label
+        >
+        <label class="chip"
+          ><input type="radio" name="food" value="non_veg" /><span
+            data-text="catering.food.non_veg"
+            >Non-veg</span
+          ></label
+        >
+        <label class="chip"
+          ><input type="radio" name="food" value="jain" /><span
+            data-text="catering.food.jain"
+            >Jain</span
+          ></label
+        >
+        <label class="chip"
+          ><input type="radio" name="food" value="mixed" /><span
+            data-text="catering.food.mixed"
+            >Mixed</span
+          ></label
+        >
+      </div>
+    </fieldset>
+  </form>
+  <p class="wait catering-wait">
+    <span role="status"></span><span class="num"></span>
+  </p>
+  <p class="error catering-error" role="alert" hidden></p>
+  <p class="hint catering-none" role="status" hidden></p>
+  <div class="caterers"></div>
+
+  <template class="caterer-template">
+    <section class="caterer">
+      <header class="cook-card-head">
+        <p class="cook-card-kind caterer-kind"></p>
+        <h3 class="cook-card-name">
+          <a class="caterer-name"></a>
+          <span class="badge caterer-demo" data-text="common.badge.demo" hidden
+            >Demo</span
+          >
+        </h3>
+        <p class="cook-card-rating caterer-rating"></p>
+      </header>
+      <ul class="caterer-packages"></ul>
+    </section>
+  </template>
+
+  <template class="offer-template">
+    <li class="card offer">
+      <p class="offer-top">
+        <span class="offer-name"></span>
+        <span class="num offer-price"></span>
+      </p>
+      <p class="offer-limits"></p>
+      <p class="offer-meta"></p>
+      <a class="btn-plain offer-plan" data-text="catering.panel.plan"
+        >Plan your menu</a
+      >
+    </li>
+  </template>
+</div>

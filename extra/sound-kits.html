@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sound kits · audition</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fff;
+        --ink: #111;
+        --ink-2: rgb(17 17 17 / 0.72);
+        --ink-3: rgb(17 17 17 / 0.52);
+        --ink-4: rgb(17 17 17 / 0.22);
+        --ink-5: rgb(17 17 17 / 0.08);
+        --hair: 1px;
+        --gap: 8px;
+        --tap: 44px;
+        --fast: 120ms;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px / 1.5 system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          "Noto Sans",
+          sans-serif;
+        font-variant-numeric: tabular-nums;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px 24px 96px;
+      }
+      main {
+        max-width: 1240px;
+        margin-inline: auto;
+      }
+      h1,
+      h2,
+      p,
+      ol,
+      ul {
+        margin: 0;
+        font: inherit;
+      }
+      h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      header {
+        display: grid;
+        gap: var(--gap);
+        padding-bottom: 20px;
+        border-bottom: var(--hair) solid var(--ink-4);
+
+        p {
+          max-width: 76ch;
+          color: var(--ink-2);
+        }
+      }
+      section {
+        display: grid;
+        grid-template-columns: 14ch 1fr;
+        gap: 24px;
+        padding-block: 24px;
+        border-bottom: var(--hair) solid var(--ink-5);
+
+        > h2 {
+          font-size: 0.8125rem;
+          color: var(--ink-3);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+
+          b {
+            display: block;
+            font-weight: inherit;
+            color: var(--ink);
+          }
+        }
+        > * {
+          min-width: 0;
+        }
+      }
+      button,
+      select {
+        font: inherit;
+        color: inherit;
+      }
+      button {
+        min-height: var(--tap);
+        padding: 8px 14px;
+        border: var(--hair) solid var(--ink);
+        border-radius: 2px;
+        background: var(--bg);
+        text-align: start;
+        cursor: pointer;
+
+        &:hover {
+          background: var(--ink-5);
+        }
+        &:active {
+          background: var(--ink);
+          color: var(--bg);
+        }
+      }
+      :focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 2px;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 28px;
+
+        label {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          min-height: var(--tap);
+        }
+      }
+      fieldset {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 16px;
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        legend {
+          float: left;
+          margin-right: 4px;
+          padding: 0;
+        }
+      }
+      .scenarios {
+        display: grid;
+        gap: 16px;
+      }
+      .kits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: var(--gap);
+
+        button {
+          display: grid;
+          gap: 2px;
+          padding-block: 10px;
+        }
+        small {
+          font-size: 0.8125rem;
+          color: var(--ink-3);
+        }
+        button:active small {
+          color: inherit;
+        }
+      }
+      .now {
+        min-height: 1.5em;
+        font-weight: 600;
+      }
+      .steps,
+      .dropped {
+        padding-left: 1.5em;
+        font-size: 0.875rem;
+        color: var(--ink-3);
+      }
+      .dropped {
+        list-style: disc;
+        color: var(--ink-2);
+      }
+      .events {
+        display: grid;
+      }
+      .event {
+        display: grid;
+        grid-template-columns: 24ch repeat(3, minmax(0, 1fr));
+        gap: var(--gap);
+        padding-block: 12px;
+        border-top: var(--hair) solid var(--ink-5);
+
+        &.columns {
+          padding-block: 0 8px;
+          border-top: none;
+          font-size: 0.8125rem;
+          color: var(--ink-3);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+      }
+      .head {
+        b {
+          display: block;
+        }
+        p {
+          font-size: 0.875rem;
+          color: var(--ink-3);
+        }
+      }
+      .variant {
+        display: grid;
+        grid-template-columns: var(--tap) 1fr;
+        border: var(--hair) solid var(--ink-4);
+        transition: background-color var(--fast) linear;
+
+        label {
+          display: grid;
+          place-items: center;
+          border-right: var(--hair) solid var(--ink-4);
+          cursor: pointer;
+        }
+        input {
+          width: 20px;
+          height: 20px;
+          margin: 0;
+          accent-color: var(--ink);
+        }
+        button {
+          display: grid;
+          align-content: start;
+          gap: 2px;
+          border: none;
+          border-radius: 0;
+          background: none;
+        }
+        button:hover {
+          background: var(--ink-5);
+        }
+        small {
+          font-size: 0.8125rem;
+          line-height: 1.35;
+          color: var(--ink-3);
+        }
+        .kit {
+          font-size: 0.75rem;
+          color: var(--ink-3);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+        &:has(:checked) {
+          outline: 2px solid var(--ink);
+          outline-offset: -1px;
+        }
+        &.is-playing {
+          background: var(--ink);
+
+          button,
+          small,
+          .kit {
+            color: var(--bg);
+          }
+        }
+      }
+      .selection {
+        display: grid;
+        gap: 12px;
+
+        div {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--gap);
+        }
+        pre {
+          margin: 0;
+          padding: 12px;
+          overflow-x: auto;
+          border: var(--hair) solid var(--ink-4);
+          font-size: 0.8125rem;
+        }
+      }
+      .rules {
+        display: grid;
+        grid-template-columns: 24ch 1fr;
+        gap: 6px 16px;
+        margin: 0;
+        font-size: 0.9375rem;
+
+        dt {
+          font-weight: 600;
+        }
+        dd {
+          margin: 0;
+          color: var(--ink-2);
+        }
+      }
+      @media (width < 900px) {
+        body {
+          padding: 16px 16px 64px;
+        }
+        section,
+        .event,
+        .rules {
+          grid-template-columns: 1fr;
+        }
+        .event.columns {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .variant {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Sound kits — audition</h1>
+        <p>
+          The app makes a few short sounds: when you tap +, when an order is saved, when a new order reaches the desk. This page lets you hear three Indian
+          kits for the same moments. Each kit keeps the grammar of Spaceship's sound (your hand makes short marks, the app answers in tones, a settled state
+          ends clean, pitch shows a value) and replaces its sci-fi clicks with acoustic sounds tuned to one raag. Every sound is made here in code, with no
+          audio files.
+        </p>
+        <p>
+          Start with the scenarios: each one plays the same 10-second story in one kit. Then play single sounds and select the one you like on each row. A
+          row can take its sound from any kit. On a laptop, turn on <b>Phone speaker</b>: most people will hear these sounds through a small phone speaker.
+        </p>
+      </header>
+
+      <section>
+        <h2><b>01</b>controls</h2>
+        <div class="controls">
+          <label>Volume <input type="range" id="volume" min="0" max="1" step="0.01" /> <output id="volume-out"></output></label>
+          <label><input type="checkbox" id="speaker" /> Phone speaker (no bass under 350 Hz, mono)</label>
+          <fieldset id="raag">
+            <legend>Raag</legend>
+            <label><input type="radio" name="raag" value="bhupali" /> Bhupali: Sa Re Ga Pa Dha, bright; its songs are mostly devotional</label>
+            <label><input type="radio" name="raag" value="durga" /> Durga: Sa Re Ma Pa Dha, folk; a romantic mood</label>
+          </fieldset>
+          <label
+            >Sa
+            <select id="sa">
+              <option value="D">D (294 Hz)</option>
+              <option value="E">E (330 Hz)</option>
+              <option value="F">F (349 Hz)</option>
+            </select></label
+          >
+          <button type="button" id="stop">Stop</button>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>02</b>scenarios</h2>
+        <div class="scenarios">
+          <div class="kits">
+            <button type="button" data-kit="a">
+              <span>&#x25B6;&#xFE0E; Kit A · Tabla + counter</span>
+              <small>Tabla taps, santoor results, steel katori, breath, rubber stamp, bill book, cycle bell. Recommended.</small>
+            </button>
+            <button type="button" data-kit="b">
+              <span>&#x25B6;&#xFE0E; Kit B · Tabla + santoor</span>
+              <small>Music only: tabla strokes, tabla tarang, santoor, a plain Sa to settle.</small>
+            </button>
+            <button type="button" data-kit="c">
+              <span>&#x25B6;&#xFE0E; Kit C · Counter and kitchen</span>
+              <small>No instruments: steel tumbler, katori, paper, bill book, rubber stamp, cycle bell.</small>
+            </button>
+            <button type="button" data-kit="mix">
+              <span>&#x25B6;&#xFE0E; My selection</span>
+              <small>Your pick on each row. A row with no pick uses kit A.</small>
+            </button>
+          </div>
+          <p class="now" id="now" aria-live="polite">—</p>
+          <ol class="steps" id="steps"></ol>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>03</b>events</h2>
+        <div class="events" id="events">
+          <div class="event columns" aria-hidden="true">
+            <span>Moment</span><span>Kit A · Tabla + counter</span><span>Kit B · Tabla + santoor</span><span>Kit C · Counter and kitchen</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>04</b>selection</h2>
+        <div class="selection">
+          <p><output id="count">0</output> of <span id="total">0</span> rows selected.</p>
+          <div>
+            <button type="button" id="copy">Copy selection</button>
+            <button type="button" id="clear">Clear selection</button>
+          </div>
+          <pre id="json"></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2><b>05</b>grammar</h2>
+        <dl class="rules">
+          <dt>Pitch shows a value</dt>
+          <dd>The pack sound climbs the raag as the quantity goes up, and falls as it goes down.</dd>
+          <dt>One raag</dt>
+          <dd>Every pitch comes from one pentatonic raag in just intonation, so sounds that overlap never clash.</dd>
+          <dt>Silence while the mic is open</dt>
+          <dd>The start mark plays before the mic opens, and the stop mark after it closes. Nothing plays in between.</dd>
+          <dt>One big moment</dt>
+          <dd>"Order saved" is the only long sound, about 670 ms: close to the one long motion on the screen.</dd>
+          <dt>Background is silent</dt>
+          <dd>The daily list, background saves and search results make no sound.</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2><b>06</b>dropped</h2>
+        <ul class="dropped">
+          <li>Manjira, small brass hand bells and temple bells: they read as puja and aarti.</li>
+          <li>Sitar riffs, tanpura washes and tabla loops: they are clichés of "India".</li>
+          <li>Bansuri melodies and singing bowls: they read as devotional or as a meditation app. Breath alone stays.</li>
+          <li>Coins: they say "money", and payment in the prototype is simulated.</li>
+          <li>Shankh, nadaswaram and shehnai: ritual or wedding sounds that are not neutral across communities.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module">
+      const $ = (selector, root = document) => root.querySelector(selector)
+      const STORE = "sound-kits-audition-2"
+      const RAAGS = { bhupali: [1, 9 / 8, 5 / 4, 3 / 2, 5 / 3], durga: [1, 9 / 8, 4 / 3, 3 / 2, 5 / 3] }
+      const SA = { D: 293.66, E: 329.63, F: 349.23 }
+      const KITS = ["a", "b", "c"]
+      const RISE = { from: 0, to: 400, delay: 0.025, time: 0.2 }
+      const FALL = { from: 400, to: 0, delay: 0, time: 0.22 }
+
+      const settings = { volume: 0.8, speaker: false, raag: "bhupali", sa: "E" }
+      let selection = {}
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORE) ?? "null")
+        if (saved) {
+          Object.assign(settings, saved.settings ?? {})
+          selection = saved.selection ?? {}
+        }
+      } catch {}
+      if (!(settings.sa in SA)) settings.sa = "E"
+      if (!(settings.raag in RAAGS)) settings.raag = "bhupali"
+      const save = () => localStorage.setItem(STORE, JSON.stringify({ settings, selection }))
+
+      /** Hz of a swara of the selected raag. Degree 0 is Sa; octave 0 holds the Sa near 330 Hz. */
+      function swara(degree, octave = 0) {
+        const step = ((degree % 5) + 5) % 5
+        return SA[settings.sa] * 2 ** (octave + Math.floor(degree / 5)) * RAAGS[settings.raag][step]
+      }
+      const sa = (octave = 0) => swara(0, octave)
+      const notes = (degrees, octave, gap, play) => degrees.forEach((degree, i) => play(swara(degree, octave), i * gap, i))
+
+      const EVENTS = {
+        add: {
+          name: "Add a pack (+)",
+          trigger: "Four taps on +. The pitch climbs the raag with the quantity: 1, 2, 3, 4.",
+          a: {
+            name: "tabla tarang, ‘na’",
+            recipe: "dayan ‘na’ tuned to Sa Re Ga Pa: weak fundamental, strong harmonics 2–4, 1.5% pitch drop; 140 ms apart",
+            play: (t) => notes([0, 1, 2, 3], 0, 0.14, (f, d) => dayan("na", f, { t: t + d, gain: 0.5 })),
+          },
+          b: {
+            name: "tabla tarang, ‘tin’",
+            recipe: "dayan ‘tin’: rounder, rings longer; Sa Re Ga Pa, 140 ms apart",
+            play: (t) => notes([0, 1, 2, 3], 0, 0.14, (f, d) => dayan("tin", f, { t: t + d, gain: 0.5 })),
+          },
+          c: {
+            name: "steel tumbler",
+            recipe: "glass-and-bowl modes 1, 2.83, 5.42, held by the hand (0.35 s); Sa Re Ga Pa, 140 ms apart",
+            play: (t) => notes([0, 1, 2, 3], 2, 0.14, (f, d) => tumbler(f, { t: t + d, gain: 0.34 })),
+          },
+        },
+        remove: {
+          name: "Remove a pack (−)",
+          trigger: "Four taps on −. The pitch falls with the quantity: 4, 3, 2, 1.",
+          a: {
+            name: "tabla tarang, ‘na’, falling",
+            recipe: "the same strokes, Pa Ga Re Sa",
+            play: (t) => notes([3, 2, 1, 0], 0, 0.14, (f, d) => dayan("na", f, { t: t + d, gain: 0.45 })),
+          },
+          b: {
+            name: "tabla tarang, ‘tin’, falling",
+            recipe: "the same strokes, Pa Ga Re Sa",
+            play: (t) => notes([3, 2, 1, 0], 0, 0.14, (f, d) => dayan("tin", f, { t: t + d, gain: 0.45 })),
+          },
+          c: {
+            name: "steel tumbler, falling",
+            recipe: "the same clinks, Pa Ga Re Sa",
+            play: (t) => notes([3, 2, 1, 0], 2, 0.14, (f, d) => tumbler(f, { t: t + d, gain: 0.3 })),
+          },
+        },
+        placed: {
+          name: "Order placed (buyer)",
+          trigger: "The buyer places the order. The slip is torn off and handed over.",
+          a: {
+            name: "slip torn from the bill book, then santoor Sa",
+            recipe: "perforation clicks speeding up from 80 to 250 a second, a paper flap, then one santoor Sa",
+            play: (t) => {
+              slipTear({ t })
+              santoor(sa(2), { t: t + 0.3, gain: 0.4 })
+            },
+          },
+          b: {
+            name: "santoor tremolo, Pa → Sa",
+            recipe: "two mallets, strokes 80 ms apart: Pa Pa Sa Sa Sa, the last one accented",
+            play: (t) => tremolo(t, swara(3, 1), sa(2)),
+          },
+          c: {
+            name: "slip torn from the bill book",
+            recipe: "the perforation clicks and the paper flap only",
+            play: (t) => slipTear({ t, gain: 0.5 }),
+          },
+        },
+        neworder: {
+          name: "New order on the desk",
+          trigger: "A new order arrives while the desk is open. It must cut through a noisy kitchen.",
+          a: {
+            name: "cycle bell ‘tring-tring’",
+            recipe: "two domes (modes 1, 2.83, 5.42), struck 30 times a second by the spinning discs; two bursts of 350 ms",
+            play: (t) => cycleBell(swara(3, 2), { t }),
+          },
+          b: {
+            name: "tabla ‘tin’ Sa–Pa, santoor Pa → Sa",
+            recipe: "two ‘tin’ strokes, then the santoor tremolo",
+            play: (t) => {
+              dayan("tin", sa(), { t, gain: 0.5 })
+              dayan("tin", swara(3), { t: t + 0.12, gain: 0.5 })
+              tremolo(t + 0.3, swara(3, 1), sa(2), { gain: 0.42 })
+            },
+          },
+          c: {
+            name: "cycle bell, one long trill",
+            recipe: "the same bell, one burst of 18 strikes",
+            play: (t) => cycleBell(swara(3, 2), { t, bursts: 1, strikes: 18 }),
+          },
+        },
+        record: {
+          name: "Record: start, then stop",
+          trigger: "The seller starts a voice order, talks (silence while the mic is open), then stops.",
+          a: {
+            name: "‘na–tin’ up, ‘tin–te’ down",
+            recipe: "start: ‘na’ on Sa, then ‘tin’ on Pa, 60 ms apart; stop: ‘tin’ on Pa, then a closed ‘te’",
+            play: (t) => {
+              dayan("na", sa(), { t, gain: 0.5 })
+              dayan("tin", swara(3), { t: t + 0.06, gain: 0.5 })
+              dayan("tin", swara(3), { t: t + 0.9, gain: 0.45 })
+              dayan("te", sa(), { t: t + 0.96, gain: 0.5 })
+            },
+          },
+          b: {
+            name: "santoor Sa → Pa, then Pa → Sa",
+            recipe: "two mallet strokes, 60 ms apart, up to start and down to stop",
+            play: (t) => {
+              santoor(sa(1), { t, gain: 0.4 })
+              santoor(swara(3, 1), { t: t + 0.06, gain: 0.4 })
+              santoor(swara(3, 1), { t: t + 0.9, gain: 0.36 })
+              santoor(sa(1), { t: t + 0.96, gain: 0.36 })
+            },
+          },
+          c: {
+            name: "tumbler double clink",
+            recipe: "steel tumbler Sa, then Pa, 50 ms apart; stop plays Pa, then Sa",
+            play: (t) => {
+              tumbler(sa(2), { t, gain: 0.34 })
+              tumbler(swara(3, 2), { t: t + 0.05, gain: 0.34 })
+              tumbler(swara(3, 2), { t: t + 0.9, gain: 0.3 })
+              tumbler(sa(2), { t: t + 0.95, gain: 0.3 })
+            },
+          },
+        },
+        waiting: {
+          name: "Reading the voice note",
+          trigger: "The app reads the note. This plays only after the mic closes.",
+          a: {
+            name: "breath",
+            recipe: "breath noise around 2.5 kHz, a puff at the start, and the faintest flute tone on Sa; 0.9 s",
+            play: (t) => breath(sa(1), { t }),
+          },
+          b: {
+            name: "soft santoor tremolo on Sa",
+            recipe: "eight light strokes, 90 ms apart, fading",
+            play: (t) => softTremolo(t),
+          },
+          c: {
+            name: "paper rustle",
+            recipe: "crackling high noise with a 1 s swell, like a bill book page",
+            play: (t) => paper({ t }),
+          },
+        },
+        fields: {
+          name: "Fields filled",
+          trigger: "Each field of the check screen fills: one rising note for each field.",
+          a: {
+            name: "santoor, rising",
+            recipe: "4 strings for each note (−2, −0.7, +0.6, +1.9 cents), one of them short; Sa Re Ga Pa, 40 ms apart",
+            play: (t) => notes([0, 1, 2, 3], 1, 0.04, (f, d, i) => santoor(f, { t: t + d, gain: 0.34 + i * 0.03 })),
+          },
+          b: {
+            name: "tabla tarang, ‘tin’, rising",
+            recipe: "‘tin’ tuned to Sa Re Ga Pa, 45 ms apart",
+            play: (t) => notes([0, 1, 2, 3], 0, 0.045, (f, d, i) => dayan("tin", f, { t: t + d, gain: 0.42 + i * 0.03 })),
+          },
+          c: {
+            name: "steel katori, rising",
+            recipe: "small steel bowl, each mode split 2 Hz for a slow beat; Sa Re Ga Pa, 45 ms apart",
+            play: (t) => notes([0, 1, 2, 3], 2, 0.045, (f, d, i) => katori(f, { t: t + d, gain: 0.28 + i * 0.03 })),
+          },
+        },
+        done: {
+          name: "Done (a state settles)",
+          trigger: "All fields are confirmed. The state is now settled.",
+          a: {
+            name: "steel katori ‘ting’ on Sa",
+            recipe: "bowl modes 1, 2.83, 5.42, 8.77; free ring, 1.5 s on the first mode; a spoon click",
+            play: (t) => katori(sa(2), { t, gain: 0.4 }),
+          },
+          b: {
+            name: "‘tin’ into a plain Sa",
+            recipe: "one ‘tin’ on Sa; its ring passes into a plain sine on Sa",
+            play: (t) => {
+              dayan("tin", sa(), { t, gain: 0.45 })
+              settle(sa(1), { t: t + 0.03 })
+            },
+          },
+          c: {
+            name: "steel tumbler, held clink on Sa",
+            recipe: "the tumbler, damped by the hand",
+            play: (t) => tumbler(sa(2), { t, gain: 0.4 }),
+          },
+        },
+        saved: {
+          name: "Order saved (big moment)",
+          trigger: "The order is saved. The one sound the seller learns to trust, like a payment soundbox.",
+          a: {
+            name: "tabla tihai, lands on sam",
+            recipe: "‘te-dha’ three times in 420 ms; the last ‘dha’ is sam, the bayan bends up, and its ring passes into a plain Sa",
+            play: (t) => tihai(t),
+          },
+          b: {
+            name: "santoor run, then ‘dha’ on sam",
+            recipe: "Sa Re Ga Pa Dha Sa, 45 ms apart, then ‘dha’ at 300 ms and a plain Sa",
+            play: (t) => taan(t),
+          },
+          c: {
+            name: "slip, stamp, katori",
+            recipe: "the slip is torn, stamped, and set down on a steel katori",
+            play: (t) => {
+              slipTear({ t, gain: 0.45 })
+              stamp({ t: t + 0.3 })
+              katori(sa(2), { t: t + 0.42, gain: 0.36 })
+            },
+          },
+        },
+        stamp: {
+          name: "Stamp a status (PAID)",
+          trigger: "The seller stamps an order slip: one tap, one mark.",
+          a: {
+            name: "rubber stamp",
+            recipe: "noise into bands at 650 Hz (50 ms) and 1.4 kHz (30 ms), a 12 ms smack, a quiet lift",
+            play: (t) => stamp({ t }),
+          },
+          b: {
+            name: "tabla ‘dha’",
+            recipe: "dayan ‘na’ and bayan ‘ge’ together; the bayan bends up 200 cents",
+            play: (t) => {
+              dayan("na", sa(), { t, gain: 0.55 })
+              bayan({ t, gain: 0.55, bend: { from: 0, to: 200, delay: 0.025, time: 0.15 } })
+            },
+          },
+          c: {
+            name: "ink pad, then stamp",
+            recipe: "a soft tap on the ink pad (−8 dB), then the stamp 220 ms later",
+            play: (t) => stamp({ t, inkPad: true }),
+          },
+        },
+        error: {
+          name: "Day full or error",
+          trigger: "The cart does not fit the day, or an action fails. Gentle, never an alarm.",
+          a: {
+            name: "bayan, pitch falls",
+            recipe: "the heel lifts off the bayan: down 400 cents in 220 ms, with a closed ‘te’",
+            play: (t) => {
+              bayan({ t, gain: 0.6, bend: FALL })
+              dayan("te", sa(), { t, gain: 0.3 })
+            },
+          },
+          b: {
+            name: "bayan falls, with ‘ka’",
+            recipe: "the same falling bayan, with a closed slap of the left hand",
+            play: (t) => {
+              bayan({ t, gain: 0.6, bend: FALL })
+              bayanKa({ t, gain: 0.4 })
+            },
+          },
+          c: {
+            name: "wooden knock-knock",
+            recipe: "two dull knocks on a wooden counter, the second one lower",
+            play: (t) => {
+              knock({ t, f: 330 })
+              knock({ t: t + 0.12, f: 262 })
+            },
+          },
+        },
+      }
+
+      const SCENARIO = [
+        [0, "add", "A buyer adds packs (+). The pitch follows the quantity."],
+        [0.85, "placed", "The buyer places the order."],
+        [1.9, "neworder", "The order reaches the seller's desk."],
+        [3.4, "record", "A WhatsApp voice order: the seller records it. Silence while the mic is open."],
+        [4.55, "waiting", "The app reads the voice note."],
+        [5.6, "fields", "The fields fill, one note for each field."],
+        [6.05, "done", "All fields settle."],
+        [6.7, "saved", "Order saved."],
+        [7.9, "stamp", "The seller stamps PAID."],
+        [8.75, "error", "A day is full."],
+      ]
+
+      let ctx, master, dry, phone, reverb, noise, origin
+      let rehearsing = false
+      const active = new Set()
+      const cache = new Map()
+      let timers = []
+
+      function ac() {
+        if (!ctx) {
+          ctx = new AudioContext({ latencyHint: "interactive" })
+          master = new GainNode(ctx, { gain: settings.volume })
+          const limiter = new DynamicsCompressorNode(ctx, { threshold: -12, knee: 6, ratio: 8, attack: 0.002, release: 0.15 })
+          dry = new GainNode(ctx, { gain: settings.speaker ? 0 : 1 })
+          phone = new GainNode(ctx, { gain: settings.speaker ? 1 : 0 })
+          const mono = new GainNode(ctx, { channelCount: 1, channelCountMode: "explicit", channelInterpretation: "speakers" })
+          const cut = new BiquadFilterNode(ctx, { type: "highpass", frequency: 350, Q: 0.8 })
+          const cut2 = new BiquadFilterNode(ctx, { type: "highpass", frequency: 350, Q: 0.6 })
+          const presence = new BiquadFilterNode(ctx, { type: "peaking", frequency: 2500, Q: 1, gain: 4 })
+          const top = new BiquadFilterNode(ctx, { type: "lowpass", frequency: 9000, Q: 0.7 })
+          master.connect(dry).connect(limiter)
+          master.connect(mono).connect(cut).connect(cut2).connect(presence).connect(top).connect(phone).connect(limiter)
+          limiter.connect(ctx.destination)
+          reverb = new ConvolverNode(ctx, { buffer: roomOf(ctx) })
+          reverb.connect(new GainNode(ctx, { gain: 0.5 })).connect(master)
+          noise = noiseOf(ctx)
+        }
+        if (ctx.state !== "running") ctx.resume()
+        return ctx
+      }
+
+      const at = (t) => (origin ?? ctx.currentTime + 0.012) + t
+
+      function out(pan = 0, wet = 0.12) {
+        const panner = new StereoPannerNode(ctx, { pan: Math.max(-1, Math.min(1, pan)) })
+        panner.connect(master)
+        if (wet > 0) panner.connect(new GainNode(ctx, { gain: wet })).connect(reverb)
+        return panner
+      }
+
+      function track(sources, nodes) {
+        let left = sources.length
+        for (const source of sources) {
+          active.add(source)
+          source.onended = () => {
+            active.delete(source)
+            if (--left === 0) for (const node of nodes) node.disconnect()
+          }
+        }
+      }
+
+      function playBuffer(buffer, { t = 0, gain = 1, rate = 1, pan = 0, wet = 0.12, lowpass, peak } = {}) {
+        if (rehearsing) return
+        const t0 = at(t)
+        const source = new AudioBufferSourceNode(ctx, { buffer, playbackRate: rate })
+        const level = new GainNode(ctx, { gain })
+        const bus = out(pan, wet)
+        let head = source
+        if (peak) head = head.connect(new BiquadFilterNode(ctx, { type: "peaking", frequency: peak[0], Q: 1, gain: peak[1] }))
+        if (lowpass) head = head.connect(new BiquadFilterNode(ctx, { type: "lowpass", frequency: lowpass, Q: 0.7 }))
+        head.connect(level).connect(bus)
+        source.start(t0)
+        track([source], [level, bus])
+      }
+
+      function noiseHit({ t = 0, f = 3000, q = 2, type = "bandpass", d = 0.006, gain = 0.2, pan = 0, wet = 0.04 }) {
+        if (rehearsing) return
+        const t0 = at(t)
+        const source = new AudioBufferSourceNode(ctx, { buffer: noise })
+        const filter = new BiquadFilterNode(ctx, { type, frequency: f, Q: q })
+        const level = new GainNode(ctx, { gain: 0 })
+        level.gain.setValueAtTime(0, t0)
+        level.gain.linearRampToValueAtTime(gain, t0 + 0.001)
+        level.gain.exponentialRampToValueAtTime(1e-4, t0 + 0.001 + d)
+        const bus = out(pan, wet)
+        source.connect(filter).connect(level).connect(bus)
+        source.start(t0, Math.random() * 1.5)
+        source.stop(t0 + d + 0.05)
+        track([source], [filter, level, bus])
+      }
+
+      function tone({ t = 0, f, to, glide, a = 0.002, d = 0.1, gain = 0.2, pan = 0, wet = 0.08 }) {
+        if (rehearsing) return
+        const t0 = at(t)
+        const oscillator = new OscillatorNode(ctx, { frequency: f })
+        oscillator.frequency.setValueAtTime(f, t0)
+        if (to) oscillator.frequency.exponentialRampToValueAtTime(to, t0 + (glide ?? a + d))
+        const level = new GainNode(ctx, { gain: 0 })
+        level.gain.setValueAtTime(0, t0)
+        level.gain.linearRampToValueAtTime(gain, t0 + a)
+        level.gain.exponentialRampToValueAtTime(1e-4, t0 + a + d)
+        const bus = out(pan, wet)
+        oscillator.connect(level).connect(bus)
+        oscillator.start(t0)
+        oscillator.stop(t0 + a + d + 0.05)
+        track([oscillator], [level, bus])
+      }
+
+      function cached(key, make) {
+        if (!cache.has(key)) cache.set(key, make())
+        return cache.get(key)
+      }
+
+      function render(seconds, fill) {
+        const c = ac()
+        const buffer = c.createBuffer(1, Math.ceil(seconds * c.sampleRate), c.sampleRate)
+        const data = buffer.getChannelData(0)
+        fill(data, c.sampleRate)
+        let peak = 0
+        for (let i = 0; i < data.length; i++) peak = Math.max(peak, Math.abs(data[i]))
+        if (peak > 0) for (let i = 0; i < data.length; i++) data[i] *= 0.9 / peak
+        const fade = Math.min(data.length, Math.floor(c.sampleRate * 0.03))
+        for (let i = 0; i < fade; i++) data[data.length - 1 - i] *= i / fade
+        return buffer
+      }
+
+      /** Decaying sine modes. `t80` is each mode's time to fall 80 dB. `drop` starts the pitch (1 + drop) high, as a struck membrane does. `bend` glides every mode by cents. */
+      function modes({ partials, seconds = 1.2, attack = 0.0015, drop = 0, dropTime = 0.01, bend, drive = 0 }) {
+        return render(seconds, (data, sampleRate) => {
+          for (const { f, a, t80 } of partials) {
+            if (f >= sampleRate * 0.45) continue
+            const decay = Math.exp(-9.21 / (t80 * sampleRate))
+            let level = a
+            let phase = 0
+            for (let i = 0; i < data.length && level > 1e-5; i++) {
+              const time = i / sampleRate
+              let ratio = 1 + drop * Math.exp(-time / dropTime)
+              if (bend) {
+                const progress = Math.min(1, Math.max(0, (time - bend.delay) / bend.time))
+                ratio *= 2 ** ((bend.from + (bend.to - bend.from) * (1 - (1 - progress) ** 2)) / 1200)
+              }
+              phase += (2 * Math.PI * f * ratio) / sampleRate
+              data[i] += level * Math.sin(phase)
+              level *= decay
+            }
+          }
+          if (drive) for (let i = 0; i < data.length; i++) data[i] = Math.tanh(data[i] * drive)
+          const ramp = Math.max(1, Math.floor(sampleRate * attack))
+          for (let i = 0; i < ramp && i < data.length; i++) data[i] *= i / ramp
+        })
+      }
+
+      function addMode(data, sampleRate, start, f, level, t80) {
+        if (f >= sampleRate * 0.45) return
+        const decay = Math.exp(-9.21 / (t80 * sampleRate))
+        const step = (2 * Math.PI * f) / sampleRate
+        let phase = 0
+        for (let i = start; i < data.length && level > 1e-5; i++) {
+          phase += step
+          data[i] += level * Math.sin(phase)
+          level *= decay
+        }
+      }
+
+      /** Filtered noise with an 80 dB decay of `t80`, added into `data` (an RBJ biquad). */
+      function burst(data, sampleRate, start, { f, q = 1, type = "bandpass", t80, level = 1 }) {
+        const w0 = (2 * Math.PI * f) / sampleRate
+        const alpha = Math.sin(w0) / (2 * q)
+        const cos = Math.cos(w0)
+        const [b0, b1, b2] = type === "lowpass" ? [(1 - cos) / 2, 1 - cos, (1 - cos) / 2] : [alpha, 0, -alpha]
+        const [a0, a1, a2] = [1 + alpha, -2 * cos, 1 - alpha]
+        const decay = Math.exp(-9.21 / (t80 * sampleRate))
+        const end = Math.min(data.length, start + Math.ceil((t80 + 0.02) * sampleRate))
+        let envelope = level
+        let x1 = 0
+        let x2 = 0
+        let y1 = 0
+        let y2 = 0
+        for (let i = start; i < end; i++) {
+          const x = (Math.random() * 2 - 1) * envelope
+          const y = (b0 * x + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2) / a0
+          x2 = x1
+          x1 = x
+          y2 = y1
+          y1 = y
+          data[i] += y
+          envelope *= decay
+        }
+      }
+
+      /** A hammered string (Karplus-Strong), excited by a 0.4 ms half-sine like a light mallet. Returns the buffer and the playback rate that tunes it to `f`. */
+      function string({ f, seconds = 0.9, t60 = 2.5, pulse = 0.0004, position = 1 / 8 }) {
+        const sampleRate = ac().sampleRate
+        const length = Math.max(4, Math.floor(sampleRate / f - 0.5))
+        const rate = f / (sampleRate / (length + 0.5))
+        const buffer = render(seconds, (data) => {
+          const line = new Float32Array(length)
+          const width = Math.max(2, Math.min(length, Math.round(pulse * sampleRate)))
+          for (let i = 0; i < width; i++) line[i] = Math.sin((Math.PI * i) / width) + (Math.random() * 2 - 1) * 0.1
+          const gap = Math.max(1, Math.round(position * length))
+          for (let i = length - 1; i >= gap; i--) line[i] -= line[i - gap]
+          let mean = 0
+          for (let i = 0; i < length; i++) mean += line[i] / length
+          for (let i = 0; i < length; i++) line[i] -= mean
+          const loss = 10 ** (-3 / (f * t60))
+          let previous = 0
+          let index = 0
+          for (let i = 0; i < data.length; i++) {
+            const current = line[index]
+            line[index] = loss * 0.5 * (current + previous)
+            previous = current
+            data[i] = current
+            index = index + 1 === length ? 0 : index + 1
+          }
+        })
+        return { buffer, rate }
+      }
+
+      const DAYAN = {
+        na: { gains: [0.08, 1, 0.6, 0.4, 0.25], t80: [0.08, 0.5, 0.4, 0.3, 0.25], hit: { f: 3200, q: 1.2, d: 0.006, share: 0.35 } },
+        tin: { gains: [0.1, 1, 0.4, 0.15, 0.08], t80: [0.1, 0.9, 0.6, 0.4, 0.3], hit: { f: 2000, q: 1, d: 0.005, share: 0.15 } },
+        te: { gains: [0.6, 0.6, 0.4, 0.3, 0.2], t80: [0.05, 0.05, 0.05, 0.05, 0.05], hit: { f: 900, q: 1.5, d: 0.012, share: 0.6 } },
+      }
+      const DETUNE = [1, 1.002, 0.998, 1.003, 0.997]
+
+      /** A stroke on the dayan, the right-hand drum. The syahi puts its modes on harmonics 1 to 5. */
+      function dayan(stroke, f, { t = 0, gain = 0.5, pan = 0 } = {}) {
+        const spec = DAYAN[stroke]
+        const buffer = cached(`dayan:${stroke}:${f.toFixed(2)}`, () =>
+          modes({ partials: spec.gains.map((a, i) => ({ f: f * (i + 1) * DETUNE[i], a, t80: spec.t80[i] })), seconds: 1, drop: 0.015 }),
+        )
+        playBuffer(buffer, { t, gain, pan, wet: 0.1 })
+        const { share, ...hit } = spec.hit
+        noiseHit({ t, ...hit, gain: gain * share, pan })
+      }
+
+      /** The open ‘ge’ on the bayan, a fifth below the dayan. The heel of the palm bends its pitch. */
+      function bayan({ t = 0, gain = 0.5, pan = 0, bend = RISE } = {}) {
+        const f = sa() / 1.5
+        const buffer = cached(`bayan:${f.toFixed(2)}:${JSON.stringify(bend)}`, () =>
+          modes({
+            partials: [0.3, 1, 0.6, 0.3].map((a, i) => ({ f: f * (i + 1) * [1, 1.004, 0.997, 1.006][i], a, t80: 0.7 })),
+            seconds: 1,
+            attack: 0.002,
+            drop: 0.01,
+            bend,
+            drive: 1.3,
+          }),
+        )
+        playBuffer(buffer, { t, gain, pan, wet: 0.1 })
+        noiseHit({ t, f: 500, type: "lowpass", q: 0.7, d: 0.015, gain: gain * 0.3, pan })
+      }
+
+      function bayanKa({ t = 0, gain = 0.45, pan = 0 } = {}) {
+        noiseHit({ t, f: 350, q: 1.5, d: 0.035, gain: gain * 1.4, pan })
+        noiseHit({ t, f: 1200, q: 1.5, d: 0.025, gain: gain * 0.6, pan })
+      }
+
+      const COURSE = [-2, -0.7, 0.6, 1.9]
+
+      /** Santoor: four strings for each note, struck by one light mallet. One string loses energy three times faster, which gives the two-stage decay. */
+      function santoor(f, { t = 0, gain = 0.45, pan = 0 } = {}) {
+        const ring = cached(`santoor:${f.toFixed(2)}`, () => string({ f, t60: 2.5 }))
+        const short = cached(`santoor-short:${f.toFixed(2)}`, () => string({ f, t60: 0.83 }))
+        COURSE.forEach((cents, i) => {
+          const { buffer, rate } = i === 2 ? short : ring
+          playBuffer(buffer, {
+            t: t + i * 0.0007,
+            rate: rate * 2 ** (cents / 1200),
+            gain: gain * 0.32,
+            pan: pan + (i - 1.5) * 0.06,
+            wet: 0.12,
+            peak: [1800, 4],
+            lowpass: 6000,
+          })
+        })
+        noiseHit({ t, f: 4800, q: 1.5, d: 0.003, gain: gain * 0.2, pan })
+      }
+
+      function tremolo(t, from, to, { gain = 0.4 } = {}) {
+        const strokes = [from, from, to, to, to]
+        strokes.forEach((f, i) => santoor(f, { t: t + i * 0.08, gain: gain * (i % 2 ? 0.75 : 1) * (i === strokes.length - 1 ? 1.15 : 1) }))
+      }
+
+      function softTremolo(t) {
+        for (let i = 0; i < 8; i++) santoor(sa(1), { t: t + i * 0.09, gain: 0.22 * (1 - i / 10) * (i % 2 ? 0.8 : 1) })
+      }
+
+      const BOWL = [1, 2.83, 5.42, 8.77, 12.9]
+      const BOWL_GAINS = [1, 0.5, 0.3, 0.15, 0.08]
+
+      /** A steel katori or tumbler: bowl and glass modes, each split into two partials 2 Hz apart. A held clink is damped by the hand. */
+      function bowl(kind, f, { t = 0, gain = 0.4, pan = 0, held = false } = {}) {
+        const buffer = cached(`${kind}:${f.toFixed(2)}:${held}`, () =>
+          render(held ? 0.6 : 1.7, (data, sampleRate) => {
+            BOWL.forEach((ratio, n) => {
+              const ring = Math.min(held ? 0.35 : Infinity, 1.5 / (n + 1))
+              addMode(data, sampleRate, 0, f * ratio, BOWL_GAINS[n] * 0.6, ring)
+              addMode(data, sampleRate, 0, f * ratio + 2, BOWL_GAINS[n] * 0.4, ring)
+            })
+            burst(data, sampleRate, 0, { f: 5000, q: 0.7, t80: 0.0015, level: 0.6 })
+          }),
+        )
+        playBuffer(buffer, { t, gain, pan, wet: held ? 0.06 : 0.14 })
+      }
+      const katori = (f, options) => bowl("katori", f, options)
+      const tumbler = (f, options) => bowl("tumbler", f, { held: true, ...options })
+
+      /** A bicycle bell: a thumb lever spins two discs that strike two domes, about 30 times a second. */
+      function cycleBell(f, { t = 0, gain = 0.45, pan = 0, bursts = 2, strikes = 11 } = {}) {
+        const buffer = cached(`cycle:${f.toFixed(2)}:${strikes}`, () =>
+          render(strikes / 30 + 0.6, (data, sampleRate) => {
+            const domes = [
+              [1, 1, 0.5],
+              [2.83, 0.4, 0.3],
+              [5.42, 0.15, 0.18],
+              [1.06, 0.8, 0.5],
+              [3, 0.3, 0.3],
+              [5.75, 0.12, 0.18],
+            ]
+            let time = 0
+            for (let s = 0; s < strikes; s++) {
+              const start = Math.floor(time * sampleRate)
+              const strength = (0.75 + Math.random() * 0.25) * (s < strikes - 2 ? 1 : 0.7)
+              for (const [ratio, share, t80] of domes) addMode(data, sampleRate, start, f * ratio, share * strength, t80)
+              burst(data, sampleRate, start, { f: 6000, q: 0.8, t80: 0.002, level: 0.5 * strength })
+              time += (1 / 30) * (1 + (Math.random() * 2 - 1) * 0.15)
+            }
+          }),
+        )
+        for (let b = 0; b < bursts; b++) playBuffer(buffer, { t: t + b * 0.45, gain: gain * (b ? 0.85 : 1), pan, wet: 0.16 })
+      }
+
+      /** A slip torn from a bill book: perforation clicks that speed up, then the paper flap. */
+      function slipTear({ t = 0, gain = 0.45, pan = 0 } = {}) {
+        const tears = [0, 1, 2].map((variant) =>
+          cached(`tear:${variant}`, () =>
+            render(0.36, (data, sampleRate) => {
+              let time = 0
+              while (time < 0.25) {
+                burst(data, sampleRate, Math.floor(time * sampleRate), { f: 2000 + Math.random() * 4000, q: 1.5, t80: 0.002, level: 0.5 + Math.random() * 0.5 })
+                time += (1 / (80 + 170 * (time / 0.25))) * (1 + (Math.random() * 2 - 1) * 0.4)
+              }
+              burst(data, sampleRate, Math.floor(0.27 * sampleRate), { f: 900, type: "lowpass", q: 0.7, t80: 0.03, level: 0.6 })
+            }),
+          ),
+        )
+        playBuffer(tears[Math.floor(Math.random() * tears.length)], { t, gain, pan, wet: 0.06 })
+      }
+
+      /** A rubber stamp: two body bands, a short smack, and a quiet lift. With `inkPad`, a soft tap on the pad comes first. */
+      function stamp({ t = 0, gain = 0.55, pan = 0, inkPad = false } = {}) {
+        const buffer = cached(`stamp:${inkPad}`, () =>
+          render(inkPad ? 0.55 : 0.32, (data, sampleRate) => {
+            const hit = (start, level) => {
+              burst(data, sampleRate, start, { f: 650, q: 8, t80: 0.05, level: level * 4 })
+              burst(data, sampleRate, start, { f: 1400, q: 6, t80: 0.03, level: level * 2.5 })
+              burst(data, sampleRate, start, { f: 1000, type: "lowpass", q: 0.7, t80: 0.012, level: level * 0.5 })
+              burst(data, sampleRate, start + Math.floor(0.11 * sampleRate), { f: 3200, q: 2, t80: 0.004, level: level * 0.15 })
+            }
+            if (inkPad) {
+              hit(0, 0.4)
+              hit(Math.floor(0.22 * sampleRate), 1)
+            } else hit(0, 1)
+          }),
+        )
+        playBuffer(buffer, { t, gain, pan, wet: 0.05 })
+      }
+
+      function breath(f, { t = 0, seconds = 0.9, gain = 0.35, pan = 0 } = {}) {
+        if (rehearsing) return
+        const t0 = at(t)
+        const end = t0 + seconds
+        const bus = out(pan, 0.25)
+        const air = new AudioBufferSourceNode(ctx, { buffer: noise, loop: true })
+        const band = new BiquadFilterNode(ctx, { type: "bandpass", frequency: 2500, Q: 1.2 })
+        const airLevel = new GainNode(ctx, { gain: 0 })
+        const puff = new BiquadFilterNode(ctx, { type: "bandpass", frequency: 1800, Q: 0.8 })
+        const puffLevel = new GainNode(ctx, { gain: 0 })
+        const flute = new OscillatorNode(ctx, { frequency: f, periodicWave: new PeriodicWave(ctx, { real: [0, 0, 0, 0], imag: [0, 1, 0.2, 0.08] }) })
+        const vibrato = new OscillatorNode(ctx, { frequency: 5.5 })
+        const depth = new GainNode(ctx, { gain: 0 })
+        const fluteLevel = new GainNode(ctx, { gain: 0 })
+        depth.gain.setValueAtTime(0, t0 + 0.15)
+        depth.gain.linearRampToValueAtTime(15, t0 + 0.35)
+        vibrato.connect(depth).connect(flute.detune)
+        swell(airLevel.gain, t0, 0.12, seconds, gain)
+        puffLevel.gain.setValueAtTime(0, t0)
+        puffLevel.gain.linearRampToValueAtTime(gain * 0.9, t0 + 0.005)
+        puffLevel.gain.exponentialRampToValueAtTime(1e-4, t0 + 0.04)
+        swell(fluteLevel.gain, t0 + 0.02, 0.06, seconds - 0.02, gain * 0.13)
+        air.connect(band).connect(airLevel).connect(bus)
+        air.connect(puff).connect(puffLevel).connect(bus)
+        flute.connect(fluteLevel).connect(bus)
+        air.start(t0, Math.random())
+        flute.start(t0)
+        vibrato.start(t0)
+        for (const source of [air, flute, vibrato]) source.stop(end + 0.05)
+        track([air, flute, vibrato], [band, airLevel, puff, puffLevel, depth, fluteLevel, bus])
+      }
+
+      function swell(param, t0, attack, total, peak) {
+        param.setValueAtTime(0, t0)
+        param.linearRampToValueAtTime(peak, t0 + attack)
+        param.linearRampToValueAtTime(peak * 0.75, t0 + total * 0.6)
+        param.exponentialRampToValueAtTime(1e-4, t0 + total)
+      }
+
+      function paper({ t = 0, gain = 0.4, pan = 0 } = {}) {
+        const buffer = cached("paper", () =>
+          render(1.1, (data) => {
+            let envelope = 0
+            let target = 0
+            let previous = 0
+            for (let i = 0; i < data.length; i++) {
+              if (Math.random() < 0.0016) target = Math.random()
+              target *= 0.9993
+              envelope += (target - envelope) * 0.02
+              const white = Math.random() * 2 - 1
+              data[i] = (white - previous) * envelope * Math.sin((Math.PI * i) / data.length)
+              previous = white
+            }
+          }),
+        )
+        playBuffer(buffer, { t, gain, pan, wet: 0.1 })
+      }
+
+      function knock({ t = 0, gain = 0.5, pan = 0, f = 330 } = {}) {
+        tone({ t, f, to: f * 0.8, glide: 0.05, d: 0.06, gain: gain * 0.6, pan, wet: 0.06 })
+        tone({ t, f: f * 2.4, d: 0.02, gain: gain * 0.15, pan })
+        noiseHit({ t, f: 800, type: "lowpass", q: 0.7, d: 0.02, gain: gain * 0.4, pan })
+      }
+
+      /** A plain sine on Sa: how a settled state ends. */
+      function settle(f, { t = 0, gain = 0.2, pan = 0 } = {}) {
+        tone({ t, f, a: 0.04, d: 0.5, gain, pan, wet: 0.2 })
+      }
+
+      /** ‘te-dha’ three times; the last ‘dha’ is sam, where the cycle lands. */
+      function tihai(t) {
+        const levels = [0.6, 0.75, 1]
+        for (let g = 0; g < 3; g++) {
+          const start = t + g * 0.18
+          const level = levels[g] * 0.62
+          const last = g === 2
+          dayan("te", sa(), { t: start, gain: level * 0.8 })
+          dayan("na", sa(), { t: start + 0.06, gain: level })
+          bayan({ t: start + 0.06, gain: level * (last ? 1 : 0.7), bend: last ? RISE : null })
+        }
+        settle(sa(1), { t: t + 0.45, gain: 0.22 })
+      }
+
+      function taan(t) {
+        notes([0, 1, 2, 3, 4, 5], 1, 0.045, (f, d, i) => santoor(f, { t: t + d, gain: 0.26 + i * 0.03 }))
+        const sam = t + 0.3
+        dayan("na", sa(), { t: sam, gain: 0.55 })
+        bayan({ t: sam, gain: 0.55 })
+        settle(sa(1), { t: sam + 0.03 })
+      }
+
+      function noiseOf(c) {
+        const buffer = c.createBuffer(1, c.sampleRate * 2, c.sampleRate)
+        const data = buffer.getChannelData(0)
+        for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1
+        return buffer
+      }
+
+      /** A small wooden room: decaying stereo noise whose highs die faster than its lows. */
+      function roomOf(c) {
+        const length = Math.floor(c.sampleRate * 1.1)
+        const buffer = c.createBuffer(2, length, c.sampleRate)
+        for (let channel = 0; channel < 2; channel++) {
+          const data = buffer.getChannelData(channel)
+          let smooth = 0
+          for (let i = 0; i < length; i++) {
+            const progress = i / length
+            smooth += (Math.random() * 2 - 1 - smooth) * (0.6 - 0.45 * progress)
+            data[i] = smooth * (1 - progress) ** 2.5
+          }
+        }
+        return buffer
+      }
+
+      function stopAll() {
+        for (const timer of timers) clearTimeout(timer)
+        timers = []
+        for (const source of active) {
+          try {
+            source.stop()
+          } catch {}
+        }
+        active.clear()
+        $("#now").textContent = "—"
+      }
+
+      /** Renders every buffer the plays need, then schedules them on one clock, so the first play keeps its timing. */
+      function schedule(plays, lead) {
+        ac()
+        rehearsing = true
+        try {
+          for (const [time, play] of plays) play(time)
+        } finally {
+          rehearsing = false
+        }
+        origin = ctx.currentTime + lead
+        try {
+          for (const [time, play] of plays) play(time)
+        } finally {
+          origin = undefined
+        }
+      }
+
+      const variantFor = (kit, id) => (kit === "mix" ? (selection[id] ?? "a") : kit)
+
+      function flash(id, kit) {
+        const cell = document.querySelector(`.event[data-id="${id}"] .variant[data-kit="${kit}"]`)
+        if (!cell) return
+        cell.classList.add("is-playing")
+        setTimeout(() => cell.classList.remove("is-playing"), 220)
+      }
+
+      function playEvent(id, kit) {
+        schedule([[0, EVENTS[id][kit].play]], 0.03)
+        flash(id, kit)
+      }
+
+      function runScenario(kit) {
+        stopAll()
+        const lead = 0.15
+        schedule(
+          SCENARIO.map(([time, id]) => [time, EVENTS[id][variantFor(kit, id)].play]),
+          lead,
+        )
+        for (const [time, id, say] of SCENARIO)
+          timers.push(
+            setTimeout(
+              () => {
+                $("#now").textContent = say
+                flash(id, variantFor(kit, id))
+              },
+              (lead + time) * 1000,
+            ),
+          )
+        timers.push(setTimeout(() => ($("#now").textContent = "—"), (lead + 9.9) * 1000))
+      }
+
+      function paintSelection() {
+        const ids = Object.keys(EVENTS)
+        for (const id of ids) for (const input of document.querySelectorAll(`input[name="pick-${id}"]`)) input.checked = selection[id] === input.value
+        $("#count").textContent = Object.keys(selection).length
+        $("#total").textContent = ids.length
+        $("#json").textContent = JSON.stringify({ raag: settings.raag, sa: settings.sa, selection }, null, 2)
+        save()
+      }
+
+      const events = $("#events")
+      for (const [id, event] of Object.entries(EVENTS)) {
+        const row = document.createElement("div")
+        row.className = "event"
+        row.dataset.id = id
+        row.innerHTML =
+          `<div class="head"><b>${event.name}</b><p>${event.trigger}</p></div>` +
+          KITS.map(
+            (kit) => `<div class="variant" data-kit="${kit}">
+              <label><input type="radio" name="pick-${id}" value="${kit}" aria-label="Select kit ${kit.toUpperCase()} for ${event.name}" /></label>
+              <button type="button"><span class="kit">Kit ${kit.toUpperCase()}</span><span>&#x25B6;&#xFE0E; ${event[kit].name}</span><small>${event[kit].recipe}</small></button>
+            </div>`,
+          ).join("")
+        for (const kit of KITS) {
+          const cell = row.querySelector(`.variant[data-kit="${kit}"]`)
+          cell.querySelector("button").addEventListener("click", () => playEvent(id, kit))
+          cell.querySelector("input").addEventListener("change", () => {
+            selection[id] = kit
+            paintSelection()
+            playEvent(id, kit)
+          })
+        }
+        events.append(row)
+      }
+
+      $("#steps").innerHTML = SCENARIO.map(([time, , say]) => `<li>${time.toFixed(2)} s · ${say}</li>`).join("")
+      for (const button of document.querySelectorAll(".kits button")) button.addEventListener("click", () => runScenario(button.dataset.kit))
+      $("#stop").addEventListener("click", stopAll)
+
+      const volume = $("#volume")
+      const showVolume = () => ($("#volume-out").textContent = settings.volume.toFixed(2))
+      volume.value = settings.volume
+      showVolume()
+      volume.addEventListener("input", () => {
+        settings.volume = Number(volume.value)
+        showVolume()
+        if (master) master.gain.setTargetAtTime(settings.volume, ctx.currentTime, 0.02)
+        save()
+      })
+
+      const speaker = $("#speaker")
+      speaker.checked = settings.speaker
+      speaker.addEventListener("change", () => {
+        settings.speaker = speaker.checked
+        if (ctx) {
+          dry.gain.setTargetAtTime(settings.speaker ? 0 : 1, ctx.currentTime, 0.01)
+          phone.gain.setTargetAtTime(settings.speaker ? 1 : 0, ctx.currentTime, 0.01)
+        }
+        save()
+      })
+
+      for (const input of document.querySelectorAll('input[name="raag"]')) {
+        input.checked = input.value === settings.raag
+        input.addEventListener("change", () => {
+          settings.raag = input.value
+          paintSelection()
+        })
+      }
+      const saSelect = $("#sa")
+      saSelect.value = settings.sa
+      saSelect.addEventListener("change", () => {
+        settings.sa = saSelect.value
+        paintSelection()
+      })
+
+      $("#copy").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText($("#json").textContent)
+          $("#copy").textContent = "Copied"
+        } catch {
+          getSelection().selectAllChildren($("#json"))
+          $("#copy").textContent = "Selected: press Ctrl+C"
+        }
+        setTimeout(() => ($("#copy").textContent = "Copy selection"), 1600)
+      })
+      $("#clear").addEventListener("click", () => {
+        selection = {}
+        paintSelection()
+      })
+
+      paintSelection()
+    </script>
+  </body>
+</html>

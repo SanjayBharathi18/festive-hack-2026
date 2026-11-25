@@ -1,0 +1,57 @@
+.gauge {
+  p {
+    margin: 0;
+  }
+
+  .gauge-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space);
+  }
+
+  .segments {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    gap: calc(var(--space) / 4);
+    height: calc(var(--space) * 2.75);
+    margin: var(--space) 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      border: var(--hair) solid var(--brass);
+      border-radius: 1px;
+    }
+
+    [data-state="booked"] {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+
+    [data-state="open"] {
+      border-color: var(--leaf);
+      background: var(--leaf);
+    }
+
+    [data-state="draft"] {
+      border: var(--rule) dashed var(--ink);
+    }
+  }
+
+  .gauge-foot {
+    color: var(--ink-2);
+  }
+}
+
+.readout {
+  font-size: var(--step-3);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.full {
+  color: var(--kumkum);
+  font-weight: 700;
+}

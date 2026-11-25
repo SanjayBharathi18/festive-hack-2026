@@ -1,0 +1,5 @@
+# The 00- prefix makes kubectl apply -f deploy/ create the namespace first.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app

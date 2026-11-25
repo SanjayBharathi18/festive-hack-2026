@@ -1,0 +1,161 @@
+<dialog class="contact-dialog" aria-labelledby="contact-title">
+  <form class="contact-form" method="dialog" novalidate>
+    <header class="contact-head">
+      <h2 id="contact-title">
+        <span data-text="quotes.dialog.title">Contact seller</span>:
+        <span class="contact-store"></span>
+      </h2>
+      <button
+        class="btn-plain contact-close"
+        type="button"
+        value="close"
+        data-text-label="common.action.close"
+        aria-label="Close"
+      >
+        <svg class="icon" aria-hidden="true">
+          <use href="/icons.svg#close" />
+        </svg>
+      </button>
+    </header>
+    <p class="hint" data-text="quotes.dialog.lead">
+      Nothing is ordered or paid here. The seller gets your request, and you
+      agree the price and the deal on WhatsApp.
+    </p>
+    <ul class="contact-lines"></ul>
+
+    <div class="contact-ask">
+      <fieldset class="contact-bulk" hidden>
+        <legend class="visually-hidden" data-text="quotes.dialog.bulk_legend">
+          When and where
+        </legend>
+        <div class="field">
+          <label data-text="quotes.dialog.need_by">Need by (optional)</label>
+          <input class="num contact-need-by" type="date" name="need_by" />
+        </div>
+        <div class="field">
+          <label data-text="quotes.dialog.place"
+            >Delivery place (optional)</label
+          >
+          <input
+            class="contact-place"
+            name="place"
+            maxlength="120"
+            autocomplete="street-address"
+          />
+        </div>
+      </fieldset>
+      <div class="field">
+        <label data-text="quotes.dialog.note">Note (optional)</label>
+        <textarea class="contact-note" name="note" maxlength="500"></textarea>
+      </div>
+      <div class="field">
+        <label data-text="quotes.dialog.name">Your name</label>
+        <input
+          class="contact-name"
+          name="buyer_name"
+          maxlength="80"
+          autocomplete="name"
+          required
+        />
+      </div>
+      <div class="field">
+        <label data-text="quotes.dialog.phone">Your WhatsApp number</label>
+        <p class="field-hint" data-text="quotes.dialog.phone_hint">
+          We send your code here. The seller sees this number with your request.
+        </p>
+        <input
+          class="num contact-phone"
+          name="phone"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          maxlength="20"
+          required
+        />
+      </div>
+      <p class="contact-consent">
+        <span class="contact-consent-words"></span>
+        <a
+          href="/privacy"
+          target="_blank"
+          rel="noopener"
+          data-text="quotes.dialog.privacy"
+          >Privacy</a
+        >
+      </p>
+      <div class="contact-code" hidden>
+        <p class="code-line">
+          <span data-text="quotes.dialog.code_label">Your code</span>
+          <span class="num code-value"></span>
+          <span class="badge" data-text="common.badge.prototype"
+            >Prototype</span
+          >
+        </p>
+        <p class="field-hint" data-text="quotes.dialog.code_note">
+          This is a prototype, so the code shows here. In the full app, it comes
+          on WhatsApp.
+        </p>
+        <div class="field">
+          <label data-text="quotes.dialog.code">Code</label>
+          <input
+            class="num contact-code-input"
+            name="code"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            maxlength="7"
+          />
+        </div>
+        <button
+          class="link-btn contact-new-code"
+          type="button"
+          data-text="quotes.dialog.new_code"
+        >
+          Get a new code
+        </button>
+      </div>
+      <p class="error contact-error" role="alert" hidden></p>
+      <p class="contact-submit">
+        <button
+          class="btn-primary contact-go"
+          type="submit"
+          value="go"
+          data-text="quotes.dialog.send_code"
+        >
+          Get the code
+        </button>
+        <span class="wait contact-wait"
+          ><span role="status"></span><span class="num"></span
+        ></span>
+      </p>
+    </div>
+
+    <div class="contact-done" hidden>
+      <p class="done" role="status">
+        <svg class="icon" aria-hidden="true">
+          <use href="/icons.svg#check" />
+        </svg>
+        <span data-text="quotes.dialog.sent">Request sent to the seller.</span>
+      </p>
+      <p class="hint" data-text="quotes.dialog.whatsapp_hint">
+        Send the same summary on WhatsApp too. WhatsApp opens with the message
+        to her number.
+      </p>
+      <p class="contact-submit">
+        <a
+          class="btn-primary contact-whatsapp"
+          target="_blank"
+          rel="noopener"
+          data-text="quotes.dialog.whatsapp"
+          >Send on WhatsApp</a
+        >
+        <button
+          class="btn-plain contact-done-close"
+          type="button"
+          data-text="common.action.close"
+        >
+          Close
+        </button>
+      </p>
+    </div>
+  </form>
+</dialog>

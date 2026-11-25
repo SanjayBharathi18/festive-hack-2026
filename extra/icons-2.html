@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Icons · round 2 · line with one fill</title>
+    <link rel="stylesheet" href="shared.css" />
+    <style>
+      :root[data-ground="white"] {
+        --paper: #ffffff;
+      }
+
+      [data-fill="brass"] {
+        --fill-tone: #eadcc2;
+      }
+
+      [data-fill="steel"] {
+        --fill-tone: #d2d9de;
+      }
+
+      [data-fill="haldi"] {
+        --fill-tone: #f3cf73;
+      }
+
+      [data-fill="white"] {
+        --fill-tone: #ffffff;
+      }
+
+      .icon {
+        width: var(--icon-size, 24px);
+        height: var(--icon-size, 24px);
+        flex: none;
+        overflow: visible;
+      }
+
+      .i-body {
+        fill: var(--fill-tone);
+        stroke: currentColor;
+        stroke-width: 1.75;
+        stroke-linejoin: round;
+      }
+
+      .i-line,
+      .i-cut {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.75;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .i-hole,
+      .i-paper {
+        fill: var(--icon-ground, var(--paper));
+        stroke: currentColor;
+        stroke-width: 1.75;
+        stroke-linejoin: round;
+      }
+
+      .i-fill {
+        fill: var(--fill-tone);
+        stroke: none;
+      }
+
+      .i-dot {
+        fill: currentColor;
+        stroke: none;
+      }
+
+      .picker-3 fieldset + fieldset {
+        margin-top: var(--space);
+      }
+
+      .picker-label {
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        min-width: 4.5em;
+        color: var(--ink-2);
+        font-size: var(--step--1);
+      }
+
+      .compare {
+        border-collapse: collapse;
+
+        th,
+        td {
+          padding: var(--space) calc(var(--space) * 2.5) var(--space) 0;
+          border-top: var(--hair) solid var(--brass);
+          text-align: left;
+          vertical-align: middle;
+        }
+
+        thead th {
+          color: var(--ink-2);
+          font-size: var(--step--1);
+          font-weight: 400;
+        }
+
+        tbody th {
+          font-weight: 400;
+        }
+
+        td {
+          --icon-size: 36px;
+        }
+      }
+
+      .group-title {
+        margin: calc(var(--space) * 3) 0 var(--space);
+        color: var(--ink-2);
+        font-size: var(--step-0);
+        font-weight: 400;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      .set {
+        display: grid;
+        gap: var(--space) calc(var(--space) * 2);
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: var(--space);
+          min-height: 44px;
+        }
+      }
+
+      .set-44 {
+        --icon-size: 44px;
+        grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+
+        li {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      .uses {
+        display: grid;
+        gap: calc(var(--space) * 3);
+        max-width: 440px;
+      }
+
+      .row-cart {
+        display: flex;
+        align-items: center;
+        gap: var(--space);
+        padding: calc(var(--space) * 1.5);
+        border: 2px solid var(--ink);
+        border-radius: var(--radius);
+
+        .grow {
+          flex: 1;
+        }
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .btn-plain[aria-pressed="true"] {
+        background: var(--ink);
+        color: var(--paper);
+        --icon-ground: var(--ink);
+      }
+
+      .ways {
+        display: grid;
+        gap: var(--space);
+        margin: 0;
+        padding: 0;
+        border: 0;
+
+        legend {
+          margin-bottom: var(--space);
+          padding: 0;
+          font-weight: 600;
+        }
+      }
+
+      .way {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: calc(var(--space) * 1.5);
+        min-height: var(--tap);
+        padding: var(--space) calc(var(--space) * 1.5);
+        border: var(--hair) solid var(--ink);
+        border-radius: var(--radius);
+        cursor: pointer;
+
+        input {
+          position: absolute;
+          inset: 0;
+          margin: 0;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        small {
+          display: block;
+          color: var(--ink-2);
+          font-size: var(--step-0);
+        }
+
+        &:has(:checked) {
+          box-shadow: inset 0 0 0 1px var(--ink);
+        }
+
+        &:has(:focus-visible) {
+          outline: 3px solid var(--ink);
+          outline-offset: 3px;
+        }
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space);
+      }
+
+      .done {
+        display: flex;
+        align-items: center;
+        gap: var(--space);
+        margin: 0;
+        color: var(--leaf);
+        font-weight: 600;
+      }
+
+      .notes {
+        max-width: 68ch;
+        margin: 0;
+        padding-left: calc(var(--space) * 2.5);
+
+        li + li {
+          margin-top: var(--space);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="sprite" hidden xmlns="http://www.w3.org/2000/svg">
+      <symbol id="d1-mic" viewBox="0 0 24 24">
+        <rect class="i-body" x="9" y="2.75" width="6" height="11" rx="3" />
+        <path class="i-cut" d="M10.75 7h2.5M10.75 9.75h2.5" />
+        <path class="i-line" d="M5.75 11a6.25 6.25 0 0 0 12.5 0M12 17.25V21M8.75 21h6.5" />
+      </symbol>
+      <symbol id="d1-stop" viewBox="0 0 24 24">
+        <rect class="i-body" x="6" y="6" width="12" height="12" rx="2" />
+      </symbol>
+      <symbol id="d1-plus" viewBox="0 0 24 24">
+        <path class="i-line" d="M12 5v14M5 12h14" />
+      </symbol>
+      <symbol id="d1-minus" viewBox="0 0 24 24">
+        <path class="i-line" d="M5 12h14" />
+      </symbol>
+      <symbol id="d1-cart" viewBox="0 0 24 24">
+        <path class="i-line" d="M8 7.5V6c0-1.4 1.8-2.75 4-2.75s4 1.35 4 2.75v1.5" />
+        <rect class="i-body" x="7.75" y="9" width="8.5" height="12" rx="1.5" />
+        <rect class="i-body" x="6" y="7.5" width="12" height="2" rx="1" />
+        <rect class="i-body" x="6" y="12.75" width="12" height="1.75" rx="0.875" />
+        <rect class="i-body" x="6" y="16.75" width="12" height="1.75" rx="0.875" />
+      </symbol>
+      <symbol id="d1-share" viewBox="0 0 24 24">
+        <path class="i-line" d="M8.65 10.73l6.7-3.96M8.65 13.27l6.7 3.96" />
+        <circle class="i-body" cx="17.5" cy="5.5" r="2.5" />
+        <circle class="i-body" cx="6.5" cy="12" r="2.5" />
+        <circle class="i-body" cx="17.5" cy="18.5" r="2.5" />
+      </symbol>
+      <symbol id="d1-location" viewBox="0 0 24 24">
+        <path class="i-body" d="M12 21.25s-6.25-5.5-6.25-11.25a6.25 6.25 0 0 1 12.5 0c0 5.75-6.25 11.25-6.25 11.25z" />
+        <circle class="i-hole" cx="12" cy="10" r="2.25" />
+      </symbol>
+      <symbol id="d1-message" viewBox="0 0 24 24">
+        <path
+          class="i-body"
+          d="M5.5 4.5h13A1.5 1.5 0 0 1 20 6v9.5a1.5 1.5 0 0 1-1.5 1.5H11l-4.5 3.75V17h-1A1.5 1.5 0 0 1 4 15.5V6a1.5 1.5 0 0 1 1.5-1.5z"
+        />
+        <path class="i-cut" d="M8 9h8M8 12.5h5" />
+      </symbol>
+      <symbol id="d1-check" viewBox="0 0 24 24">
+        <path class="i-line" d="M5 12.5l4.5 4.5L19 7.5" />
+      </symbol>
+      <symbol id="d1-undo" viewBox="0 0 24 24">
+        <path class="i-line" d="M9.5 5.5L5 10l4.5 4.5M5 10h9.5a5 5 0 0 1 0 10H11" />
+      </symbol>
+      <symbol id="d1-close" viewBox="0 0 24 24">
+        <path class="i-line" d="M6.5 6.5l11 11M17.5 6.5l-11 11" />
+      </symbol>
+      <symbol id="d1-search" viewBox="0 0 24 24">
+        <circle class="i-line" cx="10.5" cy="10.5" r="6" />
+        <path class="i-line" d="M15 15l5 5" />
+      </symbol>
+      <symbol id="d1-sweets" viewBox="0 0 24 24">
+        <path class="i-body" d="M12 3.5l8.5 8.5-8.5 8.5L3.5 12z" />
+        <path class="i-cut" d="M12 8.25L15.75 12 12 15.75 8.25 12z" />
+      </symbol>
+      <symbol id="d1-snacks" viewBox="0 0 24 24">
+        <path class="i-body" d="M12 4L3.75 19.5h16.5z" />
+        <path class="i-cut" d="M12 4l2.25 15.5" />
+      </symbol>
+      <symbol id="d1-savouries" viewBox="0 0 24 24">
+        <path class="i-line" d="M10.4 12.8a1.6 1.6 0 0 1 3.2 0a3.2 3.2 0 0 1-6.4 0a4.8 4.8 0 0 1 9.6 0a6.4 6.4 0 0 1-12.8 0a8 8 0 0 1 16 0" />
+      </symbol>
+      <symbol id="d1-meals" viewBox="0 0 24 24">
+        <circle class="i-line" cx="12" cy="12" r="9" />
+        <circle class="i-body" cx="10.2" cy="7.07" r="2" />
+        <circle class="i-body" cx="15.37" cy="7.98" r="2" />
+        <circle class="i-body" cx="17.17" cy="12.91" r="2" />
+        <circle class="i-hole" cx="10.2" cy="7.07" r="0.8" />
+        <circle class="i-hole" cx="15.37" cy="7.98" r="0.8" />
+        <circle class="i-hole" cx="17.17" cy="12.91" r="0.8" />
+        <circle class="i-body" cx="9.53" cy="14.47" r="3.25" />
+      </symbol>
+      <symbol id="d1-catering" viewBox="0 0 24 24">
+        <circle class="i-body" cx="12" cy="4.75" r="1.25" />
+        <path class="i-body" d="M6.5 11.5a5.5 5.5 0 0 1 11 0z" />
+        <path class="i-body" d="M4.5 11.5h15V16a5 5 0 0 1-5 5h-5a5 5 0 0 1-5-5z" />
+        <path class="i-cut" d="M4.5 11.5h15" />
+        <path class="i-line" d="M2.5 13.75h2M19.5 13.75h2" />
+      </symbol>
+      <symbol id="d1-bulk" viewBox="0 0 24 24">
+        <rect class="i-body" x="8" y="2.5" width="8" height="7.5" rx="1" />
+        <rect class="i-body" x="2.75" y="12.5" width="8" height="8" rx="1" />
+        <rect class="i-body" x="13.25" y="12.5" width="8" height="8" rx="1" />
+        <path class="i-cut" d="M8 5h8M2.75 15h8M13.25 15h8" />
+      </symbol>
+      <symbol id="d1-pickup" viewBox="0 0 24 24">
+        <path class="i-line" d="M9 9V7a3 3 0 0 1 6 0v2" />
+        <path class="i-body" d="M5 9h14l-1.25 11.5H6.25z" />
+      </symbol>
+      <symbol id="d1-delivery" viewBox="0 0 24 24">
+        <path class="i-body" d="M3 15c0-3.25 2.5-5.5 5.75-5.5h3.5V15z" />
+        <path class="i-line" d="M12.25 15h4.9M17.5 17.75L16.25 7.25h2.75" />
+        <circle class="i-body" cx="6.5" cy="17.75" r="2.75" />
+        <circle class="i-hole" cx="6.5" cy="17.75" r="0.9" />
+        <circle class="i-body" cx="17.5" cy="17.75" r="2.75" />
+        <circle class="i-hole" cx="17.5" cy="17.75" r="0.9" />
+      </symbol>
+      <symbol id="d2-mic" viewBox="0 0 24 24">
+        <rect class="i-body" x="9" y="3" width="6" height="10.75" rx="3" />
+        <path class="i-line" d="M11 6.75h2M11 9.5h2" />
+        <path class="i-line" d="M5.75 11a6.25 6.25 0 0 0 12.5 0M12 17.25V21M9 21h6" />
+      </symbol>
+      <symbol id="d2-stop" viewBox="0 0 24 24">
+        <rect class="i-body" x="6" y="6" width="12" height="12" rx="2.5" />
+      </symbol>
+      <symbol id="d2-plus" viewBox="0 0 24 24">
+        <path class="i-line" d="M12 5.5v13M5.5 12h13" />
+      </symbol>
+      <symbol id="d2-minus" viewBox="0 0 24 24">
+        <path class="i-line" d="M5.5 12h13" />
+      </symbol>
+      <symbol id="d2-check" viewBox="0 0 24 24">
+        <path class="i-line" d="M5 12.75l4.25 4.25L19 7.25" />
+      </symbol>
+      <symbol id="d2-undo" viewBox="0 0 24 24">
+        <path class="i-line" d="M9 5.75L4.75 10 9 14.25M4.75 10h10a4.75 4.75 0 0 1 0 9.5h-3.25" />
+      </symbol>
+      <symbol id="d2-close" viewBox="0 0 24 24">
+        <path class="i-line" d="M6.75 6.75l10.5 10.5M17.25 6.75l-10.5 10.5" />
+      </symbol>
+      <symbol id="d2-search" viewBox="0 0 24 24">
+        <path class="i-line" d="M15.25 15.25L20 20" />
+        <circle class="i-body" cx="10.5" cy="10.5" r="6.25" />
+      </symbol>
+      <symbol id="d2-cart" viewBox="0 0 24 24">
+        <path class="i-line" d="M8.25 7.5V6c0-1.5 1.7-2.75 3.75-2.75S15.75 4.5 15.75 6v1.5" />
+        <rect class="i-body" x="7.5" y="9.5" width="9" height="11.5" rx="1.5" />
+        <rect class="i-body" x="6.25" y="7.5" width="11.5" height="2" rx="1" />
+        <rect class="i-body" x="6.25" y="12.75" width="11.5" height="1.75" rx="0.875" />
+        <rect class="i-body" x="6.25" y="16.75" width="11.5" height="1.75" rx="0.875" />
+      </symbol>
+      <symbol id="d2-share" viewBox="0 0 24 24">
+        <path class="i-line" d="M8.65 10.73l6.7-3.96M8.65 13.27l6.7 3.96" />
+        <circle class="i-body" cx="17.5" cy="5.5" r="2.5" />
+        <circle class="i-body" cx="6.5" cy="12" r="2.5" />
+        <circle class="i-body" cx="17.5" cy="18.5" r="2.5" />
+      </symbol>
+      <symbol id="d2-location" viewBox="0 0 24 24">
+        <path class="i-body" d="M12 21.25s-6.25-5.5-6.25-11.25a6.25 6.25 0 0 1 12.5 0c0 5.75-6.25 11.25-6.25 11.25z" />
+        <circle class="i-paper" cx="12" cy="10" r="2.25" />
+      </symbol>
+      <symbol id="d2-message" viewBox="0 0 24 24">
+        <path
+          class="i-body"
+          d="M5.5 4.5h13A1.5 1.5 0 0 1 20 6v9.5a1.5 1.5 0 0 1-1.5 1.5H11l-4.5 3.75V17h-1A1.5 1.5 0 0 1 4 15.5V6a1.5 1.5 0 0 1 1.5-1.5z"
+        />
+        <path class="i-line" d="M8 9h8M8 12.5h5" />
+      </symbol>
+      <symbol id="d2-sweets" viewBox="0 0 24 24">
+        <path class="i-paper" d="M3.5 11v2.5l8.5 7 8.5-7V11l-8.5 7z" />
+        <path class="i-body" d="M12 4l8.5 7-8.5 7-8.5-7z" />
+      </symbol>
+      <symbol id="d2-snacks" viewBox="0 0 24 24">
+        <path class="i-paper" d="M12 4l8.5 15.5h-6z" />
+        <path class="i-body" d="M12 4L3.5 19.5h11z" />
+      </symbol>
+      <symbol id="d2-savouries" viewBox="0 0 24 24">
+        <path class="i-line" d="M10.4 12.8a1.6 1.6 0 0 1 3.2 0a3.2 3.2 0 0 1-6.4 0a4.8 4.8 0 0 1 9.6 0a6.4 6.4 0 0 1-12.8 0a8 8 0 0 1 16 0" />
+      </symbol>
+      <symbol id="d2-meals" viewBox="0 0 24 24">
+        <circle class="i-body" cx="12" cy="12" r="9" />
+        <circle class="i-paper" cx="7.67" cy="9.5" r="1.75" />
+        <circle class="i-paper" cx="12.87" cy="7.08" r="1.75" />
+        <circle class="i-paper" cx="16.92" cy="11.13" r="1.75" />
+        <circle class="i-paper" cx="10" cy="15.46" r="2.6" />
+      </symbol>
+      <symbol id="d2-catering" viewBox="0 0 24 24">
+        <path class="i-line" d="M3.75 14.75H2.5M20.25 14.75h1.25" />
+        <path
+          class="i-body"
+          d="M7.25 10.75c-2.5 1.25-3.75 3.4-3.75 5.75 0 2.9 2.6 4.5 6.25 4.5h4.5c3.65 0 6.25-1.6 6.25-4.5 0-2.35-1.25-4.5-3.75-5.75z"
+        />
+        <rect class="i-body" x="6.5" y="9" width="11" height="1.75" rx="0.875" />
+        <path class="i-body" d="M7.5 9a4.5 3.5 0 0 1 9 0z" />
+        <circle class="i-body" cx="12" cy="4.75" r="1.25" />
+      </symbol>
+      <symbol id="d2-bulk" viewBox="0 0 24 24">
+        <rect class="i-body" x="8" y="2.75" width="8" height="7.25" rx="1" />
+        <rect class="i-body" x="2.75" y="12.5" width="8" height="8.25" rx="1" />
+        <rect class="i-body" x="13.25" y="12.5" width="8" height="8.25" rx="1" />
+        <path class="i-line" d="M12 2.75V10M6.75 12.5v8.25M17.25 12.5v8.25" />
+      </symbol>
+      <symbol id="d2-pickup" viewBox="0 0 24 24">
+        <path class="i-line" d="M8.75 9V7.25a3.25 3.25 0 0 1 6.5 0V9" />
+        <path class="i-body" d="M4.75 9h14.5l-1.4 12H6.15z" />
+        <path class="i-line" d="M5.05 11.5h13.9" />
+      </symbol>
+      <symbol id="d2-delivery" viewBox="0 0 24 24">
+        <rect class="i-body" x="7" y="4.75" width="5.75" height="5.25" rx="0.75" />
+        <path class="i-body" d="M3 15.5C3 12 5.25 10 8.5 10H13l.5 5.5z" />
+        <path class="i-line" d="M13.5 15.5h3.5M17 15.5l-1.25-8h2.75" />
+        <circle class="i-paper" cx="6.5" cy="17.9" r="2.6" />
+        <circle class="i-paper" cx="17.5" cy="17.9" r="2.6" />
+        <circle class="i-dot" cx="6.5" cy="17.9" r="0.85" />
+        <circle class="i-dot" cx="17.5" cy="17.9" r="0.85" />
+      </symbol>
+    </svg>
+
+    <div class="page">
+      <nav class="swatch-nav" aria-label="Swatch pages">
+        <a href="type.html">Type 1</a>
+        <a href="type-2.html">Type 2</a>
+        <a href="icons.html">Icons 1</a>
+        <a href="icons-2.html" aria-current="page">Icons 2</a>
+        <a href="soundboard.html">Soundboard</a>
+        <a href="sound-kits.html">First sound kits</a>
+      </nav>
+
+      <header class="page-header">
+        <h1>Icons — round 2: line with one fill</h1>
+        <p>
+          One idea: the fill shows what the object is made of. Most of these objects are steel: the tiffin, the thali, the handi. On the kaju katli, the
+          fill is the silver vark.
+        </p>
+        <p>
+          What changed from round 1: you picked line with one fill, and it looked like Claude. Anthropic's illustrations are black line art with flat,
+          muted beige fills on cream, and the brass tint on cotton paper was exactly that. Option a in each control is the round 1 pick. Each other
+          option changes one thing: the fill colour, the drawing, or the ground.
+        </p>
+        <p>
+          How to choose: on your phone, try b · Steel and b · Redraw first, then look at section 05 at arm's length. Pick the one you like that reads
+          fastest.
+        </p>
+        <p>
+          <b>Selected:</b> a · Brass tint with c · Your pick. That is the redraw for every icon, except Catering and Bulk, which keep draft 1. The page
+          opens on the selection.
+        </p>
+      </header>
+
+      <form class="picker picker-3" id="icon-picker">
+        <fieldset>
+          <legend class="visually-hidden">Fill</legend>
+          <span class="picker-label" aria-hidden="true">Fill</span>
+          <label><input type="radio" name="fill" value="brass" checked />a · Brass tint</label>
+          <label><input type="radio" name="fill" value="steel" />b · Steel</label>
+          <label><input type="radio" name="fill" value="haldi" />c · Haldi</label>
+          <label><input type="radio" name="fill" value="white" />d · White</label>
+        </fieldset>
+        <fieldset>
+          <legend class="visually-hidden">Drawing and ground</legend>
+          <span class="picker-label" aria-hidden="true">Drawing</span>
+          <label><input type="radio" name="drawing" value="d1" />a · Draft 1</label>
+          <label><input type="radio" name="drawing" value="d2" />b · Redraw</label>
+          <label><input type="radio" name="drawing" value="pick" checked />c · Your pick</label>
+          <label><input type="checkbox" name="ground" value="white" />White ground</label>
+        </fieldset>
+      </form>
+
+      <main>
+        <section class="section" aria-labelledby="s01">
+          <h2 class="section-label" id="s01"><span>01</span>Draft and redraw<small>The same objects, drawn twice, in the fill you picked.</small></h2>
+          <table class="compare" data-follow-fill data-fill="brass">
+            <thead>
+              <tr>
+                <th scope="col">Word</th>
+                <th scope="col">a · Draft 1</th>
+                <th scope="col">b · Redraw</th>
+                <th scope="col">What changed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Cart</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-cart" /></svg></td>
+                <td class="caption">Kept from draft 1, a little slimmer</td>
+              </tr>
+              <tr>
+                <th scope="row">Sweets</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-sweets" /></svg></td>
+                <td class="caption">A katli with its thickness, vark on top</td>
+              </tr>
+              <tr>
+                <th scope="row">Snacks</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-snacks" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-snacks" /></svg></td>
+                <td class="caption">A samosa with a lit face and a shaded face</td>
+              </tr>
+              <tr>
+                <th scope="row">Savouries</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-savouries" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-savouries" /></svg></td>
+                <td class="caption">The same chakli spiral: the spiral is the object, so it has no fill</td>
+              </tr>
+              <tr>
+                <th scope="row">Meals</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-meals" /></svg></td>
+                <td class="caption">A steel thali: katoris along one side, rice opposite</td>
+              </tr>
+              <tr>
+                <th scope="row">Catering</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-catering" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-catering" /></svg></td>
+                <td class="caption">A handi with its neck, lid and knob</td>
+              </tr>
+              <tr>
+                <th scope="row">Bulk</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-bulk" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-bulk" /></svg></td>
+                <td class="caption">Festival gift boxes, with ribbons</td>
+              </tr>
+              <tr>
+                <th scope="row">Pickup</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-pickup" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-pickup" /></svg></td>
+                <td class="caption">A tapered cloth bag with a hem</td>
+              </tr>
+              <tr>
+                <th scope="row">Delivery</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-delivery" /></svg></td>
+                <td class="caption">A scooter with a delivery box and white tyres</td>
+              </tr>
+              <tr>
+                <th scope="row">Search</th>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-search" /></svg></td>
+                <td><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d2-search" /></svg></td>
+                <td class="caption">The lens holds the fill, like glass</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section" aria-labelledby="s02">
+          <h2 class="section-label" id="s02"><span>02</span>Fills side by side<small>Four fills, in the drawing you picked.</small></h2>
+          <table class="compare" data-follow-drawing>
+            <thead>
+              <tr>
+                <th scope="col">Word</th>
+                <th scope="col">a · Brass</th>
+                <th scope="col">b · Steel</th>
+                <th scope="col">c · Haldi</th>
+                <th scope="col">d · White</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Cart</th>
+                <td data-fill="brass"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg></td>
+                <td data-fill="steel"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg></td>
+                <td data-fill="haldi"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg></td>
+                <td data-fill="white"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg></td>
+              </tr>
+              <tr>
+                <th scope="row">Record</th>
+                <td data-fill="brass"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-mic" /></svg></td>
+                <td data-fill="steel"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-mic" /></svg></td>
+                <td data-fill="haldi"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-mic" /></svg></td>
+                <td data-fill="white"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-mic" /></svg></td>
+              </tr>
+              <tr>
+                <th scope="row">Sweets</th>
+                <td data-fill="brass"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg></td>
+                <td data-fill="steel"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg></td>
+                <td data-fill="haldi"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg></td>
+                <td data-fill="white"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg></td>
+              </tr>
+              <tr>
+                <th scope="row">Meals</th>
+                <td data-fill="brass"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg></td>
+                <td data-fill="steel"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg></td>
+                <td data-fill="haldi"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg></td>
+                <td data-fill="white"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg></td>
+              </tr>
+              <tr>
+                <th scope="row">Message</th>
+                <td data-fill="brass"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-message" /></svg></td>
+                <td data-fill="steel"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-message" /></svg></td>
+                <td data-fill="haldi"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-message" /></svg></td>
+                <td data-fill="white"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-message" /></svg></td>
+              </tr>
+              <tr>
+                <th scope="row">Delivery</th>
+                <td data-fill="brass"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg></td>
+                <td data-fill="steel"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg></td>
+                <td data-fill="haldi"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg></td>
+                <td data-fill="white"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section" aria-labelledby="s03">
+          <h2 class="section-label" id="s03"><span>03</span>The set at 24 px<small>Your fill and drawing, each icon next to its word.</small></h2>
+          <div data-follow-fill data-follow-drawing data-fill="brass">
+            <h3 class="group-title">Controls</h3>
+            <ul class="set">
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-mic" /></svg>Record</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-stop" /></svg>Stop</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-plus" /></svg>Add</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-minus" /></svg>Remove</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-check" /></svg>Done</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-undo" /></svg>Undo</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-close" /></svg>Close</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-search" /></svg>Search</li>
+            </ul>
+            <h3 class="group-title">Order</h3>
+            <ul class="set">
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg>Cart</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-share" /></svg>Share</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-location" /></svg>Location</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-message" /></svg>Message</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-pickup" /></svg>Pickup</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg>Delivery</li>
+            </ul>
+            <h3 class="group-title">Categories</h3>
+            <ul class="set">
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg>Sweets</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-snacks" /></svg>Snacks</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-savouries" /></svg>Savouries</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg>Meals</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-catering" /></svg>Catering</li>
+              <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-bulk" /></svg>Bulk</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s04">
+          <h2 class="section-label" id="s04"><span>04</span>At 44 px<small>The size of a tap target.</small></h2>
+          <ul class="set set-44" data-follow-fill data-follow-drawing data-fill="brass">
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg>Cart</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-mic" /></svg>Record</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-location" /></svg>Location</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-message" /></svg>Message</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg>Sweets</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-snacks" /></svg>Snacks</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-savouries" /></svg>Savouries</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg>Meals</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-catering" /></svg>Catering</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-bulk" /></svg>Bulk</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-pickup" /></svg>Pickup</li>
+            <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg>Delivery</li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="s05">
+          <h2 class="section-label" id="s05"><span>05</span>In use<small>Buttons, rows and choices from the app, in your fill and drawing.</small></h2>
+          <div class="uses" data-follow-fill data-follow-drawing data-fill="brass">
+            <button class="btn-primary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-mic" /></svg>Record an order
+            </button>
+
+            <div class="stepper">
+              <button class="btn-plain" type="button" aria-label="One less">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-minus" /></svg>
+              </button>
+              <output>1</output>
+              <button class="btn-plain" type="button" aria-label="One more">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-plus" /></svg>
+              </button>
+            </div>
+
+            <div class="row-cart">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-cart" /></svg>
+              <span class="grow">Cart · <span class="num">2</span> items</span>
+              <span class="cart-total">₹1,530</span>
+              <button class="btn-primary" type="button">Order</button>
+            </div>
+
+            <ul class="chips" aria-label="Categories">
+              <li>
+                <button class="btn-plain" type="button" aria-pressed="true">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-sweets" /></svg>Sweets
+                </button>
+              </li>
+              <li>
+                <button class="btn-plain" type="button" aria-pressed="false">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-snacks" /></svg>Snacks
+                </button>
+              </li>
+              <li>
+                <button class="btn-plain" type="button" aria-pressed="false">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-savouries" /></svg>Savouries
+                </button>
+              </li>
+              <li>
+                <button class="btn-plain" type="button" aria-pressed="false">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-meals" /></svg>Meals
+                </button>
+              </li>
+              <li>
+                <button class="btn-plain" type="button" aria-pressed="false">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-catering" /></svg>Catering
+                </button>
+              </li>
+              <li>
+                <button class="btn-plain" type="button" aria-pressed="false">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-bulk" /></svg>Bulk and corporate
+                </button>
+              </li>
+            </ul>
+
+            <fieldset class="ways">
+              <legend>How do you want it?</legend>
+              <label class="way">
+                <input type="radio" name="way" checked />
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-pickup" /></svg>
+                <span>Pickup<small>From Basavanagudi</small></span>
+              </label>
+              <label class="way">
+                <input type="radio" name="way" />
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-delivery" /></svg>
+                <span>Delivery<small>To your address</small></span>
+              </label>
+            </fieldset>
+
+            <div class="actions">
+              <button class="btn-plain" type="button">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-message" /></svg>Message the store
+              </button>
+              <button class="btn-plain" type="button">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-share" /></svg>Share
+              </button>
+              <button class="btn-plain" type="button">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-location" /></svg>Map
+              </button>
+              <button class="btn-plain" type="button">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-search" /></svg>Search
+              </button>
+              <button class="btn-plain" type="button" aria-label="Close">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-close" /></svg>
+              </button>
+            </div>
+
+            <p class="done">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-check" /></svg>Order saved
+              <button class="link-btn" type="button"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#d1-undo" /></svg>Undo</button>
+            </p>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="s06">
+          <h2 class="section-label" id="s06"><span>06</span>Notes<small>What each option does, and what happens next.</small></h2>
+          <ul class="notes">
+            <li>a · Brass tint: the round 1 fill. Beige on cream, which is why it read as Claude.</li>
+            <li>
+              b · Steel: a cool grey from the steel the objects are made of. It stands apart from the warm paper, so the page no longer reads as cream and
+              beige.
+            </li>
+            <li>
+              c · Haldi: warm and festive. But haldi is the colour of the primary action, so filled icons start to look like buttons, and on a haldi button
+              the fill disappears.
+            </li>
+            <li>d · White: each icon becomes a paper cut-out. On the white ground it turns into a plain line icon.</li>
+            <li>White ground: the whole page on white instead of cotton paper. It tests whether the cream ground adds to the Claude look.</li>
+            <li>
+              Next: you pick a fill and a drawing. I refine the set, check each icon at 24 px on a phone, and copy it to <code>src/icons/</code> as SVG
+              files.
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script type="module">
+      const form = document.querySelector("#icon-picker");
+      const fromDraft = new Set(["catering", "bulk"]);
+
+      const readHash = () => {
+        const params = new URLSearchParams(location.hash.slice(1));
+        for (const name of ["fill", "drawing"]) {
+          const radio = form.querySelector(`input[name="${name}"][value="${CSS.escape(params.get(name) ?? "")}"]`);
+          if (radio) radio.checked = true;
+        }
+        if (params.has("ground")) form.elements.ground.checked = params.get("ground") === "white";
+      };
+
+      const sync = () => {
+        const data = new FormData(form);
+        const fill = data.get("fill");
+        const drawing = data.get("drawing");
+        const ground = data.has("ground") ? "white" : "cotton";
+        for (const element of document.querySelectorAll("[data-follow-fill]")) element.dataset.fill = fill;
+        for (const use of document.querySelectorAll("[data-follow-drawing] use")) {
+          const name = use.getAttribute("href").replace(/^#d[12]-/, "");
+          const set = drawing === "pick" ? (fromDraft.has(name) ? "d1" : "d2") : drawing;
+          use.setAttribute("href", `#${set}-${name}`);
+        }
+        document.documentElement.dataset.ground = ground;
+        history.replaceState(null, "", `#fill=${fill}&drawing=${drawing}&ground=${ground}`);
+      };
+
+      form.addEventListener("change", sync);
+      addEventListener("hashchange", () => {
+        readHash();
+        sync();
+      });
+      document.addEventListener("touchstart", () => {}, { passive: true });
+      readHash();
+      sync();
+    </script>
+  </body>
+</html>
